@@ -5,12 +5,12 @@ STATUSES.set('3', 'watched-xB5Pq4kZ');
 STATUSES.set('4', 'want-to-watch-ry9yUf3Z');
 
 /* !TODO: Realize after the panel */
-// function loadAnimeStatuses() {
-// 	for (const _jAnime of Anime.values()) {
-// 		const _nStatus = undefined;
-//
-// 		if (_nStatus) {
-// 			createLabel(_jAnime.object, ``, ['status-ty2aYeHq', STATUSES.get(_nStatus)], _nStatus.toString());
-// 		}
-// 	}
-// }
+function loadAnimeStatuses() {
+	for (const _jAnime of Anime.values()) {
+		const _nStatus = undefined;
+
+		if (_nStatus) {
+			createLabel(_jAnime.object, ``, ['status-ty2aYeHq', STATUSES.get(_nStatus)], _nStatus.toString());
+		}
+	}
+}
