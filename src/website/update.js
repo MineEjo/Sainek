@@ -53,8 +53,8 @@ function setAttachBoard(_bState) {
 	}
 }
 
+function updateElements() {
 if (bExtensionEnabled) {
-	function updateElements() {
 		removeClassElements(DEFAULT_CLASS);
 
 		loadPageInfo();
@@ -80,6 +80,4 @@ if (bExtensionEnabled) {
 			setTheme(false, _response);
 		});
 	}
-
-	updateElements();
 }
