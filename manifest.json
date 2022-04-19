@@ -1,0 +1,73 @@
+{
+	"name": "Sainek - Anime Keeper",
+	"version": "0.1.0",
+	"description": "Keep the anime you've watched, set statuses, ratings and descriptions! Never lose them again.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MineEjo/Sainek-Anime-Keeper.git"
+	},
+	"author": "MineEjo",
+	"license": "GPL-3.0",
+	"icons": {
+		"16": "assets/icon-16px.png",
+		"48": "assets/icon-48px.png",
+		"128": "assets/icon-128px.png"
+	},
+	"permissions": [
+		"storage",
+		"tabs",
+		"activeTab",
+		"management"
+	],
+	"browser_action": {
+		"default_icon": "assets/icon.png",
+		"default_popup": "src/extension/popup.html"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"src/locales/board.js",
+				"src/index.js",
+				"src/functions/elements.js",
+				"src/functions/utils.js",
+				"src/website/info.js",
+				"src/website/board.js",
+				"src/website/status.js",
+				"src/website/update.js"
+			],
+			"css": [
+				"src/styles/font-awesome.css",
+				"src/styles/website.css",
+				"src/styles/variables.css",
+				"src/styles/status.css",
+				"src/styles/board.css",
+				"src/styles/default.css"
+			],
+			"run_at": "document_end"
+		}
+	],
+	"background": {
+		"page": "src/extension/background/background.html",
+		"persistent": false
+	},
+	"web_accessible_resources": [
+		"assets/icon.png",
+		"assets/left-arrow.svg",
+		"assets/plus.svg",
+		"assets/menu.svg",
+		"assets/small-down-arrow.svg",
+		"assets/cross.svg",
+		"assets/edit.svg",
+		"fonts/FontAwesome.otf",
+		"fonts/fontawesome-webfont.eot",
+		"fonts/fontawesome-webfont.svg",
+		"fonts/fontawesome-webfont.ttf",
+		"fonts/fontawesome-webfont.woff",
+		"fonts/fontawesome-webfont.woff2"
+	],
+	"manifest_version": 2,
+	"content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://www.googletagmanager.com; object-src 'self'"
+}

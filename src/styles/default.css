@@ -1,0 +1,303 @@
+.default-anime-keeper-4FLZQdEs::-webkit-scrollbar {
+	height: var(--default-margin-xqv9MGJg);
+	width: var(--default-margin-xqv9MGJg);
+	}
+
+.default-anime-keeper-4FLZQdEs::-webkit-scrollbar-track,
+.default-anime-keeper-4FLZQdEs::-webkit-scrollbar-corner {
+	background-color: var(--transparent-color-mdyCQUpu);
+	}
+
+.default-anime-keeper-4FLZQdEs::-webkit-scrollbar-thumb {
+	background: var(--main-color-rVwK3Nh4);
+	border-radius: var(--short-margin-xqv9MGJg);
+	}
+
+@keyframes delay-AQSfa8qb {
+	0% {
+		opacity: 0;
+		}
+	100% {
+		opacity: 1;
+		}
+	}
+
+.default-anime-keeper-4FLZQdEs {
+	background: transparent;
+	border: 0;
+	border-radius: 5px;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	caret-color: var(--main-color-rVwK3Nh4) !important;
+	color: transparent;
+	display: inline-block;
+	font-size: var(--font-size-f5AtJrMk);
+	line-height: normal !important;
+	margin: 0;
+	outline: none;
+	overflow: hidden;
+	padding: 0;
+	transition: var(--short-transition-6y29q6Ky);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(:not(.fa)) {
+	font-family: 'Roboto', sans-serif !important;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.margin-eu7ycpXr) {
+	background: var(--transparent-color-mdyCQUpu);
+	border-radius: 0;
+	width: 100%;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(div) {
+	line-height: 0 !important;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(label),
+.default-anime-keeper-4FLZQdEs:is(input),
+.default-anime-keeper-4FLZQdEs:is(span),
+.default-anime-keeper-4FLZQdEs:is(a),
+.default-anime-keeper-4FLZQdEs:is(ul),
+.default-anime-keeper-4FLZQdEs:is(li),
+.default-anime-keeper-4FLZQdEs:is(textarea),
+.default-anime-keeper-4FLZQdEs:is(.select-MZnDy3Dp),
+.default-anime-keeper-4FLZQdEs:is(.button-image-w3UhF6k8),
+.default-anime-keeper-4FLZQdEs:is(.select-rating-6VM6t2V5),
+.default-anime-keeper-4FLZQdEs:is(button) {
+	display: inherit !important;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(label),
+.default-anime-keeper-4FLZQdEs:is(span),
+.default-anime-keeper-4FLZQdEs:is(a) {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(a),
+.default-anime-keeper-4FLZQdEs:is(a):active,
+.default-anime-keeper-4FLZQdEs:is(a):visited {
+	color: var(--blue-color-TthRYu9u) !important;
+	text-decoration: none;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(a):hover {
+	color: var(--main-color-rVwK3Nh4) !important;
+	text-decoration: underline;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.button-image-w3UhF6k8) {
+	background-repeat: no-repeat;
+	background-size: cover;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(input[type='text']),
+.default-anime-keeper-4FLZQdEs:is(input[type='number']) {
+	background: var(--neutral-embed-color-4PQYryMp);
+	height: var(--default-input-height-Ej9WvfL3);
+	padding: var(--short-margin-xqv9MGJg) var(--default-margin-xqv9MGJg);
+	width: 100%;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(input)::-webkit-outer-spin-button,
+.default-anime-keeper-4FLZQdEs:is(input)::-webkit-inner-spin-button {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	margin: 0;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(input[type='checkbox']) {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(input[type='checkbox']:focus) {
+	outline: 0;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.toggle-vyDWmx5V) {
+	background: var(--neutral-color-TmH5QR3n);
+	border: var(--set-line-short-margin) solid var(--transparent-color-mdyCQUpu);
+	border-radius: calc(var(--toggle-input-height) / 2);
+	display: inline-block;
+	height: var(--toggle-input-height);
+	margin: 0;
+	position: relative;
+	transition: all var(--short-transition-6y29q6Ky);
+	width: var(--toggle-input-width);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.toggle-vyDWmx5V):after {
+	background: white;
+	border-radius: 50%;
+	content: '';
+	height: calc(var(--toggle-input-width) - var(--toggle-input-height) + var(--set-line-short-margin) + var(--set-line-short-margin));
+	left: var(--set-line-short-margin);
+	position: absolute;
+	top: var(--set-line-short-margin);
+	transition: all var(--short-transition-6y29q6Ky);
+	width: calc(var(--toggle-input-width) - var(--toggle-input-height) + var(--set-line-short-margin) + var(--set-line-short-margin));
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.toggle-vyDWmx5V):checked {
+	background: var(--main-color-rVwK3Nh4);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.toggle-vyDWmx5V):checked:after {
+	transform: translatex(calc(var(--toggle-input-width) - var(--toggle-input-height)));
+	}
+
+.default-anime-keeper-4FLZQdEs:is(textarea) {
+	background: var(--neutral-embed-color-4PQYryMp);
+	overflow-y: visible !important;
+	padding: var(--default-margin-xqv9MGJg);;
+	resize: none;
+	width: 100%;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-MZnDy3Dp) {
+	background: var(--neutral-embed-color-4PQYryMp) !important;
+	color: var(--neutral-color-TmH5QR3n) !important;
+	height: var(--default-input-height-Ej9WvfL3);
+	line-height: calc(var(--default-input-height-Ej9WvfL3) / 2);
+	padding: var(--short-margin-xqv9MGJg) var(--default-margin-xqv9MGJg);
+	width: 100%;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-MZnDy3Dp) label {
+	float: left;
+	margin: var(--short-margin-xqv9MGJg) 0 0 0 !important;
+	max-width: 80%;
+	overflow: hidden;
+	padding: 0 !important;
+	text-overflow: ellipsis;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	white-space: nowrap;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-MZnDy3Dp) ul {
+	display: block !important;
+	float: left;
+	margin: var(--short-margin-xqv9MGJg) 0 0 0;
+	padding: 0 !important;
+	position: absolute;
+	transform: scaleY(0);
+	transform-origin: top;
+	transition: var(--medium-transition-B7hXaQNK);
+	width: 75%;
+	z-index: calc(var(--default-z-index-D5mB4JpN) + 1);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-MZnDy3Dp) ul li {
+	border-radius: 0 !important;
+	margin: 0 !important;
+	padding: var(--default-margin-xqv9MGJg) var(--default-margin-xqv9MGJg);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-MZnDy3Dp) ul li:hover {
+	background: var(--neutral-embed-color-4PQYryMp);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-MZnDy3Dp) .button-image-w3UhF6k8 {
+	float: right;
+	height: 22.5px;
+	margin-top: 3px;
+	width: 22.5px;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-MZnDy3Dp):focus ul {
+	transform: scaleY(1);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-MZnDy3Dp):focus .button-image-w3UhF6k8 {
+	transform: rotate(180deg);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-MZnDy3Dp) .active-5QkcU5D4 {
+	background: var(--active-color-ud7RpwQt) !important;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(input::placeholder),
+.default-anime-keeper-4FLZQdEs:is(textarea::placeholder) {
+	color: var(--neutral-color-TmH5QR3n);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(ul), .default-anime-keeper-4FLZQdEs:is(li), .default-anime-keeper-4FLZQdEs:is(button) {
+	max-width: 100%;
+	text-overflow: ellipsis;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	white-space: nowrap;
+	width: 100%;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(li) {
+	cursor: pointer !important;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-rating-6VM6t2V5) {
+	cursor: pointer !important;
+	font-size: var(--default-input-height-Ej9WvfL3);
+	text-align: center;
+	width: 100%;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-rating-6VM6t2V5) span {
+	padding-left: calc(var(--short-margin-xqv9MGJg) / 2);
+	padding-right: calc(var(--short-margin-xqv9MGJg) / 2);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-rating-6VM6t2V5) .fa-star,
+.default-anime-keeper-4FLZQdEs:is(.select-rating-6VM6t2V5) .fa {
+	color: var(--neutral-border-color-QPugTC8F);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-rating-6VM6t2V5) span:hover {
+	color: var(--active-color-ud7RpwQt);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.select-rating-6VM6t2V5) .checked-cFXHwS3x {
+	color: var(--main-color-rVwK3Nh4) !important;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(button) {
+	background: var(--neutral-embed-color-4PQYryMp);
+	border: none !important;
+	cursor: pointer !important;
+	font-weight: 600;
+	height: var(--default-input-height-Ej9WvfL3);
+	max-width: 100%;
+	opacity: 1;
+	outline: none !important;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(button):hover {
+	opacity: var(--hover-opacity-Q8ePrKd7);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.save-Hj3Cfy9A) {
+	background: var(--main-color-rVwK3Nh4);
+	color: var(--white-color-3vbK5BDV);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.delete-88jPHdRH) {
+	background: var(--transparent-color-mdyCQUpu);
+	color: var(--red-color-6DYMf3eb);
+	}
