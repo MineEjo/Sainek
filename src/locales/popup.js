@@ -7,7 +7,8 @@ const POPUP_EN = {
 	debugMode: 'Debug',
 	boardDisable: 'Disable board',
 	blackList: 'Site blacklist',
-	config: 'Config'
+	config: 'Config',
+	alertReloadExtension: 'Turn the extension on and off in your browser settings for the changes to take effect!',
 };
 
 const POPUP_RU = {
@@ -19,7 +20,8 @@ const POPUP_RU = {
 	debugMode: 'Отладка',
 	boardDisable: 'Выключить панель',
 	blackList: 'Чёрный список сайтов',
-	config: 'Конфиг'
+	config: 'Конфиг',
+	alertReloadExtension: 'Включите и выключите расширение в настройках браузера, чтобы изменения вступили в силу!',
 };
 
 const POPUP = {
