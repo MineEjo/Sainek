@@ -43,7 +43,6 @@ hBlackList.addEventListener('input', (_hEvent) => {
 
 	_hEvent.target.value = _sFormatted + _sValue;
 	setData(false, 'blackList', _sFormatted);
-	alert(_getLocale('alertReloadExtension'))
 });
 
 const hFireBaseConfig = document.getElementById('fireBaseConfig');
@@ -65,6 +64,7 @@ hFireBaseConfig.addEventListener('input', (_hEvent) => {
 
 	_hEvent.target.value = JSON.stringify(_sJson);
 	setData(true, 'fireBaseConfig', _sJson);
+	alert(_getLocale('alertReloadExtension'))
 });
 
 document.addEventListener('click', _hEvent => {
