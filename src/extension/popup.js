@@ -43,10 +43,7 @@ hBlackList.addEventListener('input', (_hEvent) => {
 
 	_hEvent.target.value = _sFormatted + _sValue;
 	setData(false, 'blackList', _sFormatted);
-
-	jBrowser.management.setEnabled(jBrowser.runtime.id, false, function() {
-		jBrowser.management.setEnabled(jBrowser.runtime.id, true);
-	});
+	alert(_getLocale('alertReloadExtension'))
 });
 
 const hFireBaseConfig = document.getElementById('fireBaseConfig');
