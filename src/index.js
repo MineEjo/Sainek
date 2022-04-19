@@ -16,20 +16,22 @@ function updateBrowser() {
 	try {
 		jBrowser = browser || chrome;
 	} catch (_e) {
-		jBrowser = chrome;
+		jBrowser = chrome;1
 		if (!jBrowser) sendLog('err', 'E77yp5MeRjT2qQTG', 'index.js', {E77yp5MeRjT2qQTG: _e});
 	}
 }
 
 function updateEnable() {
 	try {
-		if (window.find(LANG_CODES.get(document.documentElement.lang))) {
-			bExtensionEnabled = true;
-		} else {
-			jBrowser.storage.local.get(['extensionEnabled'], (_response) => {
-				bExtensionEnabled = _response?.extensionEnabled;
-			});
-		}
+		getData(false, 'blackList', (_response) => {
+			if (_response && _response.includes(document.URL)) {
+				bExtensionEnabled = false;
+			}
+			else if (window.find(LANG_CODES.get(document.documentElement.lang))) {
+				bExtensionEnabled = true;
+				updateElements();
+			}
+		})
 	} catch (_e) {
 		sendLog('err', 'N22KhK6A8XqQg7tz', 'index.js', {N22KhK6A8XqQg7tz: _e});
 	}
