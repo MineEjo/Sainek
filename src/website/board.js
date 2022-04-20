@@ -421,16 +421,15 @@ function loadAnimeBoard() {
 										for (const _sLink of _sSites.split(', ')) {
 											let _sTitle = _sLink
 											.replace('https://', '')
-											.replace('http://', '');
-
+											.replace('http://', '')
+											.replace('www.', '');
 											_sTitle = capitalizeFirstLetter(_sTitle);
-											_sTitle = _sTitle.split('/')[0];
+											
+											_sTitle = (_sTitle + '/').split('/')[0];
 
 											if (_sTitle) {
 												createLink(_hChild, '', '', _sTitle, _sLink, '', (_hChild) => {
-													if (document.URL === _sLink) {
-														_hChild.style.background = 'var(--main-color-rVwK3Nh4)';
-													}
+													if (document.URL === _sLink) _hChild.style.background = 'var(--main-color-rVwK3Nh4)';
 												});
 											}
 										}
