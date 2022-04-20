@@ -256,7 +256,7 @@ function removeClassElements(_sClass, _sClassAnimation) {
 	}
 }
 
-function removeElements(_sId, _sClassAnimation) {
+function removeElement(_sId, _sClassAnimation) {
 	if (document.getElementsByClassName(DEFAULT_CLASS)) {
 		const _hRemove = document.getElementById(_sId);
 		if (_hRemove) {

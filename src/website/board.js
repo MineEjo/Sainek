@@ -297,7 +297,7 @@ function loadAnimeBoard() {
 		const _nScrollPos = _hBody.scrollTop;
 
 		/* Removing old cards */
-		removeElements('anime-cards-MfRGWNqC', 'removed-UEg2H5Ps');
+		removeElement('anime-cards-MfRGWNqC', 'removed-UEg2H5Ps');
 
 		/* An array that will store the finished divs, for later display */
 		const _DivsCard = new Map();
