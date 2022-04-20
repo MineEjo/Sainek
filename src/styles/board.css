@@ -145,13 +145,13 @@
 	right: 0;
 	top: var(--board-header-height-xg3EuWjd);
 	width: 100%;
+	overflow-y: scroll;
 	}
 
 
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC {
 	background: var(--transparent-color-mdyCQUpu) !important;
 	height: auto;
-	overflow: hidden;
 	padding: var(--embed-margin-xqv9MGJg);
 	width: 100%;
 	}
