@@ -1,3 +1,4 @@
+/* Array with information about the anime on the page */
 const Anime = new Map();
 
 function loadPageInfo() {

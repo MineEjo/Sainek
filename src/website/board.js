@@ -1,3 +1,4 @@
+/* Moved out, for changes in other scripts */
 let hBoard = undefined;
 
 function loadAnimeBoard() {
@@ -9,6 +10,7 @@ function loadAnimeBoard() {
 		_hChild.onclick = function () {
 			getData(true, 'boardVisibled', (_response) => {
 				if (_response) {
+					/* When you close the board, the menus are removed */
 					removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
 					removeClassElements('content-bXB3As76', 'removed-UEg2H5Ps');
 
@@ -112,6 +114,7 @@ function loadAnimeBoard() {
 
 	function _addAnimeCard(_sfId, _sfImage, _sfTitles, _sfEpisodesViewed, _sfEpisodes, _sfSeasons, _sfStatus, _sfViewedStatus, _sfDesc, _sfSites, _sfRating, _sfPosition) {
 		const _hContent = createDiv(_hAddAnimeButton, '', 'content-n5tgZWEy');
+		/* The content is in the button and has an absolute position, so it cannot have a body height if you specify css properties */
 		_hContent.style.height = `calc(${_hBody.offsetHeight}px + var(--board-header-height-xg3EuWjd))`;
 
 		createLabel(_hContent, '', '', 'animeLabelEditImage', 'anime-image-edit-nZsR8KNQ');
@@ -235,8 +238,10 @@ function loadAnimeBoard() {
 						}
 					}
 
+					/* Card adding */
 					if (!_sfId) {
 						const _aAnimeCardIds = _response || [];
+						/* To have the new card on top, unshift and a zero position are used */
 						_aAnimeCardIds.unshift(_sId);
 						setData(false, 'animeCardIds', _aAnimeCardIds);
 					}
@@ -267,6 +272,7 @@ function loadAnimeBoard() {
 				_hChild.onclick = function () {
 					getData(false, 'animeCardIds', (_response) => {
 						const _aAnimeCardIds = _response || [];
+						/* Card deleting */
 						if (_aAnimeCardIds.indexOf(_sfId) > 0) _aAnimeCardIds.splice(_aAnimeCardIds.indexOf(_sfId), 1);
 
 						setData(false, 'animeCardIds', _aAnimeCardIds);
@@ -283,17 +289,22 @@ function loadAnimeBoard() {
 		_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/cross.svg')})`;
 	}
 
+	/* Array with different board errors */
 	const _Errors = new Map();
 
 	function _updateAnimeCard() {
+		/* Getting the scroll bar position to save and setting the same one after displaying */
 		const _nScrollPos = _hBody.scrollTop;
 
+		/* Removing old cards */
 		removeElements('anime-cards-MfRGWNqC', 'removed-UEg2H5Ps');
 
+		/* An array that will store the finished divs, for later display */
 		const _DivsCard = new Map();
 
 		getData(false, 'animeCardIds', (_response) => {
 			if (_response) {
+				/* Creating fake cards */
 				for (let _nIndex = 0; _nIndex < _response.length; _nIndex++) {
 					createDiv(_hAnimeCards, '', 'anime-load-card-PMb84E8y', (_hCard) => {
 						createMargin(_hCard, 'embed');
@@ -306,9 +317,11 @@ function loadAnimeBoard() {
 					})
 				}
 
+				/* Creating real cards */
 				for (const _jId of _response) {
 					getData(false, `animeCardId${_jId}`, (_jAnimeCard) => {
 						try {
+							/* The object is accessed directly, without an existence check, to handle the error in the catch block.  */
 							const _sTitles = _jAnimeCard.titles;
 							const _sImage = _jAnimeCard.image;
 							const _sEpisodesViewed = _jAnimeCard.episodesViewed;
@@ -321,14 +334,20 @@ function loadAnimeBoard() {
 							const _sRating = _jAnimeCard.rating;
 							let _sPosition = _jAnimeCard.position;
 
+							/* Sorting positions */
 							while (_DivsCard.has(_sPosition.toString())) {
 								_sPosition++;
 							}
 
+							/* Cards are first created and stacked in Map, for later display */
 							_DivsCard.set(_sPosition.toString(), createDiv(null, `anime-card-${_jId}`, 'anime-card-PgjFjRUS', (_hCard) => {
+								/* A card is given a special attribute to speed up its position */
 								_hCard.setAttribute('position', _sPosition.toString())
+
+								/* Enabling card drag and drop */
 								_hCard.tabIndex = 0;
 								_hCard.draggable = true;
+
 								sendLog(LOG_TYPES.LOG, 'ggs4xgWMfbZYBpfK', 'board.js', {ggs4xgWMfbZYBpfK: _response});
 								sendLog(LOG_TYPES.LOG, 'Uj46Tcr3xr4dN9L7', 'board.js', {
 									animeCard: {
@@ -348,7 +367,6 @@ function loadAnimeBoard() {
 								});
 
 								/* Card design */
-
 								if (_sViewedStatus) {
 									createLabel(_hCard, '',
 										['anime-card-viewed-status-5cBUD2rC', STATUSES.get(_sViewedStatus)], `animeViewStatus${_sViewedStatus}`
@@ -375,16 +393,15 @@ function loadAnimeBoard() {
 
 								if (_sRating) {
 									createDiv(_hCard, '', 'anime-card-rating-J9RU4MjX', (_hChild) => {
+										/* Rating stars display, the number from the database is colored as selected, the other stars remain normal */
 										for (let _nStarts = 1; _nStarts <= parseInt(_sRating); _nStarts++) {
 											const _hSpan = document.createElement('span');
-											_hSpan.classList.add('fa', 'fa-star', 'anime-card-other-WUg8SV9z');
 											_hChild.append(_hSpan);
 											_hSpan.classList.add('fa', 'fa-star', 'checked-cFXHwS3x', 'anime-card-other-WUg8SV9z');
 										}
 
 										for (let _nStarts = 1; _nStarts <= 5 - parseInt(_sRating); _nStarts++) {
 											const _hSpan = document.createElement('span');
-											_hSpan.classList.add('fa', 'fa-star', 'anime-card-other-WUg8SV9z');
 											_hChild.append(_hSpan);
 											_hSpan.classList.add('fa', 'fa-star', 'anime-card-other-WUg8SV9z');
 										}
@@ -400,12 +417,14 @@ function loadAnimeBoard() {
 									createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
 									createDiv(_hCard, '', 'anime-card-sites-DtYkVa9G', (_hChild) => {
 										for (const _sLink of _sSites.split(', ')) {
+											/* For a nice display, the protocol is erased and the first letter of the domain is capitalized */
 											let _sTitle = _sLink
 											.replace('https://', '')
 											.replace('http://', '')
 											.replace('www.', '');
 											_sTitle = capitalizeFirstLetter(_sTitle);
-											
+
+											/* Split splits the reference into an array, 0 means domain selection */
 											_sTitle = (_sTitle + '/').split('/')[0];
 
 											if (_sTitle) {
@@ -421,6 +440,7 @@ function loadAnimeBoard() {
 									createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
 									createDiv(_hCard, '', 'anime-card-episodes-y6qHgvQw', (_hChild) => {
 										createDiv(_hChild, '', '', (_hChild) => {
+											/* Because of the peculiar system, the information is not in one line, but several labels */
 											createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes1');
 											createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', _sEpisodesViewed);
 											createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes2');
@@ -430,7 +450,9 @@ function loadAnimeBoard() {
 										});
 										createMargin(_hChild, 'embed', 'anime-card-other-WUg8SV9z');
 
+										/* Values must be greater than zero, and the episodes viewed cannot be greater than the episodes in the show */
 										if (parseInt(_sEpisodes) > 0 && parseInt(_sEpisodesViewed) > 0 && parseInt(_sEpisodes) >= parseInt(_sEpisodesViewed)) {
+											/* The width of the progress bar is the percentage of all episodes watched */
 											const _nProgress = Math.round((parseInt(_sEpisodesViewed) * 100 / parseInt(_sEpisodes))).toString();
 											createDiv(_hChild, '', 'anime-card-progress-Vdx7xbRM', (_hChild) => {
 												_hChild.style.width = `${_nProgress}%`;
@@ -438,15 +460,19 @@ function loadAnimeBoard() {
 										}
 									});
 								} else {
+									/* Since the block is a closing block, if it is not, its indentation must be in any case */
 									createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
 								}
 
+								/* Tabindex did not work, so the focus is set by clicking on the card */
 								_hCard.onclick = function (_event) {
 									if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
 										_hCard.focus();
 									}
 								};
 
+								/* Card movement system */
+								/* When a card is dragged, its identifier is saved in the data, so you can swap cards later */
 								_hCard.ondragstart = function (_event) {
 									if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
 										_event.dataTransfer.setData('anime-card', _event.target.id.toString());
@@ -460,6 +486,7 @@ function loadAnimeBoard() {
 
 										const _jSwitchedOnId = _event.dataTransfer.getData('anime-card').replace('anime-card-', '');
 
+										/* Changing positions */
 										getData(false, `animeCardId${_jSwitchedOnId}`, (_jSwitchedAtCard) => {
 											if (_jSwitchedOnId !== _jId) {
 												document.getElementById(`anime-card-${_jId}`).classList.add('on-drop-x4YnDmpC');
@@ -486,6 +513,7 @@ function loadAnimeBoard() {
 									}
 								};
 
+								/* Setting the card id for the editing system */
 								_hCard.onfocus = function (_event) {
 									if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
 										_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/edit.svg')})`;
@@ -493,6 +521,7 @@ function loadAnimeBoard() {
 									}
 								};
 
+								/* Deleting a card id from the editing system */
 								_hCard.onblur = function (_event) {
 									if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
 										_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/plus.svg')})`;
@@ -504,15 +533,20 @@ function loadAnimeBoard() {
 										}
 									}
 								};
+
+								/* It is easier for me to say in general that it is a system, because there are also comments on its elements, and I do not want to duplicate */
 							}));
 
+							/* If the sorting was successful and the value of the saved divs matches the database */
 							if (_response.length === _DivsCard.size) {
 								sendLog(LOG_TYPES.LOG, 'G98yhVDYxDZEc72z', 'board.js', {
 									divsCard: _DivsCard
 								});
 
+								/* Removing fake cards */
 								removeClassElements('anime-load-card-PMb84E8y', 'removed-UEg2H5Ps');
 
+								/* Since sorting does not set the order, the cards do not go one after the other, you can get positions 3 and 6, so the for loop will not work */
 								let _nIndex = 0;
 								while (_DivsCard.size > 0) {
 									if (_DivsCard.has(_nIndex.toString())) {
@@ -526,6 +560,7 @@ function loadAnimeBoard() {
 								if (_nScrollPos) _hBody.scrollTop = _nScrollPos;
 							}
 						} catch (_e) {
+							/* Card removal system for 3 errors at a time */
 							if (_response && _jId) {
 								_response.splice(_response.indexOf(_jId), 1);
 
@@ -536,6 +571,7 @@ function loadAnimeBoard() {
 									_Errors.set(_jId, ((_Errors.get(_jId) > -1) ? _Errors.get(_jId) + 1 : 0))
 								}
 
+								/* The waiting time increases with each second to 3 seconds. */
 								setTimeout(_updateAnimeCard, (_Errors.get(_jId) && _Errors.get(_jId) > 1) ? _Errors.get(_jId) * 1000 : 1000);
 							}
 
