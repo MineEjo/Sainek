@@ -184,7 +184,7 @@
 	background-size: cover;
 	height: calc(var(--default-width-zkk4pPs6) / 3);
 	margin: 0 var(--embed-margin-xqv9MGJg);
-	width: calc(var(--default-width-zkk4pPs6) - 62px);
+	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
 	}
 
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-title-A5xU6DER {
