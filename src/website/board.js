@@ -458,9 +458,9 @@ function loadAnimeBoard() {
 								_hCard.ondragstart = function (_event) {
 									if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
 										_event.dataTransfer.setData('anime-card', _event.target.id.toString());
+										document.getElementById(_event.target.id).focus();
 									}
 								};
-
 
 								_hCard.ondrop = function (_event) {
 									if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
@@ -470,7 +470,10 @@ function loadAnimeBoard() {
 
 										getData(false, `animeCardId${_jSwitchedOnId}`, (_jSwitchedAtCard) => {
 											if (_jSwitchedOnId !== _jId) {
+												document.getElementById(`anime-card-${_jId}`).classList.add('on-drop-x4YnDmpC');
+
 												let _jSwitchedAt = _jAnimeCard;
+
 												_jSwitchedAt.position = document.getElementById(`anime-card-${_jSwitchedOnId}`)
 												.getAttribute('position') || 0;
 												setData(false, `animeCardId${_jId}`, _jSwitchedAt);

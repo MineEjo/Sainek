@@ -172,6 +172,13 @@
 	box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--neutral-border-color-QPugTC8F) !important;
 	}
 
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS:is(.on-drop-x4YnDmpC) {
+	-moz-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--main-color-rVwK3Nh4) !important;
+	-o-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--main-color-rVwK3Nh4) !important;
+	-webkit-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--main-color-rVwK3Nh4) !important;
+	box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--main-color-rVwK3Nh4) !important;
+	}
+
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-image-2gZc3pYt {
 	background-repeat: no-repeat;
 	background-size: cover;
