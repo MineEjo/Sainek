@@ -1,12 +1,11 @@
 let hBoard = undefined;
-let hButtonVisibleBoard = undefined;
 
 function loadAnimeBoard() {
 	hBoard = createDiv(document.body, '', 'board-uVL3djCA');
 	const _hHeader = createDiv(hBoard, '', 'header-yeJQ9cYR');
 
 	const _hLeftSide = createDiv(_hHeader, '', 'left-rRNySA25');
-	hButtonVisibleBoard = createDivImg(_hLeftSide, '', 'button-cH9xa8qr', 'assets/left-arrow.svg', (_hChild) => {
+	createDivImg(_hLeftSide, '', 'button-cH9xa8qr', 'assets/left-arrow.svg', (_hChild) => {
 		_hChild.onclick = function () {
 			getData(true, 'boardVisibled', (_response) => {
 				if (_response) {
