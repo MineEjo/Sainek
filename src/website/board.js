@@ -338,8 +338,8 @@ function loadAnimeBoard() {
 							const _sPosition = _jAnimeCard?.position;
 
 							/* Re-sort items to avoid duplicates. */
-							if (_PositionsCard.has(_sPosition)) _PositionsCard.set(`${parseInt(_sPosition + 1)}`, _jId);
-							else _PositionsCard.set(_sPosition, _jId);
+							if (_PositionsCard.has(_sPosition)) _PositionsCard.set(`${_PositionsCard.size}`, _jId)
+							else _PositionsCard.set(_sPosition, _jId)
 
 							/* "Map" takes a position as a key, a duplicate will cause the key to be overwritten,
 							which will cause the sort method to not be called in the future, to display the cards. */
