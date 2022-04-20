@@ -457,8 +457,7 @@ function loadAnimeBoard() {
 
 								_hCard.ondragstart = function (_event) {
 									if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-										_event.dataTransfer.setData('anime-card', _event.target.id.toString()
-										.replace('anime-card-', ''));
+										_event.dataTransfer.setData('anime-card', _event.target.id.toString());
 									}
 								};
 
@@ -467,19 +466,20 @@ function loadAnimeBoard() {
 									if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
 										_event.preventDefault();
 
-										const _jSwitchedOnId = _event.dataTransfer.getData('anime-card');
+										const _jSwitchedOnId = _event.dataTransfer.getData('anime-card').replace('anime-card-', '');
 
 										getData(false, `animeCardId${_jSwitchedOnId}`, (_jSwitchedAtCard) => {
 											if (_jSwitchedOnId !== _jId) {
 												let _jSwitchedAt = _jAnimeCard;
-												_jSwitchedAt.position = invertMap(_PositionsCard).get(_jSwitchedOnId);
+												_jSwitchedAt.position = document.getElementById(`anime-card-${_jSwitchedOnId}`)
+												.getAttribute('position') || 0;
 												setData(false, `animeCardId${_jId}`, _jSwitchedAt);
 
 												let _jSwitchedOn = _jSwitchedAtCard;
-												_jSwitchedOn.position = invertMap(_PositionsCard).get(_jId);
+												_jSwitchedOn.position = _sPosition;
 												setData(false, `animeCardId${_jSwitchedOnId}`, _jSwitchedOn);
 
-												_updateAnimeCard();
+												setTimeout(_updateAnimeCard, 1000);
 											}
 										});
 									}
