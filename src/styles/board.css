@@ -188,7 +188,8 @@
 	margin-bottom: var(--default-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS:focus {
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS:focus,
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS:active {
 	-moz-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--neutral-border-color-QPugTC8F) !important;
 	-o-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--neutral-border-color-QPugTC8F) !important;
 	-webkit-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--neutral-border-color-QPugTC8F) !important;
