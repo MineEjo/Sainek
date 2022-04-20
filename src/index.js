@@ -17,7 +17,7 @@ function updateBrowser() {
 		jBrowser = browser || chrome;
 	} catch (_e) {
 		jBrowser = chrome;
-		if (!jBrowser) sendLog(LOG_TYPES.ERR, 'E77yp5MeRjT2qQTG', 'index.js', {E77yp5MeRjT2qQTG: _e});
+		if (!jBrowser) sendLog('E77yp5MeRjT2qQTG', LOG_TYPES.ERR, {E77yp5MeRjT2qQTG: _e});
 	}
 }
 
@@ -33,7 +33,7 @@ function updateEnable() {
 			}
 		})
 	} catch (_e) {
-		sendLog(LOG_TYPES.ERR, 'N22KhK6A8XqQg7tz', 'index.js', {N22KhK6A8XqQg7tz: _e});
+		sendLog('N22KhK6A8XqQg7tz', LOG_TYPES.ERR, {N22KhK6A8XqQg7tz: _e});
 	}
 }
 
@@ -55,7 +55,7 @@ function setData(_bLocal, _sId, _sValue, _fFunction) {
 			}
 		});
 	} catch (_e) {
-		sendLog(LOG_TYPES.ERR, 'a922GPKTcNuw87wn', 'index.js', {a922GPKTcNuw87wn: _e});
+		sendLog('a922GPKTcNuw87wn', LOG_TYPES.ERR, {a922GPKTcNuw87wn: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -75,7 +75,7 @@ function getData(_bLocal, _sId, _fFunction) {
 			}
 		});
 	} catch (_e) {
-		sendLog(LOG_TYPES.ERR, 'BUZPcn3XnLj8aDrD', 'index.js', {BUZPcn3XnLj8aDrD: _e});
+		sendLog('BUZPcn3XnLj8aDrD', LOG_TYPES.ERR, {BUZPcn3XnLj8aDrD: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -84,7 +84,7 @@ function getLocalUrl(_sUrl) {
 	try {
 		return (_sUrl) ? jBrowser?.extension?.getURL(_sUrl) : undefined;
 	} catch (_e) {
-		sendLog('err', 'eLq6MAy44bXkXD9T', 'index.js', {eLq6MAy44bXkXD9T: _e});
+		sendLog('err', 'eLq6MAy44bXkXD9T', {eLq6MAy44bXkXD9T: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -93,7 +93,7 @@ function getLocale(key) {
 	try {
 		return (key) ? (eval(`BOARD_${USER_LANG.toUpperCase()}`))[key] : undefined;
 	} catch (_e) {
-		sendLog(LOG_TYPES.ERR, 'g5EtG3F98MG6zquX', 'index.js', {g5EtG3F98MG6zquX: _e});
+		sendLog('g5EtG3F98MG6zquX', LOG_TYPES.ERR, {g5EtG3F98MG6zquX: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -103,17 +103,10 @@ function setDebugMode(_bState) {
 }
 
 const LOG_TYPES = {
-	LOG: 'LOG',
-	ERR: 'ERR'
+	LOG: 'log',
+	ERR: 'error'
 }
 
-function sendLog(_nType, _sId, _sFile, _sLog) {
-	if (bDebugMode) {
-		console.table({
-			LOG: _sLog,
-			ID: _sId,
-			FILE: _sFile,
-			TYPE: _nType
-		});
-	}
+function sendLog(_sId, _nType, _sLog) {
+	if (bDebugMode) console[_nType]({ID: _sId, LOG: _sLog,});
 }

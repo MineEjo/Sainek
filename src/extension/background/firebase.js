@@ -54,7 +54,7 @@ getData(true, 'fireBaseConfig', (_response) => {
 					});
 				}
 			} catch (_e) {
-				sendLog(LOG_TYPES.ERR, 'FN2eWBeh3dwmK9Yg', 'index.js', {FN2eWBeh3dwmK9Yg: _e});
+				sendLog('FN2eWBeh3dwmK9Yg', LOG_TYPES.ERR, {FN2eWBeh3dwmK9Yg: _e});
 			}
 		}
 	});

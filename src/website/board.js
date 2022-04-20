@@ -348,8 +348,8 @@ function loadAnimeBoard() {
 								_hCard.tabIndex = 0;
 								_hCard.draggable = true;
 
-								sendLog(LOG_TYPES.LOG, 'ggs4xgWMfbZYBpfK', 'board.js', {ggs4xgWMfbZYBpfK: _response});
-								sendLog(LOG_TYPES.LOG, 'Uj46Tcr3xr4dN9L7', 'board.js', {
+								sendLog('ggs4xgWMfbZYBpfK', LOG_TYPES.LOG, {ggs4xgWMfbZYBpfK: _response});
+								sendLog('Uj46Tcr3xr4dN9L7', LOG_TYPES.LOG, {
 									animeCard: {
 										id: _jId,
 										title: _sTitles,
@@ -539,7 +539,7 @@ function loadAnimeBoard() {
 
 							/* If the sorting was successful and the value of the saved divs matches the database */
 							if (_response.length === _DivsCard.size) {
-								sendLog(LOG_TYPES.LOG, 'G98yhVDYxDZEc72z', 'board.js', {
+								sendLog('G98yhVDYxDZEc72z', LOG_TYPES.LOG, {
 									divsCard: _DivsCard
 								});
 
@@ -575,7 +575,7 @@ function loadAnimeBoard() {
 								setTimeout(_updateAnimeCard, (_Errors.get(_jId) && _Errors.get(_jId) > 1) ? _Errors.get(_jId) * 1000 : 1000);
 							}
 
-							sendLog(LOG_TYPES.ERR, 'RAxm3R7HH3cYxj6q', 'board.js', {RAxm3R7HH3cYxj6q: _e});
+							sendLog('RAxm3R7HH3cYxj6q', LOG_TYPES.ERR, {RAxm3R7HH3cYxj6q: _e});
 						}
 					});
 				}
