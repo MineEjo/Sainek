@@ -265,17 +265,9 @@ function loadAnimeBoard() {
 		if (_sfId) {
 			createButton(_hContent, '', 'delete-88jPHdRH', 'animeLabelEditDelete', (_hChild) => {
 				_hChild.onclick = function () {
-
 					getData(false, 'animeCardIds', (_response) => {
-						const _aAnimeCardIds = [];
-
-						try {
-							for (const _sId of _response) {
-								if (_sId !== _sfId) _aAnimeCardIds.push(_sId);
-							}
-						} catch (_e) {
-							sendLog(LOG_TYPES.ERR, 'h3qSQpbN5f5hd4BP', 'board.js', {h3qSQpbN5f5hd4BP: _e});
-						}
+						const _aAnimeCardIds = _response || [];
+						if (_aAnimeCardIds.indexOf(_sfId) > 0) _aAnimeCardIds.splice(_aAnimeCardIds.indexOf(_sfId), 1);
 
 						setData(false, 'animeCardIds', _aAnimeCardIds);
 						setData(false, `animeCardId${_sfId}`, null);
