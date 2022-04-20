@@ -226,7 +226,6 @@ function loadAnimeBoard() {
 				const _sDesc = document.getElementById('anime-desc-edit-emn6pGAH').value;
 				const _sSites = document.getElementById('anime-sites-edit-Q3usD5jw').value;
 				const _sRating = document.getElementById('anime-rating-edit-CW48Shh3').getAttribute('value');
-				const _nPosition = (_sfPosition) ? _sfPosition : document.getElementById('anime-cards-MfRGWNqC').childElementCount;
 
 				getData(false, 'animeCardIds', (_response) => {
 					let _sId = (_sfId) ? _sfId : genId();
@@ -249,7 +248,7 @@ function loadAnimeBoard() {
 								sendLog('err', 'taaZTwuP3zZnZjMv', 'board.js', {taaZTwuP3zZnZjMv: _e});
 							}
 						}
-						_aAnimeCardIds.push(_sId);
+						_aAnimeCardIds.unshift(_sId);
 						setData(false, 'animeCardIds', _aAnimeCardIds);
 					}
 
@@ -264,7 +263,7 @@ function loadAnimeBoard() {
 						desc: _sDesc.toString(),
 						sites: _sSites.toString(),
 						rating: _sRating.toString(),
-						position: _nPosition.toString()
+						position: '0'
 					});
 
 					setTimeout(_updateAnimeCard, 1000);
