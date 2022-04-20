@@ -555,7 +555,7 @@ function loadAnimeBoard() {
 									_Errors.set(_jId, ((_Errors.get(_jId) > -1) ? _Errors.get(_jId) + 1 : 0))
 								}
 
-								setTimeout(_updateAnimeCard, 1000);
+								setTimeout(_updateAnimeCard, (_Errors.get(_jId) && _Errors.get(_jId) > 1) ? _Errors.get(_jId) * 1000 : 1000);
 							}
 
 							sendLog(LOG_TYPES.ERR, 'RAxm3R7HH3cYxj6q', 'board.js', {RAxm3R7HH3cYxj6q: _e});
