@@ -524,18 +524,20 @@ function loadAnimeBoard() {
 								};
 							}));
 
-							sendLog('log', 'G98yhVDYxDZEc72z', 'board.js', {
-								positionsCard: _PositionsCard,
-								divsCard: _DivsCard
-							});
+							if (_response.length === _PositionsCard.size) {
+								sendLog('log', 'G98yhVDYxDZEc72z', 'board.js', {
+									positionsCard: _PositionsCard,
+									divsCard: _DivsCard
+								});
 
-							for (let _nPos = 0; _nPos < _PositionsCard.size; _nPos++) {
-								const _hDiv = _DivsCard.get(_PositionsCard.get(_nPos.toString()));
-								if (_hDiv) _hAnimeCards.append(_hDiv);
-							}
+								for (let _nPos = 0; _nPos < _PositionsCard.size; _nPos++) {
+									const _hDiv = _DivsCard.get(_PositionsCard.get(_nPos.toString()));
+									if (_hDiv) _hAnimeCards.append(_hDiv);
+								}
 
-							if (_nScrollPos) {
-								document.getElementById('anime-cards-MfRGWNqC').scrollTop = _nScrollPos;
+								if (_nScrollPos) {
+									document.getElementById('anime-cards-MfRGWNqC').scrollTop = _nScrollPos;
+								}
 							}
 						}
 					});
