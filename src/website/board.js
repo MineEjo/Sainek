@@ -313,6 +313,18 @@ function loadAnimeBoard() {
 
 		getData(false, 'animeCardIds', (_response) => {
 			if (_response) {
+				for (let _nIndex = 0; _nIndex < _response.length; _nIndex++) {
+					createDiv(_hAnimeCards, '', 'anime-load-card-PMb84E8y', (_hCard) => {
+						createMargin(_hCard, 'embed');
+						createDiv(_hCard, '', 'anime-load-card-image-GQtx92fM');
+						createMargin(_hCard, 'embed');
+						createDiv(_hCard, '', 'anime-load-card-title-3Wgg5PKh');
+						createMargin(_hCard, 'embed');
+						createDiv(_hCard, '', 'anime-load-card-desc-W3cU2ueU');
+						createMargin(_hCard, 'embed');
+					})
+				}
+
 				for (const _jId of _response) {
 					getData(false, `animeCardId${_jId}`, (_jAnimeCard) => {
 						try {
@@ -518,6 +530,8 @@ function loadAnimeBoard() {
 								sendLog(LOG_TYPES.LOG, 'G98yhVDYxDZEc72z', 'board.js', {
 									divsCard: _DivsCard
 								});
+
+								removeClassElements('anime-load-card-PMb84E8y');
 
 								let _nIndex = 0;
 								while (_DivsCard.size > 0) {
