@@ -41,14 +41,19 @@ getData(true, 'fireBaseConfig', (_response) => {
 						return _jAppState?.values.findIndex(_element => _element?.id === _id);
 					}
 
+					const RESPONSE_TYPES = {
+						SUCCESS: 'success',
+						UNKNOWN: 'unknown'
+					}
+
 					jBrowser.runtime.onMessage.addListener((_msg, _sender, _response) => {
 						switch (_msg?.type) {
 							case 'updateValue':
 								_jAppDb.child(_msg?.opts?.id).set({value: _msg?.opts?.value});
-								_response('success');
+								_response(RESPONSE_TYPES.SUCCESS);
 								break;
 							default:
-								_response('unknown request');
+								_response(RESPONSE_TYPES.UNKNOWN);
 								break;
 						}
 					});
