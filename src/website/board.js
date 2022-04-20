@@ -236,17 +236,7 @@ function loadAnimeBoard() {
 					}
 
 					if (!_sfId) {
-						const _aAnimeCardIds = [];
-
-						if (_response) {
-							try {
-								for (const _sId of _response) {
-									_aAnimeCardIds.push(_sId);
-								}
-							} catch (_e) {
-								sendLog(LOG_TYPES.ERR, 'taaZTwuP3zZnZjMv', 'board.js', {taaZTwuP3zZnZjMv: _e});
-							}
-						}
+						const _aAnimeCardIds = _response || [];
 						_aAnimeCardIds.unshift(_sId);
 						setData(false, 'animeCardIds', _aAnimeCardIds);
 					}
