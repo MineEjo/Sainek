@@ -7,6 +7,18 @@
 		}
 	}
 
+@keyframes loading-Ghe8CA3h {
+	0% {
+		opacity: 0.3;
+		}
+	50% {
+		opacity: 1;
+		}
+	100% {
+		opacity: 0.3;
+		}
+	}
+
 /* Board */
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) {
 	background: transparent;
