@@ -320,10 +320,9 @@ function loadAnimeBoard() {
 						try {
 							_sTitles = _jAnimeCard.titles;
 						} catch (_e) {
-							// _response.splice(_response.indexOf(_jId), 1);
-							// setData(false, 'animeCardIds', _response);
-							console.log(`Карточка есть ${_response}, но мне похуй на неё X)`);
-							console.log('Поздравьте меня, я конченный');
+							_response.splice(_response.indexOf(_jId), 1);
+							setData(false, 'animeCardIds', _response);
+							setData(false, `animeCardId${_jId}`, null);
 							sendLog('err', 'KeQL6r88LMJvJ6n2', 'board.js', {KeQL6r88LMJvJ6n2: _e});
 						}
 
