@@ -307,7 +307,7 @@ function loadAnimeBoard() {
 	function _updateAnimeCard() {
 		const _nScrollPos = _hBody.scrollTop;
 
-		removeElements('anime-cards-MfRGWNqC');
+		removeElements('anime-cards-MfRGWNqC', 'removed-UEg2H5Ps');
 
 		const _DivsCard = new Map();
 
@@ -530,7 +530,7 @@ function loadAnimeBoard() {
 									divsCard: _DivsCard
 								});
 
-								removeClassElements('anime-load-card-PMb84E8y');
+								removeClassElements('anime-load-card-PMb84E8y', 'removed-UEg2H5Ps');
 
 								let _nIndex = 0;
 								while (_DivsCard.size > 0) {

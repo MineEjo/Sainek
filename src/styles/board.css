@@ -174,6 +174,11 @@
 	width: 100%;
 	}
 
+.default-anime-keeper-4FLZQdEs:is(.anime-card-PgjFjRUS:is(.removed-UEg2H5Ps)),
+.default-anime-keeper-4FLZQdEs:is(.anime-load-card-PMb84E8y:is(.removed-UEg2H5Ps)) {
+	display: none !important;
+	}
+
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y {
 	animation: loading-Ghe8CA3h var(--loading-transition-uX5rj3DP) infinite;
 	}
