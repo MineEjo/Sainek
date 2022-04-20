@@ -245,7 +245,7 @@ function loadAnimeBoard() {
 									_aAnimeCardIds.push(_sId);
 								}
 							} catch (_e) {
-								sendLog('err', 'taaZTwuP3zZnZjMv', 'board.js', {taaZTwuP3zZnZjMv: _e});
+								sendLog(LOG_TYPES.ERR, 'taaZTwuP3zZnZjMv', 'board.js', {taaZTwuP3zZnZjMv: _e});
 							}
 						}
 						_aAnimeCardIds.unshift(_sId);
@@ -285,7 +285,7 @@ function loadAnimeBoard() {
 								if (_sId !== _sfId) _aAnimeCardIds.push(_sId);
 							}
 						} catch (_e) {
-							sendLog('err', 'h3qSQpbN5f5hd4BP', 'board.js', {h3qSQpbN5f5hd4BP: _e});
+							sendLog(LOG_TYPES.ERR, 'h3qSQpbN5f5hd4BP', 'board.js', {h3qSQpbN5f5hd4BP: _e});
 						}
 
 						setData(false, 'animeCardIds', _aAnimeCardIds);
@@ -325,11 +325,11 @@ function loadAnimeBoard() {
 								_response.splice(_response.indexOf(_jId), 1);
 								setData(false, 'animeCardIds', _response);
 								setData(false, `animeCardId${_jId}`, null);
-								sendLog('err', 'KeQL6r88LMJvJ6n2', 'board.js', {KeQL6r88LMJvJ6n2: _e});
+								sendLog(LOG_TYPES.ERR, 'KeQL6r88LMJvJ6n2', 'board.js', {KeQL6r88LMJvJ6n2: _e});
 							} else {
 								_Errors.set(_jId, (_Errors.get(_jId) + 1))
 								_response.splice(_response.indexOf(_jId), 1);
-								sendLog('err', 'RAxm3R7HH3cYxj6q', 'board.js', {KeQL6r88LMJvJ6n2: _e});
+								sendLog(LOG_TYPES.ERR, 'RAxm3R7HH3cYxj6q', 'board.js', {KeQL6r88LMJvJ6n2: _e});
 							}
 						}
 
@@ -355,8 +355,8 @@ function loadAnimeBoard() {
 							_DivsCard.set(_jId, createDiv(null, `anime-card-${_jId}`, 'anime-card-PgjFjRUS', (_hCard) => {
 								_hCard.tabIndex = 0;
 								_hCard.draggable = true;
-								sendLog('log', 'ggs4xgWMfbZYBpfK', 'board.js', {ggs4xgWMfbZYBpfK: _response});
-								sendLog('log', 'Uj46Tcr3xr4dN9L7', 'board.js', {
+								sendLog(LOG_TYPES.LOG, 'ggs4xgWMfbZYBpfK', 'board.js', {ggs4xgWMfbZYBpfK: _response});
+								sendLog(LOG_TYPES.LOG, 'Uj46Tcr3xr4dN9L7', 'board.js', {
 									animeCard: {
 										id: _jId,
 										title: _sTitles,
@@ -531,7 +531,7 @@ function loadAnimeBoard() {
 							}));
 
 							if (_response.length === _PositionsCard.size) {
-								sendLog('log', 'G98yhVDYxDZEc72z', 'board.js', {
+								sendLog(LOG_TYPES.LOG, 'G98yhVDYxDZEc72z', 'board.js', {
 									positionsCard: _PositionsCard,
 									divsCard: _DivsCard
 								});

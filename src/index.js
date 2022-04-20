@@ -17,7 +17,7 @@ function updateBrowser() {
 		jBrowser = browser || chrome;
 	} catch (_e) {
 		jBrowser = chrome;1
-		if (!jBrowser) sendLog('err', 'E77yp5MeRjT2qQTG', 'index.js', {E77yp5MeRjT2qQTG: _e});
+		if (!jBrowser) sendLog(LOG_TYPES.ERR, 'E77yp5MeRjT2qQTG', 'index.js', {E77yp5MeRjT2qQTG: _e});
 	}
 }
 
@@ -33,7 +33,7 @@ function updateEnable() {
 			}
 		})
 	} catch (_e) {
-		sendLog('err', 'N22KhK6A8XqQg7tz', 'index.js', {N22KhK6A8XqQg7tz: _e});
+		sendLog(LOG_TYPES.ERR, 'N22KhK6A8XqQg7tz', 'index.js', {N22KhK6A8XqQg7tz: _e});
 	}
 }
 
@@ -55,7 +55,7 @@ function setData(_bLocal, _sId, _sValue, _fFunction) {
 			}
 		});
 	} catch (_e) {
-		sendLog('err', 'a922GPKTcNuw87wn', 'index.js', {a922GPKTcNuw87wn: _e});
+		sendLog(LOG_TYPES.ERR, 'a922GPKTcNuw87wn', 'index.js', {a922GPKTcNuw87wn: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -75,7 +75,7 @@ function getData(_bLocal, _sId, _fFunction) {
 			}
 		});
 	} catch (_e) {
-		sendLog('err', 'BUZPcn3XnLj8aDrD', 'index.js', {BUZPcn3XnLj8aDrD: _e});
+		sendLog(LOG_TYPES.ERR, 'BUZPcn3XnLj8aDrD', 'index.js', {BUZPcn3XnLj8aDrD: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -93,7 +93,7 @@ function getLocale(key) {
 	try {
 		return (key) ? (eval(`BOARD_${USER_LANG.toUpperCase()}`))[key] : undefined;
 	} catch (_e) {
-		sendLog('err', 'g5EtG3F98MG6zquX', 'index.js', {g5EtG3F98MG6zquX: _e});
+		sendLog(LOG_TYPES.ERR, 'g5EtG3F98MG6zquX', 'index.js', {g5EtG3F98MG6zquX: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -102,13 +102,18 @@ function setDebugMode(_bState) {
 	if (_bState) bDebugMode = _bState;
 }
 
+const LOG_TYPES = {
+	LOG: 'LOG',
+	ERR: 'ERR'
+}
+
 function sendLog(_nType, _sId, _sFile, _sLog) {
 	if (bDebugMode) {
 		console.table({
 			LOG: _sLog,
 			ID: _sId,
 			FILE: _sFile,
-			TYPE: _nType.toUpperCase()
+			TYPE: _nType
 		});
 	}
 }
