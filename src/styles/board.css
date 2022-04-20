@@ -168,14 +168,29 @@
 	}
 
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y {
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y,
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 {
 	animation: created-3r3p5DpG var(--long-transition-YhN6XrSx) forwards;
+	min-height: var(--default-input-height-Ej9WvfL3);
 	overflow: hidden;
 	width: 100%;
 	}
 
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 {
+	padding: var(--embed-margin-xqv9MGJg);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 label {
+	color: var(--red-color-6DYMf3eb) !important;
+	white-space: pre-wrap !important;
+	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
+	word-break: break-word !important;
+	word-wrap: break-word !important;
+	}
+
 .default-anime-keeper-4FLZQdEs:is(.anime-card-PgjFjRUS:is(.removed-UEg2H5Ps)),
-.default-anime-keeper-4FLZQdEs:is(.anime-load-card-PMb84E8y:is(.removed-UEg2H5Ps)) {
+.default-anime-keeper-4FLZQdEs:is(.anime-load-card-PMb84E8y:is(.removed-UEg2H5Ps)),
+.default-anime-keeper-4FLZQdEs:is(.anime-load-error-card-PTbkZ3J8:is(.removed-UEg2H5Ps)) {
 	display: none !important;
 	}
 
@@ -184,7 +199,8 @@
 	}
 
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS:not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y:not(:last-child) {
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y:not(:last-child),
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8:not(:last-child) {
 	margin-bottom: var(--default-margin-xqv9MGJg);
 	}
 
@@ -219,8 +235,8 @@
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y .anime-load-card-title-3Wgg5PKh,
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y .anime-load-card-desc-W3cU2ueU {
 	background: var(--neutral-embed-color-4PQYryMp) !important;
+	height: var(--default-input-height-Ej9WvfL3);
 	margin: 0 var(--embed-margin-xqv9MGJg);
-	height: 30px;
 	}
 
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y .anime-load-card-title-3Wgg5PKh {
