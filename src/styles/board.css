@@ -169,6 +169,7 @@
 
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS,
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y {
+	animation: created-3r3p5DpG var(--long-transition-YhN6XrSx) forwards;
 	overflow: hidden;
 	width: 100%;
 	}
