@@ -302,6 +302,8 @@ function loadAnimeBoard() {
 		_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/cross.svg')})`;
 	}
 
+	const _Errors = new Map();
+
 	function _updateAnimeCard() {
 		const _nScrollPos = document.getElementById('anime-cards-MfRGWNqC').scrollTop;
 
@@ -319,10 +321,16 @@ function loadAnimeBoard() {
 						try {
 							_sTitles = _jAnimeCard.titles;
 						} catch (_e) {
-							_response.splice(_response.indexOf(_jId), 1);
-							setData(false, 'animeCardIds', _response);
-							setData(false, `animeCardId${_jId}`, null);
-							sendLog('err', 'KeQL6r88LMJvJ6n2', 'board.js', {KeQL6r88LMJvJ6n2: _e});
+							if (_Errors.has(_jId) && _Errors.get(_jId) >= 3) {
+								_response.splice(_response.indexOf(_jId), 1);
+								setData(false, 'animeCardIds', _response);
+								setData(false, `animeCardId${_jId}`, null);
+								sendLog('err', 'KeQL6r88LMJvJ6n2', 'board.js', {KeQL6r88LMJvJ6n2: _e});
+							} else {
+								_Errors.set(_jId, (_Errors.get(_jId) + 1))
+								_response.splice(_response.indexOf(_jId), 1);
+								sendLog('err', 'RAxm3R7HH3cYxj6q', 'board.js', {KeQL6r88LMJvJ6n2: _e});
+							}
 						}
 
 						if (_sTitles) {
