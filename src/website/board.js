@@ -305,7 +305,7 @@ function loadAnimeBoard() {
 	const _Errors = new Map();
 
 	function _updateAnimeCard() {
-		const _nScrollPos = document.getElementById('anime-cards-MfRGWNqC').scrollTop;
+		const _nScrollPos = _hBody.scrollTop;
 
 		removeElements('anime-cards-MfRGWNqC');
 
@@ -541,9 +541,7 @@ function loadAnimeBoard() {
 									if (_hDiv) _hAnimeCards.append(_hDiv);
 								}
 
-								if (_nScrollPos) {
-									document.getElementById('anime-cards-MfRGWNqC').scrollTop = _nScrollPos;
-								}
+								if (_nScrollPos) _hBody.scrollTop = _nScrollPos;
 							}
 						}
 					});
