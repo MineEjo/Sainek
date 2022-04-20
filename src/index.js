@@ -16,7 +16,7 @@ function updateBrowser() {
 	try {
 		jBrowser = browser || chrome;
 	} catch (_e) {
-		jBrowser = chrome;1
+		jBrowser = chrome;
 		if (!jBrowser) sendLog(LOG_TYPES.ERR, 'E77yp5MeRjT2qQTG', 'index.js', {E77yp5MeRjT2qQTG: _e});
 	}
 }
