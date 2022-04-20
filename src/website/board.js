@@ -309,31 +309,14 @@ function loadAnimeBoard() {
 
 		removeElements('anime-cards-MfRGWNqC');
 
-		const _PositionsCard = new Map();
 		const _DivsCard = new Map();
 
 		getData(false, 'animeCardIds', (_response) => {
 			if (_response) {
 				for (const _jId of _response) {
 					getData(false, `animeCardId${_jId}`, (_jAnimeCard) => {
-						let _sTitles = null;
-
 						try {
-							_sTitles = _jAnimeCard.titles;
-						} catch (_e) {
-							if (_Errors.has(_jId) && _Errors.get(_jId) >= 3) {
-								_response.splice(_response.indexOf(_jId), 1);
-								setData(false, 'animeCardIds', _response);
-								setData(false, `animeCardId${_jId}`, null);
-								sendLog(LOG_TYPES.ERR, 'KeQL6r88LMJvJ6n2', 'board.js', {KeQL6r88LMJvJ6n2: _e});
-							} else {
-								_Errors.set(_jId, (_Errors.get(_jId) + 1))
-								_response.splice(_response.indexOf(_jId), 1);
-								sendLog(LOG_TYPES.ERR, 'RAxm3R7HH3cYxj6q', 'board.js', {KeQL6r88LMJvJ6n2: _e});
-							}
-						}
-
-						if (_sTitles) {
+							const _sTitles = _jAnimeCard.titles;
 							const _sImage = _jAnimeCard?.image;
 							const _sEpisodesViewed = _jAnimeCard?.episodesViewed;
 							const _sEpisodes = _jAnimeCard?.episodes;
@@ -343,16 +326,14 @@ function loadAnimeBoard() {
 							const _sDesc = _jAnimeCard?.desc;
 							const _sSites = _jAnimeCard?.sites;
 							const _sRating = _jAnimeCard?.rating;
-							const _sPosition = _jAnimeCard?.position;
+							let _sPosition = _jAnimeCard?.position;
 
-							/* Re-sort items to avoid duplicates. */
-							if (_PositionsCard.has(_sPosition)) _PositionsCard.set(`${_PositionsCard.size}`, _jId)
-							else _PositionsCard.set(_sPosition, _jId)
+							while (_DivsCard.has(_sPosition.toString())) {
+								_sPosition++;
+							}
 
-							/* "Map" takes a position as a key, a duplicate will cause the key to be overwritten,
-							which will cause the sort method to not be called in the future, to display the cards. */
-
-							_DivsCard.set(_jId, createDiv(null, `anime-card-${_jId}`, 'anime-card-PgjFjRUS', (_hCard) => {
+							_DivsCard.set(_sPosition.toString(), createDiv(null, `anime-card-${_jId}`, 'anime-card-PgjFjRUS', (_hCard) => {
+								_hCard.setAttribute('position', _sPosition.toString())
 								_hCard.tabIndex = 0;
 								_hCard.draggable = true;
 								sendLog(LOG_TYPES.LOG, 'ggs4xgWMfbZYBpfK', 'board.js', {ggs4xgWMfbZYBpfK: _response});
@@ -530,19 +511,38 @@ function loadAnimeBoard() {
 								};
 							}));
 
-							if (_response.length === _PositionsCard.size) {
+							if (_response.length === _DivsCard.size) {
 								sendLog(LOG_TYPES.LOG, 'G98yhVDYxDZEc72z', 'board.js', {
-									positionsCard: _PositionsCard,
 									divsCard: _DivsCard
 								});
 
-								for (let _nPos = 0; _nPos < _PositionsCard.size; _nPos++) {
-									const _hDiv = _DivsCard.get(_PositionsCard.get(_nPos.toString()));
-									if (_hDiv) _hAnimeCards.append(_hDiv);
+								let _nIndex = 0;
+								while (_DivsCard.size > 0) {
+									if (_DivsCard.has(_nIndex.toString())) {
+										const _hDiv = _DivsCard.get(_nIndex.toString());
+										if (_hDiv) _hAnimeCards.append(_hDiv);
+										_DivsCard.delete(_nIndex.toString());
+									}
+									_nIndex++;
 								}
 
 								if (_nScrollPos) _hBody.scrollTop = _nScrollPos;
 							}
+						} catch (_e) {
+							if (_response && _jId) {
+								_response.splice(_response.indexOf(_jId), 1);
+
+								if (_Errors.has(_jId) && _Errors.get(_jId) >= 3) {
+									setData(false, 'animeCardIds', _response);
+									setData(false, `animeCardId${_jId}`, null);
+								} else {
+									_Errors.set(_jId, ((_Errors.get(_jId) > -1) ? _Errors.get(_jId) + 1 : 0))
+								}
+
+								setTimeout(_updateAnimeCard, 1000);
+							}
+
+							sendLog(LOG_TYPES.ERR, 'RAxm3R7HH3cYxj6q', 'board.js', {RAxm3R7HH3cYxj6q: _e});
 						}
 					});
 				}
