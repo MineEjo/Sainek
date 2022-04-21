@@ -89,19 +89,20 @@ function loadAnimeBoard() {
 						_sAnimeCardId = _sAnimeCardId.replace('anime-card-', '');
 
 						getData(false, `animeCardId${_sAnimeCardId}`, (_response) => {
-							_addAnimeCard(
-								_sAnimeCardId,
-								_response?.image,
-								_response?.titles,
-								_response?.episodesViewed,
-								_response?.episodes,
-								_response?.seasons,
-								_response?.status,
-								_response?.viewedStatus,
-								_response?.desc,
-								_response?.sites,
-								_response?.rating,
-								_response?.position
+							_addAnimeCard({
+									id: _sAnimeCardId,
+									image: _response?.image,
+									titles: _response?.titles,
+									episodesViewed: _response?.episodesViewed,
+									episodes: _response?.episodes,
+									seasons: _response?.seasons,
+									status: _response?.status,
+									viewedStatus: _response?.viewedStatus,
+									desc: _response?.desc,
+									sites: _response?.sites,
+									rating: _response?.rating,
+									position: _response?.position
+								}
 							);
 						});
 					} else {
@@ -112,19 +113,19 @@ function loadAnimeBoard() {
 		};
 	});
 
-	function _addAnimeCard(_sfId, _sfImage, _sfTitles, _sfEpisodesViewed, _sfEpisodes, _sfSeasons, _sfStatus, _sfViewedStatus, _sfDesc, _sfSites, _sfRating, _sfPosition) {
+	function _addAnimeCard(_jCard) {
 		const _hContent = createDiv(_hAddAnimeButton, '', 'content-n5tgZWEy');
 		/* The content is in the button and has an absolute position, so it cannot have a body height if you specify css properties */
 		_hContent.style.height = `calc(${_hBody.offsetHeight}px + var(--board-header-height-xg3EuWjd))`;
 
 		createLabel(_hContent, '', '', 'animeLabelEditImage', 'anime-image-edit-nZsR8KNQ');
 		createInput(_hContent, 'anime-image-edit-nZsR8KNQ', '', 'hintTextInput', (_hChild) => {
-			if (_sfImage) _hChild.value = _sfImage;
+			if (_jCard?.image) _hChild.value = _jCard?.image;
 		});
 
 		createLabel(_hContent, '', '', 'animeLabelEditTitles', 'anime-title-edit-NxMNE4ex');
 		createInput(_hContent, 'anime-titles-edit-NxMNE4ex', '', 'hintTextInput', (_hChild) => {
-			if (_sfTitles) _hChild.value = _sfTitles;
+			if (_jCard?.titles) _hChild.value = _jCard?.titles;
 		});
 
 		createLabel(_hContent, '', '', 'animeLabelEditEpisodes', '');
@@ -141,7 +142,7 @@ function loadAnimeBoard() {
 				_hChild.style.width = '100%';
 				_hChild.style.textAlign = 'center';
 
-				if (_sfEpisodesViewed) _hChild.value = _sfEpisodesViewed;
+				if (_jCard?.episodesViewed) _hChild.value = _jCard?.episodesViewed;
 			});
 			createLabel(_hChild, '', '', 'labelOf', '', (_hChild) => {
 				_hChild.style.paddingTop = '13px';
@@ -157,7 +158,7 @@ function loadAnimeBoard() {
 				_hChild.style.width = '100%';
 				_hChild.style.textAlign = 'center';
 
-				if (_sfEpisodes) _hChild.value = _sfEpisodes;
+				if (_jCard?.episodes) _hChild.value = _jCard?.episodes;
 			});
 			createInput(_hChild, '', '', '', (_hChild) => {
 				_hChild.style.width = '0px';
@@ -176,7 +177,7 @@ function loadAnimeBoard() {
 				this.value = this.value.substring(0, 4);
 			};
 			_hChild.setAttribute('min', '0');
-			if (_sfSeasons) _hChild.value = _sfSeasons;
+			if (_jCard?.seasons) _hChild.value = _jCard?.seasons;
 		});
 
 		createLabel(_hContent, '', '', 'animeLabelEditAnimeStatus', 'anime-anime-status-edit-FkrUy296');
@@ -185,7 +186,7 @@ function loadAnimeBoard() {
 			['animeStatus2', '2'],
 			['animeStatus3', '3']
 		]);
-		if (_sfStatus) select(selectAnimeStatus, _sfStatus);
+		if (_jCard?.status) select(selectAnimeStatus, _jCard?.status);
 
 		createLabel(_hContent, '', '', 'animeLabelEditViewStatus', 'anime-view-status-edit-JvJsUY9y');
 		const selectViewStatus = createSelect(_hContent, 'anime-view-status-edit-JvJsUY9y', '', 'hintSelectInput', [
@@ -194,23 +195,23 @@ function loadAnimeBoard() {
 			['animeViewStatus3', '3'],
 			['animeViewStatus4', '4']
 		]);
-		if (_sfViewedStatus) select(selectViewStatus, _sfViewedStatus);
+		if (_jCard?.viewedStatus) select(selectViewStatus, _jCard?.viewedStatus);
 
 		createLabel(_hContent, '', '', 'animeLabelEditDesc', 'anime-desc-edit-emn6pGAH');
 		createTextarea(_hContent, 'anime-desc-edit-emn6pGAH', '', 'hintTextInput', (_hChild) => {
-			if (_sfDesc) _hChild.value = _sfDesc;
+			if (_jCard?.desc) _hChild.value = _jCard?.desc;
 		});
 
 		createLabel(_hContent, '', '', 'animeLabelEditSites', 'anime-sites-edit-Q3usD5jw');
 		createInput(_hContent, 'anime-sites-edit-Q3usD5jw', '', 'hintTextInput', (_hChild) => {
-			if (_sfSites) _hChild.value = _sfSites;
+			if (_jCard?.sites) _hChild.value = _jCard?.sites;
 		});
 
 		createLabel(_hContent, '', '', 'animeLabelEditAnimeRating', 'anime-rating-edit-CW48Shh3', (_hChild) => {
 			_hChild.style.textAlign = 'center';
 		});
 		const _hRating = createSelectRating(_hContent, 'anime-rating-edit-CW48Shh3', '');
-		if (_sfRating) selectRating(_hRating, _sfRating);
+		if (_jCard?.rating) selectRating(_hRating, _jCard?.rating);
 
 		createButton(_hContent, '', 'save-Hj3Cfy9A', 'animeLabelEditSave', (_hChild) => {
 			_hChild.onclick = function () {
@@ -230,16 +231,16 @@ function loadAnimeBoard() {
 				const _sRating = document.getElementById('anime-rating-edit-CW48Shh3').getAttribute('value');
 
 				getData(false, 'animeCardIds', (_response) => {
-					let _sId = (_sfId) ? _sfId : genId();
+					let _sId = _jCard?.id || genId();
 
 					if (_response) {
-						while (_response.includes(_sId) && !_sfId) {
+						while (_response.includes(_sId) && !_jCard?.id) {
 							_sId = genId();
 						}
 					}
 
 					/* Card adding */
-					if (!_sfId) {
+					if (!_jCard?.id) {
 						const _aAnimeCardIds = _response || [];
 						/* To have the new card on top, unshift and a zero position are used */
 						_aAnimeCardIds.unshift(_sId);
@@ -267,16 +268,17 @@ function loadAnimeBoard() {
 			};
 		});
 
-		if (_sfId) {
+		const _bIsError = _jCard?.error || false;
+		if (_jCard?.id && !_bIsError) {
 			createButton(_hContent, '', 'delete-88jPHdRH', 'animeLabelEditDelete', (_hChild) => {
 				_hChild.onclick = function () {
 					getData(false, 'animeCardIds', (_response) => {
 						const _aAnimeCardIds = _response || [];
 						/* Card deleting */
-						if (_aAnimeCardIds.indexOf(_sfId) > 0) _aAnimeCardIds.splice(_aAnimeCardIds.indexOf(_sfId), 1);
+						if (_aAnimeCardIds.indexOf(_jCard?.id) > 0) _aAnimeCardIds.splice(_aAnimeCardIds.indexOf(_jCard?.id), 1);
 
 						setData(false, 'animeCardIds', _aAnimeCardIds);
-						setData(false, `animeCardId${_sfId}`, null);
+						setData(false, `animeCardId${_jCard?.id}`, null);
 
 						setTimeout(_updateAnimeCard, 1000);
 						removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
