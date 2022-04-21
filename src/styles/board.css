@@ -180,12 +180,53 @@
 	padding: var(--embed-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 label {
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .title-pJ2WhhWd,
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .reason-pbUfpG3r {
+	background: var(--transparent-color-mdyCQUpu) !important;
+	font-size: var(--font-size-title-Cbe8XVkd);
+	font-weight: 550;
+	white-space: pre-wrap !important;
+	width: 100%;
+	word-break: break-word !important;
+	word-wrap: break-word !important;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .id-f8YW3fne {
+	background: var(--transparent-color-mdyCQUpu) !important;
+	color: var(--main-color-rVwK3Nh4) !important;
+	margin-left: var(--short-margin-xqv9MGJg);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .error-ypPZP2fz {
 	color: var(--red-color-6DYMf3eb) !important;
 	white-space: pre-wrap !important;
 	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
 	word-break: break-word !important;
 	word-wrap: break-word !important;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .buttons-6dt3Ne7p {
+	display: inline-flex;
+	width: 100%;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .buttons-6dt3Ne7p label {
+	background: var(--neutral-embed-color-4PQYryMp);
+	cursor: pointer;
+	display: inline-block !important;
+	padding: var(--short-margin-xqv9MGJg);
+	text-align: center;
+	width: 100%;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .buttons-6dt3Ne7p label:hover,
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .buttons-6dt3Ne7p label:focus,
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .buttons-6dt3Ne7p label:active {
+	background: var(--main-color-rVwK3Nh4);
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .buttons-6dt3Ne7p label:is(:not(:last-child)) {
+	margin-right: var(--short-margin-xqv9MGJg);
 	}
 
 .default-anime-keeper-4FLZQdEs:is(.anime-card-PgjFjRUS:is(.removed-UEg2H5Ps)),

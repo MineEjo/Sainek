@@ -540,18 +540,79 @@ function loadAnimeBoard() {
 
 									/* It is easier for me to say in general that it is a system, because there are also comments on its elements, and I do not want to duplicate */
 								}));
+
+								/* If the sorting was successful and the value of the saved divs matches the database */
+								if (_response.length === _DivsCard.size) {
+									sendLog('G98yhVDYxDZEc72z', LOG_TYPES.LOG, {
+										divsCard: _DivsCard
+									});
+
+									/* Removing fake cards */
+									removeClassElements('anime-load-card-PMb84E8y', 'removed-UEg2H5Ps');
+
+									/* Since sorting does not set the order, the cards do not go one after the other, you can get positions 3 and 6, so the for loop will not work */
+									let _nIndex = 0;
+									while (_DivsCard.size > 0) {
+										if (_DivsCard.has(_nIndex.toString())) {
+											const _hDiv = _DivsCard.get(_nIndex.toString());
+											if (_hDiv) _hAnimeCards.append(_hDiv);
+											_DivsCard.delete(_nIndex.toString());
+										}
+										_nIndex++;
+									}
+
+									if (_nScrollPos) _hBody.scrollTop = _nScrollPos;
+								}
 							} catch (_e) {
 								/* Card removal system for 3 errors at a time */
 								if (_response && _jId) {
 									_response.splice(_response.indexOf(_jId), 1);
 
 									/* Changing a fake card into a card with an error */
-									const _hCard = document.getElementById(`anime-load-card-${_aCardIds[0]}`);
+									const _hCard = document.getElementById(`anime-load-card-${_jId}`);
 									_hCard.innerHTML = '';
 									_hCard.classList.remove('anime-load-card-PMb84E8y');
 									_hCard.classList.add('anime-load-error-card-PTbkZ3J8');
 									createDiv(_hCard, '', '', (_hChild) => {
-										createLabel(_hChild, '', '', _e.toString());
+										createLabel(_hChild, '', 'title-pJ2WhhWd', 'errorLoading');
+										createMargin(_hChild, 'short');
+										createLabel(_hChild, '', '', 'animeCard');
+										createLabel(_hChild, '', '', ':');
+										createLabel(_hChild, '', 'id-f8YW3fne', `${_jId}`);
+										createMargin(_hChild, 'embed');
+										createLabel(_hChild, '', 'error-ypPZP2fz', `${_e}`);
+										createMargin(_hChild, 'embed');
+
+										/* Div with Buttons */
+										createDiv(_hChild, '', 'buttons-6dt3Ne7p', (_hChild) => {
+											/* Card deletion button */
+											createLabel(_hChild, '', '', 'animeCardDelete', '', (_hChild) => {
+												_hChild.onclick = function (_event) {
+													getData(false, 'animeCardIds', (_response) => {
+														_response.splice(_response.indexOf(_jId), 1);
+														setData(false, 'animeCardIds', _response);
+														setData(false, `animeCardId${_jId}`, null);
+														setTimeout(_updateAnimeCard, 1000);
+													});
+												};
+											});
+
+											/* Card recreate button */
+											createLabel(_hChild, '', '', 'animeCardReCreate', '', (_hChild) => {
+												_hChild.onclick = function (_event) {
+													/* In the create card menu, the existing parameters of the broken card are transferred */
+													getData(false, `animeCardId${_jId}`, (_card) => {
+														if (_card) {
+															_card.id = _jId;
+															_card.error = true;
+															/* Update the list of cards by pressing the save button in the menu */
+															_addAnimeCard(_card);
+															setData(false, `animeCardId${_jId}`, null);
+														}
+													});
+												};
+											});
+										});
 									});
 
 									_continueUpdateAnimeCard();
@@ -560,29 +621,6 @@ function loadAnimeBoard() {
 								sendLog('RAxm3R7HH3cYxj6q', LOG_TYPES.ERR, {RAxm3R7HH3cYxj6q: _e});
 							}
 						});
-					}
-
-					/* If the sorting was successful and the value of the saved divs matches the database */
-					if (_response.length === _DivsCard.size) {
-						sendLog('G98yhVDYxDZEc72z', LOG_TYPES.LOG, {
-							divsCard: _DivsCard
-						});
-
-						/* Removing fake cards */
-						removeClassElements('anime-load-card-PMb84E8y', 'removed-UEg2H5Ps');
-
-						/* Since sorting does not set the order, the cards do not go one after the other, you can get positions 3 and 6, so the for loop will not work */
-						let _nIndex = 0;
-						while (_DivsCard.size > 0) {
-							if (_DivsCard.has(_nIndex.toString())) {
-								const _hDiv = _DivsCard.get(_nIndex.toString());
-								if (_hDiv) _hAnimeCards.append(_hDiv);
-								_DivsCard.delete(_nIndex.toString());
-							}
-							_nIndex++;
-						}
-
-						if (_nScrollPos) _hBody.scrollTop = _nScrollPos;
 					}
 				}
 			}

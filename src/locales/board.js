@@ -29,7 +29,11 @@ const BOARD_EN = {
 	alertRequiredViewStatusEdit: 'Anime keeper [Add anime]: the field with the view status is required!',
 	animeCardEpisodes1: 'Series',
 	animeCardEpisodes2: 'of',
-	animeCardEpisodes3: 'Seasons'
+	animeCardEpisodes3: 'Seasons',
+	errorLoading: 'Error loading',
+	animeCard: 'Anime card',
+	animeCardReCreate: 'Recreate',
+	animeCardDelete: 'Delete'
 };
 
 const BOARD_RU = {
@@ -63,5 +67,9 @@ const BOARD_RU = {
 	alertRequiredViewStatusEdit: 'Хранитель сериалов [Добавить аниме]: поле со статусом просмотра обязательно!',
 	animeCardEpisodes1: 'Серий',
 	animeCardEpisodes2: 'из',
-	animeCardEpisodes3: 'Сезонов'
+	animeCardEpisodes3: 'Сезонов',
+	errorLoading: 'Ошибка загрузки',
+	animeCard: 'Карта аниме',
+	animeCardReCreate: 'Пересоздать',
+	animeCardDelete: 'Удалить'
 };
