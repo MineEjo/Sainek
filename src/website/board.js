@@ -303,13 +303,12 @@ function loadAnimeBoard() {
 
 		getData(false, 'animeCardIds', (_response) => {
 			if (_response) {
-				const _aCardIds = [];
+				const _nCardsCount = _response.length;
 				_continueUpdateAnimeCard();
 
 				function _continueUpdateAnimeCard() {
 					for (const _jId of _response) {
-
-						_aCardIds.unshift(_jId);
+						if (_response.length < _nCardsCount) continue;
 
 						/* Creating fake cards */
 						if (!document.getElementById(`anime-load-card-${_jId}`)) {
@@ -328,17 +327,17 @@ function loadAnimeBoard() {
 						getData(false, `animeCardId${_jId}`, (_jAnimeCard) => {
 							try {
 								/* The object is accessed directly, without an existence check, to handle the error in the catch block.  */
-								const _sTitles = _jAnimeCard.titles;
-								const _sImage = _jAnimeCard.image;
-								const _sEpisodesViewed = _jAnimeCard.episodesViewed;
-								const _sEpisodes = _jAnimeCard.episodes;
-								const _sSeasons = _jAnimeCard.seasons;
-								const _sStatus = _jAnimeCard.status;
-								const _sViewedStatus = _jAnimeCard.viewedStatus;
-								const _sDesc = _jAnimeCard.desc;
-								const _sSites = _jAnimeCard.sites;
-								const _sRating = _jAnimeCard.rating;
-								let _sPosition = _jAnimeCard.position;
+								const _sTitles = _jAnimeCard?.titles;
+								const _sImage = _jAnimeCard?.image;
+								const _sEpisodesViewed = _jAnimeCard?.episodesViewed;
+								const _sEpisodes = _jAnimeCard?.episodes;
+								const _sSeasons = _jAnimeCard?.seasons;
+								const _sStatus = _jAnimeCard?.status;
+								const _sViewedStatus = _jAnimeCard?.viewedStatus;
+								const _sDesc = _jAnimeCard?.desc;
+								const _sSites = _jAnimeCard?.sites;
+								const _sRating = _jAnimeCard?.rating;
+								let _sPosition = _jAnimeCard?.position;
 
 								/* Sorting positions */
 								while (_DivsCard.has(_sPosition.toString())) {
