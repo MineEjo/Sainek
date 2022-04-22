@@ -72,7 +72,7 @@
 .default-anime-keeper-4FLZQdEs:is(.button-image-w3UhF6k8),
 .default-anime-keeper-4FLZQdEs:is(.select-rating-6VM6t2V5),
 .default-anime-keeper-4FLZQdEs:is(button) {
-	display: inherit !important;
+	display: inherit;
 	}
 
 .default-anime-keeper-4FLZQdEs:is(label),

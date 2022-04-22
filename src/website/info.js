@@ -5,9 +5,9 @@ const Anime = new Map();
 const aAnimeTitles = [];
 
 function loadPageInfo() {
-	const _sTitles = document.getElementsByTagName('h1');
+	const _aTitles = document.getElementsByTagName('h1');
 
-	for (const _sTitle of _sTitles) {
+	for (const _sTitle of _aTitles) {
 		aAnimeTitles.push(_sTitle.innerText);
 		_sTitle.classList.add(SHORTCUT_CLASS);
 
