@@ -296,13 +296,15 @@ function loadAnimeBoard() {
 		const _nScrollPos = _hBody.scrollTop;
 
 		/* Removing old cards */
-		removeElement('anime-cards-MfRGWNqC', 'removed-UEg2H5Ps');
+		removeElement('anime-cards-MfRGWNqC');
 
 		/* An array that will store the finished divs, for later display */
-		const _DivsCard = new Map();
+		const _DoneCards = new Map();
+		const _PageCards = new Set();
 
 		getData(false, 'animeCardIds', (_response) => {
 			if (_response) {
+				/* The quantity is duplicated in a variable to avoid duplicates in the loop */
 				const _nCardsCount = _response.length;
 				_continueUpdateAnimeCard();
 
@@ -311,6 +313,10 @@ function loadAnimeBoard() {
 						if (_response.length < _nCardsCount) continue;
 
 						/* Creating fake cards */
+						if (!document.getElementById('anime-load-label-F7rZvMz2')) {
+							createLabel(_hAnimeCards, 'anime-load-label-F7rZvMz2', 'label-SSrq6Djx', 'labelLoadings');
+						}
+
 						if (!document.getElementById(`anime-load-card-${_jId}`)) {
 							createDiv(_hAnimeCards, `anime-load-card-${_jId}`, 'anime-load-card-PMb84E8y', (_hCard) => {
 								createMargin(_hCard, 'embed');
@@ -340,224 +346,289 @@ function loadAnimeBoard() {
 								let _sPosition = _jAnimeCard?.position;
 
 								/* Sorting positions */
-								while (_DivsCard.has(_sPosition.toString())) {
+								while (_DoneCards.has(_sPosition.toString())) {
 									_sPosition++;
 								}
 
 								/* Cards are first created and stacked in Map, for later display */
-								_DivsCard.set(_sPosition.toString(), createDiv(null, `anime-card-${_jId}`, 'anime-card-PgjFjRUS', (_hCard) => {
-									/* A card is given a special attribute to speed up its position */
-									_hCard.setAttribute('position', _sPosition.toString());
+								_DoneCards.set(_sPosition.toString(), _createAnimeCard(false));
 
-									/* Enabling card drag and drop */
-									_hCard.tabIndex = 0;
-									_hCard.draggable = true;
+								/* Variable with id shortcut */
+								let _sPageTitleId = '';
 
-									sendLog('ggs4xgWMfbZYBpfK', LOG_TYPES.LOG, {ggs4xgWMfbZYBpfK: _response});
-									sendLog('Uj46Tcr3xr4dN9L7', LOG_TYPES.LOG, {
-										animeCard: {
-											id: _jId,
-											title: _sTitles,
-											image: _sImage,
-											episodesViewed: _sEpisodesViewed,
-											episodes: _sEpisodes,
-											seasons: _sSeasons,
-											status: _sStatus,
-											viewedStatus: _sViewedStatus,
-											desc: _sDesc,
-											sites: _sSites,
-											rating: _sRating,
-											position: _sPosition
+								/* Create shortcuts if the page has the same anime name as the card */
+								const _aTitles = _sTitles.split(', ');
+								for (const _sTitle of _aTitles) {
+									if (aAnimeTitles.toString().includes(_sTitle)) {
+										const _aPageTitles = document.getElementsByClassName(SHORTCUT_CLASS);
+										for (const _hPageTitle of _aPageTitles) {
+											if (_hPageTitle.innerText.includes(_sTitle)) {
+												if (_hPageTitle.id) {
+													_sPageTitleId = _hPageTitle.id;
+												} else {
+													_hPageTitle.id = `shortcut-anime-keeper-${_jId}`;
+													_sPageTitleId = _hPageTitle.id;
+												}
+											}
 										}
-									});
 
-									/* Card design */
-									if (_sViewedStatus) {
-										createLabel(_hCard, '',
-											['anime-card-viewed-status-5cBUD2rC', STATUSES.get(_sViewedStatus)], `animeViewStatus${_sViewedStatus}`
-										);
+										_PageCards.add(_createAnimeCard(true));
+										break;
 									}
+								}
 
-									if (_sStatus) {
-										createLabel(_hCard, '', 'anime-card-status-5cBUD2rC', `animeStatus${_sStatus}`);
-									}
+								/* Limited - means that the card is a label rather than a full-fledged */
+								function _createAnimeCard(_bLimited) {
+									return createDiv(null, '', '', (_hCard) => {
+										if (!_bLimited) {
+											_hCard.id = `anime-card-${_jId}`;
+											_hCard.classList.add('anime-card-PgjFjRUS');
 
-									if (_sImage) {
-										createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
-										createDiv(_hCard, '', 'anime-card-image-2gZc3pYt', (_hChild) => {
-											_hChild.style.backgroundImage = `url(${_sImage})`;
-										});
-									}
+											/* A card is given a special attribute to speed up its position */
+											_hCard.setAttribute('position', _sPosition.toString());
 
-									if (_sTitles) {
-										createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
-										createLabel(_hCard, '', 'anime-card-title-A5xU6DER', `${
-											_sTitles.toString().split(', ')[0]
-										}`);
-									}
+											/* Enabling card drag and drop */
+											_hCard.tabIndex = 0;
+											_hCard.draggable = true;
+										} else {
+											_hCard.classList.add('anime-limited-card-2DysF6H8');
+										}
 
-									if (_sRating) {
-										createDiv(_hCard, '', 'anime-card-rating-J9RU4MjX', (_hChild) => {
-											/* Rating stars display, the number from the database is colored as selected, the other stars remain normal */
-											for (let _nStarts = 1; _nStarts <= parseInt(_sRating); _nStarts++) {
-												const _hSpan = document.createElement('span');
-												_hChild.append(_hSpan);
-												_hSpan.classList.add('fa', 'fa-star', 'checked-cFXHwS3x', 'anime-card-other-WUg8SV9z');
-											}
-
-											for (let _nStarts = 1; _nStarts <= 5 - parseInt(_sRating); _nStarts++) {
-												const _hSpan = document.createElement('span');
-												_hChild.append(_hSpan);
-												_hSpan.classList.add('fa', 'fa-star', 'anime-card-other-WUg8SV9z');
+										sendLog('ggs4xgWMfbZYBpfK', LOG_TYPES.LOG, {ggs4xgWMfbZYBpfK: _response});
+										sendLog('Uj46Tcr3xr4dN9L7', LOG_TYPES.LOG, {
+											animeCard: {
+												id: _jId,
+												title: _sTitles,
+												image: _sImage,
+												episodesViewed: _sEpisodesViewed,
+												episodes: _sEpisodes,
+												seasons: _sSeasons,
+												status: _sStatus,
+												viewedStatus: _sViewedStatus,
+												desc: _sDesc,
+												sites: _sSites,
+												rating: _sRating,
+												position: _sPosition
 											}
 										});
-									}
 
-									if (_sDesc) {
-										createMargin(_hCard, 'short', 'anime-card-other-WUg8SV9z');
-										createLabel(_hCard, '', 'anime-card-desc-DtYkVa9G', _sDesc);
-									}
+										/* Card design */
+										if (_sViewedStatus && !_bLimited) {
+											createLabel(_hCard, '',
+												['anime-card-viewed-status-5cBUD2rC', STATUSES.get(_sViewedStatus)], `animeViewStatus${_sViewedStatus}`
+											);
+										}
 
-									if (_sSites) {
-										createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
-										createDiv(_hCard, '', 'anime-card-sites-DtYkVa9G', (_hChild) => {
-											for (const _sLink of _sSites.split(', ')) {
-												/* For a nice display, the protocol is erased and the first letter of the domain is capitalized */
-												let _sTitle = _sLink
-												.replace('https://', '')
-												.replace('http://', '')
-												.replace('www.', '');
-												_sTitle = capitalizeFirstLetter(_sTitle);
+										if (_sStatus && !_bLimited) {
+											createLabel(_hCard, '', 'anime-card-status-5cBUD2rC', `animeStatus${_sStatus}`);
+										}
 
-												/* Split splits the reference into an array, 0 means domain selection */
-												_sTitle = (_sTitle + '/').split('/')[0];
+										if (_sImage && !_bLimited) {
+											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
+											createDiv(_hCard, '', 'anime-card-image-2gZc3pYt', (_hChild) => {
+												_hChild.style.backgroundImage = `url(${_sImage})`;
+											});
+										}
 
-												if (_sTitle) {
-													createLink(_hChild, '', '', _sTitle, _sLink, '', (_hChild) => {
-														if (document.URL === _sLink) _hChild.style.background = 'var(--main-color-rVwK3Nh4)';
+										if (_sTitles) {
+											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
+											createLabel(_hCard, '', 'anime-card-title-A5xU6DER', `${
+												_sTitles.toString().split(', ')[0]
+											}`, '', (_hChild) => {
+												if (_bLimited) _hChild.style.width = '100%';
+											});
+										}
+
+										/* Creating shortcuts to quickly navigate to elements */
+										if (_bLimited) {
+											createMargin(_hCard, 'short', 'anime-card-other-WUg8SV9z');
+											createDiv(_hCard, '', 'buttons-6dt3Ne7p', (_hChild) => {
+												createLink(_hChild, '', '', 'animeCardButtonJump', `#${_sPageTitleId}`);
+												createLink(_hChild, '', '', 'animeCardButtonMore', `#anime-card-${_jId}`);
+											});
+										}
+
+										if (_sRating && !_bLimited) {
+											createDiv(_hCard, '', 'anime-card-rating-J9RU4MjX', (_hChild) => {
+												/* Rating stars display, the number from the database is colored as selected, the other stars remain normal */
+												for (let _nStarts = 1; _nStarts <= parseInt(_sRating); _nStarts++) {
+													const _hSpan = document.createElement('span');
+													_hChild.append(_hSpan);
+													_hSpan.classList.add('fa', 'fa-star', 'checked-cFXHwS3x', 'anime-card-other-WUg8SV9z');
+												}
+
+												for (let _nStarts = 1; _nStarts <= 5 - parseInt(_sRating); _nStarts++) {
+													const _hSpan = document.createElement('span');
+													_hChild.append(_hSpan);
+													_hSpan.classList.add('fa', 'fa-star', 'anime-card-other-WUg8SV9z');
+												}
+											});
+										}
+
+										if (_sDesc && !_bLimited) {
+											createMargin(_hCard, 'short', 'anime-card-other-WUg8SV9z');
+											createLabel(_hCard, '', 'anime-card-desc-DtYkVa9G', _sDesc);
+										}
+
+										if (_sSites && !_bLimited) {
+											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
+											createDiv(_hCard, '', 'anime-card-sites-DtYkVa9G', (_hChild) => {
+												for (const _sLink of _sSites.split(', ')) {
+													/* For a nice display, the protocol is erased and the first letter of the domain is capitalized */
+													let _sTitle = _sLink
+													.replace('https://', '')
+													.replace('http://', '')
+													.replace('www.', '');
+													_sTitle = capitalizeFirstLetter(_sTitle);
+
+													/* Split splits the reference into an array, 0 means domain selection */
+													_sTitle = (_sTitle + '/').split('/')[0];
+
+													if (_sTitle) {
+														createLink(_hChild, '', '', _sTitle, _sLink, '', (_hChild) => {
+															if (document.URL === _sLink) _hChild.style.background = 'var(--main-color-rVwK3Nh4)';
+														});
+													}
+												}
+											});
+										}
+
+										if (_sEpisodesViewed && _sEpisodes && !_bLimited) {
+											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
+											createDiv(_hCard, '', 'anime-card-episodes-y6qHgvQw', (_hChild) => {
+												createDiv(_hChild, '', '', (_hChild) => {
+													/* Because of the peculiar system, the information is not in one line, but several labels */
+													createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes1');
+													createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', _sEpisodesViewed);
+													createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes2');
+
+													if (_sSeasons && parseInt(_sSeasons) > 0) {
+														createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', `${_sEpisodes},`);
+														createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes3');
+														createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', _sSeasons);
+													} else {
+														createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', `${_sEpisodes}`);
+													}
+												});
+												createMargin(_hChild, 'embed', 'anime-card-other-WUg8SV9z');
+
+												/* Values must be greater than zero, and the episodes viewed cannot be greater than the episodes in the show */
+												if (parseInt(_sEpisodes) > 0 && parseInt(_sEpisodesViewed) > 0 && parseInt(_sEpisodes) >= parseInt(_sEpisodesViewed)) {
+													/* The width of the progress bar is the percentage of all episodes watched */
+													const _nProgress = Math.round((parseInt(_sEpisodesViewed) * 100 / parseInt(_sEpisodes))).toString();
+													createDiv(_hChild, '', 'anime-card-progress-Vdx7xbRM', (_hChild) => {
+														_hChild.style.width = `${_nProgress}%`;
 													});
 												}
-											}
-										});
-									}
-
-									if (_sEpisodesViewed && _sEpisodes) {
-										createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
-										createDiv(_hCard, '', 'anime-card-episodes-y6qHgvQw', (_hChild) => {
-											createDiv(_hChild, '', '', (_hChild) => {
-												/* Because of the peculiar system, the information is not in one line, but several labels */
-												createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes1');
-												createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', _sEpisodesViewed);
-												createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes2');
-												createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', `${_sEpisodes},`);
-												createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes3');
-												createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', _sSeasons);
 											});
-											createMargin(_hChild, 'embed', 'anime-card-other-WUg8SV9z');
-
-											/* Values must be greater than zero, and the episodes viewed cannot be greater than the episodes in the show */
-											if (parseInt(_sEpisodes) > 0 && parseInt(_sEpisodesViewed) > 0 && parseInt(_sEpisodes) >= parseInt(_sEpisodesViewed)) {
-												/* The width of the progress bar is the percentage of all episodes watched */
-												const _nProgress = Math.round((parseInt(_sEpisodesViewed) * 100 / parseInt(_sEpisodes))).toString();
-												createDiv(_hChild, '', 'anime-card-progress-Vdx7xbRM', (_hChild) => {
-													_hChild.style.width = `${_nProgress}%`;
-												});
-											}
-										});
-									} else {
-										/* Since the block is a closing block, if it is not, its indentation must be in any case */
-										createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
-									}
-
-									/* Tabindex did not work, so the focus is set by clicking on the card */
-									_hCard.onclick = function (_event) {
-										if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-											_hCard.focus();
+										} else {
+											/* Since the block is a closing block, if it is not, its indentation must be in any case */
+											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
 										}
-									};
 
-									/* Card movement system */
-									/* When a card is dragged, its identifier is saved in the data, so you can swap cards later */
-									_hCard.ondragstart = function (_event) {
-										if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-											_event.dataTransfer.setData('anime-card', _event.target.id.toString());
-											document.getElementById(_event.target.id).focus();
-										}
-									};
-
-									_hCard.ondrop = function (_event) {
-										if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-											_event.preventDefault();
-
-											const _jSwitchedOnId = _event.dataTransfer.getData('anime-card').replace('anime-card-', '');
-
-											/* Changing positions */
-											getData(false, `animeCardId${_jSwitchedOnId}`, (_jSwitchedAtCard) => {
-												if (_jSwitchedOnId !== _jId) {
-													document.getElementById(`anime-card-${_jId}`).classList.add('on-drop-x4YnDmpC');
-
-													let _jSwitchedAt = _jAnimeCard;
-
-													_jSwitchedAt.position = document.getElementById(`anime-card-${_jSwitchedOnId}`)
-													.getAttribute('position') || 0;
-													setData(false, `animeCardId${_jId}`, _jSwitchedAt);
-
-													let _jSwitchedOn = _jSwitchedAtCard;
-													_jSwitchedOn.position = _sPosition;
-													setData(false, `animeCardId${_jSwitchedOnId}`, _jSwitchedOn);
-
-													setTimeout(_updateAnimeCard, 1000);
+										if (!_bLimited) {
+											/* Tabindex did not work, so the focus is set by clicking on the card */
+											_hCard.onclick = function (_event) {
+												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
+													_hCard.focus();
 												}
-											});
+											};
+
+											/* Card movement system */
+											/* When a card is dragged, its identifier is saved in the data, so you can swap cards later */
+											_hCard.ondragstart = function (_event) {
+												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
+													_event.dataTransfer.setData('anime-card', _event.target.id.toString());
+													document.getElementById(_event.target.id).focus();
+												}
+											};
+
+											_hCard.ondrop = function (_event) {
+												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
+													_event.preventDefault();
+
+													const _jSwitchedOnId = _event.dataTransfer.getData('anime-card').replace('anime-card-', '');
+
+													/* Changing positions */
+													getData(false, `animeCardId${_jSwitchedOnId}`, (_jSwitchedAtCard) => {
+														if (_jSwitchedOnId !== _jId) {
+															document.getElementById(`anime-card-${_jId}`).classList.add('on-drop-x4YnDmpC');
+
+															let _jSwitchedAt = _jAnimeCard;
+
+															_jSwitchedAt.position = document.getElementById(`anime-card-${_jSwitchedOnId}`)
+															.getAttribute('position') || 0;
+															setData(false, `animeCardId${_jId}`, _jSwitchedAt);
+
+															let _jSwitchedOn = _jSwitchedAtCard;
+															_jSwitchedOn.position = _sPosition;
+															setData(false, `animeCardId${_jSwitchedOnId}`, _jSwitchedOn);
+
+															setTimeout(_updateAnimeCard, 1000);
+														}
+													});
+												}
+											};
+
+											_hCard.ondragover = function (_event) {
+												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
+													_event.preventDefault();
+												}
+											};
+
+											/* Setting the card id for the editing system */
+											_hCard.onfocus = function (_event) {
+												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
+													_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/edit.svg')})`;
+													_hAddAnimeButton.setAttribute('value', _event.target.id);
+												}
+											};
+
+											/* Deleting a card id from the editing system */
+											_hCard.onblur = function (_event) {
+												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
+													_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/plus.svg')})`;
+
+													setTimeout(_removeAttribute, 1000);
+
+													function _removeAttribute() {
+														_hAddAnimeButton.removeAttribute('value');
+													}
+												}
+											};
+
+											/* It is easier for me to say in general that it is a system, because there are also comments on its elements, and I do not want to duplicate */
 										}
-									};
-
-									_hCard.ondragover = function (_event) {
-										if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-											_event.preventDefault();
-										}
-									};
-
-									/* Setting the card id for the editing system */
-									_hCard.onfocus = function (_event) {
-										if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-											_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/edit.svg')})`;
-											_hAddAnimeButton.setAttribute('value', _event.target.id);
-										}
-									};
-
-									/* Deleting a card id from the editing system */
-									_hCard.onblur = function (_event) {
-										if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-											_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/plus.svg')})`;
-
-											setTimeout(_removeAttribute, 1000);
-
-											function _removeAttribute() {
-												_hAddAnimeButton.removeAttribute('value');
-											}
-										}
-									};
-
-									/* It is easier for me to say in general that it is a system, because there are also comments on its elements, and I do not want to duplicate */
-								}));
+									});
+								}
 
 								/* If the sorting was successful and the value of the saved divs matches the database */
-								if (_response.length === _DivsCard.size) {
+								if (_response.length === _DoneCards.size) {
 									sendLog('G98yhVDYxDZEc72z', LOG_TYPES.LOG, {
-										divsCard: _DivsCard
+										divsCard: _DoneCards
 									});
 
 									/* Removing fake cards */
 									removeClassElements('anime-load-card-PMb84E8y', 'removed-UEg2H5Ps');
 
+									/* Adding card shortcuts, if any */
+									if (_PageCards.size > 0) {
+										createLabel(_hAnimeCards, '', 'label-SSrq6Djx', 'animeCardOnPage');
+
+										for (const _hCard of _PageCards) {
+											if (_hCard) _hAnimeCards.append(_hCard);
+										}
+									}
+
+									createLabel(_hAnimeCards, '', 'label-SSrq6Djx', 'animeCardAll');
+
 									/* Since sorting does not set the order, the cards do not go one after the other, you can get positions 3 and 6, so the for loop will not work */
 									let _nIndex = 0;
-									while (_DivsCard.size > 0) {
-										if (_DivsCard.has(_nIndex.toString())) {
-											const _hDiv = _DivsCard.get(_nIndex.toString());
+									while (_DoneCards.size > 0) {
+										if (_DoneCards.has(_nIndex.toString())) {
+											const _hDiv = _DoneCards.get(_nIndex.toString());
 											if (_hDiv) _hAnimeCards.append(_hDiv);
-											_DivsCard.delete(_nIndex.toString());
+											_DoneCards.delete(_nIndex.toString());
 										}
 										_nIndex++;
 									}
@@ -568,6 +639,8 @@ function loadAnimeBoard() {
 								/* Card removal system for 3 errors at a time */
 								if (_response && _jId) {
 									_response.splice(_response.indexOf(_jId), 1);
+
+									document.getElementById('anime-load-label-F7rZvMz2').style.display = 'inherit';
 
 									/* Changing a fake card into a card with an error */
 									const _hCard = document.getElementById(`anime-load-card-${_jId}`);
@@ -581,7 +654,10 @@ function loadAnimeBoard() {
 										createLabel(_hChild, '', '', ':');
 										createLabel(_hChild, '', 'id-f8YW3fne', `${_jId}`);
 										createMargin(_hChild, 'embed');
-										createLabel(_hChild, '', 'error-ypPZP2fz', `${_e}`);
+
+										/* The stack, etc., is specified for details, but different browsers have different calls */
+										let _error = _e.stack || _e.line || _e.lineNumber;
+										createLabel(_hChild, '', 'error-ypPZP2fz', `${_error}`);
 										createMargin(_hChild, 'embed');
 
 										/* Div with Buttons */

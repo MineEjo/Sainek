@@ -1,6 +1,7 @@
 const USER_LANG = (navigator.language || navigator.userLanguage).slice(0, 2);
 
 const DEFAULT_CLASS = 'default-anime-keeper-4FLZQdEs';
+const SHORTCUT_CLASS = 'shortcut-anime-keeper-V7J89asy';
 const LANG_CODES = new Map();
 LANG_CODES.set('ru', 'Аниме');
 LANG_CODES.set('en', 'Anime');

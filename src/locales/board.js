@@ -25,6 +25,7 @@ const BOARD_EN = {
 	animeLabelEditEpisodes: 'Episodes viewed',
 	animeLabelEditSeasons: 'Seasons',
 	labelOf: 'Of',
+	labelLoadings: 'Loadings',
 	alertRequiredTitlesEdit: 'Anime keeper [Add anime]: the field with the names is required!',
 	alertRequiredViewStatusEdit: 'Anime keeper [Add anime]: the field with the view status is required!',
 	animeCardEpisodes1: 'Series',
@@ -33,7 +34,11 @@ const BOARD_EN = {
 	errorLoading: 'Error loading',
 	animeCard: 'Anime card',
 	animeCardReCreate: 'Recreate',
-	animeCardDelete: 'Delete'
+	animeCardDelete: 'Delete',
+	animeCardOnPage: 'Cards on page',
+	animeCardAll: 'All cards',
+	animeCardButtonJump: 'Jump',
+	animeCardButtonMore: 'Read more'
 };
 
 const BOARD_RU = {
@@ -63,6 +68,7 @@ const BOARD_RU = {
 	animeLabelEditEpisodes: 'Эпизодов просмотрнно',
 	animeLabelEditSeasons: 'Сезонов',
 	labelOf: 'Из',
+	labelLoadings: 'Загрузки',
 	alertRequiredTitlesEdit: 'Хранитель сериалов [Добавить аниме]: поле с названиями обязательно!',
 	alertRequiredViewStatusEdit: 'Хранитель сериалов [Добавить аниме]: поле со статусом просмотра обязательно!',
 	animeCardEpisodes1: 'Серий',
@@ -71,5 +77,9 @@ const BOARD_RU = {
 	errorLoading: 'Ошибка загрузки',
 	animeCard: 'Карта аниме',
 	animeCardReCreate: 'Пересоздать',
-	animeCardDelete: 'Удалить'
+	animeCardDelete: 'Удалить',
+	animeCardOnPage: 'Карточки на странице',
+	animeCardAll: 'Все карточки',
+	animeCardButtonJump: 'Перейти',
+	animeCardButtonMore: 'Подробнее'
 };
