@@ -57,6 +57,10 @@
 	width: 100%;
 	}
 
+.default-anime-keeper-4FLZQdEs:is(img) {
+	color: var(--red-color-6DYMf3eb) !important;
+	}
+
 .default-anime-keeper-4FLZQdEs:is(div) {
 	line-height: 0 !important;
 	}

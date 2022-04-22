@@ -425,9 +425,7 @@ function loadAnimeBoard() {
 
 										if (_sImage && !_bLimited) {
 											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
-											createDiv(_hCard, '', 'anime-card-image-2gZc3pYt', (_hChild) => {
-												_hChild.style.backgroundImage = `url(${_sImage})`;
-											});
+											createImg(_hCard, '', 'anime-card-image-2gZc3pYt', _sImage, 'animeCardImageError');
 										}
 
 										if (_sTitles) {

@@ -285,10 +285,10 @@
 
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-image-2gZc3pYt,
 .default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y .anime-load-card-image-GQtx92fM {
-	background-repeat: no-repeat;
-	background-size: cover;
+	background: var(--neutral-embed-color-4PQYryMp) !important;
 	height: calc(var(--default-width-zkk4pPs6) / 3);
 	margin: 0 var(--embed-margin-xqv9MGJg);
+	object-fit: cover;
 	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
 	}
 

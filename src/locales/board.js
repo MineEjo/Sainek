@@ -38,7 +38,8 @@ const BOARD_EN = {
 	animeCardOnPage: 'Cards on page',
 	animeCardAll: 'All cards',
 	animeCardButtonJump: 'Jump',
-	animeCardButtonMore: 'Read more'
+	animeCardButtonMore: 'Read more',
+	animeCardImageError: 'Error loading'
 };
 
 const BOARD_RU = {
@@ -81,5 +82,6 @@ const BOARD_RU = {
 	animeCardOnPage: 'Карточки на странице',
 	animeCardAll: 'Все карточки',
 	animeCardButtonJump: 'Перейти',
-	animeCardButtonMore: 'Подробнее'
+	animeCardButtonMore: 'Подробнее',
+	animeCardImageError: 'Ошибка загрузки'
 };

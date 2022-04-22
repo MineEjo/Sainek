@@ -12,6 +12,22 @@ function createDiv(_hParent, _sId, _sClass, _fFunction) {
 	return _hChild;
 }
 
+function createImg(_hParent, _sId, _sClass, _sSrc, _sAlt, _fFunction) {
+	const _hChild = document.createElement('img');
+	_hChild.tabIndex = 1;
+	_hChild.draggable = false;
+
+	if (_sId) _hChild.id = _sId;
+	if (_sClass) addClassesElement(_hChild, _sClass);
+	if (_fFunction) eval(_fFunction(_hChild));
+	if (_sSrc) _hChild.src = _sSrc;
+	if (_sAlt) _hChild.alt = getLocale(_sAlt);
+	if (_hParent) _hParent.append(_hChild);
+
+	_hChild.classList.add(DEFAULT_CLASS);
+	return _hChild;
+}
+
 function createDivImg(_hParent, _sId, _sClass, _sSrc, _fFunction) {
 	const _hChild = document.createElement('div');
 	_hChild.tabIndex = 1;
