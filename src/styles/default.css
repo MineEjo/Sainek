@@ -43,6 +43,7 @@
 	outline: none;
 	overflow: hidden;
 	padding: 0;
+	scroll-behavior: smooth;
 	transition: var(--short-transition-6y29q6Ky);
 	}
 
