@@ -307,3 +307,8 @@
 	background: var(--transparent-color-mdyCQUpu);
 	color: var(--red-color-6DYMf3eb);
 	}
+
+.default-anime-keeper-4FLZQdEs:disabled {
+	opacity: 0.5;
+	cursor: default;
+	}
