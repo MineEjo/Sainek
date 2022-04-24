@@ -20,7 +20,7 @@ function createDiv(_hParent, _sId, _sClass, _fFunction) {
 	const _hChild = document.createElement('div');
 	_hChild.tabIndex = 1;
 
-	if (_sId) _hChild.id = _sId;
+	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) eval(_fFunction(_hChild));
 	if (_hParent) _hParent.append(_hChild);
@@ -35,11 +35,11 @@ function createImg(_hParent, _sId, _sClass, _sSrc, _sAlt, _fFunction) {
 	_hChild.tabIndex = 1;
 	_hChild.draggable = false;
 
-	if (_sId) _hChild.id = _sId;
+	if (_sId) _hChild.setAttribute('id', _sId);
+	if (_sSrc) _hChild.setAttribute('src', _sSrc);
+	if (_sAlt) _hChild.setAttribute('alt', getLocale(_sAlt));
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) eval(_fFunction(_hChild));
-	if (_sSrc) _hChild.src = _sSrc;
-	if (_sAlt) _hChild.alt = getLocale(_sAlt);
 	if (_hParent) _hParent.append(_hChild);
 
 	_hChild.classList.add(DEFAULT_CLASS);
@@ -51,7 +51,7 @@ function createDivImg(_hParent, _sId, _sClass, _sSrc, _fFunction) {
 	_hChild.tabIndex = 1;
 	_hChild.draggable = false;
 
-	if (_sId) _hChild.id = _sId;
+	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) eval(_fFunction(_hChild));
 	if (_sSrc) _hChild.style.backgroundImage = `url(${getLocalUrl(_sSrc)})`;
@@ -65,7 +65,7 @@ function createLabel(_hParent, _sId, _sClass, _sText, _sFor, _fFunction) {
 	const _hChild = document.createElement('label');
 	_hChild.tabIndex = 1;
 
-	if (_sId) _hChild.id = _sId;
+	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) eval(_fFunction(_hChild));
 	if (_sText) _hChild.innerText = getLocale(_sText) || _sText;
@@ -80,11 +80,11 @@ function createLink(_hParent, _sId, _sClass, _sText, _sHref, _sFor, _fFunction) 
 	const _hChild = document.createElement('a');
 	_hChild.tabIndex = 1;
 
-	if (_sId) _hChild.id = _sId;
+	if (_sId) _hChild.setAttribute('id', _sId);
+	if (_sHref) _hChild.setAttribute('href', _sHref);
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) eval(_fFunction(_hChild));
 	if (_sText) _hChild.innerText = getLocale(_sText) || _sText;
-	if (_sHref) _hChild.href = _sHref;
 	if (_hParent) _hParent.append(_hChild);
 
 	setTheme(_hChild);
@@ -95,9 +95,9 @@ function createLink(_hParent, _sId, _sClass, _sText, _sHref, _sFor, _fFunction) 
 function createInput(_hParent, _sId, _sClass, _sPlaceholder, _fFunction) {
 	const _hChild = document.createElement('input');
 	_hChild.tabIndex = 1;
-	_hChild.type = 'text';
+	_hChild.setAttribute('type', 'text');
 
-	if (_sId) _hChild.id = _sId;
+	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) eval(_fFunction(_hChild));
 	if (_sPlaceholder) _hChild.placeholder = getLocale(_sPlaceholder) || _sPlaceholder;
@@ -112,10 +112,10 @@ function createTextarea(_hParent, _sId, _sClass, _sPlaceholder, _fFunction) {
 	const _hChild = document.createElement('textarea');
 	_hChild.tabIndex = 1;
 
-	if (_sId) _hChild.id = _sId;
+	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) eval(_fFunction(_hChild));
-	if (_sPlaceholder) _hChild.placeholder = getLocale(_sPlaceholder) || _sPlaceholder;
+	if (_sPlaceholder) _hChild.setAttribute('placeholder', getLocale(_sPlaceholder) || _sPlaceholder);
 	if (_hParent) _hParent.append(_hChild);
 
 	setTheme(_hChild);
@@ -127,22 +127,27 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 	const _hChild = document.createElement('div');
 	_hChild.tabIndex = 1;
 	_hChild.setAttribute('value', '0');
+
 	const _hLabel = document.createElement('label');
 	_hLabel.style.color = 'var(--neutral-color-TmH5QR3n)';
 	_hChild.append(_hLabel);
+
 	createDivImg(_hChild, '', '', 'assets/small-down-arrow.svg');
+
 	const _hSelect = document.createElement('ul');
 	setTheme(_hSelect);
 	_hChild.append(_hSelect);
 
 	if (_sPlaceholder) _hLabel.innerText = getLocale(_sPlaceholder) || _sPlaceholder;
-	if (_sId) _hChild.id = _sId;
+	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_aOptions) {
 		for (const _aOption of _aOptions) {
 			const _hLi = document.createElement('li');
 			_hLi.classList.add(DEFAULT_CLASS);
+
 			if (_aOption[0]) _hLi.innerText = getLocale(_aOption[0]);
 			if (_aOption[1]) _hLi.setAttribute('value', _aOption[1]);
+
 			_hLi.onclick = function () {
 				const _sAttribute = _hChild.getAttribute('disabled');
 				if (_sAttribute !== 'true' && _sAttribute !== _aOption[1]) {
@@ -161,6 +166,7 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 					_hLi.classList.add('disabled-cY7rmmH3');
 				}
 			};
+
 			_hSelect.append(_hLi);
 		}
 
@@ -202,7 +208,7 @@ function createSelectRating(_hParent, _sId, _sClass, _fFunction) {
 	_hChild.tabIndex = 1;
 	_hChild.setAttribute('value', '0');
 
-	if (_sId) _hChild.id = _sId;
+	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) eval(_fFunction(_hChild));
 	if (_hParent) _hParent.append(_hChild);
@@ -254,7 +260,7 @@ function createButton(_hParent, _sId, _sClass, _sText, _fFunction) {
 	const _hChild = document.createElement('button');
 	_hChild.tabIndex = 1;
 
-	if (_sId) _hChild.id = _sId;
+	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) eval(_fFunction(_hChild));
 	if (_sText) _hChild.innerText = getLocale(_sText) || _sText;
