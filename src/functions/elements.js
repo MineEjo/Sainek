@@ -184,16 +184,17 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 	_hChild.classList.add(DEFAULT_CLASS, 'select-MZnDy3Dp');
 	_hLabel.classList.add(DEFAULT_CLASS);
 	_hSelect.classList.add(DEFAULT_CLASS);
-	return _hChild;
-}
 
-function select(_hParent, _sValue) {
-	const _hLi = _hParent.getElementsByTagName('li')[parseInt(_sValue) - 1];
-	const _hLabel = _hParent.getElementsByTagName('label')[0];
-	_hParent.setAttribute('value', _sValue);
-	_hLabel.innerText = _hLi.innerText;
-	setTheme(_hLabel);
-	_hLi.classList.add(DEFAULT_CLASS, 'active-5QkcU5D4');
+	_hChild.select = (_sValue) => {
+		const _hLi = _hChild.getElementsByTagName('li')[parseInt(_sValue) - 1];
+		const _hLabel = _hChild.getElementsByTagName('label')[0];
+		_hChild.setAttribute('value', _sValue);
+		_hLabel.innerText = _hLi.innerText;
+		setTheme(_hLabel);
+		_hLi.classList.add(DEFAULT_CLASS, 'active-5QkcU5D4');
+	}
+
+	return _hChild;
 }
 
 function createSelectRating(_hParent, _sId, _sClass, _fFunction) {
@@ -226,17 +227,17 @@ function createSelectRating(_hParent, _sId, _sClass, _fFunction) {
 		};
 	}
 
+	_hChild.select = (_sRating) => {
+		_hChild.setAttribute('value', _sRating);
+
+		for (let _hStar = 0; _hStar < parseInt(_sRating); _hStar++) {
+			_hChild.getElementsByTagName('span')[_hStar].classList.add('fa', 'fa-star', 'checked-cFXHwS3x');
+		}
+	}
+
 	setTheme(_hChild);
 	_hChild.classList.add(DEFAULT_CLASS, 'select-rating-6VM6t2V5');
 	return _hChild;
-}
-
-function selectRating(_hParent, _sRating) {
-	_hParent.setAttribute('value', _sRating);
-
-	for (let _hStar = 0; _hStar < parseInt(_sRating); _hStar++) {
-		_hParent.getElementsByTagName('span')[_hStar].classList.add('fa', 'fa-star', 'checked-cFXHwS3x');
-	}
 }
 
 function createButton(_hParent, _sId, _sClass, _sText, _fFunction) {

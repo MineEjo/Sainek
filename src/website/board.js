@@ -204,7 +204,7 @@ function loadAnimeBoard() {
 			['animeStatus2', '2'],
 			['animeStatus3', '3']
 		]);
-		if (_jCard?.status) select(selectAnimeStatus, _jCard?.status);
+		if (_jCard?.status) selectAnimeStatus.select(_jCard?.viewedStatus);
 
 		createLabel(_hContent, '', '', 'animeLabelEditViewStatus', 'anime-view-status-edit-JvJsUY9y');
 		const selectViewStatus = createSelect(_hContent, 'anime-view-status-edit-JvJsUY9y', '', 'hintSelectInput', [
@@ -213,7 +213,7 @@ function loadAnimeBoard() {
 			['animeViewStatus3', '3'],
 			['animeViewStatus4', '4']
 		]);
-		if (_jCard?.viewedStatus) select(selectViewStatus, _jCard?.viewedStatus);
+		if (_jCard?.viewedStatus) selectViewStatus.select(_jCard?.viewedStatus);
 
 		createLabel(_hContent, '', '', 'animeLabelEditDesc', 'anime-desc-edit-emn6pGAH');
 		createTextarea(_hContent, 'anime-desc-edit-emn6pGAH', '', 'hintTextInput', (_hChild) => {
@@ -229,7 +229,7 @@ function loadAnimeBoard() {
 			_hChild.style.textAlign = 'center';
 		});
 		const _hRating = createSelectRating(_hContent, 'anime-rating-edit-CW48Shh3', '');
-		if (_jCard?.rating) selectRating(_hRating, _jCard?.rating);
+		if (_jCard?.rating) _hRating.select(_jCard?.rating);
 
 		createButton(_hContent, '', 'save-Hj3Cfy9A', 'animeLabelEditSave', (_hChild) => {
 			_hChild.onclick = function () {
