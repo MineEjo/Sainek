@@ -213,19 +213,31 @@ function createSelectRating(_hParent, _sId, _sClass, _fFunction) {
 		_hChild.append(_hSpan);
 
 		_hSpan.onclick = function () {
-			_hChild.setAttribute('value', _nStarts.toString());
+			if (!_hChild.getAttribute('disabled') && !_hChild.classList.contains('disabled-cY7rmmH3')) {
+				_hChild.setAttribute('value', _nStarts.toString());
 
-			for (let _hStar = 0; _hStar < 5; _hStar++) {
-				_hChild.getElementsByTagName('span')[_hStar].classList.remove('checked-cFXHwS3x');
+				for (let _hStar = 0; _hStar < 5; _hStar++) {
+					_hChild.getElementsByTagName('span')[_hStar].classList.remove('checked-cFXHwS3x');
+				}
+
+				for (let _hStar = 0; _hStar < _nStarts; _hStar++) {
+					_hChild.getElementsByTagName('span')[_hStar].classList.add('fa', 'fa-star', 'checked-cFXHwS3x');
+				}
+
+				_hSpan.classList.add('fa', 'fa-star', 'checked-cFXHwS3x');
 			}
-
-			for (let _hStar = 0; _hStar < _nStarts; _hStar++) {
-				_hChild.getElementsByTagName('span')[_hStar].classList.add('fa', 'fa-star', 'checked-cFXHwS3x');
-			}
-
-			_hSpan.classList.add('fa', 'fa-star', 'checked-cFXHwS3x');
 		};
 	}
+
+	function changeDisabled() {
+		if (_hChild.getAttribute('disabled') && !_hChild.classList.contains('disabled-cY7rmmH3')) {
+			_hChild.classList.add('disabled-cY7rmmH3');
+		}
+	}
+
+	setInterval(changeDisabled, 1000);
+	setTheme(_hChild);
+	_hChild.classList.add(DEFAULT_CLASS, 'select-rating-6VM6t2V5');
 
 	_hChild.select = (_sRating) => {
 		_hChild.setAttribute('value', _sRating);
@@ -235,8 +247,6 @@ function createSelectRating(_hParent, _sId, _sClass, _fFunction) {
 		}
 	}
 
-	setTheme(_hChild);
-	_hChild.classList.add(DEFAULT_CLASS, 'select-rating-6VM6t2V5');
 	return _hChild;
 }
 
