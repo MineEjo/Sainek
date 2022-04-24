@@ -144,17 +144,22 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 			if (_aOption[0]) _hLi.innerText = getLocale(_aOption[0]);
 			if (_aOption[1]) _hLi.setAttribute('value', _aOption[1]);
 			_hLi.onclick = function () {
-				_hLabel.innerText = getLocale(_aOption[0]);
-				setTheme(_hLabel);
-				_hChild.setAttribute('value', _aOption[1]);
+				const _sAttribute = _hChild.getAttribute('disabled');
+				if (_sAttribute !== 'true' && _sAttribute !== _aOption[1]) {
+					_hLabel.innerText = getLocale(_aOption[0]);
+					setTheme(_hLabel);
+					_hChild.setAttribute('value', _aOption[1]);
 
-				const _hElements = _hSelect.getElementsByClassName('active-5QkcU5D4');
-				for (const _hElement of _hElements) {
-					_hElement.classList.remove('active-5QkcU5D4');
+					const _hElements = _hSelect.getElementsByClassName('active-5QkcU5D4');
+					for (const _hElement of _hElements) {
+						_hElement.classList.remove('active-5QkcU5D4');
+					}
+
+					_hLi.classList.add(DEFAULT_CLASS, 'active-5QkcU5D4');
+					_hParent.focus();
+				} else {
+					_hLi.classList.add('disabled-cY7rmmH3');
 				}
-
-				_hLi.classList.add(DEFAULT_CLASS, 'active-5QkcU5D4');
-				_hParent.focus();
 			};
 			_hSelect.append(_hLi);
 		}
@@ -163,11 +168,19 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 			setTheme(_hLi);
 		}
 	}
+
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) eval(_fFunction(_hSelect));
 	if (_hParent) _hParent.append(_hChild);
 
+	function changeDisabled() {
+		if (_hChild.getAttribute('disabled') === 'true' && !_hChild.classList.contains('disabled-cY7rmmH3')) {
+			_hChild.classList.add('disabled-cY7rmmH3');
+		}
+	}
+
 	setTheme(_hChild);
+	setInterval(changeDisabled, 1000);
 	_hChild.classList.add(DEFAULT_CLASS, 'select-MZnDy3Dp');
 	_hLabel.classList.add(DEFAULT_CLASS);
 	_hSelect.classList.add(DEFAULT_CLASS);

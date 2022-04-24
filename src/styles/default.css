@@ -326,7 +326,13 @@
 	color: var(--red-color-6DYMf3eb);
 	}
 
+.default-anime-keeper-4FLZQdEs:is(.disabled-cY7rmmH3),
 .default-anime-keeper-4FLZQdEs:disabled {
 	opacity: 0.5;
 	cursor: default;
+	}
+
+.default-anime-keeper-4FLZQdEs:is(.disabled-cY7rmmH3) .button-image-w3UhF6k8,
+.default-anime-keeper-4FLZQdEs:is(.disabled-cY7rmmH3) ul {
+	visibility: hidden;
 	}
