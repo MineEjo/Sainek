@@ -103,7 +103,7 @@ function getLocalUrl(_sUrl) {
 	try {
 		return (_sUrl) ? jBrowser?.extension?.getURL(_sUrl) : undefined;
 	} catch (_e) {
-		sendLog('err', 'eLq6MAy44bXkXD9T', {eLq6MAy44bXkXD9T: _e});
+		sendLog('eLq6MAy44bXkXD9T', LOG_TYPES.ERR, {eLq6MAy44bXkXD9T: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
