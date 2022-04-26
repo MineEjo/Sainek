@@ -46,19 +46,11 @@
 	min-width: var(--default-width-zkk4pPs6);
 	overflow: hidden;
 	position: fixed;
-	right: -100%;
+	right: 0;
 	top: 0;
 	transition: var(--long-transition-YhN6XrSx);
 	width: var(--default-width-zkk4pPs6);
 	z-index: var(--default-z-index-D5mB4JpN);
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.visible-YGUz5VCS:is(.board-uVL3djCA)) {
-	right: 0;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.hidden-3fUMW2Dg:is(.board-uVL3djCA)) {
-	right: var(--board-hidden-width-4YeuT95R);
 	}
 
 .default-anime-keeper-4FLZQdEs:is(.attached-P6vcTXH4:is(.board-uVL3djCA)) {

@@ -51,18 +51,8 @@ function setTheme(_hElement, _nVariation) {
 	}
 }
 
-function setVisibleBoard(_bState) {
-	if (_bState) {
-		hBoard.classList.remove('hidden-3fUMW2Dg');
-		hBoard.classList.add('visible-YGUz5VCS');
-	} else {
-		hBoard.classList.add('hidden-3fUMW2Dg');
-		hBoard.classList.remove('visible-YGUz5VCS');
-	}
-}
-
 function setAttachBoard(_bState) {
-	if (_bState && hBoard.classList.contains('visible-YGUz5VCS')) {
+	if (_bState) {
 		document.body.classList.add('default-anime-keeper-attached-da5aKFrB');
 		hBoard.classList.add('attached-P6vcTXH4');
 	} else {
@@ -84,10 +74,6 @@ if (bExtensionEnabled) {
 
 		getData(true, 'debugMode', (_response) => {
 			setDebugMode(_response);
-		});
-
-		getData(true, 'boardVisibled', (_response) => {
-			setVisibleBoard(_response);
 		});
 
 		getData(true, 'boardAttached', (_response) => {

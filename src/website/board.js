@@ -24,32 +24,6 @@ function loadAnimeBoard() {
 	const _hHeader = createDiv(hBoard, '', 'header-yeJQ9cYR');
 
 	const _hLeftSide = createDiv(_hHeader, '', 'left-rRNySA25');
-	createDivImg(_hLeftSide, '', 'button-cH9xa8qr', 'assets/left-arrow.svg', (_hChild) => {
-		_hChild.onclick = function () {
-			getData(true, 'boardVisibled', (_response) => {
-				if (_response) {
-					/* When you close the board, the menus are removed */
-					removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
-					removeClassElements('content-bXB3As76', 'removed-UEg2H5Ps');
-
-					setData(true, 'boardVisibled', false);
-
-					setVisibleBoard(false);
-					setAttachBoard(false);
-				} else {
-					setData(true, 'boardVisibled', true);
-					setVisibleBoard(true);
-
-					getData(true, 'boardAttached', (_response) => {
-						setAttachBoard(_response);
-					});
-				}
-			});
-		};
-	});
-
-	createDivImg(_hLeftSide, '', 'item-aEVEr3Cy', 'assets/icon.png');
-
 	const _hLabels = createDiv(_hLeftSide, '', 'left-rRNySA25');
 	createLabel(_hLabels, '', 'title-LRrB3Fxn', 'logoTitle');
 	createLabel(_hLabels, '', 'desc-p2P54kC8', 'logoDesc');
