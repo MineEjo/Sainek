@@ -156,7 +156,8 @@ span {
 	}
 
 .set-input {
-	max-height: calc(var(--set-line-height) * 1.1) !important;
+	max-height: var(--set-line-height) !important;
+	overflow: hidden !important;
 	}
 
 .set-area div {
@@ -168,7 +169,7 @@ span {
 	background: var(--neutral-double-color-4PQYryMp) !important;
 	height: calc(var(--set-line-height) * 4);
 	overflow-wrap: normal;
-	overflow-x: visible !important;
+	overflow: visible;
 	white-space: nowrap;
 	width: 100%;
 	word-break: keep-all;
