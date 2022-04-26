@@ -39,7 +39,8 @@
 				"src/website/update.js"
 			],
 			"css": [
-				"src/styles/font-awesome.css",
+				"src/styles/fonts/roboto.css",
+				"src/styles/fonts/font-awesome.css",
 				"src/styles/website.css",
 				"src/styles/variables.css",
 				"src/styles/status.css",
@@ -62,12 +63,26 @@
 		"assets/small-down-arrow.svg",
 		"assets/cross.svg",
 		"assets/edit.svg",
-		"fonts/FontAwesome.otf",
-		"fonts/fontawesome-webfont.eot",
-		"fonts/fontawesome-webfont.svg",
-		"fonts/fontawesome-webfont.ttf",
-		"fonts/fontawesome-webfont.woff",
-		"fonts/fontawesome-webfont.woff2"
+
+		"fonts/fontawesome/FontAwesome.otf",
+		"fonts/fontawesome/fontawesome-webfont.eot",
+		"fonts/fontawesome/fontawesome-webfont.svg",
+		"fonts/fontawesome/fontawesome-webfont.ttf",
+		"fonts/fontawesome/fontawesome-webfont.woff",
+		"fonts/fontawesome/fontawesome-webfont.woff2",
+
+		"fonts/roboto/Roboto-Black.ttf",
+		"fonts/roboto/Roboto-BlackItalic.ttf",
+		"fonts/roboto/Roboto-Bold.ttf",
+		"fonts/roboto/Roboto-BoldItalic.ttf",
+		"fonts/roboto/Roboto-Italic.ttf",
+		"fonts/roboto/Roboto-Light.ttf",
+		"fonts/roboto/Roboto-LightItalic.ttf",
+		"fonts/roboto/Roboto-Medium.ttf",
+		"fonts/roboto/Roboto-MediumItalic.ttf",
+		"fonts/roboto/Roboto-Regular.ttf",
+		"fonts/roboto/Roboto-Thin.ttf",
+		"fonts/roboto/Roboto-ThinItalic.ttf"
 	],
 	"manifest_version": 2,
 	"content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://www.googletagmanager.com; object-src 'self'"

@@ -1,0 +1,108 @@
+/*
+ * Copyright (c) 2022 MineEjo.
+ * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ *
+ * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with JJkBot.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-BlackItalic.ttf') format('truetype');
+	font-weight: 900;
+	font-style: italic;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Black.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-BoldItalic.ttf') format('truetype');
+	font-weight: 700;
+	font-style: italic;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: italic;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-LightItalic.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-ThinItalic.ttf') format('truetype');
+	font-weight: 100;
+	font-style: italic;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+	}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Italic.ttf') format('truetype');
+	font-style: italic;
+	}
+
