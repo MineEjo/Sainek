@@ -270,7 +270,7 @@ function loadBoard() {
 
 				function _continueUpdateNotes() {
 					for (const _jId of _nIds) {
-						if (_nIds.length < _nNotesCount) continue;
+						if (_nIds.length < _nNotesCount) break;
 
 						/* Creating fake notes */
 						if (!document.getElementById('load-label-F7rZvMz2')) {
@@ -547,14 +547,10 @@ function loadBoard() {
 									});
 								}
 
-								/* If the sorting was successful and the value of the saved divs matches the database */
 								if (_nIds.length === _NotesReady.size) {
 									sendLog('G98yhVDYxDZEc72z', LOG_TYPES.LOG, {
 										divsNote: _NotesReady
 									});
-
-									/* Removing fake notes */
-									removeClassElements('load-PMb84E8y', 'removed-UEg2H5Ps');
 
 									/* Adding note shortcuts, if any */
 									if (_NotesPage.size > 0) {
@@ -590,8 +586,7 @@ function loadBoard() {
 									/* Changing a fake note into a note with an error */
 									const _hNote = document.getElementById(`load-${_jId}`);
 									_hNote.innerHTML = '';
-									_hNote.classList.remove('load-PMb84E8y');
-									_hNote.classList.add('error-PTbkZ3J8');
+									_hNote.classList.replace('load-PMb84E8y', 'error-PTbkZ3J8');
 									createDiv(_hNote, '', '', (_hChild) => {
 										createLabel(_hChild, '', 'title-pJ2WhhWd', 'errorLoading');
 										createMargin(_hChild, 'short');
@@ -619,21 +614,22 @@ function loadBoard() {
 												};
 											});
 
-											/* Note recreate button */
-											createLabel(_hChild, '', '', 'reCreate', '', (_hChild) => {
-												_hChild.onclick = function (_event) {
-													/* In the create note menu, the existing parameters of the broken note are transferred */
-													getData(false, `noteId${_jId}`, (_note) => {
-														if (_note) {
+											/* In the create note menu, the existing parameters of the broken note are transferred */
+											getData(false, `noteId${_jId}`, (_note) => {
+
+												if (_note) {
+													createLabel(_hChild, '', '', 'reCreate', '', (_hChild) => {
+														_hChild.onclick = function (_event) {
 															_note.id = _jId;
 															_note.error = true;
 															/* Update the list of notes by pressing the save button in the menu */
 															_controlNote(_note);
 															setData(false, `noteId${_jId}`, null);
-														}
+														};
 													});
-												};
+												}
 											});
+
 										});
 									});
 
@@ -641,8 +637,15 @@ function loadBoard() {
 								}
 
 								sendLog('RAxm3R7HH3cYxj6q', LOG_TYPES.ERR, {RAxm3R7HH3cYxj6q: _e});
+							} finally {
+								if (_nIds.length <= _nNotesCount) {
+									/* Removing fake notes */
+									removeClassElements('load-PMb84E8y', 'removed-UEg2H5Ps');
+								}
 							}
 						});
+
+
 					}
 				}
 			}

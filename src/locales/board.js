@@ -88,7 +88,7 @@ const BOARD_RU = {
 	episodes: 'Серий',
 	of: 'из',
 	errorLoading: 'Ошибка загрузки',
-	note: 'Заметки',
+	note: 'Заметка',
 	reCreate: 'Пересоздать',
 	notesOnPage: 'Заметки на странице',
 	notesAll: 'Все заметки',
