@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2022 MineEjo.
- * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ * This file is part of Sainek-Serials-Keeper <https://github.com/MineEjo/Sainek-Serials-Keeper>.
  *
- * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * Sainek-Serials-Keeper is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * Sainek-Serials-Keeper is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -16,22 +16,22 @@
  * along with JJkBot.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.default-anime-keeper-4FLZQdEs .status-ty2aYeHq {
+.default-4FLZQdEs .status-ty2aYeHq {
 	padding: 1px 6px 1px 6px;
 	}
 
-.default-anime-keeper-4FLZQdEs .status-ty2aYeHq .not-watch-juX4pc2a {
+.default-4FLZQdEs .unwatched-juX4pc2a {
 	background: var(--red-color-6DYMf3eb);
 	}
 
-.default-anime-keeper-4FLZQdEs .status-ty2aYeHq .watching-M6DsAF2K {
+.default-4FLZQdEs .watching-M6DsAF2K {
 	background: var(--yellow-color-hG97B6Zp);
 	}
 
-.default-anime-keeper-4FLZQdEs .status-ty2aYeHq .watched-xB5Pq4kZ {
+.default-4FLZQdEs .watched-xB5Pq4kZ {
 	background: var(--green-color-VG87xKYq);
 	}
 
-.default-anime-keeper-4FLZQdEs .status-ty2aYeHq .want-to-watch-ry9yUf3Z {
+.default-4FLZQdEs .want-watch-ry9yUf3Z {
 	background: var(--blue-color-TthRYu9u);
 	}

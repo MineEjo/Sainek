@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2022 MineEjo.
- * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ * This file is part of Sainek-Serials-Keeper <https://github.com/MineEjo/Sainek-Serials-Keeper>.
  *
- * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * Sainek-Serials-Keeper is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * Sainek-Serials-Keeper is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -18,8 +18,8 @@
 
 const USER_LANG = (navigator.language || navigator.userLanguage).slice(0, 2);
 
-const DEFAULT_CLASS = 'default-anime-keeper-4FLZQdEs';
-const SHORTCUT_CLASS = 'shortcut-anime-keeper-V7J89asy';
+const DEFAULT_CLASS = 'default-4FLZQdEs';
+const SHORTCUT_CLASS = 'shortcut-keeper-V7J89asy';
 const LANG_CODES = new Map();
 LANG_CODES.set('ru', 'Аниме');
 LANG_CODES.set('en', 'Anime');

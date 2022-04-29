@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2022 MineEjo.
- * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ * This file is part of Sainek-Serials-Keeper <https://github.com/MineEjo/Sainek-Serials-Keeper>.
  *
- * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * Sainek-Serials-Keeper is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * Sainek-Serials-Keeper is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -19,111 +19,78 @@
 /* Moved out, for changes in other scripts */
 let hBoard = undefined;
 
-function loadAnimeBoard() {
-	hBoard = createDiv(document.body, '', 'board-uVL3djCA');
-	const _hHeader = createDiv(hBoard, '', 'header-yeJQ9cYR');
-
-	const _hLeftSide = createDiv(_hHeader, '', 'left-rRNySA25');
-	const _hLabels = createDiv(_hLeftSide, '', 'left-rRNySA25');
-	createLabel(_hLabels, '', 'title-LRrB3Fxn', 'logoTitle');
-	createLabel(_hLabels, '', 'desc-p2P54kC8', 'logoDesc');
-
-	const _hRightSide = createDiv(_hHeader, '', 'right-W2VyGzAy');
-
-	createDivImg(_hRightSide, '', 'button-cH9xa8qr', 'assets/menu.svg', (_hChild) => {
-		_hChild.onclick = function (_event) {
-			if (_event?.target?.classList.contains('button-cH9xa8qr')) {
-				if (_hHeader.getElementsByClassName('content-bXB3As76')[0]) {
-					removeClassElements('content-bXB3As76', 'removed-UEg2H5Ps');
-				} else {
-					const _hContent = createDiv(_hChild, '', 'content-bXB3As76');
-
-					getData(true, 'boardAttached', (_response) => {
-						if (!_response) {
-							createLabel(_hContent, '', '', `menuButtonAttachBoard`, '', (_hChild) => {
-								_hChild.onclick = function () {
-									setData(true, 'boardAttached', true);
-									setAttachBoard(true);
-									removeClassElements('content-bXB3As76', 'removed-UEg2H5Ps');
-								};
-							});
-						} else {
-							createLabel(_hContent, '', '', `menuButtonDetachBoard`, '', (_hChild) => {
-								_hChild.onclick = function () {
-									setData(true, 'boardAttached', false);
-									setAttachBoard(false);
-									removeClassElements('content-bXB3As76', 'removed-UEg2H5Ps');
-								};
-							});
-						}
-					});
-				}
-			}
-		};
-	});
+function loadBoard() {
+	hBoard = createDiv(document.body, '', ['board-uVL3djCA', 'shadow-pUd54mwX']);
 
 	const _hBody = createDiv(hBoard, '', 'body-3y53QZt3');
-	const _hAnimeCards = createDiv(_hBody, 'anime-cards-MfRGWNqC', '');
+	const _hNotes = createDiv(_hBody, 'notes-MfRGWNqC', '');
 
-	_updateAnimeCard();
+	_updateNotes();
 
-	const _hFooter = createDiv(hBoard, '', 'footer-3y53QZt3');
-	const _hBodyButtons = createDiv(_hFooter, '', 'buttons-QaPT76h4');
-	const _hAddAnimeButton = createDivImg(_hBodyButtons, '', 'button-cH9xa8qr', 'assets/plus.svg', (_hChild) => {
+	const _hAddNoteButton = createButton(_hBody, '', ['button-cH9xa8qr', 'shadow-pUd54mwX', 'add-rNC4zfHN'], '', (_hChild) => {
+		_hChild.setAttribute('locale-edit', getLocale('edit'));
+		_hChild.setAttribute('locale-add', getLocale('add'));
+		_hChild.setAttribute('locale-cancel', getLocale('cancel'));
+
 		_hChild.onclick = function (_event) {
-			if (_event?.target?.classList.contains('button-cH9xa8qr')) {
-				if (_hChild.getElementsByClassName('content-n5tgZWEy')[0]) {
-					removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
-					_hChild.style.backgroundImage = `url(${getLocalUrl('assets/plus.svg')})`;
-				} else {
-					let _sAnimeCardId = _hChild.getAttribute('value');
-					if (_sAnimeCardId) {
-						_sAnimeCardId = _sAnimeCardId.replace('anime-card-', '');
+			if (_hAddNoteButton.classList.contains('cancel-kZDX5rD5')) {
+				removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
+				_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
+			} else {
 
-						getData(false, `animeCardId${_sAnimeCardId}`, (_response) => {
-							_addAnimeCard({
-									id: _sAnimeCardId,
-									image: _response?.image,
-									titles: _response?.titles,
-									episodesViewed: _response?.episodesViewed,
-									episodes: _response?.episodes,
-									seasons: _response?.seasons,
-									status: _response?.status,
-									viewedStatus: _response?.viewedStatus,
-									desc: _response?.desc,
-									sites: _response?.sites,
-									rating: _response?.rating,
-									position: _response?.position
-								}
-							);
-						});
-					} else {
-						_addAnimeCard();
-					}
+				let _sNoteId = _hChild.getAttribute('note-id');
+
+				if (_sNoteId) {
+					_sNoteId = _sNoteId.replace('note-', '');
+
+					getData(false, `noteId${_sNoteId}`, (_response) => {
+						_controlNote({
+								id: _sNoteId,
+								image: _response?.image,
+								titles: _response?.titles,
+								episodesViewed: _response?.episodesViewed,
+								episodes: _response?.episodes,
+								seasons: _response?.seasons,
+								status: _response?.status,
+								viewedStatus: _response?.viewedStatus,
+								desc: _response?.desc,
+								websites: _response?.websites,
+								rating: _response?.rating,
+								position: _response?.position
+							}
+						);
+					});
+
+				} else {
+					_controlNote();
 				}
 			}
 		};
 	});
 
-	function _addAnimeCard(_jCard) {
-		const _hContent = createDiv(_hAddAnimeButton, '', 'content-n5tgZWEy');
-		/* The content is in the button and has an absolute position, so it cannot have a body height if you specify css properties */
-		_hContent.style.height = `calc(${_hBody.offsetHeight}px + var(--board-header-height-xg3EuWjd))`;
+	function _controlNote(_jNote) {
+		_hAddNoteButton.removeAttribute('note-id');
 
-		createLabel(_hContent, '', '', 'animeLabelEditImage', 'anime-image-edit-nZsR8KNQ');
-		createInput(_hContent, 'anime-image-edit-nZsR8KNQ', '', 'hintTextInput', (_hChild) => {
-			if (_jCard?.image) _hChild.value = _jCard?.image;
+		if (document.getElementsByClassName('content-n5tgZWEy')) {
+			_hAddNoteButton.classList.replace('add-rNC4zfHN', 'cancel-kZDX5rD5');
+		}
+
+		const _hContent = createDiv(_hBody, '', ['content-n5tgZWEy', 'shadow-pUd54mwX']);
+
+		createLabel(_hContent, '', '', 'imageOptional', 'image-nZsR8KNQ');
+		createInput(_hContent, 'image-nZsR8KNQ', '', 'typeSomething', (_hChild) => {
+			if (_jNote?.image) _hChild.value = _jNote?.image;
 		});
 
-		createLabel(_hContent, '', '', 'animeLabelEditTitles', 'anime-title-edit-NxMNE4ex');
-		createInput(_hContent, 'anime-titles-edit-NxMNE4ex', '', 'hintTextInput', (_hChild) => {
-			if (_jCard?.titles) _hChild.value = _jCard?.titles;
+		createLabel(_hContent, '', '', 'titlesOptional', 'titles-NxMNE4ex');
+		createInput(_hContent, 'titles-NxMNE4ex', '', 'typeSomething', (_hChild) => {
+			if (_jNote?.titles) _hChild.value = _jNote?.titles;
 		});
 
-		createLabel(_hContent, '', '', 'animeLabelEditEpisodes', '');
-		createDiv(_hContent, '', '', (_hChild) => {
+		createLabel(_hContent, '', '', 'episodesViewed', '');
+		createDiv(_hContent, '', 'transparent-acQZyy2v', (_hChild) => {
 			_hChild.style.display = 'inline-flex';
-			createInput(_hChild, 'anime-episodes-viewed-edit-jWKxUqGL', '', 'hintNumberInput', (_hChild) => {
+			createInput(_hChild, 'episodes-viewed-jWKxUqGL', '', 'zero', (_hChild) => {
 				_hChild.setAttribute('type', 'number');
 
 				_hChild.onkeyup = function () {
@@ -134,14 +101,14 @@ function loadAnimeBoard() {
 				_hChild.style.width = '100%';
 				_hChild.style.textAlign = 'center';
 
-				if (_jCard?.episodesViewed) _hChild.value = _jCard?.episodesViewed;
+				if (_jNote?.episodesViewed) _hChild.value = _jNote?.episodesViewed;
 			});
-			createLabel(_hChild, '', '', 'labelOf', '', (_hChild) => {
+			createLabel(_hChild, '', '', 'of', '', (_hChild) => {
 				_hChild.style.paddingTop = '13px';
 				_hChild.style.paddingLeft = '8%';
 				_hChild.style.paddingRight = '12%';
 			});
-			createInput(_hChild, 'anime-episodes-edit-ZpfNGnBG', '', 'hintNumberInput', (_hChild) => {
+			createInput(_hChild, 'episodes-ZpfNGnBG', '', 'zero', (_hChild) => {
 				_hChild.setAttribute('type', 'number');
 				_hChild.onkeyup = function () {
 					this.value = this.value.substring(0, 4);
@@ -150,7 +117,7 @@ function loadAnimeBoard() {
 				_hChild.style.width = '100%';
 				_hChild.style.textAlign = 'center';
 
-				if (_jCard?.episodes) _hChild.value = _jCard?.episodes;
+				if (_jNote?.episodes) _hChild.value = _jNote?.episodes;
 			});
 			createInput(_hChild, '', '', '', (_hChild) => {
 				_hChild.style.width = '0px';
@@ -162,84 +129,84 @@ function loadAnimeBoard() {
 			});
 		});
 
-		createLabel(_hContent, '', '', 'animeLabelEditSeasons', '');
-		createInput(_hContent, 'anime-seasons-edit-AcTuxFRH', '', 'hintNumberInput', (_hChild) => {
+		createLabel(_hContent, '', '', 'seasons', '');
+		createInput(_hContent, 'seasons-AcTuxFRH', '', 'zero', (_hChild) => {
 			_hChild.setAttribute('type', 'number');
 			_hChild.onkeyup = function () {
 				this.value = this.value.substring(0, 4);
 			};
 			_hChild.setAttribute('min', '0');
-			if (_jCard?.seasons) _hChild.value = _jCard?.seasons;
+			if (_jNote?.seasons) _hChild.value = _jNote?.seasons;
 		});
 
-		createLabel(_hContent, '', '', 'animeLabelEditAnimeStatus', 'anime-anime-status-edit-FkrUy296');
-		const selectAnimeStatus = createSelect(_hContent, 'anime-anime-status-edit-FkrUy296', '', 'hintSelectInput', [
-			['animeStatus1', '1'],
-			['animeStatus2', '2'],
-			['animeStatus3', '3']
+		createLabel(_hContent, '', '', 'status', 'status-FkrUy296');
+		const selectStatus = createSelect(_hContent, 'status-FkrUy296', '', 'selectSomething', [
+			['related', 'related'],
+			['ongoing', 'ongoing'],
+			['announce', 'announce']
 		]);
-		if (_jCard?.status) selectAnimeStatus.select(_jCard?.viewedStatus);
+		if (_jNote?.status) selectStatus.select(_jNote?.status);
 
-		createLabel(_hContent, '', '', 'animeLabelEditViewStatus', 'anime-view-status-edit-JvJsUY9y');
-		const selectViewStatus = createSelect(_hContent, 'anime-view-status-edit-JvJsUY9y', '', 'hintSelectInput', [
-			['animeViewStatus1', '1'],
-			['animeViewStatus2', '2'],
-			['animeViewStatus3', '3'],
-			['animeViewStatus4', '4']
+		createLabel(_hContent, '', '', 'statusView', 'status-view-JvJsUY9y');
+		const selectViewStatus = createSelect(_hContent, 'status-view-JvJsUY9y', '', 'selectSomething', [
+			['unwatched', 'unwatched'],
+			['watching', 'watching'],
+			['watched', 'watched'],
+			['wantWatch', 'wantWatch']
 		]);
-		if (_jCard?.viewedStatus) selectViewStatus.select(_jCard?.viewedStatus);
+		if (_jNote?.viewedStatus) selectViewStatus.select(_jNote?.viewedStatus);
 
-		createLabel(_hContent, '', '', 'animeLabelEditDesc', 'anime-desc-edit-emn6pGAH');
-		createTextarea(_hContent, 'anime-desc-edit-emn6pGAH', '', 'hintTextInput', (_hChild) => {
-			if (_jCard?.desc) _hChild.value = _jCard?.desc;
+		createLabel(_hContent, '', '', 'desc', 'desc-emn6pGAH');
+		createTextarea(_hContent, 'desc-emn6pGAH', '', 'typeSomething', (_hChild) => {
+			if (_jNote?.desc) _hChild.value = _jNote?.desc;
 		});
 
-		createLabel(_hContent, '', '', 'animeLabelEditSites', 'anime-sites-edit-Q3usD5jw');
-		createInput(_hContent, 'anime-sites-edit-Q3usD5jw', '', 'hintTextInput', (_hChild) => {
-			if (_jCard?.sites) _hChild.value = _jCard?.sites;
+		createLabel(_hContent, '', '', 'websitesOptional', 'websites-Q3usD5jw');
+		createInput(_hContent, 'websites-Q3usD5jw', '', 'typeSomething', (_hChild) => {
+			if (_jNote?.websites) _hChild.value = _jNote?.websites;
 		});
 
-		createLabel(_hContent, '', '', 'animeLabelEditAnimeRating', 'anime-rating-edit-CW48Shh3', (_hChild) => {
+		createLabel(_hContent, '', '', 'rating', 'rating-CW48Shh3', (_hChild) => {
 			_hChild.style.textAlign = 'center';
 		});
-		const _hRating = createSelectRating(_hContent, 'anime-rating-edit-CW48Shh3', '');
-		if (_jCard?.rating) _hRating.select(_jCard?.rating);
+		const _hRating = createSelectRating(_hContent, 'rating-CW48Shh3', '');
+		if (_jNote?.rating) _hRating.select(_jNote?.rating);
 
-		createButton(_hContent, '', 'save-Hj3Cfy9A', 'animeLabelEditSave', (_hChild) => {
+		createButton(_hContent, '', 'save-Hj3Cfy9A', 'save', (_hChild) => {
 			_hChild.onclick = function () {
-				const _sImage = document.getElementById('anime-image-edit-nZsR8KNQ').value;
-				const _sTitles = document.getElementById('anime-titles-edit-NxMNE4ex').value;
-				if (!_sTitles) return alert(getLocale('alertRequiredTitlesEdit'));
+				const _sImage = document.getElementById('image-nZsR8KNQ').value;
+				const _sTitles = document.getElementById('titles-NxMNE4ex').value;
+				if (!_sTitles) return alert(getLocale('requiredTitles'));
 
-				let _sEpisodesViewed = document.getElementById('anime-episodes-viewed-edit-jWKxUqGL').value;
-				const _sEpisodes = document.getElementById('anime-episodes-edit-ZpfNGnBG').value;
-				const _sSeasons = document.getElementById('anime-seasons-edit-AcTuxFRH').value;
-				const _sStatus = document.getElementById('anime-anime-status-edit-FkrUy296').getAttribute('value');
-				const _sViewedStatus = document.getElementById('anime-view-status-edit-JvJsUY9y').getAttribute('value');
-				if (_sViewedStatus < 1) return alert(getLocale('alertRequiredViewStatusEdit'));
+				let _sEpisodesViewed = document.getElementById('episodes-viewed-jWKxUqGL').value;
+				const _sEpisodes = document.getElementById('episodes-ZpfNGnBG').value;
+				const _sSeasons = document.getElementById('seasons-AcTuxFRH').value;
+				const _sStatus = document.getElementById('status-FkrUy296').getAttribute('value');
+				const _sViewedStatus = document.getElementById('status-view-JvJsUY9y').getAttribute('value');
+				if (_sViewedStatus < 1) return alert(getLocale('requiredViewStatus'));
 
-				const _sDesc = document.getElementById('anime-desc-edit-emn6pGAH').value;
-				const _sSites = document.getElementById('anime-sites-edit-Q3usD5jw').value;
-				const _sRating = document.getElementById('anime-rating-edit-CW48Shh3').getAttribute('value');
+				const _sDesc = document.getElementById('desc-emn6pGAH').value;
+				const _sWebsites = document.getElementById('websites-Q3usD5jw').value;
+				const _sRating = document.getElementById('rating-CW48Shh3').getAttribute('value');
 
-				getData(false, 'animeCardIds', (_response) => {
-					let _sId = _jCard?.id || genId();
+				getData(false, 'noteIds', (_response) => {
+					let _sId = _jNote?.id || genId();
 
 					if (_response) {
-						while (_response.includes(_sId) && !_jCard?.id) {
+						while (_response.includes(_sId) && !_jNote?.id) {
 							_sId = genId();
 						}
 					}
 
-					/* Card adding */
-					if (!_jCard?.id) {
-						const _aAnimeCardIds = _response || [];
-						/* To have the new card on top, unshift and a zero position are used */
-						_aAnimeCardIds.unshift(_sId);
-						setData(false, 'animeCardIds', _aAnimeCardIds);
+					/* Note adding */
+					if (!_jNote?.id) {
+						const _aNoteIds = _response || [];
+						/* To have the new note on top, unshift and a zero position are used */
+						_aNoteIds.unshift(_sId);
+						setData(false, 'noteIds', _aNoteIds);
 					}
 
-					setData(false, `animeCardId${_sId}`, {
+					setData(false, `noteId${_sId}`, {
 						image: _sImage.toString(),
 						titles: _sTitles.toString(),
 						episodesViewed: (_sEpisodesViewed) ? _sEpisodesViewed.toString() : 0,
@@ -248,147 +215,147 @@ function loadAnimeBoard() {
 						status: _sStatus.toString(),
 						viewedStatus: _sViewedStatus.toString(),
 						desc: _sDesc.toString(),
-						sites: _sSites.toString(),
+						websites: _sWebsites.toString(),
 						rating: _sRating.toString(),
 						position: '0'
 					});
 
-					setTimeout(_updateAnimeCard, 1000);
+					setTimeout(_updateNotes, 1000);
 					removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
-					_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/plus.svg')})`;
+					_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
 				});
 			};
 		});
 
-		const _bIsError = _jCard?.error || false;
-		if (_jCard?.id && !_bIsError) {
-			createButton(_hContent, '', 'delete-88jPHdRH', 'animeLabelEditDelete', (_hChild) => {
+		const _bIsError = _jNote?.error || false;
+		if (_jNote?.id && !_bIsError) {
+			createButton(_hContent, '', 'delete-88jPHdRH', 'delete', (_hChild) => {
 				_hChild.onclick = function () {
-					getData(false, 'animeCardIds', (_response) => {
-						const _aAnimeCardIds = _response || [];
-						/* Card deleting */
-						if (_aAnimeCardIds.indexOf(_jCard?.id) > 0) _aAnimeCardIds.splice(_aAnimeCardIds.indexOf(_jCard?.id), 1);
+					getData(false, 'noteIds', (_response) => {
+						const _aNoteIds = _response || [];
+						/* Note deleting */
+						if (_aNoteIds.indexOf(_jNote?.id) > 0) _aNoteIds.splice(_aNoteIds.indexOf(_jNote?.id), 1);
 
-						setData(false, 'animeCardIds', _aAnimeCardIds);
-						setData(false, `animeCardId${_jCard?.id}`, null);
+						setData(false, 'noteIds', _aNoteIds);
+						setData(false, `noteId${_jNote?.id}`, null);
 
-						setTimeout(_updateAnimeCard, 1000);
+						setTimeout(_updateNotes, 1000);
 						removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
-						_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/plus.svg')})`;
+						_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
 					});
 				};
 			});
 		}
-
-		_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/cross.svg')})`;
 	}
 
-	function _updateAnimeCard() {
+	function _updateNotes() {
 		/* Getting the scroll bar position to save and setting the same one after displaying */
 		const _nScrollPos = _hBody.scrollTop;
 
-		/* Removing old cards */
-		removeElement('anime-cards-MfRGWNqC');
+		/* Removing old notes */
+		removeElement('notes-MfRGWNqC');
 
 		/* An array that will store the finished divs, for later display */
-		const _DoneCards = new Map();
-		const _PageCards = new Set();
+		const _NotesReady = new Map();
+		const _NotesPage = new Set();
 
-		getData(false, 'animeCardIds', (_response) => {
-			if (_response) {
+		getData(false, 'noteIds', (_nIds) => {
+			if (_nIds) {
+				/* Removing the notification about missing notes */
+				removeClassElements('label-jFU6wwNV');
+
 				/* The quantity is duplicated in a variable to avoid duplicates in the loop */
-				const _nCardsCount = _response.length;
-				_continueUpdateAnimeCard();
+				const _nNotesCount = _nIds.length;
+				_continueUpdateNotes();
 
-				function _continueUpdateAnimeCard() {
-					for (const _jId of _response) {
-						if (_response.length < _nCardsCount) continue;
+				function _continueUpdateNotes() {
+					for (const _jId of _nIds) {
+						if (_nIds.length < _nNotesCount) continue;
 
-						/* Creating fake cards */
-						if (!document.getElementById('anime-load-label-F7rZvMz2')) {
-							createLabel(_hAnimeCards, 'anime-load-label-F7rZvMz2', 'label-SSrq6Djx', 'labelLoadings');
+						/* Creating fake notes */
+						if (!document.getElementById('load-label-F7rZvMz2')) {
+							createLabel(_hNotes, 'load-label-F7rZvMz2', 'label-SSrq6Djx', 'loadings');
 						}
 
-						if (!document.getElementById(`anime-load-card-${_jId}`)) {
-							createDiv(_hAnimeCards, `anime-load-card-${_jId}`, 'anime-load-card-PMb84E8y', (_hCard) => {
-								createMargin(_hCard, 'embed');
-								createDiv(_hCard, '', 'anime-load-card-image-GQtx92fM');
-								createMargin(_hCard, 'embed');
-								createDiv(_hCard, '', 'anime-load-card-title-3Wgg5PKh');
-								createMargin(_hCard, 'embed');
-								createDiv(_hCard, '', 'anime-load-card-desc-W3cU2ueU');
-								createMargin(_hCard, 'embed');
+						if (!document.getElementById(`load-${_jId}`)) {
+							createDiv(_hNotes, `load-${_jId}`, 'load-PMb84E8y', (_hNote) => {
+								createMargin(_hNote, 'embed');
+								createDiv(_hNote, '', 'image-GQtx92fM');
+								createMargin(_hNote, 'embed');
+								createDiv(_hNote, '', 'title-3Wgg5PKh');
+								createMargin(_hNote, 'embed');
+								createDiv(_hNote, '', 'desc-W3cU2ueU');
+								createMargin(_hNote, 'embed');
 							});
 						}
 
-						/* Creating real cards */
-						getData(false, `animeCardId${_jId}`, (_jAnimeCard) => {
+						/* Creating real notes */
+						getData(false, `noteId${_jId}`, (_jNote) => {
 							try {
 								/* The object is accessed directly, without an existence check, to handle the error in the catch block.  */
-								const _sTitles = _jAnimeCard?.titles;
-								const _sImage = _jAnimeCard?.image;
-								const _sEpisodesViewed = _jAnimeCard?.episodesViewed;
-								const _sEpisodes = _jAnimeCard?.episodes;
-								const _sSeasons = _jAnimeCard?.seasons;
-								const _sStatus = _jAnimeCard?.status;
-								const _sViewedStatus = _jAnimeCard?.viewedStatus;
-								const _sDesc = _jAnimeCard?.desc;
-								const _sSites = _jAnimeCard?.sites;
-								const _sRating = _jAnimeCard?.rating;
-								let _sPosition = _jAnimeCard?.position;
+								const _sTitles = _jNote?.titles;
+								const _sImage = _jNote?.image;
+								const _sEpisodesViewed = _jNote?.episodesViewed;
+								const _sEpisodes = _jNote?.episodes;
+								const _sSeasons = _jNote?.seasons;
+								const _sStatus = _jNote?.status;
+								const _sViewedStatus = _jNote?.viewedStatus;
+								const _sDesc = _jNote?.desc;
+								const _sWebsites = _jNote?.websites;
+								const _sRating = _jNote?.rating;
+								let _sPosition = _jNote?.position;
 
 								/* Sorting positions */
-								while (_DoneCards.has(_sPosition.toString())) {
+								while (_NotesReady.has(_sPosition.toString())) {
 									_sPosition++;
 								}
 
-								/* Cards are first created and stacked in Map, for later display */
-								_DoneCards.set(_sPosition.toString(), _createAnimeCard(false));
+								/* Notes are first created and stacked in Map, for later display */
+								_NotesReady.set(_sPosition.toString(), _createNote(false));
 
 								/* Variable with id shortcut */
 								let _sPageTitleId = '';
 
-								/* Create shortcuts if the page has the same anime name as the card */
+								/* Create shortcuts if the page has the same serial name as the note */
 								const _aTitles = _sTitles.split(', ');
 								for (const _sTitle of _aTitles) {
-									if (aAnimeTitles.toString().includes(_sTitle)) {
+									if (aSerialTitles.toString().includes(_sTitle)) {
 										const _aPageTitles = document.getElementsByClassName(SHORTCUT_CLASS);
 										for (const _hPageTitle of _aPageTitles) {
 											if (_hPageTitle.innerText.includes(_sTitle)) {
 												if (_hPageTitle.id) {
 													_sPageTitleId = _hPageTitle.id;
 												} else {
-													_hPageTitle.id = `shortcut-anime-keeper-${_jId}`;
+													_hPageTitle.id = `shortcut-keeper-${_jId}`;
 													_sPageTitleId = _hPageTitle.id;
 												}
 											}
 										}
 
-										_PageCards.add(_createAnimeCard(true));
+										_NotesPage.add(_createNote(true));
 										break;
 									}
 								}
 
-								/* Limited - means that the card is a label rather than a full-fledged */
-								function _createAnimeCard(_bLimited) {
-									return createDiv(null, '', '', (_hCard) => {
+								/* Limited - means that the note is a label rather than a full-fledged */
+								function _createNote(_bLimited) {
+									return createDiv(null, '', '', (_hNote) => {
 										if (!_bLimited) {
-											_hCard.id = `anime-card-${_jId}`;
-											_hCard.classList.add('anime-card-PgjFjRUS');
+											_hNote.id = `note-${_jId}`;
+											_hNote.classList.add('note-PgjFjRUS');
 
-											/* A card is given a special attribute to speed up its position */
-											_hCard.setAttribute('position', _sPosition.toString());
+											/* A note is given a special attribute to speed up its position */
+											_hNote.setAttribute('position', _sPosition.toString());
 
-											/* Enabling card drag and drop */
-											_hCard.tabIndex = 0;
-											_hCard.draggable = true;
+											/* Enabling note drag and drop */
+											_hNote.tabIndex = 0;
+											_hNote.draggable = true;
 										} else {
-											_hCard.classList.add('anime-limited-card-2DysF6H8');
+											_hNote.classList.add('limited-2DysF6H8');
 										}
 
-										sendLog('ggs4xgWMfbZYBpfK', LOG_TYPES.LOG, {ggs4xgWMfbZYBpfK: _response});
-										sendLog('Uj46Tcr3xr4dN9L7', LOG_TYPES.LOG, {
-											animeCard: {
+										sendLog('ggs4xgWMfbZYBpfK', LOG_TYPES.LOG, {ggs4xgWMfbZYBpfK: _nIds});
+										sendLog('Uj46Tcr3xr4dN9L7', LOG_TYPES.LOG, {note: {
 												id: _jId,
 												title: _sTitles,
 												image: _sImage,
@@ -398,31 +365,31 @@ function loadAnimeBoard() {
 												status: _sStatus,
 												viewedStatus: _sViewedStatus,
 												desc: _sDesc,
-												sites: _sSites,
+												websites: _sWebsites,
 												rating: _sRating,
 												position: _sPosition
 											}
 										});
 
-										/* Card design */
+										/* Note design */
 										if (_sViewedStatus && !_bLimited) {
-											createLabel(_hCard, '',
-												['anime-card-viewed-status-5cBUD2rC', STATUSES.get(_sViewedStatus)], `animeViewStatus${_sViewedStatus}`
+											createLabel(_hNote, '',
+												['status-viewed-3mPKGu4U', STATUSES.get(_sViewedStatus)], _sViewedStatus
 											);
 										}
 
 										if (_sStatus && !_bLimited) {
-											createLabel(_hCard, '', 'anime-card-status-5cBUD2rC', `animeStatus${_sStatus}`);
+											createLabel(_hNote, '', 'status-5cBUD2rC', _sStatus);
 										}
 
 										if (_sImage && !_bLimited) {
-											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
-											createImg(_hCard, '', 'anime-card-image-2gZc3pYt', _sImage, 'animeCardImageError');
+											createMargin(_hNote, 'embed', 'other-WUg8SV9z');
+											createImg(_hNote, '', 'image-2gZc3pYt', _sImage, 'errorLoading');
 										}
 
 										if (_sTitles) {
-											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
-											createLabel(_hCard, '', 'anime-card-title-A5xU6DER', `${
+											createMargin(_hNote, 'embed', 'other-WUg8SV9z');
+											createLabel(_hNote, '', 'title-A5xU6DER', `${
 												_sTitles.toString().split(', ')[0]
 											}`, '', (_hChild) => {
 												if (_bLimited) _hChild.style.width = '100%';
@@ -431,39 +398,39 @@ function loadAnimeBoard() {
 
 										/* Creating shortcuts to quickly navigate to elements */
 										if (_bLimited) {
-											createMargin(_hCard, 'short', 'anime-card-other-WUg8SV9z');
-											createDiv(_hCard, '', 'buttons-6dt3Ne7p', (_hChild) => {
-												createLink(_hChild, '', '', 'animeCardButtonJump', `#${_sPageTitleId}`);
-												createLink(_hChild, '', '', 'animeCardButtonMore', `#anime-card-${_jId}`);
+											createMargin(_hNote, 'short', 'other-WUg8SV9z');
+											createDiv(_hNote, '', 'buttons-6dt3Ne7p', (_hChild) => {
+												createLink(_hChild, '', '', 'goTo', `#${_sPageTitleId}`);
+												createLink(_hChild, '', '', 'moreInfo', `#note-${_jId}`);
 											});
 										}
 
 										if (_sRating && !_bLimited) {
-											createDiv(_hCard, '', 'anime-card-rating-J9RU4MjX', (_hChild) => {
+											createDiv(_hNote, '', 'rating-J9RU4MjX', (_hChild) => {
 												/* Rating stars display, the number from the database is colored as selected, the other stars remain normal */
 												for (let _nStarts = 1; _nStarts <= parseInt(_sRating); _nStarts++) {
 													const _hSpan = document.createElement('span');
 													_hChild.append(_hSpan);
-													_hSpan.classList.add('fa', 'fa-star', 'checked-cFXHwS3x', 'anime-card-other-WUg8SV9z');
+													_hSpan.classList.add('fa', 'fa-star', 'checked-cFXHwS3x', 'other-WUg8SV9z');
 												}
 
 												for (let _nStarts = 1; _nStarts <= 5 - parseInt(_sRating); _nStarts++) {
 													const _hSpan = document.createElement('span');
 													_hChild.append(_hSpan);
-													_hSpan.classList.add('fa', 'fa-star', 'anime-card-other-WUg8SV9z');
+													_hSpan.classList.add('fa', 'fa-star', 'other-WUg8SV9z');
 												}
 											});
 										}
 
 										if (_sDesc && !_bLimited) {
-											createMargin(_hCard, 'short', 'anime-card-other-WUg8SV9z');
-											createLabel(_hCard, '', 'anime-card-desc-DtYkVa9G', _sDesc);
+											createMargin(_hNote, 'short', 'other-WUg8SV9z');
+											createLabel(_hNote, '', 'desc-DtYkVa9G', _sDesc);
 										}
 
-										if (_sSites && !_bLimited) {
-											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
-											createDiv(_hCard, '', 'anime-card-sites-DtYkVa9G', (_hChild) => {
-												for (const _sLink of _sSites.split(', ')) {
+										if (_sWebsites && !_bLimited) {
+											createMargin(_hNote, 'embed', 'other-WUg8SV9z');
+											createDiv(_hNote, '', 'websites-DtYkVa9G', (_hChild) => {
+												for (const _sLink of _sWebsites.split(', ')) {
 													/* For a nice display, the protocol is erased and the first letter of the domain is capitalized */
 													let _sTitle = _sLink
 													.replace('https://', '')
@@ -484,107 +451,95 @@ function loadAnimeBoard() {
 										}
 
 										if (_sEpisodesViewed && _sEpisodes && !_bLimited) {
-											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
-											createDiv(_hCard, '', 'anime-card-episodes-y6qHgvQw', (_hChild) => {
+											createMargin(_hNote, 'embed', 'other-WUg8SV9z');
+											createDiv(_hNote, '', 'episodes-y6qHgvQw', (_hChild) => {
 												createDiv(_hChild, '', '', (_hChild) => {
 													/* Because of the peculiar system, the information is not in one line, but several labels */
-													createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes1');
-													createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', _sEpisodesViewed);
-													createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes2');
+													createLabel(_hChild, '', 'other-WUg8SV9z', 'episodes');
+													createLabel(_hChild, '', 'other-WUg8SV9z', _sEpisodesViewed);
+													createLabel(_hChild, '', 'other-WUg8SV9z', 'of');
 
 													if (_sSeasons && parseInt(_sSeasons) > 0) {
-														createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', `${_sEpisodes},`);
-														createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', 'animeCardEpisodes3');
-														createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', _sSeasons);
+														createLabel(_hChild, '', 'other-WUg8SV9z', `${_sEpisodes},`);
+														createLabel(_hChild, '', 'other-WUg8SV9z', 'seasons');
+														createLabel(_hChild, '', 'other-WUg8SV9z', _sSeasons);
 													} else {
-														createLabel(_hChild, '', 'anime-card-other-WUg8SV9z', `${_sEpisodes}`);
+														createLabel(_hChild, '', 'other-WUg8SV9z', `${_sEpisodes}`);
 													}
 												});
-												createMargin(_hChild, 'embed', 'anime-card-other-WUg8SV9z');
+												createMargin(_hChild, 'default', 'other-WUg8SV9z');
 
 												/* Values must be greater than zero, and the episodes viewed cannot be greater than the episodes in the show */
 												if (parseInt(_sEpisodes) > 0 && parseInt(_sEpisodesViewed) > 0 && parseInt(_sEpisodes) >= parseInt(_sEpisodesViewed)) {
 													/* The width of the progress bar is the percentage of all episodes watched */
 													const _nProgress = Math.round((parseInt(_sEpisodesViewed) * 100 / parseInt(_sEpisodes))).toString();
-													createDiv(_hChild, '', 'anime-card-progress-Vdx7xbRM', (_hChild) => {
+													createDiv(_hChild, '', 'progress-Vdx7xbRM', (_hChild) => {
 														_hChild.style.width = `${_nProgress}%`;
 													});
 												}
 											});
 										} else {
 											/* Since the block is a closing block, if it is not, its indentation must be in any case */
-											createMargin(_hCard, 'embed', 'anime-card-other-WUg8SV9z');
+											createMargin(_hNote, 'embed', 'other-WUg8SV9z');
 										}
 
 										if (!_bLimited) {
-											/* Tabindex did not work, so the focus is set by clicking on the card */
-											_hCard.onclick = function (_event) {
-												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-													_hCard.focus();
-												}
+											/* Tabindex did not work, so the focus is set by clicking on the note */
+											_hNote.onclick = function (_event) {
+												_hNote.focus();
 											};
 
-											/* Card movement system */
-											/* When a card is dragged, its identifier is saved in the data, so you can swap cards later */
-											_hCard.ondragstart = function (_event) {
-												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-													_event.dataTransfer.setData('anime-card', _event.target.id.toString());
-													document.getElementById(_event.target.id).focus();
-												}
+											/* Note movement system */
+											/* When a note is dragged, its identifier is saved in the data, so you can swap notes later */
+											_hNote.ondragstart = function (_event) {
+												_event.dataTransfer.setData('note', _event.target.id.toString());
+												document.getElementById(_event.target.id).focus();
 											};
 
-											_hCard.ondrop = function (_event) {
-												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
+											_hNote.ondrop = function (_event) {
 													_event.preventDefault();
 
-													const _jSwitchedOnId = _event.dataTransfer.getData('anime-card').replace('anime-card-', '');
+												const _jSwitchedOnId = _event.dataTransfer.getData('note').replace('note-', '');
 
 													/* Changing positions */
-													getData(false, `animeCardId${_jSwitchedOnId}`, (_jSwitchedAtCard) => {
-														if (_jSwitchedOnId !== _jId) {
-															document.getElementById(`anime-card-${_jId}`).classList.add('on-drop-x4YnDmpC');
+												getData(false, `notedId${_jSwitchedOnId}`, (_jSwitchedAtNote) => {
+													if (_jSwitchedOnId !== _jId) {
+														document.getElementById(`note-${_jId}`).classList.add('on-drop-x4YnDmpC');
 
-															let _jSwitchedAt = _jAnimeCard;
+														let _jSwitchedAt = _jNote;
 
-															_jSwitchedAt.position = document.getElementById(`anime-card-${_jSwitchedOnId}`)
-															.getAttribute('position') || 0;
-															setData(false, `animeCardId${_jId}`, _jSwitchedAt);
+														_jSwitchedAt.position = document.getElementById(`note-${_jSwitchedOnId}`)
+														.getAttribute('position') || 0;
+														setData(false, `noteId${_jId}`, _jSwitchedAt);
 
-															let _jSwitchedOn = _jSwitchedAtCard;
-															_jSwitchedOn.position = _sPosition;
-															setData(false, `animeCardId${_jSwitchedOnId}`, _jSwitchedOn);
+														let _jSwitchedOn = _jSwitchedAtNote;
+														_jSwitchedOn.position = _sPosition;
+														setData(false, `notedId${_jSwitchedOnId}`, _jSwitchedOn);
 
-															setTimeout(_updateAnimeCard, 1000);
+														setTimeout(_updateNotes, 1000);
 														}
 													});
-												}
 											};
 
-											_hCard.ondragover = function (_event) {
-												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-													_event.preventDefault();
-												}
+											_hNote.ondragover = function (_event) {
+												_event.preventDefault();
 											};
 
-											/* Setting the card id for the editing system */
-											_hCard.onfocus = function (_event) {
-												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-													_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/edit.svg')})`;
-													_hAddAnimeButton.setAttribute('value', _event.target.id);
-												}
+											/* Setting the note id for the editing system */
+											_hNote.onfocus = function (_event) {
+												_hAddNoteButton.classList.replace('add-rNC4zfHN', 'edit-Kv4fCGXg');
+												_hAddNoteButton.setAttribute('note-id', _event.target.id);
 											};
 
-											/* Deleting a card id from the editing system */
-											_hCard.onblur = function (_event) {
-												if (_event.target.id.includes('anime-card') || _event.target.className.includes('anime-card')) {
-													_hAddAnimeButton.style.backgroundImage = `url(${getLocalUrl('assets/plus.svg')})`;
+											/* Deleting a note id from the editing system */
+											_hNote.onblur = function (_event) {
+												_hAddNoteButton.classList.replace('edit-Kv4fCGXg', 'add-rNC4zfHN');
 
-													setTimeout(_removeAttribute, 1000);
+												setTimeout(_removeAttribute, 5000);
 
 													function _removeAttribute() {
-														_hAddAnimeButton.removeAttribute('value');
+														_hAddNoteButton.removeAttribute('note-id');
 													}
-												}
 											};
 
 											/* It is easier for me to say in general that it is a system, because there are also comments on its elements, and I do not want to duplicate */
@@ -593,32 +548,32 @@ function loadAnimeBoard() {
 								}
 
 								/* If the sorting was successful and the value of the saved divs matches the database */
-								if (_response.length === _DoneCards.size) {
+								if (_nIds.length === _NotesReady.size) {
 									sendLog('G98yhVDYxDZEc72z', LOG_TYPES.LOG, {
-										divsCard: _DoneCards
+										divsNote: _NotesReady
 									});
 
-									/* Removing fake cards */
-									removeClassElements('anime-load-card-PMb84E8y', 'removed-UEg2H5Ps');
+									/* Removing fake notes */
+									removeClassElements('load-PMb84E8y', 'removed-UEg2H5Ps');
 
-									/* Adding card shortcuts, if any */
-									if (_PageCards.size > 0) {
-										createLabel(_hAnimeCards, '', 'label-SSrq6Djx', 'animeCardOnPage');
+									/* Adding note shortcuts, if any */
+									if (_NotesPage.size > 0) {
+										createLabel(_hNotes, '', 'label-SSrq6Djx', 'notesOnPage');
 
-										for (const _hCard of _PageCards) {
-											if (_hCard) _hAnimeCards.append(_hCard);
+										for (const _hNote of _NotesPage) {
+											if (_hNote) _hNotes.append(_hNote);
 										}
 									}
 
-									createLabel(_hAnimeCards, '', 'label-SSrq6Djx', 'animeCardAll');
+									createLabel(_hNotes, '', 'label-SSrq6Djx', 'notesAll');
 
-									/* Since sorting does not set the order, the cards do not go one after the other, you can get positions 3 and 6, so the for loop will not work */
+									/* Since sorting does not set the order, the notes do not go one after the other, you can get positions 3 and 6, so the for loop will not work */
 									let _nIndex = 0;
-									while (_DoneCards.size > 0) {
-										if (_DoneCards.has(_nIndex.toString())) {
-											const _hDiv = _DoneCards.get(_nIndex.toString());
-											if (_hDiv) _hAnimeCards.append(_hDiv);
-											_DoneCards.delete(_nIndex.toString());
+									while (_NotesReady.size > 0) {
+										if (_NotesReady.has(_nIndex.toString())) {
+											const _hDiv = _NotesReady.get(_nIndex.toString());
+											if (_hDiv) _hNotes.append(_hDiv);
+											_NotesReady.delete(_nIndex.toString());
 										}
 										_nIndex++;
 									}
@@ -626,55 +581,55 @@ function loadAnimeBoard() {
 									if (_nScrollPos) _hBody.scrollTop = _nScrollPos;
 								}
 							} catch (_e) {
-								/* Card removal system for 3 errors at a time */
-								if (_response && _jId) {
-									_response.splice(_response.indexOf(_jId), 1);
+								/* Note removal system for 3 errors at a time */
+								if (_nIds && _jId) {
+									_nIds.splice(_nIds.indexOf(_jId), 1);
 
-									document.getElementById('anime-load-label-F7rZvMz2').style.display = 'inherit';
+									document.getElementById('load-label-F7rZvMz2').style.display = 'inherit';
 
-									/* Changing a fake card into a card with an error */
-									const _hCard = document.getElementById(`anime-load-card-${_jId}`);
-									_hCard.innerHTML = '';
-									_hCard.classList.remove('anime-load-card-PMb84E8y');
-									_hCard.classList.add('anime-load-error-card-PTbkZ3J8');
-									createDiv(_hCard, '', '', (_hChild) => {
+									/* Changing a fake note into a note with an error */
+									const _hNote = document.getElementById(`load-${_jId}`);
+									_hNote.innerHTML = '';
+									_hNote.classList.remove('load-PMb84E8y');
+									_hNote.classList.add('error-PTbkZ3J8');
+									createDiv(_hNote, '', '', (_hChild) => {
 										createLabel(_hChild, '', 'title-pJ2WhhWd', 'errorLoading');
 										createMargin(_hChild, 'short');
-										createLabel(_hChild, '', '', 'animeCard');
+										createLabel(_hChild, '', '', 'note');
 										createLabel(_hChild, '', '', ':');
 										createLabel(_hChild, '', 'id-f8YW3fne', `${_jId}`);
 										createMargin(_hChild, 'embed');
 
 										/* The stack, etc., is specified for details, but different browsers have different calls */
 										let _error = _e.stack || _e.line || _e.lineNumber;
-										createLabel(_hChild, '', 'error-ypPZP2fz', `${_error}`);
+										createLabel(_hChild, '', 'label-ypPZP2fz', `${_error}`);
 										createMargin(_hChild, 'embed');
 
 										/* Div with Buttons */
 										createDiv(_hChild, '', 'buttons-6dt3Ne7p', (_hChild) => {
-											/* Card deletion button */
-											createLabel(_hChild, '', '', 'animeCardDelete', '', (_hChild) => {
+											/* Note deletion button */
+											createLabel(_hChild, '', '', 'delete', '', (_hChild) => {
 												_hChild.onclick = function (_event) {
-													getData(false, 'animeCardIds', (_response) => {
+													getData(false, 'noteIds', (_response) => {
 														_response.splice(_response.indexOf(_jId), 1);
-														setData(false, 'animeCardIds', _response);
-														setData(false, `animeCardId${_jId}`, null);
-														setTimeout(_updateAnimeCard, 1000);
+														setData(false, 'noteIds', _response);
+														setData(false, `noteId${_jId}`, null);
+														setTimeout(_updateNotes, 1000);
 													});
 												};
 											});
 
-											/* Card recreate button */
-											createLabel(_hChild, '', '', 'animeCardReCreate', '', (_hChild) => {
+											/* Note recreate button */
+											createLabel(_hChild, '', '', 'reCreate', '', (_hChild) => {
 												_hChild.onclick = function (_event) {
-													/* In the create card menu, the existing parameters of the broken card are transferred */
-													getData(false, `animeCardId${_jId}`, (_card) => {
-														if (_card) {
-															_card.id = _jId;
-															_card.error = true;
-															/* Update the list of cards by pressing the save button in the menu */
-															_addAnimeCard(_card);
-															setData(false, `animeCardId${_jId}`, null);
+													/* In the create note menu, the existing parameters of the broken note are transferred */
+													getData(false, `noteId${_jId}`, (_note) => {
+														if (_note) {
+															_note.id = _jId;
+															_note.error = true;
+															/* Update the list of notes by pressing the save button in the menu */
+															_controlNote(_note);
+															setData(false, `noteId${_jId}`, null);
 														}
 													});
 												};
@@ -682,7 +637,7 @@ function loadAnimeBoard() {
 										});
 									});
 
-									_continueUpdateAnimeCard();
+									_continueUpdateNotes();
 								}
 
 								sendLog('RAxm3R7HH3cYxj6q', LOG_TYPES.ERR, {RAxm3R7HH3cYxj6q: _e});
@@ -692,5 +647,9 @@ function loadAnimeBoard() {
 				}
 			}
 		});
+
+		/* Notification about missing notes */
+		createLabel(_hNotes, '', 'label-jFU6wwNV', 'notesAll');
+		createLabel(_hNotes, '', 'label-jFU6wwNV', 'missingNotes');
 	}
 }

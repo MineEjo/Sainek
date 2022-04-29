@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2022 MineEjo.
- * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ * This file is part of Sainek-Serials-Keeper <https://github.com/MineEjo/Sainek-Serials-Keeper>.
  *
- * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * Sainek-Serials-Keeper is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * Sainek-Serials-Keeper is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -17,7 +17,7 @@
  */
 
 :root {
-	--body-attach-margin-2HhrRRgq: var(--default-width-zkk4pPs6);
+	--body-attach-margin-2HhrRRgq: calc(var(--default-width-zkk4pPs6) + var(--default-margin-xqv9MGJg) + var(--default-margin-xqv9MGJg));
 	--neutral-bg-color-4PQYryMp: rgba(127, 127, 127, 0.03);
 	--neutral-border-color-QPugTC8F: rgba(127, 127, 127, 0.50);
 	--white-color-3vbK5BDV: #ffffff;
@@ -27,7 +27,7 @@
 	--green-color-VG87xKYq: #4caf50;
 	--yellow-color-hG97B6Zp: #ffc107;
 	--transparent-color-mdyCQUpu: rgba(0, 0, 0, 0);
-	--main-color-rVwK3Nh4: rgba(244, 142, 177, 1);
+	--main-color-rVwK3Nh4: rgba(234, 132, 167, 1);
 	--light-color-t5kEDH3d: #e8eaed;
 	--active-color-ud7RpwQt: rgba(244, 142, 177, 0.50);
 	--dark-color-vBPysD4T: #202125;
@@ -39,6 +39,7 @@
 	--board-footer-height-Tw5x28zL: 50px;
 	--board-header-height-xg3EuWjd: 50px;
 	--board-hidden-width-4YeuT95R: calc(var(--default-input-height-Ej9WvfL3) - var(--default-width-zkk4pPs6));
+	--main-hover-color-rVwK3Nh4: rgba(204, 102, 137, 1);
 	--default-input-height-Ej9WvfL3: 40px;
 	--default-margin-xqv9MGJg: 10px;
 	--embed-margin-xqv9MGJg: 15px;

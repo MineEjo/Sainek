@@ -1,10 +1,10 @@
 {
-	"name": "Sainek - Anime Keeper",
-	"version": "0.1.7",
-	"description": "Keep the anime you've watched, set statuses, ratings and descriptions! Never lose them again.",
+	"name": "Sainek - Serials Keeper",
+	"version": "0.2.7",
+	"description": "Keep the serial you've watched, set statuses, ratings and descriptions! Never lose them again.",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/MineEjo/Sainek-Anime-Keeper.git"
+		"url": "https://github.com/MineEjo/Sainek-Serials-Keeper.git"
 	},
 	"author": "MineEjo",
 	"license": "GPL-3.0",
@@ -56,13 +56,7 @@
 	},
 	"web_accessible_resources": [
 		"assets/icon.png",
-		"assets/left-arrow.svg",
-		"assets/plus.svg",
-		"assets/folder.svg",
-		"assets/menu.svg",
 		"assets/small-down-arrow.svg",
-		"assets/cross.svg",
-		"assets/edit.svg",
 
 		"fonts/fontawesome/FontAwesome.otf",
 		"fonts/fontawesome/fontawesome-webfont.eot",

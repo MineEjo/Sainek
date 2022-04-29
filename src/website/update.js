@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2022 MineEjo.
- * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ * This file is part of Sainek-Serials-Keeper <https://github.com/MineEjo/Sainek-Serials-Keeper>.
  *
- * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * Sainek-Serials-Keeper is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * Sainek-Serials-Keeper is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -53,35 +53,37 @@ function setTheme(_hElement, _nVariation) {
 
 function setAttachBoard(_bState) {
 	if (_bState) {
-		document.body.classList.add('default-anime-keeper-attached-da5aKFrB');
+		document.body.classList.add('default-attached-da5aKFrB');
 		hBoard.classList.add('attached-P6vcTXH4');
 	} else {
-		document.body.classList.remove('default-anime-keeper-attached-da5aKFrB');
+		document.body.classList.remove('default-attached-da5aKFrB');
 		hBoard.classList.remove('attached-P6vcTXH4');
 	}
 }
 
 function updateElements() {
 if (bExtensionEnabled) {
-		removeClassElements(DEFAULT_CLASS);
+	removeClassElements(DEFAULT_CLASS);
 
-		loadPageInfo();
-		loadAnimeStatuses();
+	loadPageInfo();
+	loadStatuses();
 
-		getData(true, 'boardDisable', (_response) => {
-			if (!_response) loadAnimeBoard();
-		});
+	getData(true, 'boardDisable', (_response) => {
+		if (!_response) {
+			loadBoard();
 
-		getData(true, 'debugMode', (_response) => {
-			setDebugMode(_response);
-		});
+			getData(true, 'boardAttached', (_response) => {
+				setAttachBoard(_response);
+			});
+		}
+	});
 
-		getData(true, 'boardAttached', (_response) => {
-			setAttachBoard(_response);
-		});
+	getData(true, 'debugMode', (_response) => {
+		setDebugMode(_response);
+	});
 
-		getData(true, 'extensionTheme', (_response) => {
-			setTheme(false, _response);
-		});
-	}
+	getData(true, 'extensionTheme', (_response) => {
+		setTheme(false, _response);
+	});
+}
 }

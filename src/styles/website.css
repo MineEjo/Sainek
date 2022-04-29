@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2022 MineEjo.
- * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ * This file is part of Sainek-Serials-Keeper <https://github.com/MineEjo/Sainek-Serials-Keeper>.
  *
- * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * Sainek-Serials-Keeper is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * Sainek-Serials-Keeper is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -20,25 +20,21 @@ html {
 	scroll-behavior: smooth;
 	}
 
-body {
-	transition: var(--long-transition-YhN6XrSx);
-	}
-
-.default-anime-keeper-attached-da5aKFrB:is(body) {
+.default-attached-da5aKFrB:is(body) {
 	padding: 0 var(--body-attach-margin-2HhrRRgq) 0 0;
 	}
 
-.default-anime-keeper-attached-da5aKFrB:is(body)::-webkit-scrollbar {
+.default-attached-da5aKFrB:is(body)::-webkit-scrollbar {
 	height: var(--default-margin-xqv9MGJg);
 	width: var(--default-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-attached-da5aKFrB:is(body)::-webkit-scrollbar-track,
-.default-anime-keeper-attached-da5aKFrB:is(body)::-webkit-scrollbar-corner {
+.default-attached-da5aKFrB:is(body)::-webkit-scrollbar-track,
+.default-attached-da5aKFrB:is(body)::-webkit-scrollbar-corner {
 	background-color: var(--neutral-color-TmH5QR3n);
 	}
 
-.default-anime-keeper-attached-da5aKFrB:is(body)::-webkit-scrollbar-thumb {
+.default-attached-da5aKFrB:is(body)::-webkit-scrollbar-thumb {
 	background: var(--main-color-rVwK3Nh4);
 	border-radius: var(--short-margin-xqv9MGJg);
 	}

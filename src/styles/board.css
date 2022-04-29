@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2022 MineEjo.
- * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ * This file is part of Sainek-Serials-Keeper <https://github.com/MineEjo/Sainek-Serials-Keeper>.
  *
- * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * Sainek-Serials-Keeper is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * Sainek-Serials-Keeper is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -38,7 +38,7 @@
 	}
 
 /* Board */
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) {
+.default-4FLZQdEs:is(.board-uVL3djCA) {
 	background: transparent;
 	bottom: 0;
 	display: inline-block;
@@ -53,156 +53,68 @@
 	z-index: var(--default-z-index-D5mB4JpN);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.attached-P6vcTXH4:is(.board-uVL3djCA)) {
-	border-radius: 0 !important;
-	margin: 0 !important;
-	}
-
-/* Header */
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR {
-	border-radius: 0;
-	float: left;
-	height: var(--board-header-height-xg3EuWjd);
-	overflow: hidden !important;
-	padding: 5px;
-	-moz-user-select: none !important;
-	-ms-user-select: none !important;
-	-webkit-user-select: none !important;
-	user-select: none !important;
-	width: 100%;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .left-rRNySA25 {
-	float: left;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .right-W2VyGzAy {
-	float: right;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .button-cH9xa8qr {
-	border: 3px transparent solid;
-	float: left;
-	height: calc(var(--board-header-height-xg3EuWjd) - var(--default-margin-xqv9MGJg));
-	width: calc(var(--board-header-height-xg3EuWjd) - var(--default-margin-xqv9MGJg));
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .button-cH9xa8qr:hover {
-	border: 3px var(--main-color-rVwK3Nh4) solid !important;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .item-aEVEr3Cy {
-	float: left;
-	height: calc(var(--board-header-height-xg3EuWjd) - var(--default-margin-xqv9MGJg));
-	width: calc(var(--board-header-height-xg3EuWjd) - var(--default-margin-xqv9MGJg));
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .left-rRNySA25 .button-cH9xa8qr,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .left-rRNySA25 .item-aEVEr3Cy {
-	margin-right: var(--short-margin-xqv9MGJg);
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .left-rRNySA25 .button-cH9xa8qr:last-child,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .left-rRNySA25 .item-aEVEr3Cy:last-child {
-	margin-right: 0;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .right-W2VyGzAy .button-cH9xa8qr,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .right-W2VyGzAy .item-aEVEr3Cy {
-	margin-left: var(--short-margin-xqv9MGJg);
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .right-W2VyGzAy .button-cH9xa8qr:last-child,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .right-W2VyGzAy .item-aEVEr3Cy:last-child {
-	margin-left: 0;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .title-LRrB3Fxn {
-	font-size: var(--font-size-title-Cbe8XVkd);
-	font-weight: 500;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .desc-p2P54kC8 {
-	font-size: var(--font-size-f5AtJrMk);
-	font-weight: normal;
-	opacity: var(--default-opacity-Q8ePrKd7);
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .content-bXB3As76 {
-	animation: created-3r3p5DpG var(--long-transition-YhN6XrSx) forwards;
-	border-radius: 0;
-	bottom: 0;
-	opacity: 0;
-	overflow-x: hidden;
-	overflow-y: visible;
-	padding: var(--embed-margin-xqv9MGJg);
-	position: absolute;
-	right: 0;
-	top: var(--board-header-height-xg3EuWjd);
-	transition: var(--long-transition-YhN6XrSx);
-	width: var(--default-width-zkk4pPs6);
-	z-index: calc(var(--default-z-index-D5mB4JpN) + 1);
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .content-bXB3As76 label {
-	padding: var(--default-margin-xqv9MGJg) calc(var(--default-margin-xqv9MGJg) + var(--default-margin-xqv9MGJg));
-	width: 100%;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .header-yeJQ9cYR .content-bXB3As76 label:hover {
-	background: var(--neutral-embed-color-4PQYryMp);
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.content-bXB3As76:is(.removed-UEg2H5Ps)) {
-	right: -100% !important;
-	}
-
 /* Body */
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 {
 	background: var(--neutral-embed-color-4PQYryMp) !important;
 	border-radius: 0;
-	bottom: var(--board-footer-height-Tw5x28zL);
+	bottom: 0;
 	left: 0;
+	overflow-y: auto !important;
 	position: absolute;
 	right: 0;
-	top: var(--board-header-height-xg3EuWjd);
+	top: 0;
 	width: 100%;
-	overflow-y: auto !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .label-jFU6wwNV {
+	width: 100%;
+	white-space: pre-wrap !important;
+	word-break: break-word !important;
+	word-wrap: break-word !important;
+	}
+
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .label-jFU6wwNV:first-child {
+	margin-bottom: var(--default-margin-xqv9MGJg);
+	font-size: var(--font-size-title-Cbe8XVkd);
+	}
+
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .label-jFU6wwNV:last-child {
+	opacity: 0.7;
+	}
+
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC {
 	background: var(--transparent-color-mdyCQUpu) !important;
 	height: auto;
-	padding: var(--embed-margin-xqv9MGJg);
+	padding: var(--embed-margin-xqv9MGJg) var(--embed-margin-xqv9MGJg);
 	width: 100%;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .label-SSrq6Djx:is(:not(:last-child)) {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .label-SSrq6Djx:is(:not(:last-child)) {
 	font-size: var(--font-size-title-Cbe8XVkd);
 	margin-bottom: var(--default-margin-xqv9MGJg);
 	width: 100%;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-limited-card-2DysF6H8 {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .error-PTbkZ3J8,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .limited-2DysF6H8 {
 	animation: created-3r3p5DpG var(--long-transition-YhN6XrSx) forwards;
 	min-height: var(--default-input-height-Ej9WvfL3);
 	overflow: hidden;
 	width: 100%;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC #anime-load-label-F7rZvMz2 {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC #load-label-F7rZvMz2 {
 	display: none;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .error-PTbkZ3J8 {
 	padding: var(--embed-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .title-pJ2WhhWd,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .reason-pbUfpG3r {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .error-PTbkZ3J8 .title-pJ2WhhWd,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .error-PTbkZ3J8 .reason-pbUfpG3r {
 	background: var(--transparent-color-mdyCQUpu) !important;
 	font-size: var(--font-size-title-Cbe8XVkd);
 	font-weight: 500;
@@ -212,13 +124,13 @@
 	word-wrap: break-word !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .id-f8YW3fne {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .error-PTbkZ3J8 .id-f8YW3fne {
 	background: var(--transparent-color-mdyCQUpu) !important;
 	color: var(--main-color-rVwK3Nh4) !important;
 	margin-left: var(--short-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8 .error-ypPZP2fz {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .error-PTbkZ3J8 .label-ypPZP2fz {
 	color: var(--red-color-6DYMf3eb) !important;
 	white-space: pre-wrap !important;
 	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
@@ -226,18 +138,18 @@
 	word-wrap: break-word !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-limited-card-2DysF6H8 .buttons-6dt3Ne7p {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .limited-2DysF6H8 .buttons-6dt3Ne7p {
 	margin: 0 var(--embed-margin-xqv9MGJg);
 	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p {
 	display: inline-flex;
 	width: 100%;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p label,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p a {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p label,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p a {
 	background: var(--neutral-embed-color-4PQYryMp);
 	cursor: pointer;
 	display: inline-block !important;
@@ -246,55 +158,55 @@
 	width: 100%;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p label:hover,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p label:focus,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p label:active,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p a:hover,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p a:focus,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p a:active {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p label:hover,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p label:focus,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p label:active,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p a:hover,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p a:focus,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p a:active {
 	background: var(--main-color-rVwK3Nh4);
 	color: var(--white-color-3vbK5BDV) !important;
 	text-decoration: none !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p label:is(:not(:last-child)),
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .buttons-6dt3Ne7p a:is(:not(:last-child)) {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p label:is(:not(:last-child)),
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .buttons-6dt3Ne7p a:is(:not(:last-child)) {
 	margin-right: var(--short-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.anime-load-card-PMb84E8y:is(.removed-UEg2H5Ps)),
-.default-anime-keeper-4FLZQdEs:is(.anime-load-error-card-PTbkZ3J8:is(.removed-UEg2H5Ps)) {
+.default-4FLZQdEs:is(.load-PMb84E8y:is(.removed-UEg2H5Ps)),
+.default-4FLZQdEs:is(.error-PTbkZ3J8:is(.removed-UEg2H5Ps)) {
 	display: none !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y {
 	animation: loading-Ghe8CA3h var(--loading-transition-uX5rj3DP) infinite;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS:not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-limited-card-2DysF6H8:not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y:not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-error-card-PTbkZ3J8:not(:last-child) {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS:not(:last-child),
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .limited-2DysF6H8:not(:last-child),
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y:not(:last-child),
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .error-PTbkZ3J8:not(:last-child) {
 	margin-bottom: var(--default-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS:focus,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS:active {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS:focus,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS:active {
 	-moz-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--neutral-border-color-QPugTC8F) !important;
 	-o-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--neutral-border-color-QPugTC8F) !important;
 	-webkit-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--neutral-border-color-QPugTC8F) !important;
 	box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--neutral-border-color-QPugTC8F) !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS:is(.on-drop-x4YnDmpC) {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS:is(.on-drop-x4YnDmpC) {
 	-moz-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--main-color-rVwK3Nh4) !important;
 	-o-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--main-color-rVwK3Nh4) !important;
 	-webkit-box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--main-color-rVwK3Nh4) !important;
 	box-shadow: inset 0 0 0 var(--short-margin-xqv9MGJg) var(--main-color-rVwK3Nh4) !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-image-2gZc3pYt,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y .anime-load-card-image-GQtx92fM {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .image-2gZc3pYt,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y .image-GQtx92fM {
 	background: var(--neutral-embed-color-4PQYryMp) !important;
 	height: calc(var(--default-width-zkk4pPs6) / 3);
 	margin: 0 var(--embed-margin-xqv9MGJg);
@@ -302,27 +214,27 @@
 	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y .anime-load-card-image-GQtx92fM {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y .image-GQtx92fM {
 	background: var(--neutral-embed-color-4PQYryMp) !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y .anime-load-card-title-3Wgg5PKh,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y .anime-load-card-desc-W3cU2ueU {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y .title-3Wgg5PKh,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y .desc-W3cU2ueU {
 	background: var(--neutral-embed-color-4PQYryMp) !important;
 	height: var(--default-input-height-Ej9WvfL3);
 	margin: 0 var(--embed-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y .anime-load-card-title-3Wgg5PKh {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y .title-3Wgg5PKh {
 	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-load-card-PMb84E8y .anime-load-card-desc-W3cU2ueU {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y .desc-W3cU2ueU {
 	width: calc(50% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-title-A5xU6DER,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-limited-card-2DysF6H8 .anime-card-title-A5xU6DER {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .title-A5xU6DER,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .limited-2DysF6H8 .title-A5xU6DER {
 	background: var(--transparent-color-mdyCQUpu) !important;
 	font-size: var(--font-size-title-Cbe8XVkd);
 	font-weight: 500;
@@ -333,7 +245,7 @@
 	word-wrap: break-word !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-rating-J9RU4MjX {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .rating-J9RU4MjX {
 	background: var(--transparent-color-mdyCQUpu) !important;
 	font-size: var(--font-size-f5AtJrMk);
 	margin: var(--short-margin-xqv9MGJg);
@@ -342,8 +254,8 @@
 	right: var(--embed-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-viewed-status-5cBUD2rC,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-status-5cBUD2rC {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .status-viewed-3mPKGu4U,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .status-5cBUD2rC {
 	color: var(--white-color-3vbK5BDV) !important;
 	font-size: var(--font-size-f5AtJrMk);
 	font-weight: 700;
@@ -352,7 +264,7 @@
 	width: 100%;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-status-5cBUD2rC {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .status-5cBUD2rC {
 	background: var(--black-embed-color-4PQYryMp);
 	position: absolute;
 	right: var(--embed-margin-xqv9MGJg);
@@ -360,23 +272,7 @@
 	width: auto;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-viewed-status-5cBUD2rC:is(.not-watch-juX4pc2a) {
-	background: var(--red-color-6DYMf3eb) !important;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-viewed-status-5cBUD2rC:is(.watching-M6DsAF2K) {
-	background: var(--yellow-color-hG97B6Zp) !important;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-viewed-status-5cBUD2rC:is(.watched-xB5Pq4kZ) {
-	background: var(--green-color-VG87xKYq) !important;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-viewed-status-5cBUD2rC:is(.want-to-watch-ry9yUf3Z) {
-	background: var(--blue-color-TthRYu9u) !important;
-	}
-
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-desc-DtYkVa9G {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .desc-DtYkVa9G {
 	background: var(--transparent-color-mdyCQUpu) !important;
 	font-size: var(--font-size-f5AtJrMk);
 	padding: 0 var(--embed-margin-xqv9MGJg);
@@ -386,150 +282,152 @@
 	word-wrap: break-word !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-sites-DtYkVa9G {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .websites-DtYkVa9G {
 	background: var(--transparent-color-mdyCQUpu) !important;
 	font-size: var(--font-size-f5AtJrMk);
 	padding: 0 var(--embed-margin-xqv9MGJg);
 	width: 100%;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-sites-DtYkVa9G a {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .websites-DtYkVa9G a {
 	background: var(--blue-color-TthRYu9u);
 	color: var(--white-color-3vbK5BDV) !important;
 	padding: var(--short-margin-xqv9MGJg);
 	transition: var(--short-transition-6y29q6Ky);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-sites-DtYkVa9G a:hover {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .websites-DtYkVa9G a:hover {
 	opacity: var(--hover-opacity-Q8ePrKd7) !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-sites-DtYkVa9G a:not(:last-child) {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .websites-DtYkVa9G a:not(:last-child) {
 	margin-right: var(--short-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-rating-J9RU4MjX {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .rating-J9RU4MjX {
 	background: transparent !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-rating-J9RU4MjX .fa-star,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-rating-J9RU4MjX .fa {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .rating-J9RU4MjX .fa-star,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .rating-J9RU4MjX .fa {
 	color: var(--neutral-border-color-QPugTC8F);
 	font-size: var(--font-size-title-Cbe8XVkd);
 	padding: 0 calc(var(--short-margin-xqv9MGJg) / 2);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-rating-J9RU4MjX .fa-star:first-child,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-rating-J9RU4MjX .fa:first-child {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .rating-J9RU4MjX .fa-star:first-child,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .rating-J9RU4MjX .fa:first-child {
 	padding-left: 0 !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-rating-J9RU4MjX .fa-star:last-child,
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-rating-J9RU4MjX .fa:last-child {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .rating-J9RU4MjX .fa-star:last-child,
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .rating-J9RU4MjX .fa:last-child {
 	padding-right: 0 !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-rating-J9RU4MjX .checked-cFXHwS3x {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .rating-J9RU4MjX .checked-cFXHwS3x {
 	color: var(--main-color-rVwK3Nh4) !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-episodes-y6qHgvQw {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .episodes-y6qHgvQw {
 	background: var(--transparent-color-mdyCQUpu) !important;
 	height: auto;
 	width: 100%;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-episodes-y6qHgvQw div:first-child {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .episodes-y6qHgvQw div:first-child {
 	background: var(--transparent-color-mdyCQUpu) !important;
 	border-radius: 0 !important;
 	padding: 0 var(--embed-margin-xqv9MGJg) var(--short-margin-xqv9MGJg) var(--embed-margin-xqv9MGJg);
 	width: 100%;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-episodes-y6qHgvQw div label:is(:not(:last-child)) {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .episodes-y6qHgvQw div label:is(:not(:last-child)) {
 	margin-right: 5px;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #anime-cards-MfRGWNqC .anime-card-PgjFjRUS .anime-card-progress-Vdx7xbRM {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .progress-Vdx7xbRM {
 	background: var(--main-color-rVwK3Nh4) !important;
 	height: var(--short-margin-xqv9MGJg);
 	max-height: var(--short-margin-xqv9MGJg);
 	}
 
-/* Footer */
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .footer-3y53QZt3 {
-	border-radius: 0;
-	bottom: 0;
-	height: var(--board-footer-height-Tw5x28zL);
-	left: 0;
-	overflow: visible;
-	position: absolute;
-	right: 0;
+/* Button !TODO: Add adaptation for 360px screen  */
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .button-cH9xa8qr {
+	background: var(--main-color-rVwK3Nh4);
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+	color: var(--white-color-3vbK5BDV);
+	padding-left: var(--embed-margin-xqv9MGJg);
+	padding-right: var(--embed-margin-xqv9MGJg);
+	position: fixed;
+	right: calc(var(--default-width-zkk4pPs6) + var(--default-margin-xqv9MGJg));
+	width: auto;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .footer-3y53QZt3 .buttons-QaPT76h4 {
-	float: right;
-	margin: var(--short-margin-xqv9MGJg);
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .button-cH9xa8qr:nth-of-type(1) {
+	bottom: calc(var(--embed-margin-xqv9MGJg) + var(--default-margin-xqv9MGJg));
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .footer-3y53QZt3 .buttons-QaPT76h4 .button-cH9xa8qr {
-	border: 3px solid transparent;
-	display: inline-flex;
-	height: calc(var(--board-footer-height-Tw5x28zL) - var(--default-margin-xqv9MGJg));
-	overflow: visible;
-	width: calc(var(--board-footer-height-Tw5x28zL) - var(--default-margin-xqv9MGJg));
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .button-cH9xa8qr:hover {
+	background: var(--main-hover-color-rVwK3Nh4);
+	opacity: 1;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .footer-3y53QZt3 .buttons-QaPT76h4 .button-cH9xa8qr:hover {
-	border: 3px var(--main-color-rVwK3Nh4) solid;
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .edit-Kv4fCGXg:after {
+	content: attr(locale-edit) !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .footer-3y53QZt3 .buttons-QaPT76h4 .button-cH9xa8qr:not(:first-child) {
-	margin-left: var(--short-margin-xqv9MGJg);
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .add-rNC4zfHN:after {
+	content: attr(locale-add) !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.board-uVL3djCA) .footer-3y53QZt3 .buttons-QaPT76h4 .button-cH9xa8qr .content-n5tgZWEy {
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .cancel-kZDX5rD5:after {
+	content: attr(locale-cancel) !important;
+	}
+
+/* Content !TODO: Add adaptation for 360px screen  */
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .content-n5tgZWEy {
 	animation: created-3r3p5DpG var(--long-transition-YhN6XrSx) forwards;
-	border-radius: 0;
-	bottom: var(--board-footer-height-Tw5x28zL);
+	max-height: 60%;
 	opacity: 0;
 	overflow-x: hidden;
 	overflow-y: visible !important;
 	padding: var(--embed-margin-xqv9MGJg);
-	position: absolute;
-	right: 0;
+	position: fixed;
+	right: calc(var(--default-width-zkk4pPs6) + var(--default-margin-xqv9MGJg) + var(--default-margin-xqv9MGJg));
+	top: var(--default-margin-xqv9MGJg);
 	transition: var(--long-transition-YhN6XrSx);
 	width: var(--default-width-zkk4pPs6);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) input:nth-child(2n+1):not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) input:nth-child(2n):not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) input:nth-child(2n),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) .select-MZnDy3Dp:nth-child(2n+1):not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) .select-MZnDy3Dp:nth-child(2n):not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) .select-MZnDy3Dp:nth-child(2n),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) textarea:nth-child(2n+1):not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) textarea:nth-child(2n):not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) textarea:nth-child(2n),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) .select-rating-6VM6t2V5:nth-child(2n+1):not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) .select-rating-6VM6t2V5:nth-child(2n):not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) .select-rating-6VM6t2V5:nth-child(2n) {
+.default-4FLZQdEs:is(.content-n5tgZWEy) input:nth-child(2n+1):not(:last-child),
+.default-4FLZQdEs:is(.content-n5tgZWEy) input:nth-child(2n):not(:last-child),
+.default-4FLZQdEs:is(.content-n5tgZWEy) input:nth-child(2n),
+.default-4FLZQdEs:is(.content-n5tgZWEy) .select-MZnDy3Dp:nth-child(2n+1):not(:last-child),
+.default-4FLZQdEs:is(.content-n5tgZWEy) .select-MZnDy3Dp:nth-child(2n):not(:last-child),
+.default-4FLZQdEs:is(.content-n5tgZWEy) .select-MZnDy3Dp:nth-child(2n),
+.default-4FLZQdEs:is(.content-n5tgZWEy) textarea:nth-child(2n+1):not(:last-child),
+.default-4FLZQdEs:is(.content-n5tgZWEy) textarea:nth-child(2n):not(:last-child),
+.default-4FLZQdEs:is(.content-n5tgZWEy) textarea:nth-child(2n),
+.default-4FLZQdEs:is(.content-n5tgZWEy) .select-rating-6VM6t2V5:nth-child(2n+1):not(:last-child),
+.default-4FLZQdEs:is(.content-n5tgZWEy) .select-rating-6VM6t2V5:nth-child(2n):not(:last-child),
+.default-4FLZQdEs:is(.content-n5tgZWEy) .select-rating-6VM6t2V5:nth-child(2n) {
 	margin-bottom: var(--default-margin-xqv9MGJg);
 	margin-top: var(--short-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) button:nth-child(2n+1):not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) button:nth-child(2n):not(:last-child),
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) button:nth-child(2n) {
+.default-4FLZQdEs:is(.content-n5tgZWEy) button:nth-child(2n+1):not(:last-child),
+.default-4FLZQdEs:is(.content-n5tgZWEy) button:nth-child(2n):not(:last-child),
+.default-4FLZQdEs:is(.content-n5tgZWEy) button:nth-child(2n) {
 	margin-bottom: var(--short-margin-xqv9MGJg);
 	margin-top: var(--short-margin-xqv9MGJg);
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy) textarea {
+.default-4FLZQdEs:is(.content-n5tgZWEy) textarea {
 	height: var(--default-textarea-height-g7Fb3wrd);
 	}
 
-
-.default-anime-keeper-4FLZQdEs:is(.content-n5tgZWEy:is(.removed-UEg2H5Ps)) {
+.default-4FLZQdEs:is(.content-n5tgZWEy:is(.removed-UEg2H5Ps)) {
 	right: -100% !important;
 	}

@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2022 MineEjo.
- * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ * This file is part of Sainek-Serials-Keeper <https://github.com/MineEjo/Sainek-Serials-Keeper>.
  *
- * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * Sainek-Serials-Keeper is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * Sainek-Serials-Keeper is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -29,6 +29,11 @@ getData(true, 'extensionTheme', (_response) => {
 		setTheme(false, _response);
 		_hElement.checked = (_response === 2);
 	}
+});
+
+getData(true, 'boardAttached', (_response) => {
+	const _hElement = document.getElementById('boardAttached');
+	if (_hElement && _response) _hElement.checked = _response;
 });
 
 getData(true, 'boardDisable', (_response) => {
@@ -97,6 +102,10 @@ document.addEventListener('click', _hEvent => {
 		_Functions.set('extensionTheme', (_sId, _sValue) => {
 			setTheme(false, (_sValue) ? 2 : 1);
 			setData(true, _sId, (_sValue) ? 2 : 1);
+		});
+
+		_Functions.set('boardAttached', (_sId, _sValue) => {
+			setData(true, _sId, _sValue);
 		});
 
 		_Functions.set('boardDisable', (_sId, _sValue) => {

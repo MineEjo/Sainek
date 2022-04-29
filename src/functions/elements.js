@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2022 MineEjo.
- * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ * This file is part of Sainek-Serials-Keeper <https://github.com/MineEjo/Sainek-Serials-Keeper>.
  *
- * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * Sainek-Serials-Keeper is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * Sainek-Serials-Keeper is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -141,19 +141,19 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 	if (_sPlaceholder) _hLabel.innerText = getLocale(_sPlaceholder) || _sPlaceholder;
 	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_aOptions) {
-		for (const _aOption of _aOptions) {
+		for (let _nIndex = 0; _nIndex < _aOptions.length; _nIndex++) {
 			const _hLi = document.createElement('li');
 			_hLi.classList.add(DEFAULT_CLASS);
 
-			if (_aOption[0]) _hLi.innerText = getLocale(_aOption[0]);
-			if (_aOption[1]) _hLi.setAttribute('value', _aOption[1]);
+			if (_aOptions[_nIndex][0]) _hLi.innerText = getLocale(_aOptions[_nIndex][0]);
+			if (_aOptions[_nIndex][1]) _hLi.setAttribute('value', _aOptions[_nIndex][1]);
 
 			_hLi.onclick = function () {
 				const _sAttribute = _hChild.getAttribute('disabled');
-				if (_sAttribute !== 'true' && _sAttribute !== _aOption[1]) {
-					_hLabel.innerText = getLocale(_aOption[0]);
+				if (_sAttribute !== 'true' && _sAttribute !== _nIndex.toString()) {
+					_hLabel.innerText = getLocale(_aOptions[_nIndex][0]);
 					setTheme(_hLabel);
-					_hChild.setAttribute('value', _aOption[1]);
+					_hChild.setAttribute('value', _aOptions[_nIndex][1]);
 
 					const _hElements = _hSelect.getElementsByClassName('active-5QkcU5D4');
 					for (const _hElement of _hElements) {
@@ -192,12 +192,17 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 	_hSelect.classList.add(DEFAULT_CLASS);
 
 	_hChild.select = (_sValue) => {
-		const _hLi = _hChild.getElementsByTagName('li')[parseInt(_sValue) - 1];
-		const _hLabel = _hChild.getElementsByTagName('label')[0];
-		_hChild.setAttribute('value', _sValue);
-		_hLabel.innerText = _hLi.innerText;
-		setTheme(_hLabel);
-		_hLi.classList.add(DEFAULT_CLASS, 'active-5QkcU5D4');
+		for (const _hLi of _hChild.getElementsByTagName('li')) {
+			if (_hLi.getAttribute('value') === _sValue) {
+				const _hLabel = _hChild.getElementsByTagName('label')[0];
+				_hChild.setAttribute('value', _sValue);
+				_hLabel.innerText = _hLi.innerText;
+				setTheme(_hLabel);
+				_hLi.classList.add(DEFAULT_CLASS, 'active-5QkcU5D4');
+
+				break;
+			}
+		}
 	}
 
 	return _hChild;

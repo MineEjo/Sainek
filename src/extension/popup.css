@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2022 MineEjo.
- * This file is part of Sainek-Anime-Keeper <https://github.com/MineEjo/Sainek-Anime-Keeper>.
+ * This file is part of Sainek-Serials-Keeper <https://github.com/MineEjo/Sainek-Serials-Keeper>.
  *
- * Sainek-Anime-Keeper is free software: you can redistribute it and/or modify
+ * Sainek-Serials-Keeper is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Sainek-Anime-Keeper is distributed in the hope that it will be useful,
+ * Sainek-Serials-Keeper is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -47,8 +47,8 @@ span {
 	background: transparent;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(label),
-.default-anime-keeper-4FLZQdEs:is(span) {
+.default-4FLZQdEs:is(label),
+.default-4FLZQdEs:is(span) {
 	color: var(--black-color-zzK58DLM);
 	}
 
@@ -63,9 +63,10 @@ span {
 	margin-top: 0;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(.extension-title-special) a {
+.default-4FLZQdEs:is(.extension-title-special) a {
 	background: var(--main-color-rVwK3Nh4);
 	border: none !important;
+	color: var(--white-color-3vbK5BDV) !important;
 	cursor: pointer !important;
 	font-weight: 500;
 	height: var(--set-line-height);
@@ -95,7 +96,7 @@ span {
 	color: var(--white-color-3vbK5BDV) !important;
 	}
 
-.default-anime-keeper-4FLZQdEs:is(a):hover {
+.default-4FLZQdEs:is(a):hover {
 	opacity: var(--hover-opacity-Q8ePrKd7);
 	}
 
