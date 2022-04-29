@@ -148,7 +148,7 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 			if (_aOptions[_nIndex][0]) _hLi.innerText = getLocale(_aOptions[_nIndex][0]);
 			if (_aOptions[_nIndex][1]) _hLi.setAttribute('value', _aOptions[_nIndex][1]);
 
-			_hLi.onclick = function () {
+			_hLi.onclick = () => {
 				const _sAttribute = _hChild.getAttribute('disabled');
 				if (_sAttribute !== 'true' && _sAttribute !== _nIndex.toString()) {
 					_hLabel.innerText = getLocale(_aOptions[_nIndex][0]);
@@ -223,7 +223,7 @@ function createSelectRating(_hParent, _sId, _sClass, _fFunction) {
 		_hSpan.classList.add('fa', 'fa-star');
 		_hChild.append(_hSpan);
 
-		_hSpan.onclick = function () {
+		_hSpan.onclick = () => {
 			if (!_hChild.getAttribute('disabled') && !_hChild.classList.contains('disabled-cY7rmmH3')) {
 				_hChild.setAttribute('value', _nStarts.toString());
 
@@ -276,6 +276,12 @@ function createButton(_hParent, _sId, _sClass, _sText, _fFunction) {
 	return _hChild;
 }
 
+const MARGIN = {
+	SHORT: 'SHORT',
+	EMBED: 'EMBED',
+	DEFAULT: 'DEFAULT'
+}
+
 function createMargin(_hParent, _nType, _sClass, _fFunction) {
 	const _hChild = document.createElement('div');
 
@@ -283,10 +289,10 @@ function createMargin(_hParent, _nType, _sClass, _fFunction) {
 	_hChild.classList.add('margin-eu7ycpXr');
 
 	switch (_nType) {
-		case 'short':
+		case 'SHORT':
 			_hChild.style.paddingTop = 'var(--short-margin-xqv9MGJg)'
 			break;
-		case 'embed':
+		case 'EMBED':
 			_hChild.style.paddingTop = 'var(--embed-margin-xqv9MGJg)'
 			break;
 		default:

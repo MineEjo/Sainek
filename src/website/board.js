@@ -32,7 +32,7 @@ function loadBoard() {
 		_hChild.setAttribute('locale-add', getLocale('add'));
 		_hChild.setAttribute('locale-cancel', getLocale('cancel'));
 
-		_hChild.onclick = function (_event) {
+		_hChild.onclick = (_event) => {
 			if (_hAddNoteButton.classList.contains('cancel-kZDX5rD5')) {
 				removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
 				_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
@@ -93,7 +93,7 @@ function loadBoard() {
 			createInput(_hChild, 'episodes-viewed-jWKxUqGL', '', 'zero', (_hChild) => {
 				_hChild.setAttribute('type', 'number');
 
-				_hChild.onkeyup = function () {
+				_hChild.onkeyup = () => {
 					this.value = this.value.substring(0, 4);
 				};
 
@@ -110,7 +110,7 @@ function loadBoard() {
 			});
 			createInput(_hChild, 'episodes-ZpfNGnBG', '', 'zero', (_hChild) => {
 				_hChild.setAttribute('type', 'number');
-				_hChild.onkeyup = function () {
+				_hChild.onkeyup = () => {
 					this.value = this.value.substring(0, 4);
 				};
 				_hChild.setAttribute('min', '0');
@@ -132,7 +132,7 @@ function loadBoard() {
 		createLabel(_hContent, '', '', 'seasons', '');
 		createInput(_hContent, 'seasons-AcTuxFRH', '', 'zero', (_hChild) => {
 			_hChild.setAttribute('type', 'number');
-			_hChild.onkeyup = function () {
+			_hChild.onkeyup = () => {
 				this.value = this.value.substring(0, 4);
 			};
 			_hChild.setAttribute('min', '0');
@@ -173,7 +173,7 @@ function loadBoard() {
 		if (_jNote?.rating) _hRating.select(_jNote?.rating);
 
 		createButton(_hContent, '', 'save-Hj3Cfy9A', 'save', (_hChild) => {
-			_hChild.onclick = function () {
+			_hChild.onclick = () => {
 				const _sImage = document.getElementById('image-nZsR8KNQ').value;
 				const _sTitles = document.getElementById('titles-NxMNE4ex').value;
 				if (!_sTitles) return alert(getLocale('requiredTitles'));
@@ -230,7 +230,7 @@ function loadBoard() {
 		const _bIsError = _jNote?.error || false;
 		if (_jNote?.id && !_bIsError) {
 			createButton(_hContent, '', 'delete-88jPHdRH', 'delete', (_hChild) => {
-				_hChild.onclick = function () {
+				_hChild.onclick = () => {
 					getData(false, 'noteIds', (_response) => {
 						const _aNoteIds = _response || [];
 						/* Note deleting */
@@ -279,13 +279,13 @@ function loadBoard() {
 
 						if (!document.getElementById(`load-${_jId}`)) {
 							createDiv(_hNotes, `load-${_jId}`, 'load-PMb84E8y', (_hNote) => {
-								createMargin(_hNote, 'embed');
+								createMargin(_hNote, MARGIN.EMBED);
 								createDiv(_hNote, '', 'image-GQtx92fM');
-								createMargin(_hNote, 'embed');
+								createMargin(_hNote, MARGIN.EMBED);
 								createDiv(_hNote, '', 'title-3Wgg5PKh');
-								createMargin(_hNote, 'embed');
+								createMargin(_hNote, MARGIN.EMBED);
 								createDiv(_hNote, '', 'desc-W3cU2ueU');
-								createMargin(_hNote, 'embed');
+								createMargin(_hNote, MARGIN.EMBED);
 							});
 						}
 
@@ -354,8 +354,8 @@ function loadBoard() {
 											_hNote.classList.add('limited-2DysF6H8');
 										}
 
-										sendLog('ggs4xgWMfbZYBpfK', LOG_TYPES.LOG, {ggs4xgWMfbZYBpfK: _nIds});
-										sendLog('Uj46Tcr3xr4dN9L7', LOG_TYPES.LOG, {note: {
+										sendLog('ggs4xgWMfbZYBpfK', LOG.LOG, {ggs4xgWMfbZYBpfK: _nIds});
+										sendLog('Uj46Tcr3xr4dN9L7', LOG.LOG, {note: {
 												id: _jId,
 												title: _sTitles,
 												image: _sImage,
@@ -383,12 +383,12 @@ function loadBoard() {
 										}
 
 										if (_sImage && !_bLimited) {
-											createMargin(_hNote, 'embed', 'other-WUg8SV9z');
+											createMargin(_hNote, MARGIN.EMBED, 'other-WUg8SV9z');
 											createImg(_hNote, '', 'image-2gZc3pYt', _sImage, 'errorLoading');
 										}
 
 										if (_sTitles) {
-											createMargin(_hNote, 'embed', 'other-WUg8SV9z');
+											createMargin(_hNote, MARGIN.EMBED, 'other-WUg8SV9z');
 											createLabel(_hNote, '', 'title-A5xU6DER', `${
 												_sTitles.toString().split(', ')[0]
 											}`, '', (_hChild) => {
@@ -398,7 +398,7 @@ function loadBoard() {
 
 										/* Creating shortcuts to quickly navigate to elements */
 										if (_bLimited) {
-											createMargin(_hNote, 'short', 'other-WUg8SV9z');
+											createMargin(_hNote, MARGIN.SHORT, 'other-WUg8SV9z');
 											createDiv(_hNote, '', 'buttons-6dt3Ne7p', (_hChild) => {
 												createLink(_hChild, '', '', 'goTo', `#${_sPageTitleId}`);
 												createLink(_hChild, '', '', 'moreInfo', `#note-${_jId}`);
@@ -423,12 +423,12 @@ function loadBoard() {
 										}
 
 										if (_sDesc && !_bLimited) {
-											createMargin(_hNote, 'short', 'other-WUg8SV9z');
+											createMargin(_hNote, MARGIN.SHORT, 'other-WUg8SV9z');
 											createLabel(_hNote, '', 'desc-DtYkVa9G', _sDesc);
 										}
 
 										if (_sWebsites && !_bLimited) {
-											createMargin(_hNote, 'embed', 'other-WUg8SV9z');
+											createMargin(_hNote, MARGIN.EMBED, 'other-WUg8SV9z');
 											createDiv(_hNote, '', 'websites-DtYkVa9G', (_hChild) => {
 												for (const _sLink of _sWebsites.split(', ')) {
 													/* For a nice display, the protocol is erased and the first letter of the domain is capitalized */
@@ -451,7 +451,7 @@ function loadBoard() {
 										}
 
 										if (_sEpisodesViewed && _sEpisodes && !_bLimited) {
-											createMargin(_hNote, 'embed', 'other-WUg8SV9z');
+											createMargin(_hNote, MARGIN.EMBED, 'other-WUg8SV9z');
 											createDiv(_hNote, '', 'episodes-y6qHgvQw', (_hChild) => {
 												createDiv(_hChild, '', '', (_hChild) => {
 													/* Because of the peculiar system, the information is not in one line, but several labels */
@@ -467,7 +467,7 @@ function loadBoard() {
 														createLabel(_hChild, '', 'other-WUg8SV9z', `${_sEpisodes}`);
 													}
 												});
-												createMargin(_hChild, 'default', 'other-WUg8SV9z');
+												createMargin(_hChild, MARGIN.DEFAULT, 'other-WUg8SV9z');
 
 												/* Values must be greater than zero, and the episodes viewed cannot be greater than the episodes in the show */
 												if (parseInt(_sEpisodes) > 0 && parseInt(_sEpisodesViewed) > 0 && parseInt(_sEpisodes) >= parseInt(_sEpisodesViewed)) {
@@ -480,23 +480,23 @@ function loadBoard() {
 											});
 										} else {
 											/* Since the block is a closing block, if it is not, its indentation must be in any case */
-											createMargin(_hNote, 'embed', 'other-WUg8SV9z');
+											createMargin(_hNote, MARGIN.EMBED, 'other-WUg8SV9z');
 										}
 
 										if (!_bLimited) {
 											/* Tabindex did not work, so the focus is set by clicking on the note */
-											_hNote.onclick = function (_event) {
+											_hNote.onclick = (_event) => {
 												_hNote.focus();
 											};
 
 											/* Note movement system */
 											/* When a note is dragged, its identifier is saved in the data, so you can swap notes later */
-											_hNote.ondragstart = function (_event) {
+											_hNote.ondragstart = (_event) => {
 												_event.dataTransfer.setData('note', _event.target.id.toString());
 												document.getElementById(_event.target.id).focus();
 											};
 
-											_hNote.ondrop = function (_event) {
+											_hNote.ondrop = (_event) => {
 												_event.preventDefault();
 
 												const _jSwitchedOnId = _event.dataTransfer.getData('note').replace('note-', '');
@@ -521,18 +521,18 @@ function loadBoard() {
 													});
 											};
 
-											_hNote.ondragover = function (_event) {
+											_hNote.ondragover = (_event) => {
 												_event.preventDefault();
 											};
 
 											/* Setting the note id for the editing system */
-											_hNote.onfocus = function (_event) {
+											_hNote.onfocus = (_event) => {
 												_hAddNoteButton.classList.replace('add-rNC4zfHN', 'edit-Kv4fCGXg');
 												_hAddNoteButton.setAttribute('note-id', _event.target.id);
 											};
 
 											/* Deleting a note id from the editing system */
-											_hNote.onblur = function (_event) {
+											_hNote.onblur = (_event) => {
 												_hAddNoteButton.classList.replace('edit-Kv4fCGXg', 'add-rNC4zfHN');
 
 												setTimeout(_removeAttribute, 5000);
@@ -548,7 +548,7 @@ function loadBoard() {
 								}
 
 								if (_nIds.length === _NotesReady.size) {
-									sendLog('G98yhVDYxDZEc72z', LOG_TYPES.LOG, {
+									sendLog('G98yhVDYxDZEc72z', LOG.LOG, {
 										divsNote: _NotesReady
 									});
 
@@ -589,22 +589,22 @@ function loadBoard() {
 									_hNote.classList.replace('load-PMb84E8y', 'error-PTbkZ3J8');
 									createDiv(_hNote, '', '', (_hChild) => {
 										createLabel(_hChild, '', 'title-pJ2WhhWd', 'errorLoading');
-										createMargin(_hChild, 'short');
+										createMargin(_hChild, MARGIN.SHORT);
 										createLabel(_hChild, '', '', 'note');
 										createLabel(_hChild, '', '', ':');
 										createLabel(_hChild, '', 'id-f8YW3fne', `${_jId}`);
-										createMargin(_hChild, 'embed');
+										createMargin(_hChild, MARGIN.EMBED);
 
 										/* The stack, etc., is specified for details, but different browsers have different calls */
 										let _error = _e.stack || _e.line || _e.lineNumber;
 										createLabel(_hChild, '', 'label-ypPZP2fz', `${_error}`);
-										createMargin(_hChild, 'embed');
+										createMargin(_hChild, MARGIN.EMBED);
 
 										/* Div with Buttons */
 										createDiv(_hChild, '', 'buttons-6dt3Ne7p', (_hChild) => {
 											/* Note deletion button */
 											createLabel(_hChild, '', '', 'delete', '', (_hChild) => {
-												_hChild.onclick = function (_event) {
+												_hChild.onclick = (_event) => {
 													getData(false, 'noteIds', (_response) => {
 														_response.splice(_response.indexOf(_jId), 1);
 														setData(false, 'noteIds', _response);
@@ -619,7 +619,7 @@ function loadBoard() {
 
 												if (_note) {
 													createLabel(_hChild, '', '', 'reCreate', '', (_hChild) => {
-														_hChild.onclick = function (_event) {
+														_hChild.onclick = (_event) => {
 															_note.id = _jId;
 															_note.error = true;
 															/* Update the list of notes by pressing the save button in the menu */
@@ -636,7 +636,7 @@ function loadBoard() {
 									_continueUpdateNotes();
 								}
 
-								sendLog('RAxm3R7HH3cYxj6q', LOG_TYPES.ERR, {RAxm3R7HH3cYxj6q: _e});
+								sendLog('RAxm3R7HH3cYxj6q', LOG.ERR, {RAxm3R7HH3cYxj6q: _e});
 							} finally {
 								if (_nIds.length <= _nNotesCount) {
 									/* Removing fake notes */

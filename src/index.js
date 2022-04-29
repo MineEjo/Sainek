@@ -36,7 +36,7 @@ function updateBrowser() {
 		jBrowser = browser || chrome;
 	} catch (_e) {
 		jBrowser = chrome;
-		if (!jBrowser) sendLog('E77yp5MeRjT2qQTG', LOG_TYPES.ERR, {E77yp5MeRjT2qQTG: _e});
+		if (!jBrowser) sendLog('E77yp5MeRjT2qQTG', LOG.ERR, {E77yp5MeRjT2qQTG: _e});
 	}
 }
 
@@ -52,7 +52,7 @@ function updateEnable() {
 			}
 		})
 	} catch (_e) {
-		sendLog('N22KhK6A8XqQg7tz', LOG_TYPES.ERR, {N22KhK6A8XqQg7tz: _e});
+		sendLog('N22KhK6A8XqQg7tz', LOG.ERR, {N22KhK6A8XqQg7tz: _e});
 	}
 }
 
@@ -74,7 +74,7 @@ function setData(_bLocal, _sId, _sValue, _fFunction) {
 			}
 		});
 	} catch (_e) {
-		sendLog('a922GPKTcNuw87wn', LOG_TYPES.ERR, {a922GPKTcNuw87wn: _e});
+		sendLog('a922GPKTcNuw87wn', LOG.ERR, {a922GPKTcNuw87wn: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -94,7 +94,7 @@ function getData(_bLocal, _sId, _fFunction) {
 			}
 		});
 	} catch (_e) {
-		sendLog('BUZPcn3XnLj8aDrD', LOG_TYPES.ERR, {BUZPcn3XnLj8aDrD: _e});
+		sendLog('BUZPcn3XnLj8aDrD', LOG.ERR, {BUZPcn3XnLj8aDrD: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -103,7 +103,7 @@ function getLocalUrl(_sUrl) {
 	try {
 		return (_sUrl) ? jBrowser?.extension?.getURL(_sUrl) : undefined;
 	} catch (_e) {
-		sendLog('eLq6MAy44bXkXD9T', LOG_TYPES.ERR, {eLq6MAy44bXkXD9T: _e});
+		sendLog('eLq6MAy44bXkXD9T', LOG.ERR, {eLq6MAy44bXkXD9T: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -112,7 +112,7 @@ function getLocale(key) {
 	try {
 		return (key) ? (eval(`BOARD_${USER_LANG.toUpperCase()}`))[key] : undefined;
 	} catch (_e) {
-		sendLog('g5EtG3F98MG6zquX', LOG_TYPES.ERR, {g5EtG3F98MG6zquX: _e});
+		sendLog('g5EtG3F98MG6zquX', LOG.ERR, {g5EtG3F98MG6zquX: _e});
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -121,9 +121,9 @@ function setDebugMode(_bState) {
 	if (_bState) bDebugMode = _bState;
 }
 
-const LOG_TYPES = {
-	LOG: 'log',
-	ERR: 'error'
+const LOG = {
+	LOG: 'LOG',
+	ERR: 'ERR'
 }
 
 function sendLog(_sId, _nType, _sLog) {
