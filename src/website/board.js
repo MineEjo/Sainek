@@ -497,13 +497,13 @@ function loadBoard() {
 											};
 
 											_hNote.ondrop = function (_event) {
-													_event.preventDefault();
+												_event.preventDefault();
 
 												const _jSwitchedOnId = _event.dataTransfer.getData('note').replace('note-', '');
 
-													/* Changing positions */
-												getData(false, `notedId${_jSwitchedOnId}`, (_jSwitchedAtNote) => {
-													if (_jSwitchedOnId !== _jId) {
+												/* Changing positions */
+												getData(false, `noteId${_jSwitchedOnId}`, (_jSwitchedAtNote) => {
+													if (_jSwitchedAtNote && _jSwitchedOnId !== _jId) {
 														document.getElementById(`note-${_jId}`).classList.add('on-drop-x4YnDmpC');
 
 														let _jSwitchedAt = _jNote;
