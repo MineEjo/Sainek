@@ -62,28 +62,28 @@ function setAttachBoard(_bState) {
 }
 
 function updateElements() {
-if (bExtensionEnabled) {
-	removeClassElements(DEFAULT_CLASS);
+	if (bExtensionEnabled) {
+		removeClassElements(DEFAULT_CLASS);
 
-	loadPageInfo();
-	loadStatuses();
+		loadPageInfo();
+		loadStatuses();
 
-	getData(true, 'boardDisable', (_response) => {
-		if (!_response) {
-			loadBoard();
+		getData(true, 'boardDisable', (_response) => {
+			if (!_response) {
+				loadBoard();
 
-			getData(true, 'boardAttached', (_response) => {
-				setAttachBoard(_response);
-			});
-		}
-	});
+				getData(true, 'boardAttached', (_response) => {
+					setAttachBoard(_response);
+				});
+			}
+		});
 
-	getData(true, 'debugMode', (_response) => {
-		setDebugMode(_response);
-	});
+		getData(true, 'debugMode', (_response) => {
+			setDebugMode(_response);
+		});
 
-	getData(true, 'extensionTheme', (_response) => {
-		setTheme(false, _response);
-	});
-}
+		getData(true, 'extensionTheme', (_response) => {
+			setTheme(false, _response);
+		});
+	}
 }
