@@ -355,10 +355,11 @@
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .button-cH9xa8qr {
 	background: var(--main-color-rVwK3Nh4);
 	border-bottom-right-radius: 0;
+	height: var(--default-input-height-Ej9WvfL3);
 	border-top-right-radius: 0;
 	color: var(--white-color-3vbK5BDV);
-	padding-left: var(--embed-margin-xqv9MGJg);
-	padding-right: var(--embed-margin-xqv9MGJg);
+	padding-left: var(--default-input-height-Ej9WvfL3);
+	padding-right: var(--default-input-height-Ej9WvfL3);
 	position: fixed;
 	right: calc(var(--default-width-zkk4pPs6) + var(--default-margin-xqv9MGJg));
 	width: auto;
