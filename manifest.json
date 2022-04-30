@@ -45,7 +45,8 @@
 				"src/styles/variables.css",
 				"src/styles/status.css",
 				"src/styles/board.css",
-				"src/styles/default.css"
+				"src/styles/default.css",
+				"src/styles/adaptive.css"
 			],
 			"run_at": "document_end"
 		}

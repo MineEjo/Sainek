@@ -23,18 +23,3 @@ html {
 .default-attached-da5aKFrB:is(body) {
 	padding: 0 var(--body-attach-margin-2HhrRRgq) 0 0;
 	}
-
-.default-attached-da5aKFrB:is(body)::-webkit-scrollbar {
-	height: var(--default-margin-xqv9MGJg);
-	width: var(--default-margin-xqv9MGJg);
-	}
-
-.default-attached-da5aKFrB:is(body)::-webkit-scrollbar-track,
-.default-attached-da5aKFrB:is(body)::-webkit-scrollbar-corner {
-	background-color: var(--neutral-color-TmH5QR3n);
-	}
-
-.default-attached-da5aKFrB:is(body)::-webkit-scrollbar-thumb {
-	background: var(--main-color-rVwK3Nh4);
-	border-radius: var(--short-margin-xqv9MGJg);
-	}

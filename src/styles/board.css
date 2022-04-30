@@ -343,7 +343,7 @@
 	}
 
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .episodes-y6qHgvQw div label:is(:not(:last-child)) {
-	margin-right: 5px;
+	margin-right: var(--short-margin-xqv9MGJg);
 	}
 
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .progress-Vdx7xbRM {
@@ -352,7 +352,6 @@
 	max-height: var(--short-margin-xqv9MGJg);
 	}
 
-/* Button !TODO: Add adaptation for 360px screen  */
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .button-cH9xa8qr {
 	background: var(--main-color-rVwK3Nh4);
 	border-bottom-right-radius: 0;
@@ -382,11 +381,14 @@
 	content: attr(locale-add) !important;
 	}
 
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .cancel-kZDX5rD5 {
+	background: var(--red-color-6DYMf3eb) !important;
+	}
+
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .cancel-kZDX5rD5:after {
 	content: attr(locale-cancel) !important;
 	}
 
-/* Content !TODO: Add adaptation for 360px screen  */
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .content-n5tgZWEy {
 	animation: created-3r3p5DpG var(--long-transition-YhN6XrSx) forwards;
 	max-height: 60%;
