@@ -20,16 +20,16 @@
 
 	@media screen and (min-width: 1920px) {
 		:root {
-			--default-margin-xqv9MGJg: 0.5vw;
-			--embed-margin-xqv9MGJg: 0.7vw;
-			--short-margin-xqv9MGJg: 0.3vw;
+			--default-margin-xqv9MGJg: 0.55vw;
+			--embed-margin-xqv9MGJg: 0.9vw;
+			--short-margin-xqv9MGJg: 0.29vw;
 
-			--default-width-zkk4pPs6: 21vw;
+			--default-width-zkk4pPs6: 20.75vw;
 			--default-textarea-height-g7Fb3wrd: 20vh;
 			--default-input-height-Ej9WvfL3: 4.5vh;
 
-			--font-size-f5AtJrMk: 1vw;
-			--font-size-title-Cbe8XVkd: 1.15vw;
+			--font-size-f5AtJrMk: 0.92vw;
+			--font-size-title-Cbe8XVkd: 1.04vw;
 			}
 		}
 
