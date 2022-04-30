@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with JJkBot.  If not, see <http://www.gnu.org/licenses/>.
+ * along with  Sainek-Serials-Keeper.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /* Moved out, for changes in other scripts */
