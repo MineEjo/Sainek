@@ -352,6 +352,7 @@
 	max-height: var(--short-margin-xqv9MGJg);
 	}
 
+/* Buttons */
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .button-cH9xa8qr {
 	background: var(--main-color-rVwK3Nh4);
 	border-bottom-right-radius: 0;
@@ -390,6 +391,7 @@
 	content: attr(locale-cancel) !important;
 	}
 
+/* Other content */
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .content-n5tgZWEy {
 	animation: created-3r3p5DpG var(--long-transition-YhN6XrSx) forwards;
 	max-height: 60%;
