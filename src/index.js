@@ -21,8 +21,8 @@ const USER_LANG = (navigator.language || navigator.userLanguage).slice(0, 2);
 const DEFAULT_CLASS = 'default-4FLZQdEs';
 const SHORTCUT_CLASS = 'shortcut-keeper-V7J89asy';
 const LANG_CODES = new Map();
-LANG_CODES.set('ru', 'Аниме');
-LANG_CODES.set('en', 'Anime');
+LANG_CODES.set('ru', 'аниме');
+LANG_CODES.set('en', 'anime');
 
 let bDebugMode = false;
 let bExtensionEnabled = false;
@@ -43,10 +43,16 @@ function updateBrowser() {
 function updateEnable() {
 	try {
 		getData(false, 'blackList', (_response) => {
+			const keyword = LANG_CODES.get(document.documentElement.lang);
+
 			if (_response && _response.includes(document.URL)) {
 				bExtensionEnabled = false;
 			}
-			else if (window.find(LANG_CODES.get(document.documentElement.lang))) {
+			else if (
+				document.body.innerText.indexOf(keyword) > -1 ||
+				document.head.innerText.indexOf(keyword) > -1 ||
+				window.location.href.includes('en')
+			) {
 				bExtensionEnabled = true;
 				updateElements();
 			}
