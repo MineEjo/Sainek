@@ -260,7 +260,7 @@ function loadBoard() {
 		const _NotesPage = new Set();
 
 		getData(false, 'noteIds', (_nIds) => {
-			if (_nIds) {
+			if (_nIds.length > 0) {
 				/* Removing the notification about missing notes */
 				removeClassElements('label-jFU6wwNV');
 
