@@ -45,7 +45,10 @@ function updateEnable() {
 		getData(false, 'blackList', (_response) => {
 			const keyword = LANG_CODES.get(document.documentElement.lang);
 
-			if (_response && _response.includes(document.URL)) {
+			/* Checking if the domain or link of the site is blacklisted */
+			if (_response && (_response.includes(document.location.href) ||
+				JSON.stringify(_response).includes(`${document.location.protocol}//${document.location.hostname}/\\n`)
+			)) {
 				bExtensionEnabled = false;
 			}
 			else if (document.body.innerText.indexOf(keyword) > -1 || window.location.href.includes('en')) {
