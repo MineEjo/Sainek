@@ -48,11 +48,7 @@ function updateEnable() {
 			if (_response && _response.includes(document.URL)) {
 				bExtensionEnabled = false;
 			}
-			else if (
-				document.body.innerText.indexOf(keyword) > -1 ||
-				document.head.innerText.indexOf(keyword) > -1 ||
-				window.location.href.includes('en')
-			) {
+			else if (document.body.innerText.indexOf(keyword) > -1 || window.location.href.includes('en')) {
 				bExtensionEnabled = true;
 				updateElements();
 			}
