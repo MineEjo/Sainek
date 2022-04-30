@@ -128,6 +128,20 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 	_hChild.tabIndex = 1;
 	_hChild.setAttribute('value', '0');
 
+	let _bFocused = false;
+	_hChild.onclick = () => {
+		if (_bFocused) {
+			_hChild.blur();
+			return _bFocused = false;
+		}
+
+		_bFocused = true;
+	}
+
+	_hChild.onblur = () => {
+		_bFocused = false;
+	}
+
 	const _hLabel = document.createElement('label');
 	_hLabel.style.color = 'var(--neutral-color-TmH5QR3n)';
 	_hChild.append(_hLabel);
@@ -162,6 +176,7 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 
 					_hLi.classList.add(DEFAULT_CLASS, 'active-5QkcU5D4');
 					_hParent.focus();
+					_bFocused = false;
 				} else {
 					_hLi.classList.add('disabled-cY7rmmH3');
 				}
