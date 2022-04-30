@@ -54,14 +54,41 @@
 
 	/* Layer position */
 	--default-z-index-D5mB4JpN: 100000;
-
 	/* Animations */
 	--short-transition-6y29q6Ky: 0.1s ease;
 	--medium-transition-B7hXaQNK: 0.25s ease;
 	--long-transition-YhN6XrSx: 0.5s ease;
 	--loading-transition-uX5rj3DP: 1.2s ease;
-
 	/* Opacity */
 	--default-opacity-Q8ePrKd7: 0.9;
 	--hover-opacity-Q8ePrKd7: 0.8;
 	}
+
+/* The value of rem, takes the size of the font from the html tag. Some sites put a small value and add several times the value. The problem is that the extension must work the same on all sites and their methods it should not take. */
+html[style*='font-size: 1px'] {--font-size-f5AtJrMk: 1.062rem;--font-size-title-Cbe8XVkd: 1.187rem;}
+
+html[style*='font-size: 2px'] {--font-size-f5AtJrMk: 1.125rem;--font-size-title-Cbe8XVkd: 1.250rem;}
+
+html[style*='font-size: 3px'] {--font-size-f5AtJrMk: 1.187rem;--font-size-title-Cbe8XVkd: 1.312rem;}
+
+html[style*='font-size: 4px'] {--font-size-f5AtJrMk: 1.25rem;--font-size-title-Cbe8XVkd: 1.375rem;}
+
+html[style*='font-size: 5px'] {--font-size-f5AtJrMk: 1.312rem;--font-size-title-Cbe8XVkd: 1.437rem;}
+
+html[style*='font-size: 6px'] {--font-size-f5AtJrMk: 1.375rem;--font-size-title-Cbe8XVkd: 1.500rem;}
+
+html[style*='font-size: 7px'] {--font-size-f5AtJrMk: 1.437rem;--font-size-title-Cbe8XVkd: 1.562rem;}
+
+html[style*='font-size: 8px'] {--font-size-f5AtJrMk: 1.5rem;--font-size-title-Cbe8XVkd: 1.625rem;}
+
+html[style*='font-size: 9px'] {--font-size-f5AtJrMk: 1.562rem;--font-size-title-Cbe8XVkd: 1.687rem;}
+
+html[style*='font-size: 10px'] {--font-size-f5AtJrMk: 1.625rem;--font-size-title-Cbe8XVkd: 1.75rem;}
+
+html[style*='font-size: 11px'] {--font-size-f5AtJrMk: 1.687rem;--font-size-title-Cbe8XVkd: 1.812rem;}
+
+html[style*='font-size: 12px'] {--font-size-f5AtJrMk: 1.75rem;--font-size-title-Cbe8XVkd: 1.875rem;}
+
+html[style*='font-size: 13px'] {--font-size-f5AtJrMk: 1.812rem;--font-size-title-Cbe8XVkd: 1.937rem;}
+
+html[style*='font-size: 14px'] {--font-size-f5AtJrMk: 1.875rem;--font-size-title-Cbe8XVkd: 2rem;}
