@@ -424,7 +424,11 @@ function loadBoard() {
 
 										if (_sDesc && !_bLimited) {
 											createMargin(_hNote, CSS.MARGIN.SHORT, 'other-WUg8SV9z');
-											createLabel(_hNote, '', 'desc-DtYkVa9G', _sDesc);
+											createDiv(_hNote, '', 'desc-DtYkVa9G', (_hChild) => {
+												createLabel(_hChild, '', 'text-UqaNp8Pk', _sDesc);
+												/* For customization and smooth animation, do not use the CSS property 'white-space: nowrap' */
+												createLabel(_hChild, '', 'triplet-qk5FvLnk', '...')
+											})
 										}
 
 										if (_sWebsites && !_bLimited) {

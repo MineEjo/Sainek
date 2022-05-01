@@ -208,10 +208,15 @@
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .image-2gZc3pYt,
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y .image-GQtx92fM {
 	background: var(--neutral-embed-color-4PQYryMp) !important;
-	height: calc(var(--default-width-zkk4pPs6) / 3);
+	max-height: calc(var(--default-width-zkk4pPs6) / 3);
 	margin: 0 var(--embed-margin-xqv9MGJg);
 	object-fit: cover;
 	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
+	transition: var(--long-transition-YhN6XrSx);
+	}
+
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS:focus .image-2gZc3pYt {
+	max-height: calc(var(--default-width-zkk4pPs6) * 1.5);
 	}
 
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y .image-GQtx92fM {
@@ -276,10 +281,53 @@
 	background: var(--transparent-color-mdyCQUpu) !important;
 	font-size: var(--font-size-f5AtJrMk);
 	padding: 0 var(--embed-margin-xqv9MGJg);
-	white-space: pre-wrap !important;
+	width: 100%;
+	display: inline-block;
+	}
+
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .text-UqaNp8Pk {
+	white-space: normal !important;
+	word-break: break-all !important;
+	word-wrap: anywhere !important;
+	max-height: calc(var(--font-size-f5AtJrMk) * 1.4);
+	transition: var(--long-transition-YhN6XrSx);
+	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--short-margin-xqv9MGJg) - var(--short-margin-xqv9MGJg) - var(--short-margin-xqv9MGJg));
+	float: left;
+	}
+
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS:focus .text-UqaNp8Pk {
+	max-height: calc(var(--default-width-zkk4pPs6) * 1.5);
 	width: 100%;
 	word-break: break-word !important;
 	word-wrap: break-word !important;
+	}
+
+/* The text width is 90% and the ellipsis is always visible, but sometimes there is one line and it is not needed,
+ * to hide it add ':after' (overlay) on top.
+ *
+ * Hint: The overlay has an absolute position, but only the right side is specified.
+ * If the text has more than one line and you want to display the ellipsis, the overlay will go to the last line.
+*/
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .text-UqaNp8Pk:after {
+	position: absolute;
+	content: '-';
+	width: calc(var(--embed-margin-xqv9MGJg) + var(--short-margin-xqv9MGJg) + var(--short-margin-xqv9MGJg) + var(--short-margin-xqv9MGJg));
+	overflow: visible;
+	right: calc(var(--embed-margin-xqv9MGJg) +  var(--embed-margin-xqv9MGJg));
+	background: var(--theme-bg-color) !important;
+	color: var(--transparent-color-mdyCQUpu) !important;
+	}
+
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .triplet-qk5FvLnk {
+	float: left;
+	background: var(--neutral-embed-color-4PQYryMp);
+	padding-left: var(--short-margin-xqv9MGJg);
+	padding-right: var(--short-margin-xqv9MGJg);
+	}
+
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS:focus .triplet-qk5FvLnk {
+	font-size: 0;
+	opacity: 0;
 	}
 
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .websites-DtYkVa9G {
