@@ -346,9 +346,9 @@
 	}
 
 .default-4FLZQdEs:is(.shadow-pUd54mwX) {
-	-moz-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.35);
-	-webkit-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.35);
-	box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.35);
+	-moz-box-shadow: var(--default-shadow-fUeBU8Pb) rgba(0, 0, 0, 0.35);
+	-webkit-box-shadow: var(--default-shadow-fUeBU8Pb) rgba(0, 0, 0, 0.35);
+	box-shadow: var(--default-shadow-fUeBU8Pb) rgba(0, 0, 0, 0.35);
 	}
 
 .default-4FLZQdEs:is(.transparent-acQZyy2v) {

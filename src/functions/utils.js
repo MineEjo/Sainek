@@ -133,7 +133,7 @@ function setTheme(_hElement, _nVariation) {
 			}
 		}
 
-		document.documentElement.style.setProperty('--theme-bg-color', _Styles.get('THEME_BG')[_nVariation]);
+		document.documentElement.style.setProperty('--theme-bg-color-NCgj6pqy', _Styles.get('THEME_BG')[_nVariation]);
 	}
 
 	if (_hElement) {

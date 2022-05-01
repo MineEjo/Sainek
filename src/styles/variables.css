@@ -18,7 +18,10 @@
 
 :root {
 	/* Dynamic colors */
-	--theme-bg-color: null;
+	--theme-bg-color-NCgj6pqy: null;
+
+	/* Shadows */
+	--default-shadow-fUeBU8Pb: 0 0 6px 1px;
 
 	/* Colors */
 	--neutral-bg-color-4PQYryMp: rgba(127, 127, 127, 0.03);
