@@ -16,6 +16,7 @@
  * along with  Sainek-Serials-Keeper.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* Loading elements */
 getData(true, 'debugMode', (_response) => {
 	const _hElement = document.getElementById('debugMode');
 	if (_hElement && _response) _hElement.checked = _response;
@@ -51,6 +52,7 @@ getData(true, 'fireBaseConfig', (_response) => {
 	if (_hFireBaseConfig && _response) _hFireBaseConfig.value = JSON.stringify(_response);
 });
 
+/* Formatting and blacklisting links */
 const hBlackList = document.getElementById('blackList');
 hBlackList.addEventListener('input', (_hEvent) => {
 	let _sValue = _hEvent?.target?.value;
@@ -68,6 +70,7 @@ hBlackList.addEventListener('input', (_hEvent) => {
 	setData(false, 'blackList', _sFormatted);
 });
 
+/* Formatting and writing config for FireBase */
 const hFireBaseConfig = document.getElementById('fireBaseConfig');
 hFireBaseConfig.addEventListener('input', (_hEvent) => {
 	const _sValue = _hEvent.target.value.toString();
@@ -90,6 +93,7 @@ hFireBaseConfig.addEventListener('input', (_hEvent) => {
 	alert(_getLocale('alertReloadExtension'))
 });
 
+/* Actions after clicking on the checkbox */
 document.addEventListener('click', _hEvent => {
 	if (_hEvent?.target?.id) {
 		const _Functions = new Map();
@@ -119,3 +123,26 @@ document.addEventListener('click', _hEvent => {
 		}
 	}
 });
+
+const Lang = new Map();
+Lang.set('en', POPUP_EN);
+Lang.set('ru', POPUP_RU);
+Lang.set(0, POPUP);
+
+/* Load links */
+for (const _hElement of document.getElementsByClassName('link')) {
+	_hElement.setAttribute('href', (Lang.get(0))[_hElement.getAttribute('link')]);
+}
+
+/* Load locale */
+if (Lang.has(sUserLang)) {
+	const LOCALE = Lang.get(sUserLang);
+
+	for (const _hElement of document.getElementsByClassName('locale')) {
+		_hElement.innerHTML = LOCALE[_hElement.innerHTML];
+	}
+
+	function _getLocale(_sKey) {
+		return LOCALE[_sKey]
+	}
+}

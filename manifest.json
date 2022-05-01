@@ -29,8 +29,9 @@
 				"<all_urls>"
 			],
 			"js": [
+				"src/enums/default.js",
+
 				"src/locales/board.js",
-				"src/index.js",
 				"src/functions/elements.js",
 				"src/functions/utils.js",
 				"src/website/info.js",

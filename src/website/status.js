@@ -16,19 +16,13 @@
  * along with  Sainek-Serials-Keeper.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-const STATUSES = new Map();
-STATUSES.set('unwatched', 'unwatched-juX4pc2a');
-STATUSES.set('watching', 'watching-M6DsAF2K');
-STATUSES.set('watched', 'watched-xB5Pq4kZ');
-STATUSES.set('wantWatch', 'want-watch-ry9yUf3Z');
-
 /* !TODO: Realize after the panel */
 function loadStatuses() {
 	for (const _jSerial of Serials.values()) {
 		const _nStatus = undefined;
 
 		if (_nStatus) {
-			createLabel(_jSerial.object, ``, ['status-ty2aYeHq', STATUSES.get(_nStatus)], _nStatus.toString());
+			createLabel(_jSerial.object, ``, ['status-ty2aYeHq', CSS.STATUSES[_nStatus]], _nStatus.toString());
 		}
 	}
 }

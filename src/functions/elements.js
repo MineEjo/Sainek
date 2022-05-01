@@ -26,7 +26,7 @@ function createDiv(_hParent, _sId, _sClass, _fFunction) {
 	if (_hParent) _hParent.append(_hChild);
 
 	setTheme(_hChild);
-	_hChild.classList.add(DEFAULT_CLASS);
+	_hChild.classList.add(CSS.CLASS.DEFAULT);
 	return _hChild;
 }
 
@@ -42,7 +42,7 @@ function createImg(_hParent, _sId, _sClass, _sSrc, _sAlt, _fFunction) {
 	if (_fFunction) _fFunction(_hChild);
 	if (_hParent) _hParent.append(_hChild);
 
-	_hChild.classList.add(DEFAULT_CLASS);
+	_hChild.classList.add(CSS.CLASS.DEFAULT);
 	return _hChild;
 }
 
@@ -54,10 +54,10 @@ function createDivImg(_hParent, _sId, _sClass, _sSrc, _fFunction) {
 	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) _fFunction(_hChild);
-	if (_sSrc) _hChild.style.backgroundImage = `url(${getLocalUrl(_sSrc)})`;
+	if (_sSrc) _hChild.style.backgroundImage = `url(${getURLResource(_sSrc)})`;
 	if (_hParent) _hParent.append(_hChild);
 
-	_hChild.classList.add(DEFAULT_CLASS, 'button-image-w3UhF6k8');
+	_hChild.classList.add(CSS.CLASS.DEFAULT, 'button-image-w3UhF6k8');
 	return _hChild;
 }
 
@@ -72,7 +72,7 @@ function createLabel(_hParent, _sId, _sClass, _sText, _sFor, _fFunction) {
 	if (_hParent) _hParent.append(_hChild);
 
 	setTheme(_hChild);
-	_hChild.classList.add(DEFAULT_CLASS);
+	_hChild.classList.add(CSS.CLASS.DEFAULT);
 	return _hChild;
 }
 
@@ -88,7 +88,7 @@ function createLink(_hParent, _sId, _sClass, _sText, _sHref, _sFor, _fFunction) 
 	if (_hParent) _hParent.append(_hChild);
 
 	setTheme(_hChild);
-	_hChild.classList.add(DEFAULT_CLASS);
+	_hChild.classList.add(CSS.CLASS.DEFAULT);
 	return _hChild;
 }
 
@@ -104,7 +104,7 @@ function createInput(_hParent, _sId, _sClass, _sPlaceholder, _fFunction) {
 	if (_hParent) _hParent.append(_hChild);
 
 	setTheme(_hChild);
-	_hChild.classList.add(DEFAULT_CLASS);
+	_hChild.classList.add(CSS.CLASS.DEFAULT);
 	return _hChild;
 }
 
@@ -119,7 +119,7 @@ function createTextarea(_hParent, _sId, _sClass, _sPlaceholder, _fFunction) {
 	if (_hParent) _hParent.append(_hChild);
 
 	setTheme(_hChild);
-	_hChild.classList.add(DEFAULT_CLASS);
+	_hChild.classList.add(CSS.CLASS.DEFAULT);
 	return _hChild;
 }
 
@@ -157,7 +157,7 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 	if (_aOptions) {
 		for (let _nIndex = 0; _nIndex < _aOptions.length; _nIndex++) {
 			const _hLi = document.createElement('li');
-			_hLi.classList.add(DEFAULT_CLASS);
+			_hLi.classList.add(CSS.CLASS.DEFAULT);
 
 			if (_aOptions[_nIndex][0]) _hLi.innerText = getLocale(_aOptions[_nIndex][0]);
 			if (_aOptions[_nIndex][1]) _hLi.setAttribute('value', _aOptions[_nIndex][1]);
@@ -174,7 +174,7 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 						_hElement.classList.remove('active-5QkcU5D4');
 					}
 
-					_hLi.classList.add(DEFAULT_CLASS, 'active-5QkcU5D4');
+					_hLi.classList.add(CSS.CLASS.DEFAULT, 'active-5QkcU5D4');
 					_hParent.focus();
 					_bFocused = false;
 				} else {
@@ -202,9 +202,9 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 
 	setTheme(_hChild);
 	setInterval(changeDisabled, 1000);
-	_hChild.classList.add(DEFAULT_CLASS, 'select-MZnDy3Dp');
-	_hLabel.classList.add(DEFAULT_CLASS);
-	_hSelect.classList.add(DEFAULT_CLASS);
+	_hChild.classList.add(CSS.CLASS.DEFAULT, 'select-MZnDy3Dp');
+	_hLabel.classList.add(CSS.CLASS.DEFAULT);
+	_hSelect.classList.add(CSS.CLASS.DEFAULT);
 
 	_hChild.select = (_sValue) => {
 		for (const _hLi of _hChild.getElementsByTagName('li')) {
@@ -213,7 +213,7 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 				_hChild.setAttribute('value', _sValue);
 				_hLabel.innerText = _hLi.innerText;
 				setTheme(_hLabel);
-				_hLi.classList.add(DEFAULT_CLASS, 'active-5QkcU5D4');
+				_hLi.classList.add(CSS.CLASS.DEFAULT, 'active-5QkcU5D4');
 
 				break;
 			}
@@ -263,7 +263,7 @@ function createSelectRating(_hParent, _sId, _sClass, _fFunction) {
 
 	setInterval(changeDisabled, 1000);
 	setTheme(_hChild);
-	_hChild.classList.add(DEFAULT_CLASS, 'select-rating-6VM6t2V5');
+	_hChild.classList.add(CSS.CLASS.DEFAULT, 'select-rating-6VM6t2V5');
 
 	_hChild.select = (_sRating) => {
 		_hChild.setAttribute('value', _sRating);
@@ -287,14 +287,8 @@ function createButton(_hParent, _sId, _sClass, _sText, _fFunction) {
 	if (_hParent) _hParent.append(_hChild);
 
 	setTheme(_hChild);
-	_hChild.classList.add(DEFAULT_CLASS);
+	_hChild.classList.add(CSS.CLASS.DEFAULT);
 	return _hChild;
-}
-
-const MARGIN = {
-	SHORT: 'SHORT',
-	EMBED: 'EMBED',
-	DEFAULT: 'DEFAULT'
 }
 
 function createMargin(_hParent, _nType, _sClass, _fFunction) {
@@ -317,12 +311,12 @@ function createMargin(_hParent, _nType, _sClass, _fFunction) {
 
 	if (_sClass) addClassesElement(_hChild, _sClass);
 
-	_hChild.classList.add(DEFAULT_CLASS);
+	_hChild.classList.add(CSS.CLASS.DEFAULT);
 	return _hChild;
 }
 
 function removeClassElements(_sClass, _sClassAnimation) {
-	const _hDefault = document.getElementsByClassName(DEFAULT_CLASS);
+	const _hDefault = document.getElementsByClassName(CSS.CLASS.DEFAULT);
 
 	if (_hDefault) {
 		for (const _hElement of _hDefault) {
@@ -347,7 +341,7 @@ function removeClassElements(_sClass, _sClassAnimation) {
 }
 
 function removeElement(_sId, _sClassAnimation) {
-	if (document.getElementsByClassName(DEFAULT_CLASS)) {
+	if (document.getElementsByClassName(CSS.CLASS.DEFAULT)) {
 		const _hRemove = document.getElementById(_sId);
 		if (_hRemove) {
 			for (let _nIndex = 0; _nIndex < _hRemove.childElementCount; _nIndex++) {

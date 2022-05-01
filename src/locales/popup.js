@@ -49,8 +49,3 @@ const POPUP = {
 	github: 'https://github.com/MineEjo/Sainek-Serials-Keeper',
 	firebase: 'https://firebase.google.com/'
 };
-
-const LANG = new Map();
-LANG.set('en', POPUP_EN);
-LANG.set('ru', POPUP_RU);
-LANG.set(0, POPUP);

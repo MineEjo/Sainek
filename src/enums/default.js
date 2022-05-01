@@ -16,6 +16,30 @@
  * along with  Sainek-Serials-Keeper.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-for (const _hElement of document.getElementsByClassName('link')) {
-	_hElement.setAttribute('href', (LANG.get(0))[_hElement.getAttribute('link')]);
+const CSS = {
+	CLASS: {
+		DEFAULT: 'default-4FLZQdEs',
+		SHORTCUT: 'shortcut-V7J89asy'
+	},
+	MARGIN: {
+		SHORT: 'SHORT',
+		EMBED: 'EMBED',
+		DEFAULT: 'DEFAULT'
+	},
+	STATUSES: {
+		UNWATCHED: 'unwatched-juX4pc2a',
+		WATCHING: 'watching-M6DsAF2K',
+		WATCHED: 'watched-xB5Pq4kZ',
+		WANT_WATCH: 'want-watch-ry9yUf3Z'
+	}
+}
+
+const CONSOLE = {
+	LOG: 'log',
+	ERR: 'err'
+}
+
+const RESPONSE = {
+	SUCCESS: 'SUCCESS',
+	UNKNOWN: 'UNKNOWN'
 }

@@ -16,74 +16,55 @@
  * along with  Sainek-Serials-Keeper.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function setTheme(_hElement, _nVariation) {
-	const _Styles = new Map();
-	_Styles.set('LABEL', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
-	_Styles.set('INPUT', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
-	_Styles.set('TEXTAREA', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
-	_Styles.set('LI', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
-	_Styles.set('UL', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
+/* Array with words to search for them on the page, eventually to determine the state of the items */
+const aDisplayingTriggers = [
+	'anime', /* The first item, is considered the default item */
+	'аниме'
+];
 
-	_Styles.set('DIV', ['background', 'var(--white-color-3vbK5BDV)', 'var(--dark-color-vBPysD4T)']);
-	_Styles.set('UL', ['background', 'var(--white-color-3vbK5BDV)', 'var(--dark-color-vBPysD4T)']);
+updateState();
 
-	if (_nVariation) {
-		for (const _hElement of document.getElementsByClassName(DEFAULT_CLASS)) {
-			if (_hElement && _Styles.has(_hElement.tagName)) {
-				if (_hElement.style.backgroundImage) continue;
-				if (_hElement.style.background && _hElement.style.background === 'var(--neutral-embed-color-4PQYryMp)') continue;
-				if (_hElement.style.color && _hElement.style.color === 'var(--neutral-color-TmH5QR3n)') continue;
-				_setStyle(_hElement, _nVariation);
+function updateState() {
+	try {
+		getData(false, 'blackList', (_response) => {
+			/* Checking if the domain or link of the site is blacklisted */
+			if (_response && (_response.includes(document.location.href) ||
+				JSON.stringify(_response).includes(`${document.location.protocol}//${document.location.hostname}/\\n`))) {
+				return;
 			}
-		}
-	}
 
-	if (_hElement) {
-		getData(true, 'extensionTheme', (_response) => {
-			if (!_hElement.style.backgroundImage) {
-				_setStyle(_hElement, (_response) ? _response : 1);
+			/* Search for triggers on the page */
+			let bTriggered = false;
+			for (let _nIndex = 0; _nIndex < aDisplayingTriggers; _nIndex++) {
+				if (document.body.innerText.indexOf(aDisplayingTriggers[_nIndex]) > -1) bTriggered = true;
 			}
-		});
-	}
 
-	function _setStyle(_hElement, _nNumber) {
-		if (_hElement && _Styles.has(_hElement.tagName)) _hElement.style[_Styles.get(_hElement.tagName)[0]] = _Styles.get(_hElement.tagName)[_nNumber];
-	}
-}
+			/* The second check is responsible for the word in the site address */
+			if (bTriggered || window.location.href.includes(aDisplayingTriggers[0])) {
+				loadWebsiteInfo();
 
-function setAttachBoard(_bState) {
-	if (_bState) {
-		document.body.classList.add('default-attached-da5aKFrB');
-		hBoard.classList.add('attached-P6vcTXH4');
-	} else {
-		document.body.classList.remove('default-attached-da5aKFrB');
-		hBoard.classList.remove('attached-P6vcTXH4');
-	}
-}
+				loadStatuses();
 
-function updateElements() {
-	if (bExtensionEnabled) {
-		removeClassElements(DEFAULT_CLASS);
+				getData(true, 'boardDisable', (_response) => {
+					if (!_response) {
+						loadBoard();
 
-		loadPageInfo();
-		loadStatuses();
+						getData(true, 'boardAttached', (_response) => {
+							setAttachBoard(_response);
+						});
+					}
+				});
 
-		getData(true, 'boardDisable', (_response) => {
-			if (!_response) {
-				loadBoard();
+				getData(true, 'debugMode', (_response) => {
+					setDebugMode(_response);
+				});
 
-				getData(true, 'boardAttached', (_response) => {
-					setAttachBoard(_response);
+				getData(true, 'extensionTheme', (_response) => {
+					setTheme(false, _response);
 				});
 			}
-		});
-
-		getData(true, 'debugMode', (_response) => {
-			setDebugMode(_response);
-		});
-
-		getData(true, 'extensionTheme', (_response) => {
-			setTheme(false, _response);
-		});
+		})
+	} catch (_e) {
+		consoleSend('N22KhK6A8XqQg7tz', CONSOLE.ERR, {N22KhK6A8XqQg7tz: _e});
 	}
 }

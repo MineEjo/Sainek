@@ -141,18 +141,18 @@ function loadBoard() {
 
 		createLabel(_hContent, '', '', 'status', 'status-FkrUy296');
 		const selectStatus = createSelect(_hContent, 'status-FkrUy296', '', 'selectSomething', [
-			['related', 'related'],
-			['ongoing', 'ongoing'],
-			['announce', 'announce']
+			['RELATED', 'RELATED'],
+			['ONGOING', 'ONGOING'],
+			['ANNOUNCE', 'ANNOUNCE']
 		]);
 		if (_jNote?.status) selectStatus.select(_jNote?.status);
 
 		createLabel(_hContent, '', '', 'statusView', 'status-view-JvJsUY9y');
 		const selectViewStatus = createSelect(_hContent, 'status-view-JvJsUY9y', '', 'selectSomething', [
-			['unwatched', 'unwatched'],
-			['watching', 'watching'],
-			['watched', 'watched'],
-			['wantWatch', 'wantWatch']
+			['UNWATCHED', 'UNWATCHED'],
+			['WATCHING', 'WATCHING'],
+			['WATCHED', 'WATCHED'],
+			['WANT_WATCH', 'WANT_WATCH']
 		]);
 		if (_jNote?.viewedStatus) selectViewStatus.select(_jNote?.viewedStatus);
 
@@ -279,13 +279,13 @@ function loadBoard() {
 
 						if (!document.getElementById(`load-${_jId}`)) {
 							createDiv(_hNotes, `load-${_jId}`, 'load-PMb84E8y', (_hNote) => {
-								createMargin(_hNote, MARGIN.EMBED);
+								createMargin(_hNote, CSS.MARGIN.EMBED);
 								createDiv(_hNote, '', 'image-GQtx92fM');
-								createMargin(_hNote, MARGIN.EMBED);
+								createMargin(_hNote, CSS.MARGIN.EMBED);
 								createDiv(_hNote, '', 'title-3Wgg5PKh');
-								createMargin(_hNote, MARGIN.EMBED);
+								createMargin(_hNote, CSS.MARGIN.EMBED);
 								createDiv(_hNote, '', 'desc-W3cU2ueU');
-								createMargin(_hNote, MARGIN.EMBED);
+								createMargin(_hNote, CSS.MARGIN.EMBED);
 							});
 						}
 
@@ -320,7 +320,7 @@ function loadBoard() {
 								const _aTitles = _sTitles.split(', ');
 								for (const _sTitle of _aTitles) {
 									if (aSerialTitles.toString().includes(_sTitle)) {
-										const _aPageTitles = document.getElementsByClassName(SHORTCUT_CLASS);
+										const _aPageTitles = document.getElementsByClassName(CSS.CLASS.SHORTCUT);
 										for (const _hPageTitle of _aPageTitles) {
 											if (_hPageTitle.innerText.includes(_sTitle)) {
 												if (_hPageTitle.id) {
@@ -354,8 +354,8 @@ function loadBoard() {
 											_hNote.classList.add('limited-2DysF6H8');
 										}
 
-										sendLog('ggs4xgWMfbZYBpfK', LOG.LOG, {ggs4xgWMfbZYBpfK: _nIds});
-										sendLog('Uj46Tcr3xr4dN9L7', LOG.LOG, {note: {
+										consoleSend('ggs4xgWMfbZYBpfK', CONSOLE.LOG, {ggs4xgWMfbZYBpfK: _nIds});
+										consoleSend('Uj46Tcr3xr4dN9L7', CONSOLE.LOG, {note: {
 												id: _jId,
 												title: _sTitles,
 												image: _sImage,
@@ -374,7 +374,7 @@ function loadBoard() {
 										/* Note design */
 										if (_sViewedStatus && !_bLimited) {
 											createLabel(_hNote, '',
-												['status-viewed-3mPKGu4U', STATUSES.get(_sViewedStatus)], _sViewedStatus
+												['status-viewed-3mPKGu4U', CSS.STATUSES[_sViewedStatus]], _sViewedStatus
 											);
 										}
 
@@ -383,12 +383,12 @@ function loadBoard() {
 										}
 
 										if (_sImage && !_bLimited) {
-											createMargin(_hNote, MARGIN.EMBED, 'other-WUg8SV9z');
+											createMargin(_hNote, CSS.MARGIN.EMBED, 'other-WUg8SV9z');
 											createImg(_hNote, '', 'image-2gZc3pYt', _sImage, 'errorLoading');
 										}
 
 										if (_sTitles) {
-											createMargin(_hNote, MARGIN.EMBED, 'other-WUg8SV9z');
+											createMargin(_hNote, CSS.MARGIN.EMBED, 'other-WUg8SV9z');
 											createLabel(_hNote, '', 'title-A5xU6DER', `${
 												_sTitles.toString().split(', ')[0]
 											}`, '', (_hChild) => {
@@ -398,7 +398,7 @@ function loadBoard() {
 
 										/* Creating shortcuts to quickly navigate to elements */
 										if (_bLimited) {
-											createMargin(_hNote, MARGIN.SHORT, 'other-WUg8SV9z');
+											createMargin(_hNote, CSS.MARGIN.SHORT, 'other-WUg8SV9z');
 											createDiv(_hNote, '', 'buttons-6dt3Ne7p', (_hChild) => {
 												createLink(_hChild, '', '', 'goTo', `#${_sPageTitleId}`);
 												createLink(_hChild, '', '', 'moreInfo', `#note-${_jId}`);
@@ -423,12 +423,12 @@ function loadBoard() {
 										}
 
 										if (_sDesc && !_bLimited) {
-											createMargin(_hNote, MARGIN.SHORT, 'other-WUg8SV9z');
+											createMargin(_hNote, CSS.MARGIN.SHORT, 'other-WUg8SV9z');
 											createLabel(_hNote, '', 'desc-DtYkVa9G', _sDesc);
 										}
 
 										if (_sWebsites && !_bLimited) {
-											createMargin(_hNote, MARGIN.EMBED, 'other-WUg8SV9z');
+											createMargin(_hNote, CSS.MARGIN.EMBED, 'other-WUg8SV9z');
 											createDiv(_hNote, '', 'websites-DtYkVa9G', (_hChild) => {
 												for (const _sLink of _sWebsites.split(', ')) {
 													/* For a nice display, the protocol is erased and the first letter of the domain is capitalized */
@@ -451,7 +451,7 @@ function loadBoard() {
 										}
 
 										if (_sEpisodesViewed && _sEpisodes && !_bLimited) {
-											createMargin(_hNote, MARGIN.EMBED, 'other-WUg8SV9z');
+											createMargin(_hNote, CSS.MARGIN.EMBED, 'other-WUg8SV9z');
 											createDiv(_hNote, '', 'episodes-y6qHgvQw', (_hChild) => {
 												createDiv(_hChild, '', '', (_hChild) => {
 													/* Because of the peculiar system, the information is not in one line, but several labels */
@@ -467,7 +467,7 @@ function loadBoard() {
 														createLabel(_hChild, '', 'other-WUg8SV9z', `${_sEpisodes}`);
 													}
 												});
-												createMargin(_hChild, MARGIN.DEFAULT, 'other-WUg8SV9z');
+												createMargin(_hChild, CSS.MARGIN.DEFAULT, 'other-WUg8SV9z');
 
 												/* Values must be greater than zero, and the episodes viewed cannot be greater than the episodes in the show */
 												if (parseInt(_sEpisodes) > 0 && parseInt(_sEpisodesViewed) > 0 && parseInt(_sEpisodes) >= parseInt(_sEpisodesViewed)) {
@@ -480,7 +480,7 @@ function loadBoard() {
 											});
 										} else {
 											/* Since the block is a closing block, if it is not, its indentation must be in any case */
-											createMargin(_hNote, MARGIN.EMBED, 'other-WUg8SV9z');
+											createMargin(_hNote, CSS.MARGIN.EMBED, 'other-WUg8SV9z');
 										}
 
 										if (!_bLimited) {
@@ -548,7 +548,7 @@ function loadBoard() {
 								}
 
 								if (_nIds.length === _NotesReady.size) {
-									sendLog('G98yhVDYxDZEc72z', LOG.LOG, {
+									consoleSend('G98yhVDYxDZEc72z', CONSOLE.LOG, {
 										divsNote: _NotesReady
 									});
 
@@ -589,16 +589,16 @@ function loadBoard() {
 									_hNote.classList.replace('load-PMb84E8y', 'error-PTbkZ3J8');
 									createDiv(_hNote, '', '', (_hChild) => {
 										createLabel(_hChild, '', 'title-pJ2WhhWd', 'errorLoading');
-										createMargin(_hChild, MARGIN.SHORT);
+										createMargin(_hChild, CSS.MARGIN.SHORT);
 										createLabel(_hChild, '', '', 'note');
 										createLabel(_hChild, '', '', ':');
 										createLabel(_hChild, '', 'id-f8YW3fne', `${_jId}`);
-										createMargin(_hChild, MARGIN.EMBED);
+										createMargin(_hChild, CSS.MARGIN.EMBED);
 
 										/* The stack, etc., is specified for details, but different browsers have different calls */
 										let _error = _e.stack || _e.line || _e.lineNumber;
 										createLabel(_hChild, '', 'label-ypPZP2fz', `${_error}`);
-										createMargin(_hChild, MARGIN.EMBED);
+										createMargin(_hChild, CSS.MARGIN.EMBED);
 
 										/* Div with Buttons */
 										createDiv(_hChild, '', 'buttons-6dt3Ne7p', (_hChild) => {
@@ -636,7 +636,7 @@ function loadBoard() {
 									_continueUpdateNotes();
 								}
 
-								sendLog('RAxm3R7HH3cYxj6q', LOG.ERR, {RAxm3R7HH3cYxj6q: _e});
+								consoleSend('RAxm3R7HH3cYxj6q', CONSOLE.ERR, {RAxm3R7HH3cYxj6q: _e});
 							} finally {
 								if (_nIds.length <= _nNotesCount) {
 									/* Removing fake notes */

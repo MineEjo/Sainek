@@ -22,12 +22,12 @@ const Serials = new Map();
 /* Most often such arrays are needed for a simple check if there is information on the page */
 const aSerialTitles = [];
 
-function loadPageInfo() {
+function loadWebsiteInfo() {
 	const _aTitles = document.getElementsByTagName('h1');
 
 	for (const _sTitle of _aTitles) {
 		aSerialTitles.push(_sTitle.innerText);
-		_sTitle.classList.add(SHORTCUT_CLASS);
+		_sTitle.classList.add(CSS.CLASS.SHORTCUT);
 
 		!Serials.has(_sTitle) && Serials.set('0', {
 			'title': _sTitle.innerText,

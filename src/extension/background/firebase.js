@@ -59,25 +59,20 @@ getData(true, 'fireBaseConfig', (_response) => {
 						return _jAppState?.values.findIndex(_element => _element?.id === _id);
 					}
 
-					const RESPONSE_TYPES = {
-						SUCCESS: 'success',
-						UNKNOWN: 'unknown'
-					}
-
 					jBrowser.runtime.onMessage.addListener((_msg, _sender, _response) => {
 						switch (_msg?.type) {
 							case 'updateValue':
 								_jAppDb.child(_msg?.opts?.id).set({value: _msg?.opts?.value});
-								_response(RESPONSE_TYPES.SUCCESS);
+								_response(RESPONSE.SUCCESS);
 								break;
 							default:
-								_response(RESPONSE_TYPES.UNKNOWN);
+								_response(RESPONSE.UNKNOWN);
 								break;
 						}
 					});
 				}
 			} catch (_e) {
-				sendLog('FN2eWBeh3dwmK9Yg', LOG.ERR, {FN2eWBeh3dwmK9Yg: _e});
+				consoleSend('FN2eWBeh3dwmK9Yg', CONSOLE.ERR, {FN2eWBeh3dwmK9Yg: _e});
 			}
 		}
 	});
