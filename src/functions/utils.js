@@ -121,6 +121,8 @@ function setTheme(_hElement, _nVariation) {
 	_Styles.set('DIV', ['background', 'var(--white-color-3vbK5BDV)', 'var(--dark-color-vBPysD4T)']);
 	_Styles.set('UL', ['background', 'var(--white-color-3vbK5BDV)', 'var(--dark-color-vBPysD4T)']);
 
+	_Styles.set('THEME_BG', ['null', 'var(--white-color-3vbK5BDV)', 'var(--dark-color-vBPysD4T)']);
+
 	if (_nVariation) {
 		for (const _hElement of document.getElementsByClassName(CSS.CLASS.DEFAULT)) {
 			if (_hElement && _Styles.has(_hElement.tagName)) {
@@ -130,6 +132,8 @@ function setTheme(_hElement, _nVariation) {
 				_setStyle(_hElement, _nVariation);
 			}
 		}
+
+		document.documentElement.style.setProperty('--theme-bg-color', _Styles.get('THEME_BG')[_nVariation]);
 	}
 
 	if (_hElement) {

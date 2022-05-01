@@ -17,6 +17,9 @@
  */
 
 :root {
+	/* Dynamic colors */
+	--theme-bg-color: null;
+
 	/* Colors */
 	--neutral-bg-color-4PQYryMp: rgba(127, 127, 127, 0.03);
 	--neutral-border-color-QPugTC8F: rgba(127, 127, 127, 0.50);
