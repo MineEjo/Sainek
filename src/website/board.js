@@ -278,7 +278,7 @@ function loadBoard() {
 						}
 
 						if (!document.getElementById(`load-${_jId}`)) {
-							createDiv(_hNotes, `load-${_jId}`, 'load-PMb84E8y', (_hNote) => {
+							createDiv(_hNotes, `load-${_jId}`, ['load-PMb84E8y', 'shadow-pUd54mwX'], (_hNote) => {
 								createMargin(_hNote, CSS.MARGIN.EMBED);
 								createDiv(_hNote, '', 'image-GQtx92fM');
 								createMargin(_hNote, CSS.MARGIN.EMBED);
@@ -339,7 +339,7 @@ function loadBoard() {
 
 								/* Limited - means that the note is a label rather than a full-fledged */
 								function _createNote(_bLimited) {
-									return createDiv(null, '', '', (_hNote) => {
+									return createDiv(null, '', 'shadow-pUd54mwX', (_hNote) => {
 										if (!_bLimited) {
 											_hNote.id = `note-${_jId}`;
 											_hNote.classList.add('note-PgjFjRUS');
@@ -374,11 +374,11 @@ function loadBoard() {
 										/* Note design */
 										if (_sViewedStatus && !_bLimited) {
 											createLabel(_hNote, '',
-												['status-viewed-3mPKGu4U', CSS.STATUSES[_sViewedStatus]], _sViewedStatus
+												['status-viewed-3mPKGu4U', CSS.STATUSES[_sViewedStatus], 'shadow-pUd54mwX'], _sViewedStatus
 											);
 										}
 
-										if (_sStatus && !_bLimited) {
+										if (_sStatus.length > 3 && !_bLimited) {
 											createLabel(_hNote, '', 'status-5cBUD2rC', _sStatus);
 										}
 
@@ -473,7 +473,7 @@ function loadBoard() {
 												if (parseInt(_sEpisodes) > 0 && parseInt(_sEpisodesViewed) > 0 && parseInt(_sEpisodes) >= parseInt(_sEpisodesViewed)) {
 													/* The width of the progress bar is the percentage of all episodes watched */
 													const _nProgress = Math.round((parseInt(_sEpisodesViewed) * 100 / parseInt(_sEpisodes))).toString();
-													createDiv(_hChild, '', 'progress-Vdx7xbRM', (_hChild) => {
+													createDiv(_hChild, '', ['progress-Vdx7xbRM'], (_hChild) => {
 														_hChild.style.width = `${_nProgress}%`;
 													});
 												}
