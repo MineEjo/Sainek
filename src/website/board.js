@@ -326,7 +326,7 @@ function loadBoard() {
 												if (_hPageTitle.id) {
 													_sPageTitleId = _hPageTitle.id;
 												} else {
-													_hPageTitle.id = `shortcut-keeper-${_jId}`;
+													_hPageTitle.id = `shortcut-${_jId}`;
 													_sPageTitleId = _hPageTitle.id;
 												}
 											}
