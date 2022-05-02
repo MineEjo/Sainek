@@ -24,9 +24,8 @@ const aDisplayingTriggers = [
 	'动漫'
 ];
 
-updateState();
-
-function updateState() {
+/* Elements of the extension, must be loaded after loading the website, so as not to miss triggers */
+window.onload = () => {
 	try {
 		getData(false, 'blackList', (_response) => {
 			/* Checking if the domain or link of the site is blacklisted */
@@ -35,38 +34,44 @@ function updateState() {
 				return;
 			}
 
-			/* Search for triggers on the page */
-			let _bTriggered = false;
-			for (const _sTrigger of aDisplayingTriggers) {
-				if (document.body.innerText.indexOf(_sTrigger) > -1) _bTriggered = true;
-			}
-
 			/* The second check is responsible for the word in the site address */
-			if (_bTriggered || window.location.href.includes(aDisplayingTriggers[0])) {
-				loadWebsiteInfo();
-
-				loadStatuses();
-
-				getData(true, 'boardDisable', (_response) => {
-					if (!_response) {
-						loadBoard();
-
-						getData(true, 'boardAttached', (_response) => {
-							setAttachBoard(_response);
-						});
-					}
-				});
-
-				getData(true, 'debugMode', (_response) => {
-					setDebugMode(_response);
-				});
-
-				getData(true, 'extensionTheme', (_response) => {
-					setTheme(false, _response);
-				});
+			if (_checkTriggers() || window.location.href.includes(aDisplayingTriggers[0])) {
+				_setElements();
 			}
-		})
+		});
+
+		function _checkTriggers() {
+			/* Search for triggers on the page */
+			for (const _sTrigger of aDisplayingTriggers) {
+				if (document.body.innerText.indexOf(_sTrigger) > -1) return true;
+			}
+		}
+
+		function _setElements() {
+			loadWebsiteInfo();
+
+			loadStatuses();
+
+			getData(true, 'boardDisable', (_response) => {
+				if (!_response) {
+					loadBoard();
+
+					getData(true, 'boardAttached', (_response) => {
+						setAttachBoard(_response);
+					});
+				}
+			});
+
+			getData(true, 'debugMode', (_response) => {
+				setDebugMode(_response);
+			});
+
+			getData(true, 'extensionTheme', (_response) => {
+				setTheme(false, _response);
+			});
+		}
 	} catch (_e) {
 		consoleSend('N22KhK6A8XqQg7tz', CONSOLE.ERR, {N22KhK6A8XqQg7tz: _e});
 	}
-}
+};
+
