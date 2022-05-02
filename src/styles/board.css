@@ -438,6 +438,10 @@
 	background: var(--red-color-6DYMf3eb) !important;
 	}
 
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .cancel-kZDX5rD5:hover {
+	background: var(--red-embed-color-PJr3zT9Q) !important;
+	}
+
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 .cancel-kZDX5rD5:after {
 	content: attr(locale-cancel) !important;
 	}
