@@ -19,7 +19,9 @@
 /* Array with words to search for them on the page, eventually to determine the state of the items */
 const aDisplayingTriggers = [
 	'anime', /* The first item, is considered the default item */
-	'аниме'
+	'аниме',
+	'アニメ',
+	'动漫'
 ];
 
 updateState();
