@@ -111,6 +111,7 @@ function getData(_bLocal, _sId, _fFunction) {
 }
 
 function setTheme(_hElement, _nVariation) {
+	/* !TODO: Move everything to variables */
 	const _Styles = new Map();
 	_Styles.set('LABEL', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
 	_Styles.set('INPUT', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
