@@ -34,13 +34,13 @@ function updateState() {
 			}
 
 			/* Search for triggers on the page */
-			let bTriggered = false;
-			for (let _nIndex = 0; _nIndex < aDisplayingTriggers; _nIndex++) {
-				if (document.body.innerText.indexOf(aDisplayingTriggers[_nIndex]) > -1) bTriggered = true;
+			let _bTriggered = false;
+			for (const _sTrigger of aDisplayingTriggers) {
+				if (document.body.innerText.indexOf(_sTrigger) > -1) _bTriggered = true;
 			}
 
 			/* The second check is responsible for the word in the site address */
-			if (bTriggered || window.location.href.includes(aDisplayingTriggers[0])) {
+			if (_bTriggered || window.location.href.includes(aDisplayingTriggers[0])) {
 				loadWebsiteInfo();
 
 				loadStatuses();
