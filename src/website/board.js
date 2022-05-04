@@ -520,8 +520,6 @@ function loadBoard() {
 											/* Tabindex did not work, so the focus is set by clicking on the note */
 											_hNote.onclick = (_event) => {
 												_hNote.focus();
-												removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
-												_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
 											};
 
 											/* Note movement system */
@@ -562,6 +560,8 @@ function loadBoard() {
 
 											/* Setting the note id for the editing system */
 											_hNote.onfocus = (_event) => {
+												removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
+												_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'edit-Kv4fCGXg');
 												_hAddNoteButton.classList.replace('add-rNC4zfHN', 'edit-Kv4fCGXg');
 												_hAddNoteButton.setAttribute('note-id', _event.target.id);
 											};
