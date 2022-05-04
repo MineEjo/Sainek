@@ -50,8 +50,6 @@ window.onload = () => {
 		function _setElements() {
 			loadWebsiteInfo();
 
-			loadStatuses();
-
 			getData(true, 'boardDisable', (_response) => {
 				if (!_response) {
 					loadBoard();
@@ -67,11 +65,11 @@ window.onload = () => {
 			});
 
 			getData(true, 'extensionTheme', (_response) => {
-				setTheme(false, _response);
+				setTheme(_response);
 			});
 		}
 	} catch (_e) {
-		consoleSend('N22KhK6A8XqQg7tz', CONSOLE.ERR, {N22KhK6A8XqQg7tz: _e});
+		consoleSend(CONSOLE.ERROR, _e);
 	}
 };
 

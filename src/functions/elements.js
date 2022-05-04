@@ -22,11 +22,33 @@ function createDiv(_hParent, _sId, _sClass, _fFunction) {
 
 	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
-	if (_fFunction) _fFunction(_hChild);
 	if (_hParent) _hParent.append(_hChild);
 
-	setTheme(_hChild);
 	_hChild.classList.add(CSS.CLASS.DEFAULT);
+
+	if (_fFunction) _fFunction(_hChild);
+	return _hChild;
+}
+
+function createForm(_hParent, _sId, _sClass, _sAction, _fFunction) {
+	const _hChild = document.createElement('form');
+	_hChild.tabIndex = 1;
+
+	/* Disable refreshing page on submit */
+	function handleForm(event) {
+		event.preventDefault();
+	}
+
+	_hChild.addEventListener('submit', handleForm);
+
+	if (_sId) _hChild.setAttribute('id', _sId);
+	if (_sAction) _sAction.setAttribute('action', _sAction);
+	if (_sClass) addClassesElement(_hChild, _sClass);
+	if (_hParent) _hParent.append(_hChild);
+
+	_hChild.classList.add(CSS.CLASS.DEFAULT);
+
+	if (_fFunction) _fFunction(_hChild);
 	return _hChild;
 }
 
@@ -39,25 +61,11 @@ function createImg(_hParent, _sId, _sClass, _sSrc, _sAlt, _fFunction) {
 	if (_sSrc) _hChild.setAttribute('src', _sSrc);
 	if (_sAlt) _hChild.setAttribute('alt', getLocale(_sAlt));
 	if (_sClass) addClassesElement(_hChild, _sClass);
-	if (_fFunction) _fFunction(_hChild);
 	if (_hParent) _hParent.append(_hChild);
 
 	_hChild.classList.add(CSS.CLASS.DEFAULT);
-	return _hChild;
-}
 
-function createDivImg(_hParent, _sId, _sClass, _sSrc, _fFunction) {
-	const _hChild = document.createElement('div');
-	_hChild.tabIndex = 1;
-	_hChild.draggable = false;
-
-	if (_sId) _hChild.setAttribute('id', _sId);
-	if (_sClass) addClassesElement(_hChild, _sClass);
 	if (_fFunction) _fFunction(_hChild);
-	if (_sSrc) _hChild.style.backgroundImage = `url(${getURLResource(_sSrc)})`;
-	if (_hParent) _hParent.append(_hChild);
-
-	_hChild.classList.add(CSS.CLASS.DEFAULT, 'button-image-w3UhF6k8');
 	return _hChild;
 }
 
@@ -67,12 +75,25 @@ function createLabel(_hParent, _sId, _sClass, _sText, _sFor, _fFunction) {
 
 	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
-	if (_fFunction) _fFunction(_hChild);
 	if (_sText) _hChild.innerText = getLocale(_sText) || _sText;
 	if (_hParent) _hParent.append(_hChild);
 
-	setTheme(_hChild);
 	_hChild.classList.add(CSS.CLASS.DEFAULT);
+
+	if (_fFunction) _fFunction(_hChild);
+	return _hChild;
+}
+
+function createIcon(_hParent, _sIcon, _sClass, _fFunction) {
+	const _hChild = document.createElement('i');
+	_hChild.setAttribute('aria-hidden', 'true');
+
+	if (_sClass) addClassesElement(_hChild, _sClass);
+	if (_hParent) _hParent.append(_hChild);
+
+	_hChild.classList.add(CSS.CLASS.DEFAULT, 'fa', `fa-${_sIcon}`);
+
+	if (_fFunction) _fFunction(_hChild);
 	return _hChild;
 }
 
@@ -83,12 +104,12 @@ function createLink(_hParent, _sId, _sClass, _sText, _sHref, _sFor, _fFunction) 
 	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sHref) _hChild.setAttribute('href', _sHref);
 	if (_sClass) addClassesElement(_hChild, _sClass);
-	if (_fFunction) _fFunction(_hChild);
 	if (_sText) _hChild.innerText = getLocale(_sText) || _sText;
 	if (_hParent) _hParent.append(_hChild);
 
-	setTheme(_hChild);
 	_hChild.classList.add(CSS.CLASS.DEFAULT);
+
+	if (_fFunction) _fFunction(_hChild);
 	return _hChild;
 }
 
@@ -97,14 +118,20 @@ function createInput(_hParent, _sId, _sClass, _sPlaceholder, _fFunction) {
 	_hChild.tabIndex = 1;
 	_hChild.setAttribute('type', 'text');
 
+	_hChild.setLength = (_nLength) => {
+		_hChild.addEventListener('keyup', () => {
+			if (_hChild && _hChild?.value) _hChild.value = _hChild.value.substring(0, _nLength);
+		});
+	};
+
 	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
-	if (_fFunction) _fFunction(_hChild);
 	if (_sPlaceholder) _hChild.placeholder = getLocale(_sPlaceholder) || _sPlaceholder;
 	if (_hParent) _hParent.append(_hChild);
 
-	setTheme(_hChild);
 	_hChild.classList.add(CSS.CLASS.DEFAULT);
+
+	if (_fFunction) _fFunction(_hChild);
 	return _hChild;
 }
 
@@ -114,19 +141,60 @@ function createTextarea(_hParent, _sId, _sClass, _sPlaceholder, _fFunction) {
 
 	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
-	if (_fFunction) _fFunction(_hChild);
 	if (_sPlaceholder) _hChild.setAttribute('placeholder', getLocale(_sPlaceholder) || _sPlaceholder);
 	if (_hParent) _hParent.append(_hChild);
 
-	setTheme(_hChild);
 	_hChild.classList.add(CSS.CLASS.DEFAULT);
+
+	if (_fFunction) _fFunction(_hChild);
 	return _hChild;
 }
 
+/*
+ * Disabled? - '_hSelect.setAttribute('disabled', 'true');' or  _hSelect.setAttribute('disabled', '3');
+ * Required? - _hSelect.required(true);
+ * Select? - _hSelect.select(_sOptionValue)
+ */
 function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunction) {
+	/* Input for the form and operation of the attribute "required"  */
+	const _hInput = document.createElement('input');
+	_hInput.setAttribute('type', 'text');
+	_hInput.classList.add(CSS.CLASS.DEFAULT, 'select-MZnDy3Dp');
+	_hParent.append(_hInput);
+
+	setInterval(changeRequired, 1000);
+
+	function changeRequired() {
+		const _sAttribute = _hChild.getAttribute('disabled');
+		const _bIsRequired = (_hChild.getAttribute('required') === 'true');
+		if (_sAttribute !== 'true' && !_hInput.required && _bIsRequired && !_hLabel.classList.contains('active-5QkcU5D4')) {
+			_hInput.required = _bIsRequired;
+		}
+	}
+
 	const _hChild = document.createElement('div');
 	_hChild.tabIndex = 1;
 	_hChild.setAttribute('value', '0');
+
+	_hChild.select = (_sValue) => {
+		for (const _hLi of _hChild.getElementsByTagName('li')) {
+			if (_hLi.getAttribute('value') === _sValue) {
+				const _hLabel = _hChild.getElementsByTagName('label')[0];
+				_hInput.value = _sValue;
+				_hChild.setAttribute('value', _sValue);
+				_hLabel.innerText = _hLi.innerText;
+				if (!_hLabel.classList.contains('active-5QkcU5D4')) {
+					_hLabel.classList.add('active-5QkcU5D4');
+				}
+				_hLi.classList.add(CSS.CLASS.DEFAULT, 'active-5QkcU5D4');
+				break;
+			}
+		}
+	};
+
+	_hChild.required = (_sBoolean) => {
+		_hChild.setAttribute('required', _sBoolean);
+	};
 
 	let _bFocused = false;
 	_hChild.onclick = () => {
@@ -136,20 +204,18 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 		}
 
 		_bFocused = true;
-	}
+	};
 
 	_hChild.onblur = () => {
 		_bFocused = false;
 	}
 
 	const _hLabel = document.createElement('label');
-	_hLabel.style.color = 'var(--neutral-color-TmH5QR3n)';
 	_hChild.append(_hLabel);
 
-	createDivImg(_hChild, '', '', 'assets/small-down-arrow.svg');
+	createIcon(_hChild, 'caret-down');
 
 	const _hSelect = document.createElement('ul');
-	setTheme(_hSelect);
 	_hChild.append(_hSelect);
 
 	if (_sPlaceholder) _hLabel.innerText = getLocale(_sPlaceholder) || _sPlaceholder;
@@ -166,13 +232,15 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 				const _sAttribute = _hChild.getAttribute('disabled');
 				if (_sAttribute !== 'true' && _sAttribute !== _nIndex.toString()) {
 					_hLabel.innerText = getLocale(_aOptions[_nIndex][0]);
-					setTheme(_hLabel);
+					if (!_hLabel.classList.contains('active-5QkcU5D4')) {
+						_hLabel.classList.add('active-5QkcU5D4');
+					}
+
+					_hInput.value = _aOptions[_nIndex][1];
 					_hChild.setAttribute('value', _aOptions[_nIndex][1]);
 
 					const _hElements = _hSelect.getElementsByClassName('active-5QkcU5D4');
-					for (const _hElement of _hElements) {
-						_hElement.classList.remove('active-5QkcU5D4');
-					}
+					for (const _hElement of _hElements) _hElement.classList.remove('active-5QkcU5D4');
 
 					_hLi.classList.add(CSS.CLASS.DEFAULT, 'active-5QkcU5D4');
 					_hParent.focus();
@@ -184,53 +252,44 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 
 			_hSelect.append(_hLi);
 		}
-
-		for (const _hLi of _hSelect.getElementsByTagName('li')) {
-			setTheme(_hLi);
-		}
 	}
 
 	if (_sClass) addClassesElement(_hChild, _sClass);
-	if (_fFunction) _fFunction(_hSelect);
 	if (_hParent) _hParent.append(_hChild);
 
+	setInterval(changeDisabled, 1000);
 	function changeDisabled() {
 		if (_hChild.getAttribute('disabled') === 'true' && !_hChild.classList.contains('disabled-cY7rmmH3')) {
 			_hChild.classList.add('disabled-cY7rmmH3');
 		}
 	}
 
-	setTheme(_hChild);
-	setInterval(changeDisabled, 1000);
 	_hChild.classList.add(CSS.CLASS.DEFAULT, 'select-MZnDy3Dp');
 	_hLabel.classList.add(CSS.CLASS.DEFAULT);
 	_hSelect.classList.add(CSS.CLASS.DEFAULT);
 
-	_hChild.select = (_sValue) => {
-		for (const _hLi of _hChild.getElementsByTagName('li')) {
-			if (_hLi.getAttribute('value') === _sValue) {
-				const _hLabel = _hChild.getElementsByTagName('label')[0];
-				_hChild.setAttribute('value', _sValue);
-				_hLabel.innerText = _hLi.innerText;
-				setTheme(_hLabel);
-				_hLi.classList.add(CSS.CLASS.DEFAULT, 'active-5QkcU5D4');
-
-				break;
-			}
-		}
-	}
-
+	if (_fFunction) _fFunction(_hChild);
 	return _hChild;
 }
 
+/*
+ * Select? - _hSelectRating.select(_sCount)
+ */
 function createSelectRating(_hParent, _sId, _sClass, _fFunction) {
 	const _hChild = document.createElement('div');
 	_hChild.tabIndex = 1;
 	_hChild.setAttribute('value', '0');
 
+	_hChild.select = (_sRating) => {
+		_hChild.setAttribute('value', _sRating);
+
+		for (let _hStar = 0; _hStar < parseInt(_sRating); _hStar++) {
+			_hChild.getElementsByTagName('span')[_hStar].classList.add('fa', 'fa-star', 'checked-cFXHwS3x');
+		}
+	};
+
 	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
-	if (_fFunction) _fFunction(_hChild);
 	if (_hParent) _hParent.append(_hChild);
 
 	for (let _nStarts = 1; _nStarts <= 5; _nStarts++) {
@@ -262,17 +321,9 @@ function createSelectRating(_hParent, _sId, _sClass, _fFunction) {
 	}
 
 	setInterval(changeDisabled, 1000);
-	setTheme(_hChild);
 	_hChild.classList.add(CSS.CLASS.DEFAULT, 'select-rating-6VM6t2V5');
 
-	_hChild.select = (_sRating) => {
-		_hChild.setAttribute('value', _sRating);
-
-		for (let _hStar = 0; _hStar < parseInt(_sRating); _hStar++) {
-			_hChild.getElementsByTagName('span')[_hStar].classList.add('fa', 'fa-star', 'checked-cFXHwS3x');
-		}
-	}
-
+	if (_fFunction) _fFunction(_hChild);
 	return _hChild;
 }
 
@@ -282,12 +333,12 @@ function createButton(_hParent, _sId, _sClass, _sText, _fFunction) {
 
 	if (_sId) _hChild.setAttribute('id', _sId);
 	if (_sClass) addClassesElement(_hChild, _sClass);
-	if (_fFunction) _fFunction(_hChild);
 	if (_sText) _hChild.innerText = getLocale(_sText) || _sText;
 	if (_hParent) _hParent.append(_hChild);
 
-	setTheme(_hChild);
 	_hChild.classList.add(CSS.CLASS.DEFAULT);
+
+	if (_fFunction) _fFunction(_hChild);
 	return _hChild;
 }
 
@@ -295,23 +346,24 @@ function createMargin(_hParent, _nType, _sClass, _fFunction) {
 	const _hChild = document.createElement('div');
 
 	if (_hParent) _hParent.append(_hChild);
-	_hChild.classList.add('margin-eu7ycpXr');
 
 	switch (_nType) {
-		case 'SHORT':
-			_hChild.style.paddingTop = 'var(--short-margin-xqv9MGJg)'
-			break;
-		case 'EMBED':
-			_hChild.style.paddingTop = 'var(--embed-margin-xqv9MGJg)'
-			break;
-		default:
-			_hChild.style.paddingTop = 'var(--default-margin-xqv9MGJg)'
-			break;
+	case 'SHORT':
+		_hChild.classList.add('margin-short-ak7Ztw6u');
+		break;
+	case 'EMBED':
+		_hChild.classList.add('margin-embed-vKTA8W2j');
+		break;
+	default:
+		_hChild.classList.add('margin-default-R8TukW4w');
+		break;
 	}
 
 	if (_sClass) addClassesElement(_hChild, _sClass);
 
 	_hChild.classList.add(CSS.CLASS.DEFAULT);
+
+	if (_fFunction) _fFunction(_hChild);
 	return _hChild;
 }
 
@@ -362,9 +414,7 @@ function removeElement(_sId, _sClassAnimation) {
 
 function addClassesElement(_hParent, _aClasses) {
 	if (typeof _aClasses === 'object') {
-		for (const _sClass of _aClasses) {
-			if (_hParent) _hParent.classList.add(_sClass);
-		}
+		for (const _sClass of _aClasses) if (_hParent) _hParent.classList.add(_sClass);
 	} else if (_aClasses) {
 		if (_hParent) _hParent.classList.add(_aClasses);
 	}

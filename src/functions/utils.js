@@ -22,17 +22,61 @@ function genId() {
 	return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
 }
 
-function capitalizeFirstLetter(_sString) {
-	return _sString.charAt(0).toUpperCase() + _sString.slice(1);
+function getDeclension(_nValue, _aDeclensions) {
+	let number = Math.abs(_nValue) % 100;
+	if (number > 10 && number < 20) {
+		return _aDeclensions[2];
+	}
+	number = number % 10;
+	if (number > 1 && number < 5) {
+		return _aDeclensions[1];
+	}
+	if (number === 1) {
+		return _aDeclensions[0];
+	}
+	return _aDeclensions[2];
+}
+
+function getFormattedDate(_Date) {
+	const _dDate = new Date(_Date);
+	/* One is added because the count from zero, which makes the months 11 instead of 12 */
+	return `${getLocale('weekdays[' + _dDate.getDay() + ']')}, ${_dDate.getDate()} ` +
+		`${getLocale('yearMonths[' + _dDate.getMonth() + ']')} ${_dDate.getFullYear()} ${getLocale('yearR')}., ` +
+		`${_addNull(_dDate.getHours())}:${_addNull(_dDate.getMinutes())}`;
+
+	function _addNull(_value) {
+		if (_value) {
+			_value = _value.toString();
+			if (_value.length === 1) {
+				return '0' + _value;
+			} else {
+				return _value;
+			}
+		}
+	}
 }
 
 let bDebugMode = false;
+
 function setDebugMode(_bState) {
-	if (_bState) bDebugMode = _bState;
+	if (_bState) {
+		console.time('debug [time]')
+		bDebugMode = _bState;
+	}
 }
 
-function consoleSend(_sId, _nType, _sLog) {
-	if (bDebugMode) console[_nType]({ID: _sId, LOG: _sLog,});
+function consoleSend(_nType, _sLog) {
+	if (bDebugMode) {
+		console.time('answer [time]')
+		const _sId = `sainek [gebug] [${_nType}]: ${_sLog}`
+		if (_nType === CONSOLE.ERROR || _nType === CONSOLE.WARN) console.group(_sId)
+		else console.groupCollapsed(_sId)
+		console[_nType](_sLog);
+		console.trace('debug [trace]')
+		console.timeEnd('answer [time]')
+		console.timeLog('debug [time]')
+		console.groupEnd()
+	}
 }
 
 let jBrowser = updateBrowser();
@@ -42,28 +86,57 @@ function updateBrowser() {
 		return browser;
 	} catch (_e) {
 		try {
-		return chrome;
+			return chrome;
 		} catch (_e) {
-			if (!bDebugMode) consoleSend('E77yp5MeRjT2qQTG', CONSOLE.ERR, {E77yp5MeRjT2qQTG: _e});
+			if (!bDebugMode) consoleSend(CONSOLE.ERROR, _e);
 		}
 	}
 }
 
-function getURLResource(_sUrl) {
-	try {
-		return (_sUrl) ? jBrowser?.extension?.getURL(_sUrl) : undefined;
-	} catch (_e) {
-		consoleSend('eLq6MAy44bXkXD9T', CONSOLE.ERR, {eLq6MAy44bXkXD9T: _e});
-		if (!bDebugMode) window?.location?.reload();
-	}
-}
+/* function getURLResource(_sUrl) {
+ *	try {
+ *		return (_sUrl) ? jBrowser?.extension?.getURL(_sUrl) : undefined;
+ *	} catch (_e) {
+ *		consoleSend(CONSOLE.ERROR, _e);
+ *		if (!bDebugMode) window?.location?.reload();
+ *	}
+ }*/
 
-function getLocale(key) {
-	try {
-		return (key) ? (eval(`BOARD_${sUserLang.toUpperCase()}`))[key] : undefined;
-	} catch (_e) {
-		consoleSend('g5EtG3F98MG6zquX', CONSOLE.ERR, {g5EtG3F98MG6zquX: _e});
-		if (!bDebugMode) window?.location?.reload();
+function getLocale(_string) {
+	let _sOriginal = _string;
+
+	/* Json key is specified as: "==key==" */
+	let _aVars = _string.match(/==[a-zA-Z]*==/gi);
+
+	if (_aVars) {
+		for (let _sVar of _aVars) {
+			/* Removing variable designation */
+			let _key = _sVar.replace('==', '').replace('==', '');
+
+			/* Replacing a variable in the text with the response */
+			_sOriginal = _sOriginal.replace(_sVar, _getResponse(_key));
+		}
+
+		return _sOriginal;
+	} else {
+		/* To simplify the task and not always require equality, the function can get the json key directly */
+		return _sOriginal.replace(_string, _getResponse(_string));
+	}
+
+	function _getResponse(_string) {
+		try {
+			/*If the key points to a json array: "keys[0]" */
+			if (_string.includes('[') && _string.includes(']')) {
+				const _nIndex = _string.slice(_string.indexOf('[') + 1, _string.indexOf(']'));
+				_string = _string.replace(`[${_nIndex}]`, '');
+				return (eval(`WEBSITE_${sUserLang.toUpperCase()}`))[_string][_nIndex] || _string;
+			} else {
+				return (eval(`WEBSITE_${sUserLang.toUpperCase()}`))[_string] || _string;
+			}
+		} catch (_e) {
+			consoleSend(CONSOLE.ERROR, _e);
+			if (!bDebugMode) window?.location?.reload();
+		}
 	}
 }
 
@@ -79,13 +152,11 @@ function setData(_bLocal, _sId, _sValue, _fFunction) {
 						id: _sId,
 						value: _sValue
 					}
-				}, (_response) => {
-					if (_fFunction) _fFunction(_response);
-				});
+				}, (_response) => {if (_fFunction) _fFunction(_response);});
 			}
 		});
 	} catch (_e) {
-		consoleSend('a922GPKTcNuw87wn', CONSOLE.ERR, {a922GPKTcNuw87wn: _e});
+		consoleSend(CONSOLE.ERROR, _e);
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
@@ -105,48 +176,69 @@ function getData(_bLocal, _sId, _fFunction) {
 			}
 		});
 	} catch (_e) {
-		consoleSend('BUZPcn3XnLj8aDrD', CONSOLE.ERR, {BUZPcn3XnLj8aDrD: _e});
+		consoleSend(CONSOLE.ERROR, _e);
 		if (!bDebugMode) window?.location?.reload();
 	}
 }
 
-function setTheme(_hElement, _nVariation) {
-	/* !TODO: Move everything to variables */
-	const _Styles = new Map();
-	_Styles.set('LABEL', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
-	_Styles.set('INPUT', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
-	_Styles.set('TEXTAREA', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
-	_Styles.set('LI', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
-	_Styles.set('UL', ['color', 'var(--black-color-zzK58DLM)', 'var(--light-color-t5kEDH3d)']);
+function setTheme(_nVariation) {
+	/* Starting from zero */
+	if (_nVariation > 0) _nVariation--;
 
-	_Styles.set('DIV', ['background', 'var(--white-color-3vbK5BDV)', 'var(--dark-color-vBPysD4T)']);
-	_Styles.set('UL', ['background', 'var(--white-color-3vbK5BDV)', 'var(--dark-color-vBPysD4T)']);
+	/* Hint [_nVariation]: Theme number, corresponds to the color position in the array */
+	const _Themes = new Map();
+	_Themes.set('--theme-bg-NCgj6pqy', ['--white-color-3vbK5BDV', '--dark-color-vBPysD4T']);
+	_Themes.set('--theme-color-vJjNcN5y', ['--dark-color-embed-m3xm2aNB', '--white-color-embed-HduJdL3S']);
+	_Themes.set('--theme-bg-embed-Qb8Sk8Lx', ['--white-color-embed-HduJdL3S', '--dark-color-embed-m3xm2aNB']);
+	_Themes.set('--theme-embed-WqJ5wmN7', ['--white-embed-DjTCY6SZ', '--dark-embed-4u4AfxRU']);
 
-	_Styles.set('THEME_BG', ['null', 'var(--white-color-3vbK5BDV)', 'var(--dark-color-vBPysD4T)']);
+	if (_nVariation > -1) {
+		const _aProperties = [];
 
-	if (_nVariation) {
-		for (const _hElement of document.getElementsByClassName(CSS.CLASS.DEFAULT)) {
-			if (_hElement && _Styles.has(_hElement.tagName)) {
-				if (_hElement.style.backgroundImage) continue;
-				if (_hElement.style.background && _hElement.style.background === 'var(--neutral-embed-color-4PQYryMp)') continue;
-				if (_hElement.style.color && _hElement.style.color === 'var(--neutral-color-TmH5QR3n)') continue;
-				_setStyle(_hElement, _nVariation);
-			}
+		/* Key enumeration, to be obtained in the future */
+		for (const _sKey of _Themes.keys()) _aProperties.push(_sKey);
+
+		for (const _sProperty of _aProperties) {
+			/* Variable in the root, the color is set */
+			document.documentElement.style.setProperty(_sProperty, `var(${_Themes.get(_sProperty)[_nVariation]})`);
 		}
-
-		document.documentElement.style.setProperty('--theme-bg-color-NCgj6pqy', _Styles.get('THEME_BG')[_nVariation]);
 	}
 
-	if (_hElement) {
-		getData(true, 'extensionTheme', (_response) => {
-			if (!_hElement.style.backgroundImage) {
-				_setStyle(_hElement, (_response) ? _response : 1);
-			}
-		});
+	/* Colors have several hues and do not depend on the theme */
+	let _aColorsProperties = [
+		'--theme-main-HhBN5WbS', '--theme-main-embed-4jENYFdP', '--theme-main-volume-78575Cne'
+	];
+	let _aColors = ['--pink-color-rVwK3Nh4', '--pink-embed-color-Zb7vgZhX', '--pink-volume-color-z3tLWNz7'];
+
+	/* Secondary colors */
+	_aColorsProperties = _aColorsProperties.concat([
+		'--theme-secondary-vjCW8zjK', '--theme-secondary-embed-tjzYs989', '--theme-secondary-volume-A7wb7LuP'
+	]);
+	_aColors = _aColors.concat([
+		'--blue-color-TthRYu9u', '--blue-embed-color-JAC9gVzw', '--blue-volume-color-6BF3mc67'
+	]);
+
+	/* Important colors */
+	_aColorsProperties = _aColorsProperties.concat([
+		'--theme-important-e3k8RWPr', '--theme-important-embed-J8HMXFgv', '--theme-important-volume-k67xZ9xy'
+	]);
+	_aColors = _aColors.concat([
+		'--red-color-6DYMf3eb', '--red-embed-color-PJr3zT9Q', '--red-volume-color-eXu6DzyN'
+	]);
+
+	/* Other colors */
+	_aColorsProperties = _aColorsProperties.concat([
+		'--theme-other-X37CckTe', '--theme-other-embed-vt65bdLQ', '--theme-other-volume-XNL8mWcz'
+	]);
+	_aColors = _aColors.concat(['--white-color-3vbK5BDV', '--gray-color-re9uPfVP', '--shadow-color-fAN8C5jL']);
+
+	if (_aColorsProperties.length !== _aColors.length) {
+		return consoleSend(CONSOLE.ERROR, 'Matching error: missing property or color');
 	}
 
-	function _setStyle(_hElement, _nNumber) {
-		if (_hElement && _Styles.has(_hElement.tagName)) _hElement.style[_Styles.get(_hElement.tagName)[0]] = _Styles.get(_hElement.tagName)[_nNumber];
+	for (let _nIndex = 0; _nIndex < _aColorsProperties.length; _nIndex++) {
+		/* Variable in the root, the color is set */
+		document.documentElement.style.setProperty(_aColorsProperties[_nIndex], `var(${_aColors[_nIndex]})`);
 	}
 }
 

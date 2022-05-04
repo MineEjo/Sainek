@@ -72,7 +72,7 @@ getData(true, 'fireBaseConfig', (_response) => {
 					});
 				}
 			} catch (_e) {
-				consoleSend('FN2eWBeh3dwmK9Yg', CONSOLE.ERR, {FN2eWBeh3dwmK9Yg: _e});
+				consoleSend(CONSOLE.ERROR, _e);
 			}
 		}
 	});

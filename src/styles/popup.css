@@ -32,24 +32,17 @@
 	}
 
 body {
+	width: calc(var(--default-width-zkk4pPs6) + var(--embed-margin-xqv9MGJg) + var(--embed-margin-xqv9MGJg));
+	max-width: calc(var(--default-width-zkk4pPs6) + var(--embed-margin-xqv9MGJg) + var(--embed-margin-xqv9MGJg));
 	height: auto;
 	max-height: calc(var(--default-width-zkk4pPs6) + var(--embed-margin-xqv9MGJg) + var(--embed-margin-xqv9MGJg));
-	max-width: calc(var(--default-width-zkk4pPs6) + var(--embed-margin-xqv9MGJg) + var(--embed-margin-xqv9MGJg));
-	width: calc(var(--default-width-zkk4pPs6) + var(--embed-margin-xqv9MGJg) + var(--embed-margin-xqv9MGJg));
+	color: var(--theme-color-vJjNcN5y);
+	background: var(--theme-bg-NCgj6pqy);
 	}
 
 .body {
 	border-radius: 0;
 	padding: var(--embed-margin-xqv9MGJg);
-	}
-
-span {
-	background: transparent;
-	}
-
-.default-4FLZQdEs:is(label),
-.default-4FLZQdEs:is(span) {
-	color: var(--black-color-zzK58DLM);
 	}
 
 .title {
@@ -59,101 +52,48 @@ span {
 	width: 100%;
 	}
 
-.title:first-child {
-	margin-top: 0;
-	}
-
-.default-4FLZQdEs:is(.extension-title-special) a {
-	background: var(--main-color-rVwK3Nh4);
-	border: none !important;
-	color: var(--white-color-3vbK5BDV) !important;
-	cursor: pointer !important;
-	font-weight: 500;
-	height: var(--set-line-height);
-	max-width: var(--default-width-zkk4pPs6);
-	opacity: 1;
-	outline: none !important;
-	padding: calc(var(--set-line-height) / 3.5) 0;
-	text-align: center;
-	text-decoration: none !important;
-	text-overflow: ellipsis;
-	text-transform: uppercase;
-	}
-
-.extension-title-special:is(div) {
-	display: inline-flex;
-	width: 100%;
-	}
-
-.extension-title-special:is(div) a {
-	display: inline-block !important;
-	width: 100%;
-	}
-
-.extension-title-special:is(a),
-.extension-title-special:is(a):active,
-.extension-title-special:is(a):visited {
-	color: var(--white-color-3vbK5BDV) !important;
-	}
-
-.default-4FLZQdEs:is(a):hover {
-	opacity: var(--hover-opacity-Q8ePrKd7);
-	}
-
-.extension-title-special:is(a) i {
-	background: var(--transparent-color-mdyCQUpu);
-	margin-right: var(--default-margin-xqv9MGJg);
-	}
-
-.extension-title-special:is(a) span {
-	background: var(--transparent-color-mdyCQUpu);
-	}
-
-.extension-title-special:is(:not(:last-child)) {
-	margin-right: var(--short-margin-xqv9MGJg);
+.title:not(:first-child) {
+	margin-top: var(--short-margin-xqv9MGJg);
 	}
 
 .set-line {
-	background: var(--neutral-double-color-4PQYryMp) !important;
 	display: inline-flex;
+	width: var(--default-width-zkk4pPs6);
 	height: var(--set-line-height);
 	margin-bottom: var(--short-margin-xqv9MGJg);
 	-moz-user-select: none;
 	-ms-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
-	width: var(--default-width-zkk4pPs6);
+	background: var(--theme-bg-embed-Qb8Sk8Lx);
 	}
 
 .set-line div:first-child {
-	background: var(--transparent-color-mdyCQUpu) !important;
 	float: left;
-	padding-left: var(--default-margin-xqv9MGJg);
-	padding-top: calc(var(--set-line-margin) * 2);
-	text-align: left;
 	width: 100%;
+	padding-top: calc(var(--set-line-margin) * 2);
+	padding-left: var(--default-margin-xqv9MGJg);
+	text-align: left;
 	}
 
 .set-line div:last-child {
-	background: var(--transparent-color-mdyCQUpu) !important;
 	float: right;
-	padding-right: var(--default-margin-xqv9MGJg);
-	padding-top: var(--set-line-margin);
-	text-align: right;
 	width: auto;
+	padding-top: var(--set-line-margin);
+	padding-right: var(--default-margin-xqv9MGJg);
+	text-align: right;
 	}
 
 .set-area {
-	background: var(--transparent-color-mdyCQUpu) !important;
 	display: block;
+	width: var(--default-width-zkk4pPs6);
 	height: calc(var(--set-line-height) * 4);
-	margin-bottom: var(--short-margin-xqv9MGJg);
 	max-height: calc(var(--set-line-height) * 4);
+	margin-bottom: var(--short-margin-xqv9MGJg);
 	-moz-user-select: none;
 	-ms-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
-	width: var(--default-width-zkk4pPs6);
 	}
 
 .set-input {
@@ -162,17 +102,16 @@ span {
 	}
 
 .set-area div {
-	background: var(--transparent-color-mdyCQUpu) !important;
 	width: 100%;
+	background: transparent !important;
 	}
 
 .set-area div textarea {
-	background: var(--neutral-double-color-4PQYryMp) !important;
-	height: calc(var(--set-line-height) * 4);
-	overflow-wrap: normal;
 	overflow: visible;
-	white-space: nowrap;
 	width: 100%;
-	word-break: keep-all;
+	height: calc(var(--set-line-height) * 4);
+	white-space: nowrap;
 	word-wrap: normal;
+	word-break: keep-all;
+	overflow-wrap: normal;
 	}

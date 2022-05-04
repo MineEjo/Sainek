@@ -27,7 +27,7 @@ getData(true, 'extensionTheme', (_response) => {
 	const _hElement = document.getElementById('extensionTheme');
 
 	if (_hElement && _response) {
-		setTheme(false, _response);
+		setTheme(_response);
 		_hElement.checked = (_response === 2);
 	}
 });
@@ -104,7 +104,7 @@ document.addEventListener('click', _hEvent => {
 		});
 
 		_Functions.set('extensionTheme', (_sId, _sValue) => {
-			setTheme(false, (_sValue) ? 2 : 1);
+			setTheme((_sValue) ? 2 : 1);
 			setData(true, _sId, (_sValue) ? 2 : 1);
 		});
 

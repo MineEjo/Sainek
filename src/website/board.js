@@ -27,7 +27,9 @@ function loadBoard() {
 
 	_updateNotes();
 
-	const _hAddNoteButton = createButton(_hBody, '', ['button-cH9xa8qr', 'shadow-pUd54mwX', 'add-rNC4zfHN'], '', (_hChild) => {
+	const _hAddNoteButton = createButton(_hBody, '', [
+		'buttons-cH9xa8qr', 'shadow-pUd54mwX', 'add-rNC4zfHN'
+	], '', (_hChild) => {
 		_hChild.setAttribute('locale-edit', getLocale('edit'));
 		_hChild.setAttribute('locale-add', getLocale('add'));
 		_hChild.setAttribute('locale-cancel', getLocale('cancel'));
@@ -50,12 +52,13 @@ function loadBoard() {
 								titles: _response?.titles,
 								episodesViewed: _response?.episodesViewed,
 								episodes: _response?.episodes,
+								seasonsViewed: _response?.seasonsViewed,
 								seasons: _response?.seasons,
 								status: _response?.status,
-								viewedStatus: _response?.viewedStatus,
 								desc: _response?.desc,
-								websites: _response?.websites,
 								rating: _response?.rating,
+								dateCreation: _response?.dateCreation,
+								dateModification: _response?.dateModification,
 								position: _response?.position
 							}
 						);
@@ -75,7 +78,7 @@ function loadBoard() {
 			_hAddNoteButton.classList.replace('add-rNC4zfHN', 'cancel-kZDX5rD5');
 		}
 
-		const _hContent = createDiv(_hBody, '', ['content-n5tgZWEy', 'shadow-pUd54mwX']);
+		const _hContent = createForm(_hBody, '', ['content-n5tgZWEy', 'shadow-pUd54mwX']);
 
 		createLabel(_hContent, '', '', 'imageOptional', 'image-nZsR8KNQ');
 		createInput(_hContent, 'image-nZsR8KNQ', '', 'typeSomething', (_hChild) => {
@@ -85,18 +88,15 @@ function loadBoard() {
 		createLabel(_hContent, '', '', 'titlesOptional', 'titles-NxMNE4ex');
 		createInput(_hContent, 'titles-NxMNE4ex', '', 'typeSomething', (_hChild) => {
 			if (_jNote?.titles) _hChild.value = _jNote?.titles;
+			_hChild.required = true;
 		});
 
 		createLabel(_hContent, '', '', 'episodesViewed', '');
-		createDiv(_hContent, '', 'transparent-acQZyy2v', (_hChild) => {
+		createDiv(_hContent, '', '', (_hChild) => {
 			_hChild.style.display = 'inline-flex';
 			createInput(_hChild, 'episodes-viewed-jWKxUqGL', '', 'zero', (_hChild) => {
 				_hChild.setAttribute('type', 'number');
-
-				_hChild.onkeyup = () => {
-					this.value = this.value.substring(0, 4);
-				};
-
+				_hChild.setLength(4);
 				_hChild.setAttribute('min', '0');
 				_hChild.style.width = '100%';
 				_hChild.style.textAlign = 'center';
@@ -110,131 +110,138 @@ function loadBoard() {
 			});
 			createInput(_hChild, 'episodes-ZpfNGnBG', '', 'zero', (_hChild) => {
 				_hChild.setAttribute('type', 'number');
-				_hChild.onkeyup = () => {
-					this.value = this.value.substring(0, 4);
-				};
+				_hChild.setLength(4);
+				_hChild.setAttribute('min', '0');
+				_hChild.style.width = '100%';
+				_hChild.style.textAlign = 'center';
+				_hChild.style.marginTop = 'var(--short-margin-xqv9MGJg)';
+
+				if (_jNote?.episodes) _hChild.value = _jNote?.episodes;
+			});
+		});
+
+		createLabel(_hContent, '', '', 'seasonsViewed', '');
+		createDiv(_hContent, '', '', (_hChild) => {
+			_hChild.style.display = 'inline-flex';
+			createInput(_hChild, 'seasons-viewed-T8ufBECf', '', 'zero', (_hChild) => {
+				_hChild.setAttribute('type', 'number');
+				_hChild.setLength(4);
 				_hChild.setAttribute('min', '0');
 				_hChild.style.width = '100%';
 				_hChild.style.textAlign = 'center';
 
-				if (_jNote?.episodes) _hChild.value = _jNote?.episodes;
+				if (_jNote?.seasonsViewed) _hChild.value = _jNote?.seasonsViewed;
 			});
-			createInput(_hChild, '', '', '', (_hChild) => {
-				_hChild.style.width = '0px';
-				_hChild.style.padding = '0px';
-				_hChild.style.margin = '0px';
-				_hChild.style.opacity = '0';
-				_hChild.style.visibility = 'hidden';
-				_hChild.style.display = 'none';
+			createLabel(_hChild, '', '', 'of', '', (_hChild) => {
+				_hChild.style.paddingTop = '13px';
+				_hChild.style.paddingLeft = '8%';
+				_hChild.style.paddingRight = '12%';
 			});
-		});
+			createInput(_hChild, 'seasons-AcTuxFRH', '', 'zero', (_hChild) => {
+				_hChild.setAttribute('type', 'number');
+				_hChild.setAttribute('min', '0');
+				_hChild.setLength(4);
+				_hChild.style.width = '100%';
+				_hChild.style.textAlign = 'center';
+				_hChild.style.marginTop = 'var(--short-margin-xqv9MGJg)';
 
-		createLabel(_hContent, '', '', 'seasons', '');
-		createInput(_hContent, 'seasons-AcTuxFRH', '', 'zero', (_hChild) => {
-			_hChild.setAttribute('type', 'number');
-			_hChild.onkeyup = () => {
-				this.value = this.value.substring(0, 4);
-			};
-			_hChild.setAttribute('min', '0');
-			if (_jNote?.seasons) _hChild.value = _jNote?.seasons;
+				if (_jNote?.seasons) _hChild.value = _jNote?.seasons;
+			});
 		});
 
 		createLabel(_hContent, '', '', 'status', 'status-FkrUy296');
-		const selectStatus = createSelect(_hContent, 'status-FkrUy296', '', 'selectSomething', [
-			['RELATED', 'RELATED'],
-			['ONGOING', 'ONGOING'],
-			['ANNOUNCE', 'ANNOUNCE']
-		]);
-		if (_jNote?.status) selectStatus.select(_jNote?.status);
-
-		createLabel(_hContent, '', '', 'statusView', 'status-view-JvJsUY9y');
-		const selectViewStatus = createSelect(_hContent, 'status-view-JvJsUY9y', '', 'selectSomething', [
-			['UNWATCHED', 'UNWATCHED'],
-			['WATCHING', 'WATCHING'],
-			['WATCHED', 'WATCHED'],
-			['WANT_WATCH', 'WANT_WATCH']
-		]);
-		if (_jNote?.viewedStatus) selectViewStatus.select(_jNote?.viewedStatus);
+		createSelect(_hContent, 'status-FkrUy296', '', 'selectSomething', [
+			['out', 'out'],
+			['ongoing', 'ongoing'],
+			['abandoned', 'abandoned']
+		], (_hChild) => {
+			if (_jNote?.status) _hChild.select(_jNote?.status);
+			_hChild.required(true);
+		});
 
 		createLabel(_hContent, '', '', 'desc', 'desc-emn6pGAH');
 		createTextarea(_hContent, 'desc-emn6pGAH', '', 'typeSomething', (_hChild) => {
 			if (_jNote?.desc) _hChild.value = _jNote?.desc;
 		});
 
-		createLabel(_hContent, '', '', 'websitesOptional', 'websites-Q3usD5jw');
-		createInput(_hContent, 'websites-Q3usD5jw', '', 'typeSomething', (_hChild) => {
-			if (_jNote?.websites) _hChild.value = _jNote?.websites;
-		});
-
 		createLabel(_hContent, '', '', 'rating', 'rating-CW48Shh3', (_hChild) => {
 			_hChild.style.textAlign = 'center';
 		});
-		const _hRating = createSelectRating(_hContent, 'rating-CW48Shh3', '');
-		if (_jNote?.rating) _hRating.select(_jNote?.rating);
+		createSelectRating(_hContent, 'rating-CW48Shh3', '', (_hChild) => {
+			if (_jNote?.rating) _hChild.select(_jNote?.rating);
+		});
 
-		createButton(_hContent, '', 'save-Hj3Cfy9A', 'save', (_hChild) => {
+		createButton(_hContent, '', ['save-Hj3Cfy9A', 'buttons-wFwU4Bhn'], 'save', (_hChild) => {
 			_hChild.onclick = () => {
 				const _sImage = document.getElementById('image-nZsR8KNQ').value;
 				const _sTitles = document.getElementById('titles-NxMNE4ex').value;
-				if (!_sTitles) return alert(getLocale('requiredTitles'));
 
-				let _sEpisodesViewed = document.getElementById('episodes-viewed-jWKxUqGL').value;
-				const _sEpisodes = document.getElementById('episodes-ZpfNGnBG').value;
-				const _sSeasons = document.getElementById('seasons-AcTuxFRH').value;
+				const _sEpisodesViewed = document.getElementById('episodes-viewed-jWKxUqGL').value || 0;
+				const _sEpisodes = document.getElementById('episodes-ZpfNGnBG').value || 0;
+				const _sSeasonsViewed = document.getElementById('seasons-viewed-T8ufBECf').value || 0;
+				const _sSeasons = document.getElementById('seasons-AcTuxFRH').value || 0;
 				const _sStatus = document.getElementById('status-FkrUy296').getAttribute('value');
-				const _sViewedStatus = document.getElementById('status-view-JvJsUY9y').getAttribute('value');
-				if (_sViewedStatus < 1) return alert(getLocale('requiredViewStatus'));
 
 				const _sDesc = document.getElementById('desc-emn6pGAH').value;
-				const _sWebsites = document.getElementById('websites-Q3usD5jw').value;
 				const _sRating = document.getElementById('rating-CW48Shh3').getAttribute('value');
 
-				getData(false, 'noteIds', (_response) => {
-					let _sId = _jNote?.id || genId();
+				const _aOldData = _jNote?.image + _jNote?.titles + _jNote?.episodesViewed + _jNote?.episodes +
+					_jNote?.seasonsViewed + _jNote?.seasons + _jNote?.status + _jNote?.desc + _jNote?.rating;
 
-					if (_response) {
-						while (_response.includes(_sId) && !_jNote?.id) {
-							_sId = genId();
+				const _aNewData = _sImage + _sTitles + _sEpisodesViewed + _sEpisodes + _sSeasonsViewed + _sSeasons +
+					_sStatus + _sDesc + _sRating;
+
+				if (_sTitles && _sStatus) {
+					getData(false, 'noteIds', (_response) => {
+						if (_aOldData !== _aNewData) {
+							let _sId = _jNote?.id || genId();
+
+							if (_response) while (_response.includes(_sId) && !_jNote?.id) _sId = genId();
+
+							/* Note adding */
+							if (!_jNote?.id) {
+								const _aNoteIds = _response || [];
+								/* To have the new note on top, unshift and a zero position are used */
+								_aNoteIds.unshift(_sId);
+								setData(false, 'noteIds', _aNoteIds);
+							}
+
+							const _dDate = new Date().getTime();
+							setData(false, `noteId${_sId}`, {
+								image: _sImage.toString(),
+								titles: _sTitles.toString(),
+								episodesViewed: (_sEpisodesViewed) ? _sEpisodesViewed.toString() : 0,
+								episodes: (_sEpisodes) ? _sEpisodes.toString() : 0,
+								seasonsViewed: (_sSeasonsViewed) ? _sSeasonsViewed.toString() : 0,
+								seasons: (_sSeasons) ? _sSeasons.toString() : 0,
+								status: _sStatus.toString(),
+								desc: _sDesc.toString(),
+								rating: _sRating.toString(),
+								dateCreation: (_jNote?.dateCreation) ? _jNote?.dateCreation : _dDate,
+								dateModification: (_jNote?.dateCreation) ? _dDate : null,
+								position: '0'
+							});
+
+							setTimeout(_updateNotes, 1000);
 						}
-					}
 
-					/* Note adding */
-					if (!_jNote?.id) {
-						const _aNoteIds = _response || [];
-						/* To have the new note on top, unshift and a zero position are used */
-						_aNoteIds.unshift(_sId);
-						setData(false, 'noteIds', _aNoteIds);
-					}
-
-					setData(false, `noteId${_sId}`, {
-						image: _sImage.toString(),
-						titles: _sTitles.toString(),
-						episodesViewed: (_sEpisodesViewed) ? _sEpisodesViewed.toString() : 0,
-						episodes: (_sEpisodes) ? _sEpisodes.toString() : 0,
-						seasons: (_sSeasons) ? _sSeasons.toString() : 0,
-						status: _sStatus.toString(),
-						viewedStatus: _sViewedStatus.toString(),
-						desc: _sDesc.toString(),
-						websites: _sWebsites.toString(),
-						rating: _sRating.toString(),
-						position: '0'
+						removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
+						_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
 					});
-
-					setTimeout(_updateNotes, 1000);
-					removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
-					_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
-				});
+				}
 			};
 		});
 
 		const _bIsError = _jNote?.error || false;
 		if (_jNote?.id && !_bIsError) {
-			createButton(_hContent, '', 'delete-88jPHdRH', 'delete', (_hChild) => {
+			createButton(_hContent, '', ['delete-88jPHdRH', 'buttons-wFwU4Bhn'], 'delete', (_hChild) => {
 				_hChild.onclick = () => {
 					getData(false, 'noteIds', (_response) => {
 						const _aNoteIds = _response || [];
 						/* Note deleting */
-						if (_aNoteIds.indexOf(_jNote?.id) > 0) _aNoteIds.splice(_aNoteIds.indexOf(_jNote?.id), 1);
+						if (_aNoteIds.indexOf(_jNote?.id) > -1) {
+							_aNoteIds.splice(_aNoteIds.indexOf(_jNote?.id), 1);
+						}
 
 						setData(false, 'noteIds', _aNoteIds);
 						setData(false, `noteId${_jNote?.id}`, null);
@@ -260,8 +267,8 @@ function loadBoard() {
 		const _NotesPage = new Set();
 
 		getData(false, 'noteIds', (_nIds) => {
-			if (_nIds.length > 0) {
-				/* Removing the notification about missing notes */
+			if (_nIds && _nIds.length > 0) {
+				/* Removing the notification about absence notes */
 				removeClassElements('label-jFU6wwNV');
 
 				/* The quantity is duplicated in a variable to avoid duplicates in the loop */
@@ -279,7 +286,6 @@ function loadBoard() {
 
 						if (!document.getElementById(`load-${_jId}`)) {
 							createDiv(_hNotes, `load-${_jId}`, ['load-PMb84E8y', 'shadow-pUd54mwX'], (_hNote) => {
-								createMargin(_hNote, CSS.MARGIN.EMBED);
 								createDiv(_hNote, '', 'image-GQtx92fM');
 								createMargin(_hNote, CSS.MARGIN.EMBED);
 								createDiv(_hNote, '', 'title-3Wgg5PKh');
@@ -297,18 +303,22 @@ function loadBoard() {
 								const _sImage = _jNote?.image;
 								const _sEpisodesViewed = _jNote?.episodesViewed;
 								const _sEpisodes = _jNote?.episodes;
+								const _sSeasonsViewed = _jNote?.seasonsViewed;
 								const _sSeasons = _jNote?.seasons;
 								const _sStatus = _jNote?.status;
-								const _sViewedStatus = _jNote?.viewedStatus;
 								const _sDesc = _jNote?.desc;
-								const _sWebsites = _jNote?.websites;
+								const _sDateCreation = _jNote?.dateCreation;
+								const _sDateModification = _jNote?.dateModification;
 								const _sRating = _jNote?.rating;
 								let _sPosition = _jNote?.position;
 
+								/* Error handling */
+								if (!_jNote) throw getLocale('noteNoteFound')
+								if (!_jNote?.position) throw getLocale('noteMissingPosition')
+								if (!_jNote?.titles) throw getLocale('noteMissingTitle')
+
 								/* Sorting positions */
-								while (_NotesReady.has(_sPosition.toString())) {
-									_sPosition++;
-								}
+								while (_NotesReady.has(_sPosition.toString())) _sPosition++;
 
 								/* Notes are first created and stacked in Map, for later display */
 								_NotesReady.set(_sPosition.toString(), _createNote(false));
@@ -354,51 +364,42 @@ function loadBoard() {
 											_hNote.classList.add('limited-2DysF6H8');
 										}
 
-										consoleSend('ggs4xgWMfbZYBpfK', CONSOLE.LOG, {ggs4xgWMfbZYBpfK: _nIds});
-										consoleSend('Uj46Tcr3xr4dN9L7', CONSOLE.LOG, {note: {
+										consoleSend(CONSOLE.LOG, _nIds);
+										consoleSend(CONSOLE.LOG, {
 												id: _jId,
 												title: _sTitles,
 												image: _sImage,
 												episodesViewed: _sEpisodesViewed,
 												episodes: _sEpisodes,
+												seasonsViewed: _sSeasonsViewed,
 												seasons: _sSeasons,
 												status: _sStatus,
-												viewedStatus: _sViewedStatus,
 												desc: _sDesc,
-												websites: _sWebsites,
 												rating: _sRating,
+												dateCreation: _sDateCreation,
+												dateModification: _sDateModification,
 												position: _sPosition
-											}
-										});
+											});
 
 										/* Note design */
-										if (_sViewedStatus && !_bLimited) {
-											createLabel(_hNote, '',
-												['status-viewed-3mPKGu4U', CSS.STATUSES[_sViewedStatus], 'shadow-pUd54mwX'], _sViewedStatus
-											);
-										}
-
-										if (_sStatus.length > 3 && !_bLimited) {
-											createLabel(_hNote, '', 'status-5cBUD2rC', _sStatus);
-										}
-
 										if (_sImage && !_bLimited) {
-											createMargin(_hNote, CSS.MARGIN.EMBED, 'other-WUg8SV9z');
 											createImg(_hNote, '', 'image-2gZc3pYt', _sImage, 'errorLoading');
 										}
 
 										if (_sTitles) {
-											createMargin(_hNote, CSS.MARGIN.EMBED, 'other-WUg8SV9z');
+											createMargin(_hNote, CSS.MARGIN.DEFAULT);
 											createLabel(_hNote, '', 'title-A5xU6DER', `${
 												_sTitles.toString().split(', ')[0]
 											}`, '', (_hChild) => {
-												if (_bLimited) _hChild.style.width = '100%';
+												if (_bLimited) {
+													_hChild.style.width = '100%';
+												}
 											});
 										}
 
 										/* Creating shortcuts to quickly navigate to elements */
 										if (_bLimited) {
-											createMargin(_hNote, CSS.MARGIN.SHORT, 'other-WUg8SV9z');
+											createMargin(_hNote, CSS.MARGIN.SHORT);
 											createDiv(_hNote, '', 'buttons-6dt3Ne7p', (_hChild) => {
 												createLink(_hChild, '', '', 'goTo', `#${_sPageTitleId}`);
 												createLink(_hChild, '', '', 'moreInfo', `#note-${_jId}`);
@@ -411,86 +412,116 @@ function loadBoard() {
 												for (let _nStarts = 1; _nStarts <= parseInt(_sRating); _nStarts++) {
 													const _hSpan = document.createElement('span');
 													_hChild.append(_hSpan);
-													_hSpan.classList.add('fa', 'fa-star', 'checked-cFXHwS3x', 'other-WUg8SV9z');
+													_hSpan.classList.add('fa', 'fa-star', 'checked-cFXHwS3x');
 												}
 
 												for (let _nStarts = 1; _nStarts <= 5 - parseInt(_sRating); _nStarts++) {
 													const _hSpan = document.createElement('span');
 													_hChild.append(_hSpan);
-													_hSpan.classList.add('fa', 'fa-star', 'other-WUg8SV9z');
+													_hSpan.classList.add('fa', 'fa-star');
 												}
 											});
 										}
 
-										if (_sDesc && !_bLimited) {
-											createMargin(_hNote, CSS.MARGIN.SHORT, 'other-WUg8SV9z');
-											createDiv(_hNote, '', 'desc-DtYkVa9G', (_hChild) => {
-												createLabel(_hChild, '', 'text-UqaNp8Pk', _sDesc);
-												/* For customization and smooth animation, do not use the CSS property 'white-space: nowrap' */
-												createLabel(_hChild, '', 'triplet-qk5FvLnk', '...')
-											})
-										}
+										if ((_sStatus || _sEpisodes || _sSeasons) && !_bLimited) {
+											createMargin(_hNote, CSS.MARGIN.SHORT);
+											createDiv(_hNote, '', [
+												'status-y6qHgvQw', 'highlight-BrzYF9mU'
+											], (_hChild) => {
+												if (_sStatus) {
+													const _sCharacter = (_sEpisodes) ? ':' : '';
+													createLabel(_hChild, '', '', `==${_sStatus}==${_sCharacter}`);
+												}
 
-										if (_sWebsites && !_bLimited) {
-											createMargin(_hNote, CSS.MARGIN.EMBED, 'other-WUg8SV9z');
-											createDiv(_hNote, '', 'websites-DtYkVa9G', (_hChild) => {
-												for (const _sLink of _sWebsites.split(', ')) {
-													/* For a nice display, the protocol is erased and the first letter of the domain is capitalized */
-													let _sTitle = _sLink
-													.replace('https://', '')
-													.replace('http://', '')
-													.replace('www.', '');
-													_sTitle = capitalizeFirstLetter(_sTitle);
+												const _aDeclensions = [
+													getLocale(`declensions[1]`), getLocale('declensions[2]')
+												];
+												if (_sEpisodes && parseInt(_sEpisodes) > 0) {
+													const _sDeclension = getDeclension(_sEpisodes, [
+														'', _aDeclensions[0], _aDeclensions[1]
+													]);
+													createLabel(_hChild, '', '', `${_sEpisodes} ==episode==${_sDeclension}`);
+												}
 
-													/* Split splits the reference into an array, 0 means domain selection */
-													_sTitle = (_sTitle + '/').split('/')[0];
-
-													if (_sTitle) {
-														createLink(_hChild, '', '', _sTitle, _sLink, '', (_hChild) => {
-															if (document.URL === _sLink) _hChild.style.background = 'var(--main-color-rVwK3Nh4)';
-														});
-													}
+												if (_sSeasons && parseInt(_sSeasons) > 0) {
+													createLabel(_hChild, '', '', `and`);
+													const _sDeclension = getDeclension(_sSeasons, [
+														'', _aDeclensions[0], _aDeclensions[1]
+													]);
+													createLabel(_hChild, '', '', `${_sSeasons} ==season==${_sDeclension}`);
 												}
 											});
 										}
 
-										if (_sEpisodesViewed && _sEpisodes && !_bLimited) {
-											createMargin(_hNote, CSS.MARGIN.EMBED, 'other-WUg8SV9z');
-											createDiv(_hNote, '', 'episodes-y6qHgvQw', (_hChild) => {
-												createDiv(_hChild, '', '', (_hChild) => {
-													/* Because of the peculiar system, the information is not in one line, but several labels */
-													createLabel(_hChild, '', 'other-WUg8SV9z', 'episodes');
-													createLabel(_hChild, '', 'other-WUg8SV9z', _sEpisodesViewed);
-													createLabel(_hChild, '', 'other-WUg8SV9z', 'of');
-
-													if (_sSeasons && parseInt(_sSeasons) > 0) {
-														createLabel(_hChild, '', 'other-WUg8SV9z', `${_sEpisodes},`);
-														createLabel(_hChild, '', 'other-WUg8SV9z', 'seasons');
-														createLabel(_hChild, '', 'other-WUg8SV9z', _sSeasons);
-													} else {
-														createLabel(_hChild, '', 'other-WUg8SV9z', `${_sEpisodes}`);
-													}
-												});
-												createMargin(_hChild, CSS.MARGIN.DEFAULT, 'other-WUg8SV9z');
-
+										if ((_sEpisodesViewed || _sSeasonsViewed) && !_bLimited) {
+											createMargin(_hNote, CSS.MARGIN.SHORT, '');
+											createDiv(_hNote, '', [
+												'status-view-fvvJSM2d', 'highlight-BrzYF9mU'
+											], (_hChild) => {
 												/* Values must be greater than zero, and the episodes viewed cannot be greater than the episodes in the show */
-												if (parseInt(_sEpisodes) > 0 && parseInt(_sEpisodesViewed) > 0 && parseInt(_sEpisodes) >= parseInt(_sEpisodesViewed)) {
+												if (parseInt(_sEpisodes) > 0 &&
+													parseInt(_sEpisodesViewed) > 0 &&
+													parseInt(_sEpisodes) >= parseInt(_sEpisodesViewed)) {
 													/* The width of the progress bar is the percentage of all episodes watched */
 													const _nProgress = Math.round((parseInt(_sEpisodesViewed) * 100 / parseInt(_sEpisodes))).toString();
 													createDiv(_hChild, '', ['progress-Vdx7xbRM'], (_hChild) => {
 														_hChild.style.width = `${_nProgress}%`;
 													});
 												}
+
+												createLabel(_hChild, '', '', `==watched==:`);
+
+												const _aDeclensions = [
+													getLocale(`declensions[1]`), getLocale('declensions[2]')
+												];
+												if (_sEpisodesViewed && parseInt(_sEpisodesViewed) > 0) {
+													const _sDeclension = getDeclension(_sEpisodesViewed, [
+														'', _aDeclensions[0], _aDeclensions[1]
+													]);
+													createLabel(_hChild, '', '', `${_sEpisodesViewed} ==episode==${_sDeclension}`);
+												}
+
+												if (_sSeasonsViewed && parseInt(_sSeasonsViewed) > 0) {
+													createLabel(_hChild, '', '', `and`);
+													const _sDeclension = getDeclension(_sSeasonsViewed, [
+														'', _aDeclensions[0], _aDeclensions[1]
+													]);
+													createLabel(_hChild, '', '', `${_sSeasonsViewed} ==season==${_sDeclension}`);
+												}
 											});
-										} else {
-											/* Since the block is a closing block, if it is not, its indentation must be in any case */
-											createMargin(_hNote, CSS.MARGIN.EMBED, 'other-WUg8SV9z');
 										}
+
+										if (_sDesc && !_bLimited) {
+											createMargin(_hNote, CSS.MARGIN.DEFAULT);
+											createDiv(_hNote, '', 'desc-DtYkVa9G', (_hChild) => {
+												createLabel(_hChild, '', 'text-UqaNp8Pk', _sDesc);
+												/* For customization and smooth animation, do not use the CSS property 'white-space: nowrap' */
+												createLabel(_hChild, '', [
+													'ellipsis-qk5FvLnk', 'highlight-BrzYF9mU'
+												], '...');
+											});
+										}
+
+										if ((_sDateCreation || _sDateModification) && !_bLimited) {
+											createMargin(_hNote, CSS.MARGIN.EMBED, 'hidden-pY7ppa4q');
+
+											if (_sDateCreation) {
+												createLabel(_hNote, '', 'date-aKYEac4h', `==created==: ${getFormattedDate(_sDateCreation)}`);
+											}
+
+											if (_sDateModification) {
+												createLabel(_hNote, '', 'date-aKYEac4h', `==modified==: ${getFormattedDate(_sDateModification)}`);
+											}
+										}
+
+										createMargin(_hNote, CSS.MARGIN.EMBED);
 
 										if (!_bLimited) {
 											/* Tabindex did not work, so the focus is set by clicking on the note */
 											_hNote.onclick = (_event) => {
 												_hNote.focus();
+												removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
+												_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
 											};
 
 											/* Note movement system */
@@ -552,17 +583,13 @@ function loadBoard() {
 								}
 
 								if (_nIds.length === _NotesReady.size) {
-									consoleSend('G98yhVDYxDZEc72z', CONSOLE.LOG, {
-										divsNote: _NotesReady
-									});
+									consoleSend(CONSOLE.LOG,  _NotesReady);
 
 									/* Adding note shortcuts, if any */
 									if (_NotesPage.size > 0) {
 										createLabel(_hNotes, '', 'label-SSrq6Djx', 'notesOnPage');
 
-										for (const _hNote of _NotesPage) {
-											if (_hNote) _hNotes.append(_hNote);
-										}
+										for (const _hNote of _NotesPage) if (_hNote) _hNotes.append(_hNote);
 									}
 
 									createLabel(_hNotes, '', 'label-SSrq6Djx', 'notesAll');
@@ -585,7 +612,8 @@ function loadBoard() {
 								if (_nIds && _jId) {
 									_nIds.splice(_nIds.indexOf(_jId), 1);
 
-									document.getElementById('load-label-F7rZvMz2').style.display = 'inherit';
+									const _hLoadLabel = document.getElementById('load-label-F7rZvMz2');
+									if (_hLoadLabel) _hLoadLabel.style.display = 'inherit';
 
 									/* Changing a fake note into a note with an error */
 									const _hNote = document.getElementById(`load-${_jId}`);
@@ -596,16 +624,16 @@ function loadBoard() {
 										createMargin(_hChild, CSS.MARGIN.SHORT);
 										createLabel(_hChild, '', '', 'note');
 										createLabel(_hChild, '', '', ':');
-										createLabel(_hChild, '', 'id-f8YW3fne', `${_jId}`);
-										createMargin(_hChild, CSS.MARGIN.EMBED);
+										createLabel(_hChild, '', ['id-f8YW3fne', 'highlight-BrzYF9mU'], `${_jId}`);
+										createMargin(_hChild, CSS.MARGIN.SHORT);
 
 										/* The stack, etc., is specified for details, but different browsers have different calls */
-										let _error = _e.stack || _e.line || _e.lineNumber;
-										createLabel(_hChild, '', 'label-ypPZP2fz', `${_error}`);
-										createMargin(_hChild, CSS.MARGIN.EMBED);
+										let _error = _e.stack || _e.line || _e.lineNumber || _e;
+										createLabel(_hChild, '', ['label-ypPZP2fz', 'highlight-BrzYF9mU'], `${_error}`);
+										createMargin(_hChild, CSS.MARGIN.SHORT);
 
 										/* Div with Buttons */
-										createDiv(_hChild, '', 'buttons-6dt3Ne7p', (_hChild) => {
+										createDiv(_hChild, '', ['buttons-6dt3Ne7p'], (_hChild) => {
 											/* Note deletion button */
 											createLabel(_hChild, '', '', 'delete', '', (_hChild) => {
 												_hChild.onclick = (_event) => {
@@ -620,7 +648,6 @@ function loadBoard() {
 
 											/* In the create note menu, the existing parameters of the broken note are transferred */
 											getData(false, `noteId${_jId}`, (_note) => {
-
 												if (_note) {
 													createLabel(_hChild, '', '', 'reCreate', '', (_hChild) => {
 														_hChild.onclick = (_event) => {
@@ -640,7 +667,7 @@ function loadBoard() {
 									_continueUpdateNotes();
 								}
 
-								consoleSend('RAxm3R7HH3cYxj6q', CONSOLE.ERR, {RAxm3R7HH3cYxj6q: _e});
+								consoleSend(CONSOLE.ERROR, _e);
 							} finally {
 								if (_nIds.length <= _nNotesCount) {
 									/* Removing fake notes */
@@ -655,8 +682,8 @@ function loadBoard() {
 			}
 		});
 
-		/* Notification about missing notes */
+		/* Notification about absence notes */
 		createLabel(_hNotes, '', 'label-jFU6wwNV', 'notesAll');
-		createLabel(_hNotes, '', 'label-jFU6wwNV', 'missingNotes');
+		createLabel(_hNotes, '', 'label-jFU6wwNV', 'absenceNotes');
 	}
 }

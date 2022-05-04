@@ -1,6 +1,6 @@
 {
 	"name": "Sainek - Serials Keeper",
-	"version": "0.2.5",
+	"version": "0.3.0",
 	"description": "Keep the serial you've watched, set statuses, ratings and descriptions! Never lose them again.",
 	"repository": {
 		"type": "git",
@@ -30,13 +30,11 @@
 			],
 			"js": [
 				"src/enums/default.js",
-
-				"src/locales/board.js",
+				"src/locales/website.js",
 				"src/functions/elements.js",
 				"src/functions/utils.js",
 				"src/website/info.js",
 				"src/website/board.js",
-				"src/website/status.js",
 				"src/website/update.js"
 			],
 			"css": [
@@ -44,7 +42,6 @@
 				"src/styles/fonts/font-awesome.css",
 				"src/styles/website.css",
 				"src/styles/variables.css",
-				"src/styles/status.css",
 				"src/styles/board.css",
 				"src/styles/default.css",
 				"src/styles/adaptive.css"
@@ -58,7 +55,6 @@
 	},
 	"web_accessible_resources": [
 		"assets/icon.png",
-		"assets/small-down-arrow.svg",
 
 		"fonts/fontawesome/FontAwesome.otf",
 		"fonts/fontawesome/fontawesome-webfont.eot",

@@ -25,18 +25,13 @@ const CSS = {
 		SHORT: 'SHORT',
 		EMBED: 'EMBED',
 		DEFAULT: 'DEFAULT'
-	},
-	STATUSES: {
-		UNWATCHED: 'unwatched-juX4pc2a',
-		WATCHING: 'watching-M6DsAF2K',
-		WATCHED: 'watched-xB5Pq4kZ',
-		WANT_WATCH: 'want-watch-ry9yUf3Z'
 	}
 }
 
 const CONSOLE = {
 	LOG: 'log',
-	ERR: 'err'
+	ERROR: 'error',
+	WARN: 'warn'
 }
 
 const RESPONSE = {
