@@ -182,8 +182,8 @@ function getData(_bLocal, _sId, _fFunction) {
 }
 
 function setTheme(_nVariation) {
-	/* Starting from zero */
-	if (_nVariation > 0) _nVariation--;
+	/* For use in an array, undefined or NaN is replaced by 0 */
+	if (!_nVariation) _nVariation = 0;
 
 	/* Hint [_nVariation]: Theme number, corresponds to the color position in the array */
 	const _Themes = new Map();
