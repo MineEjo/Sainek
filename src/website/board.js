@@ -329,7 +329,7 @@ function loadBoard() {
 								/* Create shortcuts if the page has the same serial name as the note */
 								const _aTitles = _sTitles.split(', ');
 								for (const _sTitle of _aTitles) {
-									if (aSerialTitles.toString().includes(_sTitle)) {
+									if (aSerialTitles.toString().toUpperCase().includes(_sTitle.toUpperCase())) {
 										const _aPageTitles = document.getElementsByClassName(CSS.CLASS.SHORTCUT);
 										for (const _hPageTitle of _aPageTitles) {
 											if (_hPageTitle.innerText.includes(_sTitle)) {
