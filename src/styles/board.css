@@ -411,7 +411,7 @@
 	right: calc(var(--default-width-zkk4pPs6) + var(--default-margin-xqv9MGJg) + var(--default-margin-xqv9MGJg));
 	overflow: auto !important;
 	width: var(--default-width-zkk4pPs6);
-	max-height: calc(90% + var(--short-margin-xqv9MGJg));
+	bottom: calc(var(--embed-margin-xqv9MGJg) + var(--default-margin-xqv9MGJg) * 2 + var(--default-input-height-Ej9WvfL3));
 	padding: var(--embed-margin-xqv9MGJg);
 	transition: var(--long-transition-YhN6XrSx);
 	animation: created-3r3p5DpG var(--long-transition-YhN6XrSx) forwards;
@@ -447,5 +447,5 @@
 	}
 
 .default-4FLZQdEs:is(.content-n5tgZWEy:is(.removed-UEg2H5Ps)) {
-	top: -100% !important;
+	right: -100% !important;
 	}
