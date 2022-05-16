@@ -26,9 +26,9 @@ getData(true, 'extensionTheme', (_response) => {
 	/* A theme system may be added in the future, so instead of the appropriate "true" and "false", "2", the non-default theme number, means "true". */
 	const _hElement = document.getElementById('extensionTheme');
 
-	if (_hElement && _response) {
+	if (_hElement) {
 		setTheme(_response);
-		_hElement.checked = (_response === 2);
+		_hElement.checked = (_response === 1);
 	}
 });
 
@@ -104,8 +104,8 @@ document.addEventListener('click', _hEvent => {
 		});
 
 		_Functions.set('extensionTheme', (_sId, _sValue) => {
-			setTheme((_sValue) ? 2 : 1);
-			setData(true, _sId, (_sValue) ? 2 : 1);
+			setTheme((_sValue) ? 1 : 0);
+			setData(true, _sId, (_sValue) ? 1 : 0);
 		});
 
 		_Functions.set('boardAttached', (_sId, _sValue) => {
