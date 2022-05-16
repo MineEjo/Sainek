@@ -32,7 +32,7 @@ const POPUP_EN = {
 
 const POPUP_RU = {
 	title: 'Sainek - Хранитель сериалов',
-	donate: 'Поддержка',
+	donate: 'Поддержать',
 	appearance: 'Внешний вид',
 	nightTheme: 'Ночная тема',
 	boardAttached: 'Закрепить панель',
