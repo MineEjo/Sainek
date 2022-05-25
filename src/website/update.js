@@ -33,37 +33,37 @@ window.onload = () => {
 				JSON.stringify(_response).includes(`${document.location.protocol}//${document.location.hostname}/\\n`))) {
 				return;
 			}
-
+			
 			/* The second check is responsible for the word in the site address */
 			if (_checkTriggers() || window.location.href.includes(aDisplayingTriggers[0])) {
 				_setElements();
 			}
 		});
-
+		
 		function _checkTriggers() {
 			/* Search for triggers on the page */
 			for (const _sTrigger of aDisplayingTriggers) {
 				if (document.body.innerText.indexOf(_sTrigger) > -1) return true;
 			}
 		}
-
+		
 		function _setElements() {
 			loadWebsiteInfo();
-
+			
 			getData(true, 'boardDisable', (_response) => {
 				if (!_response) {
 					loadBoard();
-
+					
 					getData(true, 'boardAttached', (_response) => {
 						setAttachBoard(_response);
 					});
 				}
 			});
-
+			
 			getData(true, 'debugMode', (_response) => {
 				setDebugMode(_response);
 			});
-
+			
 			getData(true, 'extensionTheme', (_response) => {
 				setTheme(_response);
 			});
@@ -72,4 +72,3 @@ window.onload = () => {
 		consoleSend(CONSOLE.ERROR, _e);
 	}
 };
-

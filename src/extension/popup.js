@@ -25,7 +25,7 @@ getData(true, 'debugMode', (_response) => {
 getData(true, 'extensionTheme', (_response) => {
 	/* A theme system may be added in the future, so instead of the appropriate "true" and "false", "2", the non-default theme number, means "true". */
 	const _hElement = document.getElementById('extensionTheme');
-
+	
 	if (_hElement) {
 		setTheme(_response);
 		_hElement.checked = (_response === 1);
@@ -57,7 +57,7 @@ const hBlackList = document.getElementById('blackList');
 hBlackList.addEventListener('input', (_hEvent) => {
 	let _sValue = _hEvent?.target?.value;
 	const _aLinks = _sValue.match(/(((https?:\/\/)|(www\.))[^\s]+)/g);
-
+	
 	let _sFormatted = '';
 	if (_aLinks) {
 		for (const _sLink of _aLinks) {
@@ -65,7 +65,7 @@ hBlackList.addEventListener('input', (_hEvent) => {
 			_sValue = _sValue.replace(_sLink, '').replace('\n', '');
 		}
 	}
-
+	
 	_hEvent.target.value = _sFormatted + _sValue;
 	setData(false, 'blackList', _sFormatted);
 });
@@ -75,49 +75,47 @@ const hFireBaseConfig = document.getElementById('fireBaseConfig');
 hFireBaseConfig.addEventListener('input', (_hEvent) => {
 	const _sValue = _hEvent.target.value.toString();
 	let _sJson = '';
-
+	
 	try {
 		/* The code is designed for the user to copy the ready-made config from the FireBase settings. */
 		if (_sValue?.length > 50) {
-			let _sTemp = (_sValue.slice(_sValue.indexOf('{'), _sValue.indexOf('}')).trim() + '\n}')
-			.replace(/: /gm, '": ')
-			.replace(/  /gm, '"');
+			let _sTemp = (_sValue.slice(_sValue.indexOf('{'), _sValue.indexOf('}')).trim() + '\n}').replace(/: /gm, '": ').replace(/  /gm, '"');
 			_sJson = JSON.parse(_sTemp);
 		}
 	} catch (e) {
 		return (_sValue.length > 50) ? alert(e) : null;
 	}
-
+	
 	_hEvent.target.value = JSON.stringify(_sJson);
 	setData(true, 'fireBaseConfig', _sJson);
-	alert(_getLocale('alertReloadExtension'))
+	alert(_getLocale('alertReloadExtension'));
 });
 
 /* Actions after clicking on the checkbox */
 document.addEventListener('click', _hEvent => {
 	if (_hEvent?.target?.id) {
 		const _Functions = new Map();
-
+		
 		_Functions.set('debugMode', (_sId, _sValue) => {
 			setData(true, _sId, _sValue);
 			setDebugMode(true);
 		});
-
+		
 		_Functions.set('extensionTheme', (_sId, _sValue) => {
 			setTheme((_sValue) ? 1 : 0);
 			setData(true, _sId, (_sValue) ? 1 : 0);
 		});
-
+		
 		_Functions.set('boardAttached', (_sId, _sValue) => {
 			setData(true, _sId, _sValue);
 		});
-
+		
 		_Functions.set('boardDisable', (_sId, _sValue) => {
 			setData(true, _sId, _sValue);
 		});
-
+		
 		const _hElement = document.getElementById(_hEvent?.target?.id);
-
+		
 		if (_hElement.tagName && _hElement.tagName === 'INPUT') {
 			if (_Functions.has(_hElement?.id)) _Functions.get(_hElement?.id)(_hElement?.id, _hElement.checked);
 		}
@@ -137,12 +135,12 @@ for (const _hElement of document.getElementsByClassName('link')) {
 /* Load locale */
 if (Lang.has(sUserLang)) {
 	const LOCALE = Lang.get(sUserLang);
-
+	
 	for (const _hElement of document.getElementsByClassName('locale')) {
 		_hElement.innerHTML = LOCALE[_hElement.innerHTML];
 	}
-
+	
 	function _getLocale(_sKey) {
-		return LOCALE[_sKey]
+		return LOCALE[_sKey];
 	}
 }

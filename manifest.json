@@ -59,14 +59,12 @@
 	},
 	"web_accessible_resources": [
 		"assets/icon.png",
-
 		"fonts/fontawesome/FontAwesome.otf",
 		"fonts/fontawesome/fontawesome-webfont.eot",
 		"fonts/fontawesome/fontawesome-webfont.svg",
 		"fonts/fontawesome/fontawesome-webfont.ttf",
 		"fonts/fontawesome/fontawesome-webfont.woff",
 		"fonts/fontawesome/fontawesome-webfont.woff2",
-
 		"fonts/roboto/Roboto-Black.ttf",
 		"fonts/roboto/Roboto-BlackItalic.ttf",
 		"fonts/roboto/Roboto-Bold.ttf",

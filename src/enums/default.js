@@ -26,15 +26,15 @@ const CSS = {
 		EMBED: 'EMBED',
 		DEFAULT: 'DEFAULT'
 	}
-}
+};
 
 const CONSOLE = {
 	LOG: 'log',
 	ERROR: 'error',
 	WARN: 'warn'
-}
+};
 
 const RESPONSE = {
 	SUCCESS: 'SUCCESS',
 	UNKNOWN: 'UNKNOWN'
-}
+};

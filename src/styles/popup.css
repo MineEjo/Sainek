@@ -26,8 +26,8 @@
 	}
 
 * {
-	margin: 0;
 	overflow: visible !important;
+	margin: 0;
 	padding: 0;
 	}
 
@@ -41,15 +41,15 @@ body {
 	}
 
 .body {
-	border-radius: 0;
 	padding: var(--embed-margin-xqv9MGJg);
+	border-radius: 0;
 	}
 
 .title {
 	font-size: var(--font-size-title-Cbe8XVkd);
-	margin-bottom: var(--short-margin-xqv9MGJg);
-	margin-top: var(--short-margin-xqv9MGJg);
 	width: 100%;
+	margin-top: var(--short-margin-xqv9MGJg);
+	margin-bottom: var(--short-margin-xqv9MGJg);
 	}
 
 .title:not(:first-child) {
@@ -97,8 +97,8 @@ body {
 	}
 
 .set-input {
-	max-height: var(--set-line-height) !important;
 	overflow: hidden !important;
+	max-height: var(--set-line-height) !important;
 	}
 
 .set-area div {

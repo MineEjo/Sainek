@@ -18,7 +18,7 @@
 
 const POPUP_EN = {
 	title: 'Sainek - Serials Keeper',
-	sourceCode: "Source Code",
+	sourceCode: 'Source Code',
 	donate: 'Donate',
 	appearance: 'Appearance',
 	nightTheme: 'Night Theme',
@@ -33,7 +33,7 @@ const POPUP_EN = {
 
 const POPUP_RU = {
 	title: 'Sainek - Хранитель сериалов',
-	sourceCode: "Исходный код",
+	sourceCode: 'Исходный код',
 	donate: 'Поддержать',
 	appearance: 'Внешний вид',
 	nightTheme: 'Ночная тема',

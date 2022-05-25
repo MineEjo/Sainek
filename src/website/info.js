@@ -24,11 +24,11 @@ const aSerialTitles = [];
 
 function loadWebsiteInfo() {
 	const _aTitles = document.getElementsByTagName('h1');
-
+	
 	for (const _sTitle of _aTitles) {
 		aSerialTitles.push(_sTitle.innerText);
 		_sTitle.classList.add(CSS.CLASS.SHORTCUT);
-
+		
 		!Serials.has(_sTitle) && Serials.set('0', {
 			'title': _sTitle.innerText,
 			'object': _sTitle

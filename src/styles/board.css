@@ -96,8 +96,8 @@
 /* Headlines */
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .label-SSrq6Djx:is(:not(:last-child)) {
 	font-size: var(--font-size-title-Cbe8XVkd);
-	margin-bottom: var(--default-margin-xqv9MGJg);
 	width: 100%;
+	margin-bottom: var(--default-margin-xqv9MGJg);
 	}
 
 /* Note bg */
@@ -140,8 +140,8 @@
 
 /* Note error reason */
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .error-PTbkZ3J8 .label-ypPZP2fz {
-	color: var(--theme-important-e3k8RWPr);
 	width: 100%;
+	color: var(--theme-important-e3k8RWPr);
 	}
 
 /* Note error id */
@@ -152,8 +152,8 @@
 
 /* Hint: Some elements are indented and also buttons that are not indented need them, not a parent */
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .limited-2DysF6H8 .buttons-6dt3Ne7p {
-	margin: 0 var(--embed-margin-xqv9MGJg);
 	width: calc(100% - var(--embed-margin-xqv9MGJg) - var(--embed-margin-xqv9MGJg));
+	margin: 0 var(--embed-margin-xqv9MGJg);
 	}
 
 /* Class for deleting a note */
@@ -409,9 +409,9 @@
 	position: fixed;
 	top: var(--default-margin-xqv9MGJg);
 	right: calc(var(--default-width-zkk4pPs6) + var(--default-margin-xqv9MGJg) + var(--default-margin-xqv9MGJg));
+	bottom: calc(var(--embed-margin-xqv9MGJg) + var(--default-margin-xqv9MGJg) * 2 + var(--default-input-height-Ej9WvfL3));
 	overflow: auto !important;
 	width: var(--default-width-zkk4pPs6);
-	bottom: calc(var(--embed-margin-xqv9MGJg) + var(--default-margin-xqv9MGJg) * 2 + var(--default-input-height-Ej9WvfL3));
 	padding: var(--embed-margin-xqv9MGJg);
 	transition: var(--long-transition-YhN6XrSx);
 	animation: created-3r3p5DpG var(--long-transition-YhN6XrSx) forwards;
@@ -431,15 +431,15 @@
 .default-4FLZQdEs:is(.content-n5tgZWEy) .select-rating-6VM6t2V5:nth-child(2n+1):not(:last-child),
 .default-4FLZQdEs:is(.content-n5tgZWEy) .select-rating-6VM6t2V5:nth-child(2n):not(:last-child),
 .default-4FLZQdEs:is(.content-n5tgZWEy) .select-rating-6VM6t2V5:nth-child(2n) {
-	margin-bottom: var(--default-margin-xqv9MGJg);
 	margin-top: var(--short-margin-xqv9MGJg);
+	margin-bottom: var(--default-margin-xqv9MGJg);
 	}
 
 .default-4FLZQdEs:is(.content-n5tgZWEy) button:nth-child(2n+1):not(:last-child),
 .default-4FLZQdEs:is(.content-n5tgZWEy) button:nth-child(2n):not(:last-child),
 .default-4FLZQdEs:is(.content-n5tgZWEy) button:nth-child(2n) {
-	margin-bottom: var(--short-margin-xqv9MGJg);
 	margin-top: var(--short-margin-xqv9MGJg);
+	margin-bottom: var(--short-margin-xqv9MGJg);
 	}
 
 .default-4FLZQdEs:is(.content-n5tgZWEy) textarea {
