@@ -393,10 +393,14 @@ function removeClassElements(_sClass, _sClassAnimation) {
 	}
 }
 
-function removeElement(_sId, _sClassAnimation) {
+function removeElement(_sId, _sClassAnimation, _hElement) {
 	if (document.getElementsByClassName(CSS.CLASS.DEFAULT)) {
-		const _hRemove = document.getElementById(_sId);
+		let _hRemove = null;
+		if (_sId) _hRemove = document.getElementById(_sId);
+		else if (_hElement) _hRemove = _hElement;
+		
 		if (_hRemove) {
+			_hRemove.classList.add(_sClassAnimation);
 			for (let _nIndex = 0; _nIndex < _hRemove.childElementCount; _nIndex++) {
 				if (_sClassAnimation) {
 					_hRemove.children.item(_nIndex).classList.add(_sClassAnimation);
@@ -407,6 +411,7 @@ function removeElement(_sId, _sClassAnimation) {
 				
 				function _removeElement() {
 					_hRemove.removeChild(_hRemove.firstChild);
+					_hRemove.remove();
 				}
 			}
 		}
