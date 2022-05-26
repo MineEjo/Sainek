@@ -316,9 +316,9 @@ function loadBoard() {
 								let _sPosition = _jNote?.position;
 								
 								/* Error handling */
-								if (!_jNote) throw getLocale('noteNoteFound');
-								if (!_jNote?.position) throw getLocale('noteMissingPosition');
-								if (!_jNote?.titles) throw getLocale('noteMissingTitle');
+								if (!_jNote) throw `${getLocale('noteNoteFound')} - (${_jId})`;
+								if (!_jNote?.position) throw `${getLocale('noteMissingPosition')} - (${_jId})`;
+								if (!_jNote?.titles) throw `${getLocale('noteMissingTitle')} - (${_jId})`;
 								
 								/* Sorting positions */
 								while (_NotesReady.has(_sPosition.toString())) _sPosition++;
