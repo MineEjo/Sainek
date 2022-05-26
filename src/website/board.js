@@ -391,7 +391,9 @@ function loadBoard() {
 										
 										/* Note design */
 										if (_sImage && !_bLimited) {
-											createImg(_hNote, '', 'image-2gZc3pYt', _sImage, 'errorLoading');
+											createImg(_hNote, '', 'image-2gZc3pYt', _sImage, 'errorLoading', (_hChild) => {
+												observer.observe(_hChild);
+											});
 										}
 										
 										if (_sTitles) {

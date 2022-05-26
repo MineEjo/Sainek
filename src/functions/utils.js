@@ -270,3 +270,15 @@ function addContextListener(_hElement) {
 		}
 	});
 }
+
+const observer = new IntersectionObserver((_entries, _observer) => {
+	_entries.forEach((_entry) => {
+		if (!_entry.isIntersecting) {
+			return;
+		}
+		_entry.target.classList.add("lazy-load-5BkUVwbJ");
+		_observer.unobserve(_entry.target);
+	});
+}, {
+	threshold: 0.7
+});

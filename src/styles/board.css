@@ -181,6 +181,14 @@
 	}
 
 /* Note image */
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .image-2gZc3pYt {
+	opacity: 0;
+	}
+
+.default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .image-2gZc3pYt:is(.lazy-load-5BkUVwbJ) {
+	opacity: 1;
+	}
+
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .note-PgjFjRUS .image-2gZc3pYt,
 .default-4FLZQdEs:is(.board-uVL3djCA) .body-3y53QZt3 #notes-MfRGWNqC .load-PMb84E8y .image-GQtx92fM {
 	width: 100%;
