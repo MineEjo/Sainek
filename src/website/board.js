@@ -276,6 +276,7 @@ function loadBoard() {
 				
 				/* The quantity is duplicated in a variable to avoid duplicates in the loop */
 				const _nNotesCount = _nIds.length;
+				let _nSorted = 0;
 				_continueUpdateNotes();
 				
 				function _continueUpdateNotes() {
@@ -319,6 +320,8 @@ function loadBoard() {
 								if (!_jNote) throw `${getLocale('noteNoteFound')} - (${_jId})`;
 								if (!_jNote?.position) throw `${getLocale('noteMissingPosition')} - (${_jId})`;
 								if (!_jNote?.titles) throw `${getLocale('noteMissingTitle')} - (${_jId})`;
+								
+								_nSorted++;
 								
 								/* Sorting positions */
 								while (_NotesReady.has(_sPosition.toString())) _sPosition++;
@@ -672,7 +675,7 @@ function loadBoard() {
 								
 								consoleSend(CONSOLE.ERROR, _e);
 							} finally {
-								if (_nIds.length <= _nNotesCount) {
+								if (_nSorted === _nNotesCount) {
 									/* Removing fake notes */
 									removeClassElements('load-PMb84E8y', 'removed-UEg2H5Ps');
 								}
