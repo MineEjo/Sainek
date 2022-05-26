@@ -254,3 +254,19 @@ function setAttachBoard(_bState) {
 		if (hBoard) hBoard.classList.remove('attached-P6vcTXH4');
 	}
 }
+
+/* The extension can be deleted, etc., to avoid errors, there is this listener */
+function addContextListener(_hElement) {
+	_hElement.addEventListener('mouseenter', () => {
+		if (!jBrowser?.runtime?.id) {
+			const _bResult = confirm(getLocale('oldSessionAlert'));
+			
+			if (_bResult) {
+				window.location.reload();
+			} else {
+				removeElement(null, 'removed-Uyh8hDaC', _hElement);
+				setAttachBoard(false);
+			}
+		}
+	});
+}
