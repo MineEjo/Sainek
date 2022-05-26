@@ -396,8 +396,9 @@ function removeClassElements(_sClass, _sClassAnimation) {
 function removeElement(_sId, _sClassAnimation, _hElement) {
 	if (document.getElementsByClassName(CSS.CLASS.DEFAULT)) {
 		let _hRemove = null;
-		if (_sId) _hRemove = document.getElementById(_sId);
-		else if (_hElement) _hRemove = _hElement;
+		if (_sId) {
+			_hRemove = document.getElementById(_sId);
+		} else if (_hElement) _hRemove = _hElement;
 		
 		if (_hRemove) {
 			_hRemove.classList.add(_sClassAnimation);
