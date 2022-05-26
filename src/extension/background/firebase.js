@@ -24,31 +24,31 @@ getData(true, 'fireBaseConfig', (_response) => {
 			
 			if (!_jApp || !_jAppDb) return;
 			
-			const _jApplicationState = {values: []};
+			const _jData = {values: []};
 			
 			_jAppDb.on('child_added', snapshot => {
-				_jApplicationState?.values.push({
+				_jData?.values.push({
 					id: snapshot?.key,
 					value: snapshot.val()
 				});
-				_updateState(_jApplicationState);
+				_updateData(_jData);
 			});
 			
 			_jAppDb.on('child_removed', snapshot => {
-				const _nChildPosition = _getChildIndex(_jApplicationState, snapshot?.key);
+				const _nChildPosition = _getChildIndex(_jData, snapshot?.key);
 				if (_nChildPosition === -1) return;
-				_jApplicationState?.values.splice(_nChildPosition, 1);
-				_updateState(_jApplicationState);
+				_jData?.values.splice(_nChildPosition, 1);
+				_updateData(_jData);
 			});
 			
 			_jAppDb.on('child_changed', snapshot => {
-				const _nChildPosition = _getChildIndex(_jApplicationState, snapshot?.key);
+				const _nChildPosition = _getChildIndex(_jData, snapshot?.key);
 				if (_nChildPosition === -1) return;
-				_jApplicationState.values[_nChildPosition] = {
+				_jData.values[_nChildPosition] = {
 					id: snapshot?.key,
 					value: snapshot?.val()
 				};
-				_updateState(_jApplicationState);
+				_updateData(_jData);
 			});
 			
 			jBrowser.runtime.onMessage.addListener((_msg, _sender, _response) => {
@@ -63,12 +63,12 @@ getData(true, 'fireBaseConfig', (_response) => {
 				}
 			});
 			
-			function _updateState(_jAppState) {
-				setData(true, 'state', _jAppState);
+			function _updateData(_jData) {
+				setData(true, 'firebase', _jData);
 			}
 			
-			function _getChildIndex(_jAppState, _id) {
-				return _jAppState?.values.findIndex(_element => _element?.id === _id);
+			function _getChildIndex(_jData, _id) {
+				return _jData?.values.findIndex(_element => _element?.id === _id);
 			}
 		} catch (_e) {
 			consoleSend(CONSOLE.ERROR, _e);

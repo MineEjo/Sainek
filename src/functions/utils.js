@@ -172,9 +172,9 @@ function getData(_bLocal, _sId, _fFunction) {
 					if (_fFunction) _fFunction(_response[_sId]);
 				});
 			} else {
-				jBrowser?.storage?.local?.get(['state'], (_response) => {
-					const _jApplicationState = _response?.state?.values;
-					if (_fFunction) _fFunction(_jApplicationState[_jApplicationState.findIndex(_element => _element.id === _sId)]?.value?.value);
+				jBrowser?.storage?.local?.get(['firebase'], (_response) => {
+					const _jData = _response?.firebase?.values;
+					if (_fFunction) _fFunction(_jData[_jData.findIndex(_element => _element.id === _sId)]?.value?.value);
 				});
 			}
 		});
