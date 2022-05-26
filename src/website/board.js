@@ -222,9 +222,9 @@ function loadBoard() {
 								dateCreation: (_jNote?.dateCreation) ? _jNote?.dateCreation : _dDate,
 								dateModification: (_jNote?.dateCreation) ? _dDate : null,
 								position: '0'
+							}, () => {
+								_updateNotes();
 							});
-							
-							setTimeout(_updateNotes, 1000);
 						}
 						
 						removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
@@ -246,9 +246,10 @@ function loadBoard() {
 						}
 						
 						setData(false, 'noteIds', _aNoteIds);
-						setData(false, `noteId${_jNote?.id}`, null);
-						
-						setTimeout(_updateNotes, 1000);
+						setData(false, `noteId${_jNote?.id}`, null, () => {
+							_updateNotes();
+						});
+					
 						removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
 						_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
 					});
@@ -548,9 +549,9 @@ function loadBoard() {
 														
 														let _jSwitchedOn = _jSwitchedAtNote;
 														_jSwitchedOn.position = _sPosition;
-														setData(false, `notedId${_jSwitchedOnId}`, _jSwitchedOn);
-														
-														setTimeout(_updateNotes, 1000);
+														setData(false, `notedId${_jSwitchedOnId}`, _jSwitchedOn, () => {
+															_updateNotes();
+														});
 													}
 												});
 											};
@@ -641,8 +642,9 @@ function loadBoard() {
 													getData(false, 'noteIds', (_response) => {
 														_response.splice(_response.indexOf(_jId), 1);
 														setData(false, 'noteIds', _response);
-														setData(false, `noteId${_jId}`, null);
-														setTimeout(_updateNotes, 1000);
+														setData(false, `noteId${_jId}`, null, () => {
+															_updateNotes();
+														});
 													});
 												};
 											});
