@@ -586,32 +586,6 @@ function loadBoard() {
 										}
 									});
 								}
-								
-								if (_nIds.length === _NotesReady.size) {
-									consoleSend(CONSOLE.LOG, _NotesReady);
-									
-									/* Adding note shortcuts, if any */
-									if (_NotesPage.size > 0) {
-										createLabel(_hNotes, '', 'label-SSrq6Djx', 'notesOnPage');
-										
-										for (const _hNote of _NotesPage) if (_hNote) _hNotes.append(_hNote);
-									}
-									
-									createLabel(_hNotes, '', 'label-SSrq6Djx', 'notesAll');
-									
-									/* Since sorting does not set the order, the notes do not go one after the other, you can get positions 3 and 6, so the for loop will not work */
-									let _nIndex = 0;
-									while (_NotesReady.size > 0) {
-										if (_NotesReady.has(_nIndex.toString())) {
-											const _hDiv = _NotesReady.get(_nIndex.toString());
-											if (_hDiv) _hNotes.append(_hDiv);
-											_NotesReady.delete(_nIndex.toString());
-										}
-										_nIndex++;
-									}
-									
-									if (_nScrollPos) _hBody.scrollTop = _nScrollPos;
-								}
 							} catch (_e) {
 								/* Note removal system for 3 errors at a time */
 								if (_nIds && _jId) {
@@ -675,9 +649,33 @@ function loadBoard() {
 								
 								consoleSend(CONSOLE.ERROR, _e);
 							} finally {
-								if (_nSorted === _nNotesCount) {
+								if (_nIds.length === _NotesReady.size) {
 									/* Removing fake notes */
 									removeClassElements('load-PMb84E8y', 'removed-UEg2H5Ps');
+									
+									consoleSend(CONSOLE.LOG, _NotesReady);
+									
+									/* Adding note shortcuts, if any */
+									if (_NotesPage.size > 0) {
+										createLabel(_hNotes, '', 'label-SSrq6Djx', 'notesOnPage');
+										
+										for (const _hNote of _NotesPage) if (_hNote) _hNotes.append(_hNote);
+									}
+									
+									createLabel(_hNotes, '', 'label-SSrq6Djx', 'notesAll');
+									
+									/* Since sorting does not set the order, the notes do not go one after the other, you can get positions 3 and 6, so the for loop will not work */
+									let _nIndex = 0;
+									while (_NotesReady.size > 0) {
+										if (_NotesReady.has(_nIndex.toString())) {
+											const _hDiv = _NotesReady.get(_nIndex.toString());
+											if (_hDiv) _hNotes.append(_hDiv);
+											_NotesReady.delete(_nIndex.toString());
+										}
+										_nIndex++;
+									}
+									
+									if (_nScrollPos) _hBody.scrollTop = _nScrollPos;
 								}
 							}
 						});
