@@ -598,6 +598,9 @@ function loadBoard() {
 									
 									/* Changing a fake note into a note with an error */
 									const _hNote = document.getElementById(`load-${_jId}`);
+									
+									if (!_hNote) return;
+									
 									_hNote.innerHTML = '';
 									_hNote.classList.replace('load-PMb84E8y', 'error-PTbkZ3J8');
 									createDiv(_hNote, '', '', (_hChild) => {
