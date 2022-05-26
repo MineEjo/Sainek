@@ -60,7 +60,8 @@ const WEBSITE_EN = {
 	weekdays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
 	noteNoteFound: 'Critical error: note not found',
 	noteMissingPosition: 'Error: missing note position',
-	noteMissingTitle: 'Error: missing note title'
+	noteMissingTitle: 'Error: missing note title',
+	oldSessionAlert: 'Sainek: the session is outdated! Update tab?'
 };
 
 const WEBSITE_RU = {
@@ -107,5 +108,6 @@ const WEBSITE_RU = {
 	weekdays: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
 	noteNoteFound: 'Критическая ошибка: заметка не найдена',
 	noteMissingPosition: 'Ошибка: отсутсвует позиция заметки',
-	noteMissingTitle: 'Ошибка: отсутсвует название заметки'
+	noteMissingTitle: 'Ошибка: отсутсвует название заметки',
+	oldSessionAlert: 'Sainek: сессия устарела! Обновить вкладку?'
 };
