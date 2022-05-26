@@ -22,6 +22,8 @@ let hBoard = undefined;
 function loadBoard() {
 	hBoard = createDiv(document.body, '', ['board-uVL3djCA', 'shadow-pUd54mwX']);
 	
+	addContextListener(hBoard);
+	
 	const _hBody = createDiv(hBoard, '', 'body-3y53QZt3');
 	const _hNotes = createDiv(_hBody, 'notes-MfRGWNqC', '');
 	
