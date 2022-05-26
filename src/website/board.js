@@ -18,6 +18,8 @@
 
 /* Moved out, for changes in other scripts */
 let hBoard = undefined;
+const sNoteId = 'noteId'
+const sNotesId = 'noteIds'
 
 function loadBoard() {
 	hBoard = createDiv(document.body, '', ['board-uVL3djCA', 'shadow-pUd54mwX']);
@@ -42,14 +44,14 @@ function loadBoard() {
 				_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
 			} else {
 				
-				let _sNoteId = _hChild.getAttribute('note-id');
+				let _sId = _hChild.getAttribute('note-id');
 				
-				if (_sNoteId) {
-					_sNoteId = _sNoteId.replace('note-', '');
+				if (_sId) {
+					_sId = _sId.replace('note-', '');
 					
-					getData(false, `noteId${_sNoteId}`, (_response) => {
+					getData(false, `${sNoteId}${_sId}`, (_response) => {
 						_controlNote({
-								id: _sNoteId,
+								id: _sId,
 								image: _response?.image,
 								titles: _response?.titles,
 								episodesViewed: _response?.episodesViewed,
@@ -194,7 +196,7 @@ function loadBoard() {
 					_sStatus + _sDesc + _sRating;
 				
 				if (_sTitles && _sStatus) {
-					getData(false, 'noteIds', (_response) => {
+					getData(false, sNotesId, (_response) => {
 						if (_aOldData !== _aNewData) {
 							let _sId = _jNote?.id || genId();
 							
@@ -202,14 +204,14 @@ function loadBoard() {
 							
 							/* Note adding */
 							if (!_jNote?.id) {
-								const _aNoteIds = _response || [];
+								const _aIds = _response || [];
 								/* To have the new note on top, unshift and a zero position are used */
-								_aNoteIds.unshift(_sId);
-								setData(false, 'noteIds', _aNoteIds);
+								_aIds.unshift(_sId);
+								setData(false, sNotesId, _aIds);
 							}
 							
 							const _dDate = new Date().getTime();
-							setData(false, `noteId${_sId}`, {
+							setData(false, `${sNoteId}${_sId}`, {
 								image: _sImage.toString(),
 								titles: _sTitles.toString(),
 								episodesViewed: (_sEpisodesViewed) ? _sEpisodesViewed.toString() : 0,
@@ -238,15 +240,15 @@ function loadBoard() {
 		if (_jNote?.id && !_bIsError) {
 			createButton(_hContent, '', ['delete-88jPHdRH', 'buttons-wFwU4Bhn'], 'delete', (_hChild) => {
 				_hChild.onclick = () => {
-					getData(false, 'noteIds', (_response) => {
-						const _aNoteIds = _response || [];
+					getData(false, sNotesId, (_response) => {
+						const _aIds = _response || [];
 						/* Note deleting */
-						if (_aNoteIds.indexOf(_jNote?.id) > -1) {
-							_aNoteIds.splice(_aNoteIds.indexOf(_jNote?.id), 1);
+						if (_aIds.indexOf(_jNote?.id) > -1) {
+							_aIds.splice(_aIds.indexOf(_jNote?.id), 1);
 						}
 						
-						setData(false, 'noteIds', _aNoteIds);
-						setData(false, `noteId${_jNote?.id}`, null, () => {
+						setData(false, sNotesId, _aIds);
+						setData(false, `${sNoteId}${_jNote?.id}`, null, () => {
 							_updateNotes();
 						});
 					
@@ -269,7 +271,7 @@ function loadBoard() {
 		const _NotesReady = new Map();
 		const _NotesPage = new Set();
 		
-		getData(false, 'noteIds', (_nIds) => {
+		getData(false, sNotesId, (_nIds) => {
 			if (_nIds && _nIds.length > 0) {
 				/* Removing the notification about absence notes */
 				removeClassElements('label-jFU6wwNV');
@@ -300,7 +302,7 @@ function loadBoard() {
 						}
 						
 						/* Creating real notes */
-						getData(false, `noteId${_jId}`, (_jNote) => {
+						getData(false, `${sNoteId}${_jId}`, (_jNote) => {
 							try {
 								/* The object is accessed directly, without an existence check, to handle the error in the catch block.  */
 								const _sTitles = _jNote?.titles;
@@ -541,18 +543,18 @@ function loadBoard() {
 												const _jSwitchedOnId = _event.dataTransfer.getData('note').replace('note-', '');
 												
 												/* Changing positions */
-												getData(false, `noteId${_jSwitchedOnId}`, (_jSwitchedAtNote) => {
+												getData(false, `${sNoteId}${_jSwitchedOnId}`, (_jSwitchedAtNote) => {
 													if (_jSwitchedAtNote && _jSwitchedOnId !== _jId) {
 														document.getElementById(`note-${_jId}`).classList.add('on-drop-x4YnDmpC');
 														
 														let _jSwitchedAt = _jNote;
 														
 														_jSwitchedAt.position = document.getElementById(`note-${_jSwitchedOnId}`).getAttribute('position') || 0;
-														setData(false, `noteId${_jId}`, _jSwitchedAt);
+														setData(false, `${sNoteId}${_jId}`, _jSwitchedAt);
 														
 														let _jSwitchedOn = _jSwitchedAtNote;
 														_jSwitchedOn.position = _sPosition;
-														setData(false, `notedId${_jSwitchedOnId}`, _jSwitchedOn, () => {
+														setData(false, `${sNoteId}${_jSwitchedOnId}`, _jSwitchedOn, () => {
 															_updateNotes();
 														});
 													}
@@ -616,10 +618,10 @@ function loadBoard() {
 											/* Note deletion button */
 											createLabel(_hChild, '', '', 'delete', '', (_hChild) => {
 												_hChild.onclick = (_event) => {
-													getData(false, 'noteIds', (_response) => {
+													getData(false, sNotesId, (_response) => {
 														_response.splice(_response.indexOf(_jId), 1);
-														setData(false, 'noteIds', _response);
-														setData(false, `noteId${_jId}`, null, () => {
+														setData(false, sNotesId, _response);
+														setData(false, `${sNoteId}${_jId}`, null, () => {
 															_updateNotes();
 														});
 													});
@@ -627,7 +629,7 @@ function loadBoard() {
 											});
 											
 											/* In the create note menu, the existing parameters of the broken note are transferred */
-											getData(false, `noteId${_jId}`, (_note) => {
+											getData(false, `${sNoteId}${_jId}`, (_note) => {
 												if (_note) {
 													createLabel(_hChild, '', '', 'reCreate', '', (_hChild) => {
 														_hChild.onclick = (_event) => {
@@ -635,7 +637,7 @@ function loadBoard() {
 															_note.error = true;
 															/* Update the list of notes by pressing the save button in the menu */
 															_controlNote(_note);
-															setData(false, `noteId${_jId}`, null);
+															setData(false, `${sNoteId}${_jId}`, null);
 														};
 													});
 												}
