@@ -248,9 +248,9 @@ function setTheme(_nVariation) {
 function setAttachBoard(_bState) {
 	if (_bState) {
 		document.body.classList.add('default-attached-da5aKFrB');
-		hBoard.classList.add('attached-P6vcTXH4');
+		if (hBoard) hBoard.classList.add('attached-P6vcTXH4');
 	} else {
 		document.body.classList.remove('default-attached-da5aKFrB');
-		hBoard.classList.remove('attached-P6vcTXH4');
+		if (hBoard) hBoard.classList.remove('attached-P6vcTXH4');
 	}
 }
