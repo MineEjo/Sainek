@@ -155,7 +155,9 @@ function setData(_bLocal, _sId, _sValue, _fFunction) {
 						id: _sId,
 						value: _sValue
 					}
-				}, (_response) => {if (_fFunction) _fFunction(_response);});
+				}, (_response) => {
+					if (_response === RESPONSE.SUCCESS && _fFunction) _fFunction(_response);
+				});
 			}
 		});
 	} catch (_e) {
