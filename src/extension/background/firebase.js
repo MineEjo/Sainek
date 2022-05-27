@@ -51,14 +51,14 @@ getData(true, 'fireBaseConfig', (_response) => {
 				_updateData(_jData);
 			});
 			
-			jBrowser.runtime.onMessage.addListener((_msg, _sender, _response) => {
+			jBrowser.runtime.onMessage.addListener((_msg, _sender, _sendResponse) => {
 				switch (_msg?.type) {
 				case 'update-value':
 					_jAppDb.child(_msg?.opts?.id).set({value: _msg?.opts?.value});
-					_response(RESPONSE.SUCCESS);
+					_sendResponse(RESPONSE.SUCCESS);
 					break;
 				default:
-					_response(RESPONSE.UNKNOWN);
+					_sendResponse(RESPONSE.UNKNOWN);
 					break;
 				}
 			});
