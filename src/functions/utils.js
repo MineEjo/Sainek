@@ -151,7 +151,7 @@ function setData(_bLocal, _sId, _sValue, _fFunction) {
 				if (_fFunction) _fFunction();
 			} else {
 				jBrowser.runtime.sendMessage({
-					type: 'updateValue', opts: {
+					type: 'update-value', opts: {
 						id: _sId,
 						value: _sValue
 					}
