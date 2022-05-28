@@ -18,8 +18,8 @@
 
 /* Moved out, for changes in other scripts */
 let hBoard = undefined;
-const sNoteId = 'noteId'
-const sNotesId = 'noteIds'
+const sNoteId = 'noteId';
+const sNotesId = 'noteIds';
 
 function loadBoard() {
 	hBoard = createDiv(document.body, '', ['board-uVL3djCA', 'shadow-pUd54mwX']);
@@ -251,7 +251,7 @@ function loadBoard() {
 						setData(false, `${sNoteId}${_jNote?.id}`, null, () => {
 							_updateNotes();
 						});
-					
+						
 						removeClassElements('content-n5tgZWEy', 'removed-UEg2H5Ps');
 						_hAddNoteButton.classList.replace('cancel-kZDX5rD5', 'add-rNC4zfHN');
 					});

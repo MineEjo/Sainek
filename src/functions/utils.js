@@ -161,7 +161,7 @@ function setData(_bLocal, _sId, _sValue, _fFunction) {
 							value: _sValue
 						}
 					}, (_response) => {
-						if(jBrowser.runtime.lastError) {
+						if (jBrowser.runtime.lastError) {
 							if (_nAttempts <= _nMaxAttempts) {
 								setTimeout(_tryUpdate, 500);
 								_nAttempts++;
@@ -297,7 +297,7 @@ const observer = new IntersectionObserver((_entries, _observer) => {
 		if (!_entry.isIntersecting) {
 			return;
 		}
-		_entry.target.classList.add("lazy-load-5BkUVwbJ");
+		_entry.target.classList.add('lazy-load-5BkUVwbJ');
 		_observer.unobserve(_entry.target);
 	});
 }, {

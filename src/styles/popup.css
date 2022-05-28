@@ -26,10 +26,10 @@
 	}
 
 * {
+	overflow-x: hidden;
+	overflow-y: visible !important;
 	margin: 0;
 	padding: 0;
-	overflow-y: visible !important;
-	overflow-x: hidden;
 	}
 
 body {
