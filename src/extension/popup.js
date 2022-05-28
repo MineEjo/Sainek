@@ -66,6 +66,7 @@ hBlackList.addEventListener('input', (_hEvent) => {
 		}
 	}
 	
+	setChange();
 	_hEvent.target.value = _sFormatted + _sValue;
 	setData(false, 'blackList', _sFormatted);
 });
@@ -117,7 +118,11 @@ document.addEventListener('click', _hEvent => {
 		const _hElement = document.getElementById(_hEvent?.target?.id);
 		
 		if (_hElement.tagName && _hElement.tagName === 'INPUT') {
-			if (_Functions.has(_hElement?.id)) _Functions.get(_hElement?.id)(_hElement?.id, _hElement.checked);
+			if (_Functions.has(_hElement?.id)) {
+				_Functions.get(_hElement?.id)(_hElement?.id, _hElement.checked);
+				
+				setChange();
+			}
 		}
 	}
 });

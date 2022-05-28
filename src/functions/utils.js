@@ -205,6 +205,12 @@ function getData(_bLocal, _sId, _fFunction) {
 	}
 }
 
+function setChange() {
+	getData(true, 'numberSettingsUpdates', (_response) => {
+		setData(true, 'numberSettingsUpdates', (_response && _response > 0) ? _response + 1 : 1);
+	});
+}
+
 function setTheme(_nVariation) {
 	/* For use in an array, undefined or NaN is replaced by 0 */
 	if (!_nVariation) _nVariation = 0;

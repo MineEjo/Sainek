@@ -67,6 +67,22 @@ window.onload = () => {
 			getData(true, 'extensionTheme', (_response) => {
 				setTheme(_response);
 			});
+			
+			getData(true, 'numberSettingsUpdates', (_response) => {
+				const _WebsitesNumbers = new Map();
+				_WebsitesNumbers.set(window.location, _response);
+				
+				setInterval(_reloadPage, 1000);
+				
+				function _reloadPage() {
+					getData(true, 'numberSettingsUpdates', (_response) => {
+						if (_response && _WebsitesNumbers.get(window.location) !== _response) {
+							_WebsitesNumbers.set(window.location, _response);
+							window.location.reload();
+						}
+					});
+				}
+			});
 		}
 	} catch (_e) {
 		consoleSend(CONSOLE.ERROR, _e);
