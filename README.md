@@ -7,6 +7,7 @@
   <p>
    <img src="https://img.shields.io/github/repo-size/MineEjo/Sainek-Serials-Keeper"/>
    <img src="https://img.shields.io/github/manifest-json/v/MineEjo/Sainek-Serials-Keeper"/>
+   <img src="https://img.shields.io/github/v/release/MineEjo/Sainek-Serials-Keeper?label=latest%20release"/>
   </p>
 </div>
 
