@@ -61,7 +61,7 @@ const WEBSITE_EN = {
 	noteNoteFound: 'Critical error: note not found',
 	noteMissingPosition: 'Error: missing note position',
 	noteMissingTitle: 'Error: missing note title',
-	oldSessionAlert: 'Sainek: the session is outdated! Update tab?'
+	oldSessionAlert: 'Sainek: the session is outdated! Postpone the update?'
 };
 
 const WEBSITE_RU = {
@@ -109,5 +109,5 @@ const WEBSITE_RU = {
 	noteNoteFound: 'Критическая ошибка: заметка не найдена',
 	noteMissingPosition: 'Ошибка: отсутсвует позиция заметки',
 	noteMissingTitle: 'Ошибка: отсутсвует название заметки',
-	oldSessionAlert: 'Sainek: сессия устарела! Обновить вкладку?'
+	oldSessionAlert: 'Sainek: сессия устарела! Отложить обновление?'
 };

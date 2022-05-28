@@ -89,11 +89,11 @@ window.onload = () => {
 							const _bResult = confirm(getLocale('oldSessionAlert'));
 							
 							if (_bResult) {
-								_reloadPage();
-							} else {
 								clearPage();
 								setAttachBoard(false);
 								_bContextSkip = true;
+							} else {
+								_reloadPage();
 							}
 						}
 					}
