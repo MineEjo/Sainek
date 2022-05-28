@@ -4,7 +4,7 @@
 
 - Keep the serial you've watched, set statuses, ratings and descriptions! Never lose them again.
 
-## Installation guide
+## Installation guide `Chromium`
 
 1. Enable `developer mod` in your browser;
 2. Download the `release` or the `source code`;
@@ -12,6 +12,8 @@
 4. Load the `extension` by selecting the `folder`;
 
 - Note: the example is taken from the Chrome browser;
+
+**If you have a different browser or have problems installing, refer to the [documentation](https://github.com/MineEjo/Sainek-Serials-Keeper/wiki/Browsers).**
 
 ## Important
 
