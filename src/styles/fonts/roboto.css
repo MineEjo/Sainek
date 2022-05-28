@@ -18,35 +18,40 @@
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-BlackItalic.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-BlackItalic.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-BlackItalic.ttf') format('truetype');
 	font-weight: 900;
 	font-style: italic;
 	}
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Black.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Black.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Black.ttf') format('truetype');
 	font-weight: 900;
 	font-style: normal;
 	}
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-BoldItalic.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-BoldItalic.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-BoldItalic.ttf') format('truetype');
 	font-weight: 700;
 	font-style: italic;
 	}
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-MediumItalic.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-MediumItalic.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-MediumItalic.ttf') format('truetype');
 	font-weight: 500;
 	font-style: italic;
 	}
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-MediumItalic.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-MediumItalic.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-MediumItalic.ttf') format('truetype');
 	font-weight: 500;
 	font-style: italic;
 	}
@@ -60,48 +65,55 @@
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Regular.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Regular.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Regular.ttf') format('truetype');
 	font-weight: 400;
 	font-style: italic;
 	}
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Regular.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Regular.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Regular.ttf') format('truetype');
 	font-weight: 400;
 	font-style: normal;
 	}
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-LightItalic.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-LightItalic.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-LightItalic.ttf') format('truetype');
 	font-weight: 300;
 	font-style: italic;
 	}
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Light.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Light.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Light.ttf') format('truetype');
 	font-weight: 300;
 	font-style: normal;
 	}
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-ThinItalic.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-ThinItalic.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-ThinItalic.ttf') format('truetype');
 	font-weight: 100;
 	font-style: italic;
 	}
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Thin.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Thin.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Thin.ttf') format('truetype');
 	font-weight: 100;
 	font-style: normal;
 	}
 
 @font-face {
 	font-family: 'Roboto';
-	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Italic.ttf') format('truetype');
+	src: url('chrome-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Italic.ttf') format('truetype'),
+	url('moz-extension://__MSG_@@extension_id__/fonts/roboto/Roboto-Italic.ttf') format('truetype');
 	font-style: italic;
 	}
