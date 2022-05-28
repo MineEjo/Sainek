@@ -104,6 +104,14 @@ body {
 	max-height: var(--set-line-height) !important;
 	}
 
+.private {
+	filter: blur(5px);
+	}
+
+.private:focus, .private:hover {
+	filter: blur(0);
+	}
+
 .set-area div {
 	width: 100%;
 	background: transparent !important;
