@@ -44,6 +44,10 @@ body {
 	border-radius: 0;
 	}
 
+.buttons-6dt3Ne7p {
+	overflow-y: hidden !important;
+	}
+
 .title {
 	font-size: var(--font-size-title-Cbe8XVkd);
 	width: 100%;
