@@ -11,9 +11,8 @@
 3. Unzip the `downloaded archive` into the folder;
 4. Load the `extension` by selecting the `folder`;
 
-- Note: the example is taken from the Chrome browser;
-
-**If you have a different browser or have problems installing, refer to the [documentation](https://github.com/MineEjo/Sainek-Serials-Keeper/wiki/Browsers).**
+- If you have a different browser or have problems installing, refer to
+  the [documentation](https://github.com/MineEjo/Sainek-Serials-Keeper/wiki/Browsers).
 
 ## Important
 
