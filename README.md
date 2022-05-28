@@ -1,10 +1,22 @@
-# Sainek serials keeper
+<div align="center">
+  <br />
+  <p>
+    <a href="https://github.com/MineEjo/Sainek-Serials-Keeper#sainek-serials-keeper"><img src="https://github.com/MineEjo/Sainek-Serials-Keeper/blob/master/assets/icon-128px.png?raw=true" width="128" alt="Sainek Serials Keeper" /></a>
+  </p>
+  <br />
+  <p>
+   <img src="https://img.shields.io/github/repo-size/MineEjo/Sainek-Serials-Keeper"/>
+   <img src="https://img.shields.io/github/manifest-json/v/MineEjo/Sainek-Serials-Keeper"/>
+  </p>
+</div>
 
-**Browser Extension** <br>
+## About
+
+Sainek serials keeper is a browser extension. <br>
 
 - Keep the serial you've watched, set statuses, ratings and descriptions! Never lose them again.
 
-## Installation guide `Chromium`
+## Installation ([Chromium](https://en.wikipedia.org/wiki/Chromium_(web_browser)))
 
 1. Enable `developer mod` in your browser;
 2. Download the `release` or the `source code`;
