@@ -78,6 +78,12 @@
 		"fonts/roboto/Roboto-Thin.ttf",
 		"fonts/roboto/Roboto-ThinItalic.ttf"
 	],
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "{daf44bf7-a45e-4450-979c-91cf07434c3d}",
+			"update_url": "https://example.com"
+		}
+	},
 	"manifest_version": 2,
 	"content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://www.googletagmanager.com; object-src 'self'"
 }
