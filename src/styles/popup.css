@@ -58,7 +58,7 @@ body {
 
 .set-line {
 	display: inline-flex;
-	width: var(--default-width-zkk4pPs6);
+	width: 100%;
 	height: var(--set-line-height);
 	margin-bottom: var(--short-margin-xqv9MGJg);
 	-moz-user-select: none;
@@ -86,7 +86,7 @@ body {
 
 .set-area {
 	display: block;
-	width: var(--default-width-zkk4pPs6);
+	width: 100%;
 	height: calc(var(--set-line-height) * 4);
 	max-height: calc(var(--set-line-height) * 4);
 	margin-bottom: var(--short-margin-xqv9MGJg);
