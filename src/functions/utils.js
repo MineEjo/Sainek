@@ -144,20 +144,39 @@ function getLocale(_string) {
 }
 
 function setData(_bLocal, _sId, _sValue, _fFunction) {
+	const _nMaxAttempts = 50;
+	
 	try {
 		jBrowser?.storage?.local?.get('fireBaseConfig', (_response) => {
 			if (_bLocal || !_response.fireBaseConfig) {
 				jBrowser.storage.local.set({[_sId]: _sValue});
 				if (_fFunction) _fFunction();
 			} else {
-				jBrowser.runtime.sendMessage({
-					type: 'update-value', opts: {
-						id: _sId,
-						value: _sValue
-					}
-				}, (_response) => {
-					if (_response === RESPONSE.SUCCESS && _fFunction) _fFunction(_response);
-				});
+				function _tryUpdate() {
+					let _nAttempts = 0;
+					
+					jBrowser.runtime.sendMessage({
+						type: 'update-value', opts: {
+							id: _sId,
+							value: _sValue
+						}
+					}, (_response) => {
+						if(jBrowser.runtime.lastError) {
+							if (_nAttempts <= _nMaxAttempts) {
+								setTimeout(_tryUpdate, 500);
+								_nAttempts++;
+							} else {
+								consoleSend(CONSOLE.ERROR, jBrowser.runtime.lastError);
+							}
+						} else if (_response === RESPONSE.SUCCESS && _fFunction) {
+							_fFunction(_response);
+						} else {
+							consoleSend(CONSOLE.ERROR, _response);
+						}
+					});
+				}
+				
+				_tryUpdate();
 			}
 		});
 	} catch (_e) {
