@@ -43,8 +43,8 @@ getData(true, 'boardDisable', (_response) => {
 });
 
 getData(false, 'blackList', (_response) => {
-	const _hFireBaseConfig = document.getElementById('blackList');
-	if (_hFireBaseConfig && _response) _hFireBaseConfig.value = _response;
+	const _hBlackList = document.getElementById('blackList');
+	if (_hBlackList && _response) _hBlackList.value = _response;
 });
 
 getData(true, 'firebaseConfig', (_response) => {
