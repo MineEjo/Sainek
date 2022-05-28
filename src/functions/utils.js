@@ -220,6 +220,7 @@ function setTheme(_nVariation) {
 	_Themes.set('--theme-bg-NCgj6pqy', ['--white-color-3vbK5BDV', '--dark-color-vBPysD4T']);
 	_Themes.set('--theme-color-vJjNcN5y', ['--dark-color-embed-m3xm2aNB', '--white-color-embed-HduJdL3S']);
 	_Themes.set('--theme-bg-embed-Qb8Sk8Lx', ['--white-color-embed-HduJdL3S', '--dark-color-embed-m3xm2aNB']);
+	_Themes.set('--theme-bg-volume-Bp74yMRZ', ['--white-color-volume-FuKSu8pA', '--white-color-volume-64j3bYpy']);
 	_Themes.set('--theme-embed-WqJ5wmN7', ['--white-embed-DjTCY6SZ', '--dark-embed-4u4AfxRU']);
 	
 	if (_nVariation > -1) {

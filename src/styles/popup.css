@@ -71,6 +71,10 @@ body {
 	background: var(--theme-bg-embed-Qb8Sk8Lx);
 	}
 
+.set-line:hover {
+	background: var(--theme-bg-volume-Bp74yMRZ);
+	}
+
 .set-line div:first-child {
 	float: left;
 	width: 100%;

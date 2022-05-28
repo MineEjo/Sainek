@@ -20,6 +20,7 @@
 	/* Dynamic colors */
 	--theme-bg-NCgj6pqy: null;
 	--theme-bg-embed-Qb8Sk8Lx: null;
+	--theme-bg-volume-Bp74yMRZ: null;
 	--theme-color-vJjNcN5y: null;
 	--theme-embed-WqJ5wmN7: null;
 
@@ -48,11 +49,13 @@
 
 	--white-color-3vbK5BDV: #ffffff;
 	--white-color-embed-HduJdL3S: #e6e6e6;
+	--white-color-volume-FuKSu8pA: #cccccc;
 	--white-color-text-t5kEDH3d: #e8eaed;
 	--white-embed-DjTCY6SZ: rgba(0, 0, 0, 0.10);
 
 	--dark-color-vBPysD4T: #202125;
 	--dark-color-embed-m3xm2aNB: #33343b;
+	--white-color-volume-64j3bYpy: #43444b;
 	--dark-color-text-zzK58DLM: #202124;
 	--dark-embed-4u4AfxRU: rgba(255, 255, 255, 0.10);
 
