@@ -16,7 +16,7 @@
  * along with  Sainek-Serials-Keeper.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-getData(true, 'fireBaseConfig', (_response) => {
+getData(true, 'firebaseConfig', (_response) => {
 	if (_response) {
 		try {
 			const _jApp = firebase.initializeApp(_response);

@@ -147,8 +147,8 @@ function setData(_bLocal, _sId, _sValue, _fFunction) {
 	const _nMaxAttempts = 50;
 	
 	try {
-		jBrowser?.storage?.local?.get('fireBaseConfig', (_response) => {
-			if (_bLocal || !_response.fireBaseConfig) {
+		jBrowser?.storage?.local?.get('firebaseConfig', (_response) => {
+			if (_bLocal || !_response.firebaseConfig) {
 				jBrowser.storage.local.set({[_sId]: _sValue});
 				if (_fFunction) _fFunction();
 			} else {
@@ -187,8 +187,8 @@ function setData(_bLocal, _sId, _sValue, _fFunction) {
 
 function getData(_bLocal, _sId, _fFunction) {
 	try {
-		jBrowser?.storage?.local?.get('fireBaseConfig', (_response) => {
-			if (_bLocal || !_response.fireBaseConfig) {
+		jBrowser?.storage?.local?.get('firebaseConfig', (_response) => {
+			if (_bLocal || !_response.firebaseConfig) {
 				jBrowser?.storage?.local?.get([_sId], (_response) => {
 					if (_fFunction) _fFunction(_response[_sId]);
 				});

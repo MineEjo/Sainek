@@ -47,9 +47,9 @@ getData(false, 'blackList', (_response) => {
 	if (_hFireBaseConfig && _response) _hFireBaseConfig.value = _response;
 });
 
-getData(true, 'fireBaseConfig', (_response) => {
-	const _hFireBaseConfig = document.getElementById('fireBaseConfig');
-	if (_hFireBaseConfig && _response) _hFireBaseConfig.value = JSON.stringify(_response);
+getData(true, 'firebaseConfig', (_response) => {
+	const _hFirebaseConfig = document.getElementById('firebaseConfig');
+	if (_hFirebaseConfig && _response) _hFirebaseConfig.value = JSON.stringify(_response);
 });
 
 /* Formatting and blacklisting links */
@@ -70,14 +70,14 @@ hBlackList.addEventListener('input', (_hEvent) => {
 	setData(false, 'blackList', _sFormatted);
 });
 
-/* Formatting and writing config for FireBase */
-const hFireBaseConfig = document.getElementById('fireBaseConfig');
-hFireBaseConfig.addEventListener('input', (_hEvent) => {
+/* Formatting and writing config for Firebase */
+const hFirebaseConfig = document.getElementById('firebaseConfig');
+hFirebaseConfig.addEventListener('input', (_hEvent) => {
 	const _sValue = _hEvent.target.value.toString();
 	let _sJson = '';
 	
 	try {
-		/* The code is designed for the user to copy the ready-made config from the FireBase settings. */
+		/* The code is designed for the user to copy the ready-made config from the Firebase settings. */
 		if (_sValue?.length > 50) {
 			let _sTemp = (_sValue.slice(_sValue.indexOf('{'), _sValue.indexOf('}')).trim() + '\n}').replace(/: /gm, '": ').replace(/  /gm, '"');
 			_sJson = JSON.parse(_sTemp);
@@ -87,7 +87,7 @@ hFireBaseConfig.addEventListener('input', (_hEvent) => {
 	}
 	
 	_hEvent.target.value = JSON.stringify(_sJson);
-	setData(true, 'fireBaseConfig', _sJson);
+	setData(true, 'firebaseConfig', _sJson);
 	alert(_getLocale('alertReloadExtension'));
 });
 
