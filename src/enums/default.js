@@ -19,7 +19,8 @@
 const CSS = {
 	CLASS: {
 		DEFAULT: 'default-4FLZQdEs',
-		SHORTCUT: 'shortcut-V7J89asy'
+		SHORTCUT: 'shortcut-V7J89asy',
+		PARENT: 'parent-CGS4L2LX'
 	},
 	MARGIN: {
 		SHORT: 'SHORT',

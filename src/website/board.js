@@ -22,9 +22,7 @@ const sNoteId = 'noteId';
 const sNotesId = 'noteIds';
 
 function loadBoard() {
-	hBoard = createDiv(document.body, '', ['board-uVL3djCA', 'shadow-pUd54mwX']);
-	
-	addContextListener(hBoard);
+	hBoard = createDiv(document.body, '', ['board-uVL3djCA', 'shadow-pUd54mwX', CSS.CLASS.PARENT]);
 	
 	const _hBody = createDiv(hBoard, '', 'body-3y53QZt3');
 	const _hNotes = createDiv(_hBody, 'notes-MfRGWNqC', '');
