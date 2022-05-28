@@ -282,22 +282,6 @@ function setAttachBoard(_bState) {
 	}
 }
 
-/* The extension can be deleted, etc., to avoid errors, there is this listener */
-function addContextListener(_hElement) {
-	_hElement.addEventListener('mouseenter', () => {
-		if (!jBrowser?.runtime?.id) {
-			const _bResult = confirm(getLocale('oldSessionAlert'));
-			
-			if (_bResult) {
-				window.location.reload();
-			} else {
-				removeElement(null, 'removed-Uyh8hDaC', _hElement);
-				setAttachBoard(false);
-			}
-		}
-	});
-}
-
 const observer = new IntersectionObserver((_entries, _observer) => {
 	_entries.forEach((_entry) => {
 		if (!_entry.isIntersecting) {
@@ -309,3 +293,11 @@ const observer = new IntersectionObserver((_entries, _observer) => {
 }, {
 	threshold: 0.7
 });
+
+function clearPage() {
+	const _hParents = document.getElementsByClassName(CSS.CLASS.PARENT);
+	
+	for (const _hElement of _hParents) {
+		removeElement(null, 'removed-Uyh8hDaC', _hElement);
+	}
+}

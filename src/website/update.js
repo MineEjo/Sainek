@@ -71,16 +71,37 @@ window.onload = () => {
 			getData(true, 'numberSettingsUpdates', (_response) => {
 				const _WebsitesNumbers = new Map();
 				_WebsitesNumbers.set(window.location, _response);
+				let _bReloading = false;
+				let _bContextSkip = false;
 				
-				setInterval(_reloadPage, 1000);
+				setInterval(_checkData, 1000);
+				
+				function _checkData() {
+					if (!_bReloading) {
+						getData(true, 'numberSettingsUpdates', (_response) => {
+							if (_response && _WebsitesNumbers.get(window.location) !== _response) {
+								_WebsitesNumbers.set(window.location, _response);
+								_reloadPage();
+							}
+						});
+						
+						if (!jBrowser?.runtime?.id && !_bContextSkip) {
+							const _bResult = confirm(getLocale('oldSessionAlert'));
+							
+							if (_bResult) {
+								_reloadPage();
+							} else {
+								clearPage();
+								setAttachBoard(false);
+								_bContextSkip = true;
+							}
+						}
+					}
+				}
 				
 				function _reloadPage() {
-					getData(true, 'numberSettingsUpdates', (_response) => {
-						if (_response && _WebsitesNumbers.get(window.location) !== _response) {
-							_WebsitesNumbers.set(window.location, _response);
-							window.location.reload();
-						}
-					});
+					window.location.reload();
+					_bReloading = true;
 				}
 			});
 		}
