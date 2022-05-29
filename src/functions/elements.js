@@ -243,8 +243,7 @@ function createSelect(_hParent, _sId, _sClass, _sPlaceholder, _aOptions, _fFunct
 					for (const _hElement of _hElements) _hElement.classList.remove('active-5QkcU5D4');
 					
 					_hLi.classList.add(CSS.CLASS.DEFAULT, 'active-5QkcU5D4');
-					_hParent.focus();
-					_bFocused = false;
+					_bFocused = true;
 				} else {
 					_hLi.classList.add('disabled-cY7rmmH3');
 				}
