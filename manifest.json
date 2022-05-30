@@ -4,14 +4,14 @@
 	"description": "Keep the serial you've watched, set statuses, ratings and descriptions! Never lose them again.",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/MineEjo/Sainek-Serials-Keeper.git"
+		"url": "https://github.com/MineEjo/Sainek.git"
 	},
 	"author": "MineEjo",
 	"license": "GPL-3.0",
 	"bugs": {
-		"url": "https://github.com/MineEjo/Sainek-Serials-Keeper/issues"
+		"url": "https://github.com/MineEjo/Sainek/issues"
 	},
-	"homepage": "https://github.com/MineEjo/Sainek-Serials-Keeper#readme",
+	"homepage": "https://github.com/MineEjo/Sainek#readme",
 	"icons": {
 		"16": "assets/icon-16px.png",
 		"48": "assets/icon-48px.png",
