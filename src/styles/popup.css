@@ -55,6 +55,15 @@ body {
 	margin-bottom: var(--short-margin-xqv9MGJg);
 	}
 
+.title:first-child {
+	margin-bottom: 0;
+	}
+
+.description {
+	opacity: 0.8;
+	margin-bottom: var(--short-margin-xqv9MGJg);
+	}
+
 .title:not(:first-child) {
 	margin-top: var(--short-margin-xqv9MGJg);
 	}

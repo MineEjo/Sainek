@@ -17,7 +17,8 @@
  */
 
 const POPUP_EN = {
-	title: 'Sainek - Serials Keeper',
+	title: 'Sainek',
+	description: 'Keep the serial you\'ve watched, set statuses, ratings and descriptions! Never lose them again.',
 	sourceCode: 'Source Code',
 	donate: 'Donate',
 	appearance: 'Appearance',
@@ -32,7 +33,8 @@ const POPUP_EN = {
 };
 
 const POPUP_RU = {
-	title: 'Sainek - Хранитель сериалов',
+	title: 'Sainek',
+	description: 'Keep the serial you\'ve watched, set statuses, ratings and descriptions! Never lose them again.',
 	sourceCode: 'Исходный код',
 	donate: 'Поддержать',
 	appearance: 'Внешний вид',
