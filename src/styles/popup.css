@@ -78,6 +78,7 @@ body {
 	-webkit-user-select: none;
 	user-select: none;
 	background: var(--theme-bg-embed-Qb8Sk8Lx);
+	cursor: pointer;
 	}
 
 .set-line:hover {
@@ -90,6 +91,7 @@ body {
 	padding-top: calc(var(--set-line-margin) * 2);
 	padding-left: var(--default-margin-xqv9MGJg);
 	text-align: left;
+	cursor: pointer;
 	}
 
 .set-line div:last-child {
@@ -98,6 +100,11 @@ body {
 	padding-top: var(--set-line-margin);
 	padding-right: var(--default-margin-xqv9MGJg);
 	text-align: right;
+	cursor: pointer;
+	}
+
+.set-line label {
+	cursor: pointer;
 	}
 
 .set-area {
