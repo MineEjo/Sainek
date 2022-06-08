@@ -60,6 +60,9 @@ body {
 	}
 
 .description {
+	word-break: break-word !important;
+	word-wrap: normal !important;
+	white-space: normal !important;
 	opacity: 0.8;
 	margin-bottom: var(--short-margin-xqv9MGJg);
 	}
