@@ -34,7 +34,7 @@ const POPUP_EN = {
 
 const POPUP_RU = {
 	title: 'Sainek',
-	description: 'Keep the serial you\'ve watched, set statuses, ratings and descriptions! Never lose them again.',
+	description: 'Сохраняйте просмотренные сериалы, установленные статусы, рейтинги и описания! Никогда больше не теряйте их.',
 	sourceCode: 'Исходный код',
 	donate: 'Поддержать',
 	appearance: 'Внешний вид',
